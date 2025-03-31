@@ -11,10 +11,12 @@
             "id": "38d02d4d234fcfa7",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Новая вкладка"
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Доска.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Доска"
             }
           }
         ]
@@ -158,11 +160,24 @@
       "canvas:Создать новый холст": false,
       "daily-notes:Сегодняшняя заметка": false,
       "templates:Вставить шаблон": false,
-      "command-palette:Открыть палитру команд": false
+      "command-palette:Открыть палитру команд": false,
+      "obsidian-excalidraw-plugin:Создать новый чертеж": false
     }
   },
-  "active": "38d02d4d234fcfa7",
+  "active": "fc0b199f9daa38f3",
   "lastOpenFiles": [
+    "final-image.jpg",
+    "Excalidraw/Доска.md",
+    "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195952_986.png",
+    "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_022.png",
+    "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_089.png",
+    "Excalidraw/Picture for Excalidraw",
+    "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_180.png",
+    "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_167.png",
+    "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_108.png",
+    "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_100.png",
+    "Excalidraw/Drawing 2025-03-31 19.56.45.excalidraw.md",
+    "Excalidraw",
     "Идея.md",
     "Референс.md"
   ]
