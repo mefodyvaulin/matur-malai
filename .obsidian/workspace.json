@@ -11,12 +11,14 @@
             "id": "38d02d4d234fcfa7",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/Доска.md"
+                "file": "TODO.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "Доска"
+              "icon": "lucide-file",
+              "title": "TODO"
             }
           }
         ]
@@ -76,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 297.5,
+    "collapsed": true
   },
   "right": {
     "id": "3252d1f2d896f930",
@@ -164,18 +167,19 @@
       "obsidian-excalidraw-plugin:Создать новый чертеж": false
     }
   },
-  "active": "fc0b199f9daa38f3",
+  "active": "38d02d4d234fcfa7",
   "lastOpenFiles": [
-    "final-image.jpg",
     "Excalidraw/Доска.md",
+    "TODO.md",
+    "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_100.png",
+    "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_089.png",
+    "final-image.jpg",
     "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195952_986.png",
     "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_022.png",
-    "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_089.png",
     "Excalidraw/Picture for Excalidraw",
     "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_180.png",
     "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_167.png",
     "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_108.png",
-    "Excalidraw/Picture for Excalidraw/Pasted Image 20250331195725_100.png",
     "Excalidraw/Drawing 2025-03-31 19.56.45.excalidraw.md",
     "Excalidraw",
     "Идея.md",
