@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (UserInput.userInput != null)
             UserInput.userInput.MoveMouse += Rotate;
-        transform.LookAt(target);
+
     }
 
     private void Rotate(float y, float x)
@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
         transform.rotation = Quaternion.Euler(y, x, 0);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         var desiredPosition = target.position + offset;
         var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);

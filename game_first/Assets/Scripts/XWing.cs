@@ -15,10 +15,8 @@ public class XWing : MonoBehaviour
             UserInput.userInput.MoveMouse += Rotate;
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
-        if (UserInput.userInput != null)
-            UserInput.userInput.MoveMouse += Rotate;
         MoveForward();
     }
 
@@ -72,7 +70,7 @@ public class XWing : MonoBehaviour
     private static float NormalizeAngle(float angle)
     {
         // Приводим угол к диапазону -180..180
-        angle = angle % 360;
+        angle %= 360;
         if (angle > 180) angle -= 360;
         if (angle < -180) angle += 360;
         return angle;

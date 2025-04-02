@@ -10,12 +10,12 @@ public class UserInput: MonoBehaviour
     public delegate void Rotate(float x, float y);
 
     public event Rotate MoveMouse;
-    void Start()
+    void Awake()
     {
         userInput = this;
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         mousePosition.X += Input.GetAxis("Mouse X");
         mousePosition.Y += Input.GetAxis("Mouse Y");
