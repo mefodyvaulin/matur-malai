@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class XWing : MonoBehaviour
@@ -8,10 +9,17 @@ public class XWing : MonoBehaviour
     [SerializeField] private float maxPitchAngle = 30f;  // Макс. угол наклона вверх/вниз (ось X) от изначального положения
     [SerializeField] private float maxYawAngle = 15f;    // Макс. угол поворота влево/вправо (ось Y) от изначального положения
 
+    private void Start()
+    {
+        if (UserInput.userInput != null)
+            UserInput.userInput.MoveMouse += Rotate;
+    }
+
     public void FixedUpdate()
     {
+        if (UserInput.userInput != null)
+            UserInput.userInput.MoveMouse += Rotate;
         MoveForward();
-        Rotate(10f, -90f);
     }
 
     private void MoveForward()
