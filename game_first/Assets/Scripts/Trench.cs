@@ -1,20 +1,18 @@
-using UnityEngine;
 using System.Collections.Generic;
-namespace Game
+using UnityEngine;
+
+public class Trench : MonoBehaviour
 {
-    public class Trench : MonoBehaviour
-    {
-        private GameObject[] trenchSegments;
-        private float segmentHalfLength;
-        private List<GameObject> currentSegments;
-        private GameObject randomSegment;
+    private GameObject[] trenchSegments;
+    private float segmentHalfLength;
+    private List<GameObject> currentSegments;
+    private GameObject randomSegment;
 
-        private void Start(){
+    private void Start(){
 
-        }
+    }
 
-        public void ChangeTrenchState(Vector3 playerPosition){
-            
-        }
+    public void ChangeTrenchState(Vector3 playerPosition){
+
     }
 }

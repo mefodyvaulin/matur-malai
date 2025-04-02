@@ -1,7 +1,4 @@
-namespace Game
+public class GameModel
 {
-    public class GameModel
-    {
 
-    }
 }

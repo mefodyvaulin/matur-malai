@@ -1,7 +1,4 @@
-namespace Game
+public class XWing
 {
-    public class XWing
-    {
 
-    }
 }

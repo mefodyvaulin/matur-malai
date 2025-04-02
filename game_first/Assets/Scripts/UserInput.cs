@@ -1,7 +1,4 @@
-namespace Game
+public class UserInput
 {
-    public class UserInput
-    {
 
-    }
 }
