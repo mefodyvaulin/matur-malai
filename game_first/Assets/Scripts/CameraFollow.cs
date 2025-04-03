@@ -1,28 +1,47 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
     public Vector3 offset;
     public float smoothSpeed = 0.125f;
+    private UserInputAction _cameraAction;
+    private InputAction _movement;
 
-    private void Start()
+    private void Awake()
     {
-        if (UserInput.userInput != null)
-            UserInput.userInput.MoveMouse += Rotate;
+        _cameraAction = new UserInputAction();
+    }
+
+    private void OnEnable()
+    {
+        _movement = _cameraAction.Camera.MouseMovment;
+        _movement.Enable();
+
+        //_cameraAction.Camera.MouseMovment.performed += Rotate;
+        _cameraAction.Camera.MouseMovment.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _movement.Disable();
+        _cameraAction.Camera.MouseMovment.Disable();
 
     }
 
-    private void Rotate(float y, float x)
+
+    private void Rotate(InputAction.CallbackContext context)
     {
-        transform.rotation = Quaternion.Euler(y, x, 0);
+        // тут можно будет реализовать вращение камеры и подключить его расскоменитв строчку выше
     }
 
-    void Update()
+    private void Update()
     {
         var desiredPosition = target.position + offset;
         var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
+        transform.rotation = target.rotation; // пока что камер просто повторяет вращение самолета
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class XWing : MonoBehaviour
 {
@@ -8,11 +9,28 @@ public class XWing : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;  // Скорость поворота
     [SerializeField] private float maxPitchAngle = 30f;  // Макс. угол наклона вверх/вниз (ось X) от изначального положения
     [SerializeField] private float maxYawAngle = 15f;    // Макс. угол поворота влево/вправо (ось Y) от изначального положения
+    private UserInputAction _xWingInputAction;
+    private InputAction _movement;
 
-    private void Start()
+    private void Awake()
     {
-        if (UserInput.userInput != null)
-            UserInput.userInput.MoveMouse += Rotate;
+        _xWingInputAction = new UserInputAction();
+    }
+
+    private void OnEnable()
+    {
+        _movement = _xWingInputAction.XWing.MouseMovment;
+        _movement.Enable();
+
+        _xWingInputAction.XWing.MouseMovment.performed += Rotate;
+        _xWingInputAction.XWing.MouseMovment.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _movement.Disable();
+        _xWingInputAction.XWing.MouseMovment.Disable();
+
     }
 
     public void Update()
@@ -30,8 +48,11 @@ public class XWing : MonoBehaviour
     /// </summary>
     /// <param name="pitchDelta">Угол смещения наклона вверх/вниз (ось X, -30..30°)</param>
     /// <param name="yawDelta">Угол смещения поворота влево/вправо (ось Y, -15..15°)</param>
-    private void Rotate(float pitchDelta, float yawDelta)
+    /// <param name="context"></param>
+    private void Rotate(InputAction.CallbackContext context)
     {
+        var pitchDelta = -context.ReadValue<Vector2>().y;
+        var yawDelta = context.ReadValue<Vector2>().x;
         // Нормализуем углы в диапазон -180..180
         var currentRelativeRotationX = NormalizeAngle(transform.rotation.x);
         var currentRelativeRotationY = NormalizeAngle(transform.rotation.y);
