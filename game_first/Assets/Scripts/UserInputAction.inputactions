@@ -1,0 +1,62 @@
+{
+    "name": "UserInputAction",
+    "maps": [
+        {
+            "name": "XWing",
+            "id": "920218a3-1538-41a8-966b-54a50906d900",
+            "actions": [
+                {
+                    "name": "MouseMovment",
+                    "type": "Value",
+                    "id": "1feabb45-50f2-47dc-b563-0aef5f85d6b2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f1e49db1-d728-4629-bbc0-9fa89c2bdef6",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseMovment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Camera",
+            "id": "843a7d25-6300-47c5-b548-001fcacee639",
+            "actions": [
+                {
+                    "name": "MouseMovment",
+                    "type": "Value",
+                    "id": "5290225a-7e62-480f-a265-5c8d60557d5d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "03c21bfe-57c4-4a92-860b-9b6f239c1061",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseMovment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
