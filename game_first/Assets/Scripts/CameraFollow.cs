@@ -42,6 +42,6 @@ public class CameraFollow : MonoBehaviour
         var desiredPosition = target.position + offset;
         var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
-        transform.rotation = target.rotation; // пока что камер просто повторяет вращение самолета
+        //transform.rotation = target.rotation; // пока что камер просто повторяет вращение самолета
     }
 }
