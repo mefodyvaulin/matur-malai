@@ -85,16 +85,9 @@ public class XWing : MonoBehaviour
         var roll = SolveRoll(currentPitch, currentYaw);
         var targetRotation = Quaternion.Euler(currentPitch, currentYaw, roll);
 
-        var angleDifference = Quaternion.Angle(transform.rotation, targetRotation);
-        if (angleDifference < 0.25f)
-        {
-            transform.rotation = targetRotation;
-        }
-        else
-        {
-            // Плавный поворот объекта от текущего положения к целевому
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
+        // Плавный поворот объекта от текущего положения к целевому
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
     }
     private static float SolveRoll(float pitch, float yaw)
     {
