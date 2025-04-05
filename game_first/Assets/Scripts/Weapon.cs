@@ -12,12 +12,15 @@ public abstract class Weapon : MonoBehaviour
     protected float lastFireTime;                             // Последний выстрел для кд между патронами
     protected float reloadTimer;                              // Таймер для кд
     
+    public int CurrentClip => currentClip;
+    public int MaxClip => maxClip;
+    
     private void Start() // для [SerializeField]
     {
         currentClip = maxClip;
     }
     
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         if (currentClip < maxClip)
         {
