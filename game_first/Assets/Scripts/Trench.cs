@@ -12,6 +12,11 @@ public class Trench : MonoBehaviour
     private float numberOfSegments;
     private float lastSegmentVariant = 0;
 
+    void Awake()
+    {
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     private void Start(){
         segmentHalfLength = 1.5f;
 
