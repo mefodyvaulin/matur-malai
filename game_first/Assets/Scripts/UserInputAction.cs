@@ -142,6 +142,34 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Weapon"",
+            ""id"": ""0bcdeee9-37cb-47e8-a13a-456cda8ea75b"",
+            ""actions"": [
+                {
+                    ""name"": ""WeaponMovement"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa04400b-08c6-4fa1-b822-8ec64d3c17d9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f077ea57-6f63-4d5c-958a-25a4b553145b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -152,12 +180,16 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_MouseMovment = m_Camera.FindAction("MouseMovment", throwIfNotFound: true);
+        // Weapon
+        m_Weapon = asset.FindActionMap("Weapon", throwIfNotFound: true);
+        m_Weapon_WeaponMovement = m_Weapon.FindAction("WeaponMovement", throwIfNotFound: true);
     }
 
     ~@UserInputAction()
     {
         UnityEngine.Debug.Assert(!m_XWing.enabled, "This will cause a leak and performance issues, UserInputAction.XWing.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Camera.enabled, "This will cause a leak and performance issues, UserInputAction.Camera.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Weapon.enabled, "This will cause a leak and performance issues, UserInputAction.Weapon.Disable() has not been called.");
     }
 
     /// <summary>
@@ -421,6 +453,102 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="CameraActions" /> instance referencing this action map.
     /// </summary>
     public CameraActions @Camera => new CameraActions(this);
+
+    // Weapon
+    private readonly InputActionMap m_Weapon;
+    private List<IWeaponActions> m_WeaponActionsCallbackInterfaces = new List<IWeaponActions>();
+    private readonly InputAction m_Weapon_WeaponMovement;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Weapon".
+    /// </summary>
+    public struct WeaponActions
+    {
+        private @UserInputAction m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public WeaponActions(@UserInputAction wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Weapon/WeaponMovement".
+        /// </summary>
+        public InputAction @WeaponMovement => m_Wrapper.m_Weapon_WeaponMovement;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Weapon; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="WeaponActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(WeaponActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="WeaponActions" />
+        public void AddCallbacks(IWeaponActions instance)
+        {
+            if (instance == null || m_Wrapper.m_WeaponActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_WeaponActionsCallbackInterfaces.Add(instance);
+            @WeaponMovement.started += instance.OnWeaponMovement;
+            @WeaponMovement.performed += instance.OnWeaponMovement;
+            @WeaponMovement.canceled += instance.OnWeaponMovement;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="WeaponActions" />
+        private void UnregisterCallbacks(IWeaponActions instance)
+        {
+            @WeaponMovement.started -= instance.OnWeaponMovement;
+            @WeaponMovement.performed -= instance.OnWeaponMovement;
+            @WeaponMovement.canceled -= instance.OnWeaponMovement;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="WeaponActions.UnregisterCallbacks(IWeaponActions)" />.
+        /// </summary>
+        /// <seealso cref="WeaponActions.UnregisterCallbacks(IWeaponActions)" />
+        public void RemoveCallbacks(IWeaponActions instance)
+        {
+            if (m_Wrapper.m_WeaponActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="WeaponActions.AddCallbacks(IWeaponActions)" />
+        /// <seealso cref="WeaponActions.RemoveCallbacks(IWeaponActions)" />
+        /// <seealso cref="WeaponActions.UnregisterCallbacks(IWeaponActions)" />
+        public void SetCallbacks(IWeaponActions instance)
+        {
+            foreach (var item in m_Wrapper.m_WeaponActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_WeaponActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="WeaponActions" /> instance referencing this action map.
+    /// </summary>
+    public WeaponActions @Weapon => new WeaponActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "XWing" which allows adding and removing callbacks.
     /// </summary>
@@ -450,5 +578,20 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMouseMovment(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Weapon" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="WeaponActions.AddCallbacks(IWeaponActions)" />
+    /// <seealso cref="WeaponActions.RemoveCallbacks(IWeaponActions)" />
+    public interface IWeaponActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "WeaponMovement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWeaponMovement(InputAction.CallbackContext context);
     }
 }

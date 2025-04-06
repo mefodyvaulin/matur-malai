@@ -56,6 +56,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Weapon",
+            "id": "0bcdeee9-37cb-47e8-a13a-456cda8ea75b",
+            "actions": [
+                {
+                    "name": "WeaponMovement",
+                    "type": "Button",
+                    "id": "fa04400b-08c6-4fa1-b822-8ec64d3c17d9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f077ea57-6f63-4d5c-958a-25a4b553145b",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

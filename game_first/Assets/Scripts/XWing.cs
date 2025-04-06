@@ -11,8 +11,8 @@ public class XWing : MonoBehaviour
     [SerializeField] private float maxYawAngle = 30f;    // Максимальный угол поворота влево/вправо (по оси Y)
     [SerializeField] private float sensitivity = 1f;     // Чувствительность мыши — насколько сильно движение мыши влияет на поворот
     [SerializeField] private float centeringSpeed = 10f; // Скорость возврата корабля в нейтральное положение, когда мышь не двигается
-    [SerializeField] private Vector2 trenchSizeUpRight = new Vector2(30f, 30f);     // Ограничение тоннеля верхний правый угол
-    [SerializeField] private Vector2 trenchSizeDownLeft = new Vector2(0f, 0f);      // Ограничение тоннеля нижний левый угол
+    [SerializeField] private Vector2 trenchSizeUpRight = new Vector2(15f, 40f);     // Ограничение тоннеля верхний правый угол
+    [SerializeField] private Vector2 trenchSizeDownLeft = new Vector2(-10f, 16f);      // Ограничение тоннеля нижний левый угол
     [SerializeField] private Transform nosePoint;
 
     // === Ввод пользователя ===
