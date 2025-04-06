@@ -6,9 +6,10 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;
     public Vector3 offset;
-    public float smoothSpeed = 0.125f;
     private UserInputAction _cameraAction;
     private InputAction _movement;
+    public float smoothTime = 0.3f; // Время сглаживания
+    private Vector3 velocity = Vector3.zero; // Текущая скорость камеры
 
     private void Awake()
     {
@@ -40,8 +41,7 @@ public class CameraFollow : MonoBehaviour
     private void Update()
     {
         var desiredPosition = target.position + offset;
-        var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
-        transform.rotation = target.rotation; // пока что камер просто повторяет вращение самолета
+        transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothTime);
+        //transform.rotation = target.rotation; // пока что камер просто повторяет вращение самолета
     }
 }
