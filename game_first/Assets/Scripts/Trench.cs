@@ -18,17 +18,17 @@ public class Trench : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     private void Start(){
-        segmentHalfLength = 1.5f;
+        segmentHalfLength = 82f;
 
         initialSegmentPosition = new Vector3(2.52f, 
-            15 - segmentHalfLength, 
+            12,
             -29.6f + segmentHalfLength);
 
         numberOfSegments = 20;
 
         currentSegments = new List<GameObject>();
 
-        for (var i = 0; i < numberOfSegments; i++){
+        for (var i = -1; i < numberOfSegments; i++){
             var segment = Instantiate(trenchSegments[0], 
                 initialSegmentPosition + i * segmentHalfLength * Vector3.forward, 
                 Quaternion.identity);
@@ -42,7 +42,7 @@ public class Trench : MonoBehaviour
     }
 
     private void GenerateContinuationOfTrench(){
-        if (player.position.z >= currentSegments[0].transform.position.z){
+        if (player.position.z - segmentHalfLength >= currentSegments[0].transform.position.z){
 
             var firstSegment = currentSegments[0];
             currentSegments.RemoveAt(0);
