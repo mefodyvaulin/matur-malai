@@ -9,31 +9,48 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected int maxClip = 20;              // размер обоймы
     [SerializeField] protected float reloadCooldown = 0.5f;     // Обновляет один патрон в reloadCooldown секунд
     [SerializeField] protected int currentClip;               // Текущая обойма
-    protected float lastFireTime;                             // Последний выстрел для кд между патронами
-    protected float reloadTimer;                              // Таймер для кд
+    protected float LastFireTime;                             // Последний выстрел для кд между патронами
+    protected float ReloadTimer;                              // Таймер для кд
+    private UserInputAction _weaponInputAction;
+    private InputAction _movement;
     
     public int CurrentClip => currentClip;
     public int MaxClip => maxClip;
-    
-    private void Start() // для [SerializeField]
+
+    protected void Awake()
+    {
+        _weaponInputAction = new UserInputAction();
+    }
+
+    protected virtual void Start() // для [SerializeField]
     {
         currentClip = maxClip;
     }
-    
-    protected virtual void FixedUpdate()
+
+    protected virtual void OnEnable()
     {
-        if (currentClip < maxClip)
-        {
-            reloadTimer += Time.deltaTime; // Добавляем время, прошедшее с последнего кадра
-            if (reloadTimer >= reloadCooldown)
-            {
-                currentClip++;
-                reloadTimer = 0f;
-            }
-        }
-        if (!Mouse.current.leftButton.isPressed) return;
-        Shoot();
+        // если какую-то пушку захочется сделать на другую кнопку нужно переопределять этот метод,
+        // в котором обращаться к другой кнопке оружия (предварительно, создав ее в InputMap)
+        // если таки пушек будет больше половины, лучше сделать абстрактным
+        _movement = _weaponInputAction.Weapon.WeaponMovement;
+        _movement.Enable();
     }
-    
-    protected abstract void Shoot(); // Метод должен реализовать каждая конкретная пушка
+
+    protected void OnDisable()
+    {
+        _movement.Disable();
+    }
+
+    protected void Update()
+    {
+        // Логика перезарядки
+        Recharge();
+
+        // Непрерывная стрельба при удержании
+        if (_movement.IsPressed())
+            Shoot();
+    }
+
+    protected abstract void Recharge(); // Метод перезарядки должна реализовать каждая конкретная пушка
+    protected abstract void Shoot(); // Метод стрельбы  реализовать каждая конкретная пушка
 }

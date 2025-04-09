@@ -710,7 +710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.25
   bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
-  maxClip: 20
+  maxClip: 5
   reloadCooldown: 0.5
   currentClip: 0
 --- !u!1 &1387292524
@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.25
   bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
-  maxClip: 20
+  maxClip: 5
   reloadCooldown: 0.5
   currentClip: 0
 --- !u!1 &2117209102

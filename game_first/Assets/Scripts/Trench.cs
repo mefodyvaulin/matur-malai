@@ -12,15 +12,11 @@ public class Trench : MonoBehaviour
     private float numberOfSegments;
     private float lastSegmentVariant = 0;
 
-    void Awake()
-    {
-        if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+
     private void Start(){
         segmentHalfLength = 82f;
 
-        initialSegmentPosition = new Vector3(2.52f, 
+        initialSegmentPosition = new Vector3(2.52f,
             12,
             -29.6f + segmentHalfLength);
 
@@ -29,8 +25,8 @@ public class Trench : MonoBehaviour
         currentSegments = new List<GameObject>();
 
         for (var i = -1; i < numberOfSegments; i++){
-            var segment = Instantiate(trenchSegments[0], 
-                initialSegmentPosition + i * segmentHalfLength * Vector3.forward, 
+            var segment = Instantiate(trenchSegments[0],
+                initialSegmentPosition + i * segmentHalfLength * Vector3.forward,
                 Quaternion.identity);
             currentSegments.Add(segment);
 
@@ -50,8 +46,8 @@ public class Trench : MonoBehaviour
 
             var prefabVariant = GetRandomSegmentVariant();
 
-            firstSegment = Instantiate(trenchSegments[prefabVariant], 
-                initialSegmentPosition + numberOfSegments * segmentHalfLength * Vector3.forward, 
+            firstSegment = Instantiate(trenchSegments[prefabVariant],
+                initialSegmentPosition + numberOfSegments * segmentHalfLength * Vector3.forward,
                 Quaternion.identity);
             currentSegments.Add(firstSegment);
 
