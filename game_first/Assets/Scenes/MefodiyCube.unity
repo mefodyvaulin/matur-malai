@@ -793,7 +793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.25
-  bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
+  bulletPrefab: {fileID: 7867430294190396998, guid: 1ca066b9120875f4194412bc1a0262e6, type: 3}
   maxClip: 5
   reloadCooldown: 0.5
   currentClip: 0
@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.25
-  bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
+  bulletPrefab: {fileID: 7867430294190396998, guid: 1ca066b9120875f4194412bc1a0262e6, type: 3}
   maxClip: 5
   reloadCooldown: 0.5
   currentClip: 0
