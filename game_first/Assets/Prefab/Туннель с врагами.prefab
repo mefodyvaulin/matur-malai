@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8507660747483865925}
-  - component: {fileID: 6477325548022375723}
+  - component: {fileID: 7991439236038428864}
   m_Layer: 0
   m_Name: EnemySpawn
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1171521536400677401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6477325548022375723
+--- !u!114 &7991439236038428864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
