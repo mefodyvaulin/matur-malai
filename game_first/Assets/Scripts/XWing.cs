@@ -13,7 +13,6 @@ public class XWing : MonoBehaviour
     [SerializeField] private float centeringSpeed = 10f; // Скорость возврата корабля в нейтральное положение, когда мышь не двигается
     [SerializeField] private Vector2 trenchSizeUpRight = new(15f, 40f);     // Ограничение тоннеля верхний правый угол
     [SerializeField] private Vector2 trenchSizeDownLeft = new(-10f, 16f);      // Ограничение тоннеля нижний левый угол
-    [SerializeField] private Transform nosePoint;
 
     // === Ввод пользователя ===
     private UserInputAction _xWingInputAction;           // Объект, содержащий все действия ввода (сгенерирован через Input System)

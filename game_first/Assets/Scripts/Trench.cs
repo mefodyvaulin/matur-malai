@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Trench : MonoBehaviour
 {
@@ -12,6 +14,12 @@ public class Trench : MonoBehaviour
     private float numberOfSegments;
     private float lastSegmentVariant = 0;
 
+    enum TrenchState // Enum для индексации объектов в TrenchSegment
+    {
+        Default = 0,
+        Enemy = 1,
+        Turret = 2
+    }
 
     private void Start(){
         segmentHalfLength = 82f;
@@ -59,15 +67,15 @@ public class Trench : MonoBehaviour
     private int GetRandomSegmentVariant(){
 
         var randInt = Random.Range(0, 20);
-        int prefabVariant = 0;
+        var prefabVariant = 0;
 
         if (randInt == 9)
-            prefabVariant = 1;
+            prefabVariant = (int)TrenchState.Enemy;
         else if (randInt == 14)
-            prefabVariant = 2;
+            prefabVariant = (int)TrenchState.Turret;
 
         if (lastSegmentVariant != 0)
-            prefabVariant = 0;
+            prefabVariant = (int)TrenchState.Default;
         lastSegmentVariant = prefabVariant;
 
         return prefabVariant;
