@@ -27,8 +27,3 @@ public class Bullet : MonoBehaviour
         transform.Translate(Vector3.forward * (speed * Time.deltaTime));
     }
 }
-
-public interface IDamageable
-{
-    void TakeDamage(int damage);
-}

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class XWing : MonoBehaviour, IDamageable
+public class XWing : MonoBehaviour, IDamageable, IFillBarProvider
 {
     [Header("Movement Settings")]
     [SerializeField] private float speed = 10f;          // Скорость полёта вперёд (единиц в секунду)
@@ -28,8 +28,8 @@ public class XWing : MonoBehaviour, IDamageable
     private Vector2 inputDelta;                          // Изменение положения мыши (ось X/Y)
     private bool hasInput;                               // Флаг: пользователь двигает мышь или нет
     
-    public int MaxHp => maxHp;
-    public int CurrentHp => currentHp;
+    public float MaxValue => maxHp;
+    public float CurrentValue => currentHp;
     
     private void Awake() // Вызывается при создании объекта
     {

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour, IFillBarProvider
 {
     [SerializeField] protected float fireRate = 0.25f;        // Задержка между выстрелами
     [SerializeField] protected GameObject bulletPrefab;       // Снаряд (нужно определять для каждого оружия отдельно в [SerializeField])
@@ -14,8 +14,8 @@ public abstract class Weapon : MonoBehaviour
     private UserInputAction _weaponInputAction;
     private InputAction _movement;
     
-    public int CurrentClip => currentClip;
-    public int MaxClip => maxClip;
+    public float MaxValue => maxClip;
+    public float CurrentValue => currentClip;
 
     protected void Awake()
     {

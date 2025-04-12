@@ -376,10 +376,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 679721828}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a72af746a647d495a9de8ecc94153eff, type: 3}
+  m_Script: {fileID: 11500000, guid: 264b1fe1f26c749e69efca49dfa91b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xWing: {fileID: 884780160}
+  providerScript: {fileID: 884780160}
 --- !u!1 &878969448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,10 +1111,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1937511801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a97f3a9f26857492f9ca5a3a0b62a3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 264b1fe1f26c749e69efca49dfa91b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletGun: {fileID: 2083448503}
+  providerScript: {fileID: 1259482894}
 --- !u!1 &1994450449
 GameObject:
   m_ObjectHideFlags: 0
