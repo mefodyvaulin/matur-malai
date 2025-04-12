@@ -5,12 +5,13 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float lifetime = 3f;        // Время жизни пули
     [SerializeField] private float speed = 50f;          // Скорость полёта вперёд (единиц в секунду)
+    [SerializeField] private int damage = 10;
     private void Start()
     {
         Destroy(gameObject, lifetime);
     }
     
-    private void Update() // Главный игровой цикл — вызывается каждый кадр
+    private void Update()
     {
         MoveForward();
     }
@@ -18,7 +19,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other) //OnCollisionEnter(Collision other) <- можно заменить на это, если будет добавлена физика
     {
         var damageable = other.GetComponent<IDamageable>(); // Проверяем, есть ли на объекте интерфейс IDamageable
-        damageable?.TakeDamage(10); // Например, наносим 10 единиц урона
+        damageable?.TakeDamage(damage);
         Destroy(gameObject); // Уничтожаем пулю
     }
     
