@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemySpawn: MonoBehaviour
 {
+    [SerializeField] GameObject[] enemies;
     private int spawnedAfter;
     private void Awake()
     {
@@ -12,7 +13,7 @@ public class EnemySpawn: MonoBehaviour
     private void CountFragmentsToSpawn(Trench.TrenchState state)
     {
         spawnedAfter++;
-        if (spawnedAfter == 5)
+        if (spawnedAfter == 20) // спавн прямо при влете в эту часть туннеля
         {
             SpawnEnemy();
             Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
@@ -21,6 +22,8 @@ public class EnemySpawn: MonoBehaviour
 
     private void SpawnEnemy()
     {
-        // логика появления врагов
+        // появляется примерно на середине поля, а не облетает туннель
+        // нужно реализовать логику подлета
+        Instantiate(enemies[0], transform.position + new Vector3(20, 0, 0), transform.rotation);
     }
 }
