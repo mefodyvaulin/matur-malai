@@ -11,17 +11,19 @@ public class Trench : MonoBehaviour
     private List<GameObject> currentSegments;
     private float segmentHalfLength;
     private Vector3 initialSegmentPosition;
-    private float numberOfSegments;
-    private float lastSegmentVariant = 0;
+    public static float numberOfSegments;
+    private float _lastSegmentVariant = 0;
 
-    enum TrenchState // Enum для индексации объектов в TrenchSegment
+    public static event Action<TrenchState> OnGenerateContinuationOfTrench;
+    public enum TrenchState // Enum для индексации объектов в TrenchSegment
     {
         Default = 0,
         Enemy = 1,
         Turret = 2
     }
 
-    private void Start(){
+    private void Start()
+    {
         segmentHalfLength = 82f;
 
         initialSegmentPosition = new Vector3(2.52f,
@@ -41,11 +43,13 @@ public class Trench : MonoBehaviour
         }
     }
 
-    private void Update(){
+    private void Update()
+    {
         GenerateContinuationOfTrench();
     }
 
-    private void GenerateContinuationOfTrench(){
+    private void GenerateContinuationOfTrench()
+    {
         if (player.position.z - segmentHalfLength >= currentSegments[0].transform.position.z){
 
             var firstSegment = currentSegments[0];
@@ -64,20 +68,20 @@ public class Trench : MonoBehaviour
         }
     }
 
-    private int GetRandomSegmentVariant(){
+    private int GetRandomSegmentVariant()
+    {
 
         var randInt = Random.Range(0, 20);
-        var prefabVariant = 0;
+        var prefabVariant = TrenchState.Default;
 
-        if (randInt == 9)
-            prefabVariant = (int)TrenchState.Enemy;
+        if (randInt < 10)
+            prefabVariant = TrenchState.Enemy;
+
         else if (randInt == 14)
-            prefabVariant = (int)TrenchState.Turret;
+            prefabVariant = TrenchState.Turret;
 
-        if (lastSegmentVariant != 0)
-            prefabVariant = (int)TrenchState.Default;
-        lastSegmentVariant = prefabVariant;
-
-        return prefabVariant;
+        OnGenerateContinuationOfTrench?.Invoke(prefabVariant);
+        _lastSegmentVariant = (int)prefabVariant;
+        return (int)prefabVariant;
     }
 }
