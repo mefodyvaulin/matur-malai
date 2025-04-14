@@ -6,8 +6,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float lifetime = 3f;        // Время жизни пули
     [SerializeField] private float speed = 50f;          // Скорость полёта вперёд (единиц в секунду)
     [SerializeField] private int damage = 10;
+    public AudioSource AudioSource;
     private void Start()
     {
+        AudioSource.Play();
         Destroy(gameObject, lifetime);
     }
     
@@ -20,6 +22,12 @@ public class Bullet : MonoBehaviour
     {
         var damageable = other.GetComponent<IDamageable>(); // Проверяем, есть ли на объекте интерфейс IDamageable
         damageable?.TakeDamage(damage);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        var damageable = other.GetComponent<IDamageable>();
+        damageable?.BulletExit();
         Destroy(gameObject); // Уничтожаем пулю
     }
     

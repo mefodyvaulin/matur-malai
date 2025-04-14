@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7715916719068767150
+--- !u!1001 &2300840834091351108
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8462185565047553373, guid: 9d29f0a27d09e89449937c555ef3f124, type: 3}
       propertyPath: m_Name
-      value: "\u0414\u0440\u043E\u043D1 Variant"
+      value: "\u0422\u0435\u0441\u0442\u043E\u0432\u044B\u0439 \u0434\u0440\u043E\u043D"
       objectReference: {fileID: 0}
     - target: {fileID: 9089504586232276967, guid: 9d29f0a27d09e89449937c555ef3f124, type: 3}
       propertyPath: m_LocalPosition.x
@@ -78,26 +78,26 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8462185565047553373, guid: 9d29f0a27d09e89449937c555ef3f124, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8479136639927306555}
+      addedObject: {fileID: 1547108190032744512}
     - targetCorrespondingSourceObject: {fileID: 8462185565047553373, guid: 9d29f0a27d09e89449937c555ef3f124, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -2187896672248656598}
+      addedObject: {fileID: 8378168889877483107}
     - targetCorrespondingSourceObject: {fileID: 8462185565047553373, guid: 9d29f0a27d09e89449937c555ef3f124, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8828085938995357041}
+      addedObject: {fileID: 1385909711858504317}
   m_SourcePrefab: {fileID: 100100000, guid: 9d29f0a27d09e89449937c555ef3f124, type: 3}
---- !u!1 &2196570862521392883 stripped
+--- !u!1 &7674558604088869145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8462185565047553373, guid: 9d29f0a27d09e89449937c555ef3f124, type: 3}
-  m_PrefabInstance: {fileID: 7715916719068767150}
+  m_PrefabInstance: {fileID: 2300840834091351108}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8479136639927306555
+--- !u!114 &1547108190032744512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2196570862521392883}
+  m_GameObject: {fileID: 7674558604088869145}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d48215c3582448e6a1124ed48a4abb22, type: 3}
@@ -108,21 +108,21 @@ MonoBehaviour:
   hp: 50
   canMove: 1
   audioSources:
-  - {fileID: -2187896672248656598}
-  - {fileID: 8828085938995357041}
---- !u!82 &-2187896672248656598
+  - {fileID: 8378168889877483107}
+  - {fileID: 1385909711858504317}
+--- !u!82 &8378168889877483107
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2196570862521392883}
+  m_GameObject: {fileID: 7674558604088869145}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 723ed6f541e4391438ffa5d55f3abe16, type: 3}
   m_Resource: {fileID: 8300000, guid: 723ed6f541e4391438ffa5d55f3abe16, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -207,19 +207,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &8828085938995357041
+--- !u!82 &1385909711858504317
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2196570862521392883}
+  m_GameObject: {fileID: 7674558604088869145}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f0e03e9008bd3c9428a1811eb56e0eef, type: 3}
   m_Resource: {fileID: 8300000, guid: f0e03e9008bd3c9428a1811eb56e0eef, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
