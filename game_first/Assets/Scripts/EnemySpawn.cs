@@ -13,7 +13,7 @@ public class EnemySpawn: MonoBehaviour
     private void CountFragmentsToSpawn(Trench.TrenchState state)
     {
         spawnedAfter++;
-        if (spawnedAfter == 20) // спавн прямо при влете в эту часть туннеля
+        if (spawnedAfter == 5) // спавн прямо при влете в эту часть туннеля
         {
             SpawnEnemy();
             Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;

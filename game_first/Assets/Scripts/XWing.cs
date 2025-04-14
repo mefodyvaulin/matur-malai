@@ -27,6 +27,7 @@ public class XWing : MonoBehaviour, IDamageable, IFillBarProvider
     // === Состояние ввода ===
     private Vector2 inputDelta;                          // Изменение положения мыши (ось X/Y)
     private bool hasInput;                               // Флаг: пользователь двигает мышь или нет
+    public static Vector3 posSt;
     
     public float MaxValue => maxHp;
     public float CurrentValue => currentHp;
@@ -58,6 +59,7 @@ public class XWing : MonoBehaviour, IDamageable, IFillBarProvider
         MoveForward();
         UpdateRotation();
         ClampPositionInsideTrench();
+        posSt = transform.position;
     }
     
     private void MoveForward() // Постоянное движение вперёд(по Z)
