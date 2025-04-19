@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class XWing : MonoBehaviour, IDamageable, IFillBarProvider
+public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float speed = 10f;          // Скорость полёта вперёд (единиц в секунду)
@@ -13,8 +12,7 @@ public class XWing : MonoBehaviour, IDamageable, IFillBarProvider
     [SerializeField] private float centeringSpeed = 10f; // Скорость возврата корабля в нейтральное положение, когда мышь не двигается
     [SerializeField] private Vector2 trenchSizeUpRight = new(15f, 40f);     // Ограничение тоннеля верхний правый угол
     [SerializeField] private Vector2 trenchSizeDownLeft = new(-10f, 16f);      // Ограничение тоннеля нижний левый угол
-    [SerializeField] private int maxHp = 50;
-    [SerializeField] private int currentHp = 50;
+   
     
     // === Ввод пользователя ===
     private UserInputAction _xWingInputAction;           // Объект, содержащий все действия ввода (сгенерирован через Input System)
@@ -27,10 +25,7 @@ public class XWing : MonoBehaviour, IDamageable, IFillBarProvider
     // === Состояние ввода ===
     private Vector2 inputDelta;                          // Изменение положения мыши (ось X/Y)
     private bool hasInput;                               // Флаг: пользователь двигает мышь или нет
-    public static Vector3 posSt;
-    
-    public float MaxValue => maxHp;
-    public float CurrentValue => currentHp;
+    public static Vector3 Position;
     
     private void Awake() // Вызывается при создании объекта
     {
@@ -59,7 +54,7 @@ public class XWing : MonoBehaviour, IDamageable, IFillBarProvider
         MoveForward();
         UpdateRotation();
         ClampPositionInsideTrench();
-        posSt = transform.position;
+        Position = transform.position;
     }
     
     private void MoveForward() // Постоянное движение вперёд(по Z)
@@ -106,7 +101,7 @@ public class XWing : MonoBehaviour, IDamageable, IFillBarProvider
         return -yaw * 1.5f + pitch * 0.5f;
     }
     
-    private void ClampPositionInsideTrench()
+    private void ClampPositionInsideTrench() // удалить
     {
         var pos = transform.position;
 
@@ -114,17 +109,5 @@ public class XWing : MonoBehaviour, IDamageable, IFillBarProvider
         pos.y = Mathf.Clamp(pos.y, trenchSizeDownLeft.y, trenchSizeUpRight.y);
 
         transform.position = pos;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        currentHp -= damage;
-        if (currentHp <= 0) Destroy(gameObject);
-        transform.GetComponent<MeshRenderer>().material.color = Color.Lerp(Color.white, new Color(0.9f,0.51f,0.51f), 1000f);
-    }
-
-    public void BulletExit()
-    {
-        transform.GetComponent<MeshRenderer>().material.color = Color.Lerp(new Color(0.9f,0.51f,0.51f), Color.white, 1000f);
     }
 }

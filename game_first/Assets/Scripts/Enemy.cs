@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private float speed = 10f;
     [SerializeField] private int hp = 50;
     [SerializeField] public bool canMove = false;
-
-    public Vector3 player;
+    [SerializeField] protected Transform weapon;   
+    
     public float tiltAngle = 15f;
     public float tiltSpeed = 1f;
     public float omega1;
@@ -35,22 +35,23 @@ public class Enemy : MonoBehaviour, IDamageable
     
     private void Update() // Главный игровой цикл — вызывается каждый кадр
     {
+        if (hp <= 0) return;
         i++;
         if (canMove)
             Move();
-        if (i != 100) return;
+        if (i != 10) return;
         i = 0;
         Shoot();
     }
     
     protected virtual void Shoot()
     {
-        Instantiate(bulletPrefab, transform.position + transform.forward * 4f, transform.rotation);
+        Instantiate(bulletPrefab, weapon.position, transform.rotation);
     }
 
     protected virtual void Move()
     {
-        player = XWing.posSt;
+        var player = PlayerMovement.Position;
         var tilt = Mathf.Cos(2f * omega1 * Time.time * tiltSpeed / 2.35f + phase) *
                    tiltAngle;
         var yTilt = -180 -tilt / 5;
@@ -65,13 +66,11 @@ public class Enemy : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         hp -= damage;
-        Debug.Log($"Enemy took {damage} damage. HP now: {hp}");
         if (hp <= 0)
         {
             GetComponent<Collider>().enabled = false;
             GetComponent<MeshRenderer>().enabled = false;
-
-            Debug.Log("Enemy destroyed!");
+            
             audioSources[1].Play();
             Destroy(gameObject, audioSources[1].clip.length);
         }

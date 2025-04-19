@@ -216,6 +216,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50.879, y: -21.295, z: -392.201}
+--- !u!1 &337427313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5638417978400153743, guid: ca13508d4d2036f43b98c14c33835c03, type: 3}
+  m_PrefabInstance: {fileID: 2953617783461056440}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &415434498
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264b1fe1f26c749e69efca49dfa91b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  providerScript: {fileID: 884780160}
+  providerScript: {fileID: 884780158}
 --- !u!114 &415434501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,17 +376,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5004765735407843893, guid: ca13508d4d2036f43b98c14c33835c03, type: 3}
   m_PrefabInstance: {fileID: 2953617783461056440}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &884780160 stripped
+--- !u!114 &884780157
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5146457380314259774, guid: ca13508d4d2036f43b98c14c33835c03, type: 3}
-  m_PrefabInstance: {fileID: 2953617783461056440}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 337427313}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93956f5f9bbe404b8e398cd34a7c783d, type: 3}
+  m_Script: {fileID: 11500000, guid: 188d03c4d1e7e4ad2b684d125fa484e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  rotationSpeed: 5
+  maxPitchAngle: 30
+  maxYawAngle: 30
+  sensitivity: 1
+  centeringSpeed: 10
+  trenchSizeUpRight: {x: 15, y: 40}
+  trenchSizeDownLeft: {x: -10, y: 16}
+--- !u!114 &884780158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337427313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 026800ac6aba945269176bef49bf0089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 50
+  currentHp: 50
 --- !u!1 &1014483786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,10 +1255,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: X-Wing Model
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5146457380314259774, guid: ca13508d4d2036f43b98c14c33835c03, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5638417978400153743, guid: ca13508d4d2036f43b98c14c33835c03, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 884780158}
+    - targetCorrespondingSourceObject: {fileID: 5638417978400153743, guid: ca13508d4d2036f43b98c14c33835c03, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 884780157}
   m_SourcePrefab: {fileID: 100100000, guid: ca13508d4d2036f43b98c14c33835c03, type: 3}
 --- !u!1001 &4474464617143398197
 PrefabInstance:
@@ -1247,7 +1282,7 @@ PrefabInstance:
     - target: {fileID: 3490044166846394416, guid: 84e22426ba99ce64e91aa8879cb9806d, type: 3}
       propertyPath: providerScript
       value: 
-      objectReference: {fileID: 884780160}
+      objectReference: {fileID: 0}
     - target: {fileID: 4552832513864790779, guid: 84e22426ba99ce64e91aa8879cb9806d, type: 3}
       propertyPath: providerScript
       value: 
