@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour, IDamageable
         i++;
         if (canMove)
             Move();
-        if (i != 10) return;
+        if (i != 100) return;
         i = 0;
         Shoot();
     }
