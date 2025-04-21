@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = System.Random;
 
 public class EnemySpawn: MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class EnemySpawn: MonoBehaviour
     {
         // появляется примерно на середине поля, а не облетает туннель
         // нужно реализовать логику подлета
-        Instantiate(enemies[0], transform.position + new Vector3(20, 0, 0), transform.rotation);
+        var indexDron = new Random().Next(2);
+        Instantiate(enemies[indexDron], transform.position + new Vector3(20, 0, 0), transform.rotation);
     }
 }
