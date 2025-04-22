@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 using Random = System.Random;
 
-public class EnemySpawn: MonoBehaviour
+public class EnemySpawn : MonoBehaviour
 {
-    [SerializeField] GameObject[] enemies;
+    [SerializeField] private GameObject[] enemies;
     private int spawnedAfter;
     private void Awake()
     {

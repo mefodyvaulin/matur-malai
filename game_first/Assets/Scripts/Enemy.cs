@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public bool CanMove => canMove;
     private void Awake() // Вызывается при создании объекта
     {
+        GameModel.AddEnemy(this);
+        
         tiltAngle = 30;
         omega1 = Random.Range(1.75f, 3f);
         omega2 = Random.Range(1.75f, 3f);
@@ -31,6 +33,11 @@ public class Enemy : MonoBehaviour, IDamageable
         a = Random.Range(4.5f, 5.5f);
         tiltSpeed = 1f;
         distanceToEnemy = Random.Range(25f, 35f);
+    }
+    
+    private void OnDestroy()
+    {
+        GameModel.RemoveEnemy(this);
     }
     
     private void Update() // Главный игровой цикл — вызывается каждый кадр
@@ -51,7 +58,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void Move()
     {
-        var player = PlayerMovement.Position;
+        var player = GameModel.PlayerPosition;
         var tilt = Mathf.Cos(2f * omega1 * Time.time * tiltSpeed / 2.35f + phase) *
                    tiltAngle;
         var yTilt = -180 -tilt / 5;

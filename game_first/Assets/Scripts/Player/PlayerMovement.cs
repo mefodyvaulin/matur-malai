@@ -25,10 +25,10 @@ public class PlayerMovement : MonoBehaviour
     // === Состояние ввода ===
     private Vector2 inputDelta;                          // Изменение положения мыши (ось X/Y)
     private bool hasInput;                               // Флаг: пользователь двигает мышь или нет
-    public static Vector3 Position;
     
     private void Awake() // Вызывается при создании объекта
     {
+        GameModel.SetPlayerMovement(this);
         _xWingInputAction = new UserInputAction();
     }
     
@@ -54,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
         MoveForward();
         UpdateRotation();
         ClampPositionInsideTrench();
-        Position = transform.position;
     }
     
     private void MoveForward() // Постоянное движение вперёд(по Z)
