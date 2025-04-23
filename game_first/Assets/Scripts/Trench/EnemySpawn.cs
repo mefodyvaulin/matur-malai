@@ -84,6 +84,6 @@ public class EnemySpawn : MonoBehaviour
 
         enemy.transform.position = toPosition;
         enemy.transform.rotation = Quaternion.LookRotation((toPosition - controlPoint2).normalized);
-        enemy.сanMove = true;
+        enemy.canMove = true;
     }
 }

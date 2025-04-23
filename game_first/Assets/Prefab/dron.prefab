@@ -43,9 +43,12 @@ GameObject:
   - component: {fileID: 1793102024636875780}
   - component: {fileID: 6941475399996541736}
   - component: {fileID: 4758007856885832015}
-  - component: {fileID: -2036524682274875135}
   - component: {fileID: 5349099711894228161}
   - component: {fileID: 8333659989394518178}
+  - component: {fileID: 6490832624386510082}
+  - component: {fileID: 3963029941036198971}
+  - component: {fileID: 2687713126762575415}
+  - component: {fileID: 8862877114354665177}
   m_Layer: 0
   m_Name: dron
   m_TagString: Untagged
@@ -144,34 +147,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4864656932994101744, guid: 68ed0f295c2715b43934328ef11f0030, type: 3}
---- !u!114 &-2036524682274875135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8956810903429674628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d48215c3582448e6a1124ed48a4abb22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
-  speed: 10
-  hp: 50
-  canMove: 0
-  weapon: {fileID: 4552575087860262651}
-  tiltAngle: 15
-  tiltSpeed: 1
-  omega1: 0
-  omega2: 0
-  omega3: 0
-  phase: 0
-  a: 0
-  distanceToEnemy: 0
-  audioSources:
-  - {fileID: 5349099711894228161}
-  - {fileID: 8333659989394518178}
 --- !u!82 &5349099711894228161
 AudioSource:
   m_ObjectHideFlags: 0
@@ -366,3 +341,70 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6490832624386510082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956810903429674628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48215c3582448e6a1124ed48a4abb22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3963029941036198971}
+  movement: {fileID: 2687713126762575415}
+  shooting: {fileID: 8862877114354665177}
+  canMove: 0
+--- !u!114 &3963029941036198971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956810903429674628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab90457d9dc4e438f3d853eb472c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 50
+  audioSources:
+  - {fileID: 5349099711894228161}
+  - {fileID: 8333659989394518178}
+--- !u!114 &2687713126762575415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956810903429674628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4367f9c008e54777b2b14aa53c65f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  tiltAngle: 15
+  tiltSpeed: 1
+  omega1: 0
+  omega2: 0
+  omega3: 0
+  phase: 0
+  a: 0
+  distanceToEnemy: 0
+--- !u!114 &8862877114354665177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956810903429674628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5ffd3ee663a4be6a3be936cd4bdc7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
+  weapon: {fileID: 4552575087860262651}
