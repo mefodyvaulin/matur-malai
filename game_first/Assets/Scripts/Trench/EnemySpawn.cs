@@ -29,53 +29,61 @@ public class EnemySpawn : MonoBehaviour
         // нужно реализовать логику подлета
         var indexDron = new Random().Next(enemies.Length);
         var enemy = Instantiate(enemies[indexDron], transform.position, transform.rotation);
-        StartMoving(enemy, enemy.transform.position + new Vector3(20, 10, -20));
+        StartMoving(enemy, enemy.transform.position + new Vector3(20, -10, -30));
     }
 
 
     private float duration = 2f;
-    private Quaternion toRotation = Quaternion.Euler(0, 180, 0);
-
 
     private void StartMoving(Enemy enemy, Vector3 toPosition)
     {
         StartCoroutine(MoveToPosition(enemy, toPosition));
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator MoveToPosition(Enemy enemy, Vector3 toPosition)
     {
         var startPosition = enemy.transform.position;
 
-        // управляющая точка для дуги (можно немного приподнять или сместить)
-        var controlPoint = new Vector3(
-            (enemy.transform.position.x + toPosition.x) / 4 * 3,
-            2 * enemy.transform.position.y - toPosition.y,
-            enemy.transform.position.z
-            );
+        var controlPoint1 = new Vector3(
+            (startPosition.x + toPosition.x) * 0.75f,
+            2 * startPosition.y - toPosition.y,
+            startPosition.z
+        );
+
+        var controlPoint2 = new Vector3(
+            toPosition.x,
+            toPosition.y,
+            toPosition.z + (startPosition.z - toPosition.z) * 0.5f
+        );
 
         var elapsed = 0f;
-        var startRotation = enemy.transform.rotation;
-        
+        var previousPosition = startPosition;
+
         while (elapsed < duration)
         {
             var t = elapsed / duration;
-
-            // Bezier формула: B(t) = (1−t)² * P0 + 2(1−t)t * P1 + t² * P2
-            var curvedPosition =
-                Mathf.Pow(1 - t, 2) * startPosition +
-                2 * (1 - t) * t * controlPoint +
-                Mathf.Pow(t, 2) * toPosition;
+            var curvedPosition = Bezier.Cubic(
+                startPosition, controlPoint1, controlPoint2, toPosition, t);
 
             enemy.transform.position = curvedPosition;
-            enemy.transform.rotation = Quaternion.Slerp(startRotation, toRotation, t);
-            
+
+            // Направление между текущей и предыдущей позицией
+            var direction = (curvedPosition - previousPosition).normalized;
+
+            if (direction != Vector3.zero)
+            {
+                var targetRotation = Quaternion.LookRotation(direction);
+                enemy.transform.rotation =
+                    Quaternion.Slerp(enemy.transform.rotation, targetRotation, Time.deltaTime * 5f);
+            }
+
+            previousPosition = curvedPosition;
             elapsed += Time.deltaTime;
             yield return null;
         }
 
         enemy.transform.position = toPosition;
-        enemy.transform.rotation = toRotation;
-        enemy.сanMove = true; // пока похуй
+        enemy.transform.rotation = Quaternion.LookRotation((toPosition - controlPoint2).normalized);
+        enemy.сanMove = true;
     }
 }
