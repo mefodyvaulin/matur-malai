@@ -5,8 +5,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] private float speed = 10f;
     [SerializeField] private int hp = 50;
-    [SerializeField] public bool canMove = false;
     [SerializeField] protected Transform weapon;   
+    public bool сanMove = false;
     
     public float tiltAngle = 15f;
     public float tiltSpeed = 1f;
@@ -19,8 +19,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
 
     public AudioSource[] audioSources;
-    private int i = 1; // для проверки хп игрока
-    public bool CanMove => canMove;
     private void Awake() // Вызывается при создании объекта
     {
         GameModel.AddEnemy(this);
@@ -43,12 +41,8 @@ public class Enemy : MonoBehaviour, IDamageable
     private void Update() // Главный игровой цикл — вызывается каждый кадр
     {
         if (hp <= 0) return;
-        i++;
-        if (canMove)
-            Move();
-        if (i != 100) return;
-        i = 0;
-        Shoot();
+        if (сanMove)
+            MoveBack();
     }
     
     protected virtual void Shoot()
@@ -56,6 +50,11 @@ public class Enemy : MonoBehaviour, IDamageable
         Instantiate(bulletPrefab, weapon.position, transform.rotation);
     }
 
+    protected virtual void MoveBack()
+    {
+            transform.Translate(Vector3.back * (speed * Time.deltaTime));
+    }
+    
     protected virtual void Move()
     {
         var player = GameModel.PlayerPosition;
