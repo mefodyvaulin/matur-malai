@@ -9,6 +9,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float tiltAngle = 15f;
     [SerializeField] private float tiltSpeed = 1f;
     [SerializeField] private float omega1, omega2, omega3, phase, a, distanceToEnemy;
+    
+    private float? previousZ = null;
 
     private void Awake()
     {
@@ -22,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
         distanceToEnemy = Random.Range(25f, 35f);
     }
 
-    public void Move()
+    public void MoveFollowerPlayer()
     {
         var player = GameModel.PlayerPosition;
         var tilt = Mathf.Cos(2f * omega1 * Time.time * tiltSpeed / 2.35f + phase) *
@@ -38,6 +40,17 @@ public class EnemyMovement : MonoBehaviour
     
     public virtual void MoveBack()
     {
-        transform.Translate(Vector3.back * (speed * Time.deltaTime));
+        var currentZ = GameModel.PlayerPosition.z;
+
+        if (!previousZ.HasValue)
+        {
+            previousZ = currentZ;
+            return;
+        }
+
+        var deltaZ = currentZ - previousZ.Value;
+        previousZ = currentZ;
+
+        transform.Translate(Vector3.back * deltaZ);
     }
 }
