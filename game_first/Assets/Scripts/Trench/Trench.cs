@@ -9,7 +9,7 @@ public class Trench : MonoBehaviour
     [SerializeField] private GameObject randomSegment;
     private List<GameObject> currentSegments;
     private float segmentHalfLength;
-    private Vector3 initialSegmentPosition;
+    public static Vector3 initialSegmentPosition;
     public static float numberOfSegments;
     private float _lastSegmentVariant = 0;
 

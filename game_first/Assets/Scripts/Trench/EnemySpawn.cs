@@ -26,15 +26,6 @@ public class EnemySpawn : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy()
-    {
-        // появляется примерно на середине поля, а не облетает туннель
-        // нужно реализовать логику подлета
-        var indexDron = new Random().Next(enemies.Length);
-        var enemy = Instantiate(enemies[indexDron], transform.position, transform.rotation);
-        StartMoving(enemy, enemy.transform.position + new Vector3(20, -10, -30));
-    }
-
     private void SpawnGroup()
     {
         var droneCount = new Random().Next(3, 7);
@@ -53,6 +44,7 @@ public class EnemySpawn : MonoBehaviour
             var finalPosition = InterpolateWithRatio(startOffset, endOffset, randomRatios[i], maxRatio); // вот это должно быть в группе
 
             StartMoving(enemy, finalPosition);
+            enemy.movement.Move += MoveUpDown;
         }
     }
 
@@ -84,5 +76,28 @@ public class EnemySpawn : MonoBehaviour
         return (Vector3.Scale(to, ratioVector)
                 + Vector3.Scale(from, new Vector3(totalRatio, totalRatio, totalRatio) - ratioVector))
                / totalRatio;
+    }
+    
+    private static void MoveUpDown(Enemy enemy)
+    {
+        var minY = Trench.initialSegmentPosition.y + 5;
+        var maxY = Trench.initialSegmentPosition.y + 28;
+
+        var speed = 4f;
+
+        enemy.transform.position += Vector3.up * (enemy.movement.direction * speed * Time.deltaTime);
+
+
+        var y = enemy.transform.position.y;
+        if (y >= maxY)
+        {
+            enemy.transform.position = new Vector3(enemy.transform.position.x, maxY, enemy.transform.position.z);
+            enemy.movement.direction = -1;
+        }
+        else if (y <= minY)
+        {
+            enemy.transform.position = new Vector3(enemy.transform.position.x, minY, enemy.transform.position.z);
+            enemy.movement.direction = 1;
+        }
     }
 }

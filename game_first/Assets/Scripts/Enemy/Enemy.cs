@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] public EnemyMovement movement;
     [SerializeField] private EnemyShooting shooting;
     
-    public Action<Enemy> Move => movement.Move;
     
     private void Awake()
     {
@@ -22,6 +21,10 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         if (!health.IsAlive) return;
-        Move?.Invoke(this);
+        movement.Move?.Invoke(this);
+        
+        if (GameModel.CountEnemies != 1) return;
+        movement.ClearMove();
+        movement.Move += movement.MoveFollowerPlayer;
     }
 }

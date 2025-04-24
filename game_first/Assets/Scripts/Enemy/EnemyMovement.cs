@@ -6,6 +6,8 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
     
+    public int direction;
+    
     [SerializeField] private float tiltAngle = 15f;
     [SerializeField] private float tiltSpeed = 1f;
     [SerializeField] private float omega1, omega2, omega3, phase, a, distanceToEnemy;
@@ -19,6 +21,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void Awake()
     {
+        direction = Random.Range(0, 2) == 1 ? 1 : -1;
+        
         tiltAngle = 30;
         omega1 = Random.Range(1.75f, 3f);
         omega2 = Random.Range(1.75f, 3f);
@@ -29,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
         distanceToEnemy = Random.Range(25f, 35f);
     }
 
-    public void MoveFollowerPlayer()
+    public void MoveFollowerPlayer(Enemy enemy)
     {
         var player = GameModel.PlayerPosition;
         var tilt = Mathf.Cos(2f * omega1 * Time.time * tiltSpeed / 2.35f + phase) *
@@ -73,5 +77,10 @@ public class EnemyMovement : MonoBehaviour
     // Углы колебаний должны быть ограничены от -maxRotationAngle до maxRotationAngle.
     private void Sway(Enemy enemy)
     {
+    }
+
+    public void ClearMove()
+    {
+        Move = null;
     }
 }
