@@ -48,7 +48,28 @@ public static class EnemySpawnStartAnimation
         }
 
         enemy.transform.position = toPosition;
-        enemy.transform.rotation = Quaternion.LookRotation((toPosition - controlPoint2).normalized);
+        
+        if (toPosition.z == controlPoint2.z) toPosition.z -= 0.1f;
+        // Плавный поворот в нужную сторону
+        var finalDir = (toPosition - controlPoint2).normalized;
+        var finalRot = Quaternion.LookRotation(finalDir);
+        yield return SmoothRotate(enemy, finalRot, 0.5f);
+        
         enemy.canMove = true;
+    }
+    
+    private static IEnumerator SmoothRotate(Enemy enemy, Quaternion targetRotation, float time)
+    {
+        var startRotation = enemy.transform.rotation;
+        var elapsed = 0f;
+
+        while (elapsed < time)
+        {
+            enemy.transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsed / time);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        enemy.transform.rotation = targetRotation;
     }
 }

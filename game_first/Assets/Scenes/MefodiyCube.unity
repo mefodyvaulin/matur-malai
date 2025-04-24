@@ -410,7 +410,6 @@ MonoBehaviour:
   - {fileID: 356992594607664942, guid: 32ba36e6c87e63c4da9e492d7115aaa8, type: 3}
   - {fileID: 1904458252838805973, guid: aa489dd7284ce4b4c8e676df8ff41304, type: 3}
   randomSegment: {fileID: 1904458252838805973, guid: aa489dd7284ce4b4c8e676df8ff41304, type: 3}
-  player: {fileID: 671189395}
 --- !u!114 &1911168061 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7533865534913205717, guid: d4bfaa70d5c871a4897b31612c48fc9a, type: 3}
