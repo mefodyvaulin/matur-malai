@@ -55,7 +55,7 @@ public static class EnemySpawnStartAnimation
         var finalRot = Quaternion.LookRotation(finalDir);
         yield return SmoothRotate(enemy, finalRot, 0.5f);
         
-        enemy.canMove = true;
+        enemy.movement.DefaultMove();
     }
     
     private static IEnumerator SmoothRotate(Enemy enemy, Quaternion targetRotation, float time)

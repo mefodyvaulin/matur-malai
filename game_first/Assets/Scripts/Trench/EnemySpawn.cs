@@ -9,14 +9,10 @@ public class EnemySpawn : MonoBehaviour
 
     private void Awake()
     {
-    }
-    
-    private void OnEnable()
-    {
         Trench.OnGenerateContinuationOfTrench += CountFragmentsToSpawn;
     }
     
-    private void OnDisable()
+    private void OnDestroy()
     {
         Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
     }

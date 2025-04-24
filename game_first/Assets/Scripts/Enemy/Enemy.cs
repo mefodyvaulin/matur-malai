@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyHealth health;
-    [SerializeField] private EnemyMovement movement;
+    [SerializeField] public EnemyMovement movement;
     [SerializeField] private EnemyShooting shooting;
-    public bool canMove = false;
+    
+    public Action<Enemy> Move => movement.Move;
     
     private void Awake()
     {
@@ -20,7 +22,6 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         if (!health.IsAlive) return;
-        if (!canMove) return;
-        movement.MoveBack();
+        Move?.Invoke(this);
     }
 }

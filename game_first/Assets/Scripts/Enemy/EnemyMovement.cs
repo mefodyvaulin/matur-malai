@@ -10,7 +10,12 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float tiltSpeed = 1f;
     [SerializeField] private float omega1, omega2, omega3, phase, a, distanceToEnemy;
     
+    [SerializeField] private float rotationSpeed = 2f;
+    [SerializeField] private float maxRotationAngle = 15f;
+    
     private float? previousZ = null;
+
+    public Action<Enemy> Move;
 
     private void Awake()
     {
@@ -37,8 +42,14 @@ public class EnemyMovement : MonoBehaviour
         transform.position = new Vector3(x, y, player.z + distanceToEnemy + 3 * sinOfAng);
         transform.rotation = Quaternion.Euler(0, yTilt, tilt);
     }
+
+    public void DefaultMove()
+    {
+        Move += MoveBack;
+        Move += Sway;
+    }
     
-    public virtual void MoveBack()
+    private void MoveBack(Enemy enemy)
     {
         var currentZ = GameModel.PlayerPosition.z;
 
@@ -52,5 +63,15 @@ public class EnemyMovement : MonoBehaviour
         previousZ = currentZ;
 
         transform.Translate(Vector3.back * deltaZ);
+    }
+    
+    // Задание:
+    // Реализовать плавные колебания врага по осям X и Y с использованием кватернионов.
+    // Ось Z не должна изменяться.
+    // Колебания должны быть плавными и происходить с использованием Mathf.Sin и Mathf.Cos.
+    // Параметр rotationSpeed контролирует скорость колебаний, а maxRotationAngle - максимальный угол отклонения по осям X и Y.
+    // Углы колебаний должны быть ограничены от -maxRotationAngle до maxRotationAngle.
+    private void Sway(Enemy enemy)
+    {
     }
 }
