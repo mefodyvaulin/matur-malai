@@ -9,17 +9,16 @@ public class EnemySpawn : MonoBehaviour
 
     private void Awake()
     {
-        Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
     }
     
-    private void OnEnable() //возможно стоит сделать так (Для МЕФОДИЯ)
+    private void OnEnable()
     {
-        //Trench.OnGenerateContinuationOfTrench += CountFragmentsToSpawn;
+        Trench.OnGenerateContinuationOfTrench += CountFragmentsToSpawn;
     }
     
     private void OnDisable()
     {
-        //Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
+        Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
     }
 
     private void CountFragmentsToSpawn(Trench.TrenchState state)
@@ -28,7 +27,6 @@ public class EnemySpawn : MonoBehaviour
         if (spawnedAfter == 4 && GameModel.CountEnemies <= 0) // спавн прямо при влете в эту часть туннеля
         {
             SpawnGroup();
-            Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
         }
     }
 
@@ -44,9 +42,9 @@ public class EnemySpawn : MonoBehaviour
     private void SpawnGroup()
     {
         var droneCount = new Random().Next(3, 7);
-        var maxRatio = droneCount - 1;
+        var maxRatio = droneCount - 1; // вот это 
 
-        var randomRatios = GenerateRandomUniqueRatios(droneCount);
+        var randomRatios = GenerateRandomUniqueRatios(droneCount); // вот это
 
         for (var i = 0; i < droneCount; i++)
         {
@@ -56,7 +54,7 @@ public class EnemySpawn : MonoBehaviour
             var startOffset = enemy.transform.position + new Vector3(5, 10, 0);
             var endOffset = enemy.transform.position + new Vector3(25, -10, -30);
 
-            var finalPosition = InterpolateWithRatio(startOffset, endOffset, randomRatios[i], maxRatio);
+            var finalPosition = InterpolateWithRatio(startOffset, endOffset, randomRatios[i], maxRatio); // вот это должно быть в группе
 
             StartMoving(enemy, finalPosition);
         }
