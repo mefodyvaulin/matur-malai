@@ -5,7 +5,7 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform weapon;
     
-    private float fireRate = 0.1f; // Задержка между выстрелами
+    private float fireRate = 1f; // Задержка между выстрелами
     private float lastFireTime;    // Таймер для кд
     
     private void Shoot()

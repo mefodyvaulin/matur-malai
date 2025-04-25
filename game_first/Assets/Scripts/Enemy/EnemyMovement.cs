@@ -73,7 +73,7 @@ public class EnemyMovement : MonoBehaviour
     // Задание:
     // Реализовать плавные колебания врага по осям X и Y с использованием кватернионов.
     // Ось Z не должна изменяться.
-    // Колебания должны быть плавными и происходить с использованием Mathf.Sin и Mathf.Cos.
+    // Колебания должны быть плавными.
     // Параметр rotationSpeed контролирует скорость колебаний, а maxRotationAngle - максимальный угол отклонения по осям X и Y.
     // Углы колебаний должны быть ограничены от -maxRotationAngle до maxRotationAngle.
     private void Sway(Enemy enemy)
