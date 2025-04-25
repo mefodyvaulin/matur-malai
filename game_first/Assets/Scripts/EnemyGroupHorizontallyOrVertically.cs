@@ -1,11 +1,74 @@
 using UnityEngine;
+using Random = System.Random;
+using System.Linq;
 
-public class EnemyGroupHorizontallyOrVertically
+public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
 {
-    private Enemy[] enemies;
+    private readonly Vector3 startOffset;
+    private readonly Vector3 endOffset;
+    private readonly Vector3[] randomRatios;
+    private readonly int maxRatio;
 
-    public EnemyGroupHorizontallyOrVertically(int droneCount)
+    private static readonly float verticalSpeed = 4f;
+    private static readonly float minY = Trench.initialSegmentPosition.y + 5f;
+    private static readonly float maxY = Trench.initialSegmentPosition.y + 28f;
+
+    public EnemyGroupHorizontallyOrVertically(int countDrones, Vector3 spawnPosition) 
+        : base(countDrones, spawnPosition)
     {
-        ;
+        startOffset = spawnPosition + new Vector3(5, 10, 0);
+        endOffset = spawnPosition + new Vector3(25, -10, -30);
+
+        randomRatios = GenerateRandomUniqueRatios(countDrones);
+        maxRatio = countDrones - 1;
+    }
+
+    public override Vector3 TakePosition(int index)
+    {
+        return InterpolateWithRatio(startOffset, endOffset, randomRatios[index], maxRatio);
+    }
+
+    public override void MoveGroup(Enemy enemy)
+    {
+        enemy.transform.position += Vector3.up * (enemy.movement.direction * verticalSpeed * Time.deltaTime);
+
+        var y = enemy.transform.position.y;
+        if (y >= maxY)
+        {
+            enemy.transform.position = new Vector3(enemy.transform.position.x, maxY, enemy.transform.position.z);
+            enemy.movement.direction = -1;
+        }
+        else if (y <= minY)
+        {
+            enemy.transform.position = new Vector3(enemy.transform.position.x, minY, enemy.transform.position.z);
+            enemy.movement.direction = 1;
+        }
+
+        enemy.shooting.UpdateShooting();
+    }
+
+    private static Vector3[] GenerateRandomUniqueRatios(int count)
+    {
+        var rand = new Random();
+        var indices = Enumerable.Range(0, count).ToArray();
+
+        var xRatios = indices.OrderBy(_ => rand.Next()).ToArray();
+        var yRatios = indices.OrderBy(_ => rand.Next()).ToArray();
+        var zRatios = indices.OrderBy(_ => rand.Next()).ToArray();
+
+        var result = new Vector3[count];
+        for (var i = 0; i < count; i++)
+        {
+            result[i] = new Vector3(xRatios[i], yRatios[i], zRatios[i]);
+        }
+
+        return result;
+    }
+
+    private static Vector3 InterpolateWithRatio(Vector3 from, Vector3 to, Vector3 ratioVector, float totalRatio)
+    {
+        return (Vector3.Scale(to, ratioVector)
+              + Vector3.Scale(from, new Vector3(totalRatio, totalRatio, totalRatio) - ratioVector))
+              / totalRatio;
     }
 }

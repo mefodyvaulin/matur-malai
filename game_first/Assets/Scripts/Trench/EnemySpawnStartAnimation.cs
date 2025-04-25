@@ -7,7 +7,7 @@ public static class EnemySpawnStartAnimation
     private static float duration = 2f;
 
     // ReSharper disable Unity.PerformanceAnalysis
-    public static IEnumerator MoveToPosition(Enemy enemy, Vector3 toPosition, Action<Enemy> doo)
+    public static IEnumerator MoveToPosition(Enemy enemy, Vector3 toPosition, Action<Enemy> moveGroup)
     {
         var startPosition = enemy.transform.position;
 
@@ -51,14 +51,14 @@ public static class EnemySpawnStartAnimation
 
         enemy.transform.position = toPosition;
         
-        if (toPosition.z == controlPoint2.z) toPosition.z -= 0.1f;
         // Плавный поворот в нужную сторону
+        if (toPosition.z == controlPoint2.z) toPosition.z -= 0.1f;
         var finalDir = (toPosition - controlPoint2).normalized;
         var finalRot = Quaternion.LookRotation(finalDir);
         yield return SmoothRotate(enemy, finalRot, 0.5f);
         
         enemy.movement.DefaultMove();
-        enemy.movement.Move += doo;
+        enemy.movement.Move += moveGroup;
     }
     
     private static IEnumerator SmoothRotate(Enemy enemy, Quaternion targetRotation, float time)
