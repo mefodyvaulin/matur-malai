@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
     
     public int direction;
     
-    [SerializeField] private float tiltAngle = 15f;
+    [SerializeField] private float tiltAngle = 30f;
     [SerializeField] private float tiltSpeed = 1f;
     [SerializeField] private float omega1, omega2, omega3, phase, a, distanceToEnemy;
     
