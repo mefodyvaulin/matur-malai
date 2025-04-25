@@ -6,6 +6,8 @@ public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] private Enemy[] enemiesPrefab;
     private int spawnedAfter;
+    private static readonly Random rand = new();
+
 
     private void Awake()
     {
@@ -28,18 +30,30 @@ public class EnemySpawn : MonoBehaviour
 
     private void SpawnGroup()
     {
-        var countDrones = new Random().Next(3, 7);
-        var group = new EnemyGroupHorizontallyOrVertically(countDrones, transform.position);
+        var countDrones = rand.Next(3, 7);
+        var group = CreateRandomGroup(countDrones, transform.position);
         
         for (var i = 0; i < countDrones; i++)
         {
-            var enemyIndex = new Random().Next(enemiesPrefab.Length);
+            var enemyIndex = rand.Next(enemiesPrefab.Length);
             var enemy = Instantiate(enemiesPrefab[enemyIndex], transform.position, transform.rotation);
             
             var finalPosition = group.TakePosition(i);
 
             StartMoving(enemy, finalPosition, group.MoveGroup);
         }
+    }
+    
+    private static EnemyGroupAbstract CreateRandomGroup(int countDrones, Vector3 spawnPosition)
+    {
+        var type = rand.Next(0, 1); // пока только один тип
+
+        return type switch
+        {
+            0 => new EnemyGroupHorizontallyOrVertically(countDrones, spawnPosition),
+            // 1 => new EnemyGroupCircle(...),
+            _ => throw new Exception("Unknown group type")
+        };
     }
 
     private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<Enemy> moveGroup)
