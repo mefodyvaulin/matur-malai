@@ -15,10 +15,5 @@ public class EnemyShooting : MonoBehaviour
         // Логика для обновления стрельбы
         Shoot();
     }
-
-    public void BulletExit()
-    {
-        // Логика для завершения стрельбы
-    }
 }
 
