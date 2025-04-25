@@ -44,13 +44,12 @@ public class EnemySpawn : MonoBehaviour
             var finalPosition = InterpolateWithRatio(startOffset, endOffset, randomRatios[i], maxRatio); // вот это должно быть в группе
 
             StartMoving(enemy, finalPosition);
-            enemy.movement.Move += MoveUpDown;
         }
     }
 
     private void StartMoving(Enemy enemy, Vector3 targetPosition)
     {
-        StartCoroutine(EnemySpawnStartAnimation.MoveToPosition(enemy, targetPosition));
+        StartCoroutine(EnemySpawnStartAnimation.MoveToPosition(enemy, targetPosition, MoveUpDown));
     }
 
     private static Vector3[] GenerateRandomUniqueRatios(int count)

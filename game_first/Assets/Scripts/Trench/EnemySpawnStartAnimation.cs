@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -5,7 +6,8 @@ public static class EnemySpawnStartAnimation
 {
     private static float duration = 2f;
 
-    public static IEnumerator MoveToPosition(Enemy enemy, Vector3 toPosition)
+    // ReSharper disable Unity.PerformanceAnalysis
+    public static IEnumerator MoveToPosition(Enemy enemy, Vector3 toPosition, Action<Enemy> doo)
     {
         var startPosition = enemy.transform.position;
 
@@ -56,6 +58,7 @@ public static class EnemySpawnStartAnimation
         yield return SmoothRotate(enemy, finalRot, 0.5f);
         
         enemy.movement.DefaultMove();
+        enemy.movement.Move += doo;
     }
     
     private static IEnumerator SmoothRotate(Enemy enemy, Quaternion targetRotation, float time)
