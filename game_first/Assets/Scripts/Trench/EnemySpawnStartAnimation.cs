@@ -4,9 +4,9 @@ using System.Collections;
 
 public static class EnemySpawnStartAnimation
 {
-    private static float duration = 2f;
-
-    // ReSharper disable Unity.PerformanceAnalysis
+    private static readonly float departurTime = 2f;
+    private static readonly float turningTime = 0.5f;
+    
     public static IEnumerator MoveToPosition(Enemy enemy, Vector3 toPosition, Action<Enemy> moveGroup)
     {
         var startPosition = enemy.transform.position;
@@ -26,9 +26,9 @@ public static class EnemySpawnStartAnimation
         var elapsed = 0f;
         var previousPosition = startPosition;
 
-        while (elapsed < duration)
+        while (elapsed < departurTime)
         {
-            var t = elapsed / duration;
+            var t = elapsed / departurTime;
             var curvedPosition = Bezier.Cubic(
                 startPosition, controlPoint1, controlPoint2, toPosition, t);
 
@@ -55,7 +55,7 @@ public static class EnemySpawnStartAnimation
         if (toPosition.z == controlPoint2.z) toPosition.z -= 0.1f;
         var finalDir = (toPosition - controlPoint2).normalized;
         var finalRot = Quaternion.LookRotation(finalDir);
-        yield return SmoothRotate(enemy, finalRot, 0.5f);
+        yield return SmoothRotate(enemy, finalRot, turningTime);
         
         enemy.movement.DefaultMove();
         enemy.movement.Move += moveGroup;
