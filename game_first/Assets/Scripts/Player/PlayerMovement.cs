@@ -12,11 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float centeringSpeed = 10f; // Скорость возврата корабля в нейтральное положение, когда мышь не двигается
     [SerializeField] private Vector2 trenchSizeUpRight = new(15f, 40f);     // Ограничение тоннеля верхний правый угол
     [SerializeField] private Vector2 trenchSizeDownLeft = new(-10f, 16f);      // Ограничение тоннеля нижний левый угол
-   
-    
-    // === Ввод пользователя ===
-    private UserInputAction _xWingInputAction;           // Объект, содержащий все действия ввода (сгенерирован через Input System)
-    private InputAction _movement;                       // Конкретное действие — движение мыши (тип Vector2)
+
 
     // === Текущие углы поворота ===
     private float currentPitch = 0f;                     // Текущий угол наклона по оси X (вверх/вниз)
@@ -26,27 +22,19 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 inputDelta;                          // Изменение положения мыши (ось X/Y)
     private bool hasInput;                               // Флаг: пользователь двигает мышь или нет
     public static Vector3 Position;
-    
-    private void Awake() // Вызывается при создании объекта
-    {
-        _xWingInputAction = new UserInputAction();
-    }
-    
+
     private void OnEnable() // Активируется, когда объект включается в сцене
     {
-        _movement = _xWingInputAction.XWing.MouseMovment;
-        _movement.Enable();
-
-        _movement.performed += OnMouseMove;
-        _movement.canceled += OnMouseStop;
+        InputManager.MouseMove.Enable();
+        InputManager.MouseMove.performed += OnMouseMove;
+        InputManager.MouseMove.canceled += OnMouseStop;
     }
     
     private void OnDisable() // Вызывается, когда объект выключается или удаляется
     {
-        _movement.performed -= OnMouseMove;
-        _movement.canceled -= OnMouseStop;
-
-        _movement.Disable();
+        InputManager.MouseMove.performed -= OnMouseMove;
+        InputManager.MouseMove.canceled -= OnMouseStop;
+        InputManager.MouseMove.Disable();
     }
     
     private void Update() // Главный игровой цикл — вызывается каждый кадр

@@ -102,9 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce254ebf531f4485683262ad35ce6e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 3
-  speed: 50
-  damage: 10
+  shooterCollider: {fileID: 8252172526861522706, guid: d4bfaa70d5c871a4897b31612c48fc9a, type: 3}
   AudioSource: {fileID: -4862423301503798956}
 --- !u!54 &6376637914189975328
 Rigidbody:
@@ -164,7 +162,7 @@ AudioSource:
   m_GameObject: {fileID: 5492925267657599817}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2059622881752288051, guid: 31c8112c7b51cd941b728b1997f0fa55, type: 2}
   m_audioClip: {fileID: 8300000, guid: 31a4c900985c4904f89f4cd967760672, type: 3}
   m_Resource: {fileID: 8300000, guid: 31a4c900985c4904f89f4cd967760672, type: 3}
   m_PlayOnAwake: 0

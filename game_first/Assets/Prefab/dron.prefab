@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48215c3582448e6a1124ed48a4abb22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
+  bulletPrefab: {fileID: 791072956684817052, guid: 94884eb7695728049b2b419cda4e327d, type: 3}
   speed: 10
   hp: 50
   canMove: 1
@@ -181,7 +181,7 @@ AudioSource:
   m_GameObject: {fileID: 8956810903429674628}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2059622881752288051, guid: 31c8112c7b51cd941b728b1997f0fa55, type: 2}
   m_audioClip: {fileID: 8300000, guid: 723ed6f541e4391438ffa5d55f3abe16, type: 3}
   m_Resource: {fileID: 8300000, guid: 723ed6f541e4391438ffa5d55f3abe16, type: 3}
   m_PlayOnAwake: 0
@@ -278,7 +278,7 @@ AudioSource:
   m_GameObject: {fileID: 8956810903429674628}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2059622881752288051, guid: 31c8112c7b51cd941b728b1997f0fa55, type: 2}
   m_audioClip: {fileID: 8300000, guid: f0e03e9008bd3c9428a1811eb56e0eef, type: 3}
   m_Resource: {fileID: 8300000, guid: f0e03e9008bd3c9428a1811eb56e0eef, type: 3}
   m_PlayOnAwake: 0
