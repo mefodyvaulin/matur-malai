@@ -4,7 +4,7 @@ using System.Linq;
 
 public class EnemySpawn : MonoBehaviour
 {
-    [SerializeField] private Enemy[] enemies;
+    [SerializeField] private Enemy[] enemiesPrefab;
     private int spawnedAfter;
 
     private void Awake()
@@ -35,8 +35,8 @@ public class EnemySpawn : MonoBehaviour
 
         for (var i = 0; i < droneCount; i++)
         {
-            var enemyIndex = new Random().Next(enemies.Length);
-            var enemy = Instantiate(enemies[enemyIndex], transform.position, transform.rotation);
+            var enemyIndex = new Random().Next(enemiesPrefab.Length);
+            var enemy = Instantiate(enemiesPrefab[enemyIndex], transform.position, transform.rotation);
 
             var startOffset = enemy.transform.position + new Vector3(5, 10, 0);
             var endOffset = enemy.transform.position + new Vector3(25, -10, -30);
@@ -99,5 +99,6 @@ public class EnemySpawn : MonoBehaviour
             enemy.transform.position = new Vector3(enemy.transform.position.x, minY, enemy.transform.position.z);
             enemy.movement.direction = 1;
         }
+        enemy.shooting.UpdateShooting();
     }
 }

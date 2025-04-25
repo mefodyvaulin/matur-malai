@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyHealth health;
     [SerializeField] public EnemyMovement movement;
-    [SerializeField] private EnemyShooting shooting;
+    [SerializeField] public EnemyShooting shooting;
     
     
     private void Awake()

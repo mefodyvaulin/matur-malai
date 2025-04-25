@@ -45,6 +45,7 @@ public class EnemyMovement : MonoBehaviour
         var y = 2.75f + player.y + a * cosOfAng * sinOfAng / (1 + sinOfAng * sinOfAng) - 1.5f * Mathf.Sin(omega3 * Time.time * tiltSpeed);
         transform.position = new Vector3(x, y, player.z + distanceToEnemy + 3 * sinOfAng);
         transform.rotation = Quaternion.Euler(0, yTilt, tilt);
+        enemy.shooting.UpdateShooting();
     }
 
     public void DefaultMove()
