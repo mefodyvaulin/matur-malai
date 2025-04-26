@@ -372,6 +372,7 @@ MonoBehaviour:
   audioSources:
   - {fileID: 5349099711894228161}
   - {fileID: 8333659989394518178}
+  floatingText: {fileID: 2267761962456244929, guid: 491942dbac820574db6d3311f3e912c4, type: 3}
 --- !u!114 &2687713126762575415
 MonoBehaviour:
   m_ObjectHideFlags: 0

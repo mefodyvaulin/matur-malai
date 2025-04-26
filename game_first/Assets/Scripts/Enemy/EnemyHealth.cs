@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour,  IDamageable
 {
     [SerializeField] private int hp = 50;
     [SerializeField] private AudioSource[] audioSources;
+    [SerializeField] private GameObject floatingText;
     
     
     public bool IsAlive => hp > 0;
@@ -22,12 +24,9 @@ public class EnemyHealth : MonoBehaviour,  IDamageable
         else
         {
             audioSources[0].Play();
-            transform.GetComponent<MeshRenderer>().material.color = Color.Lerp(Color.white, new Color(0.9f,0.51f,0.51f), 1f);
+            var textDamage = Instantiate(floatingText, transform.position, Quaternion.identity);
+            textDamage.GetComponentInChildren<TextMeshPro>().text = damage.ToString();
+            Destroy(textDamage, 1f);
         }
-    }
-    
-    public void BulletExit()
-    {
-        transform.GetComponent<MeshRenderer>().material.color = Color.Lerp(new Color(0.9f,0.51f,0.51f), Color.white, 1f);
     }
 }

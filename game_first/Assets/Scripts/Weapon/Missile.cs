@@ -20,8 +20,6 @@ public abstract class Missile: MonoBehaviour
 
     protected virtual void OnTriggerExit(Collider other)
     {
-        var damageable = other.GetComponent<IDamageable>();
-        damageable?.BulletExit();
         Destroy(gameObject); // Уничтожаем пулю
     }
 
