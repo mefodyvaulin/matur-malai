@@ -46,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
         MoveForward();
         UpdateRotation();
         ClampPositionInsideTrench();
-        Position = transform.position;
     }
     
     private void MoveForward() // Постоянное движение вперёд(по Z)

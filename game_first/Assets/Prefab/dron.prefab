@@ -156,7 +156,7 @@ AudioSource:
   m_GameObject: {fileID: 8956810903429674628}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2059622881752288051, guid: 31c8112c7b51cd941b728b1997f0fa55, type: 2}
   m_audioClip: {fileID: 8300000, guid: 723ed6f541e4391438ffa5d55f3abe16, type: 3}
   m_Resource: {fileID: 8300000, guid: 723ed6f541e4391438ffa5d55f3abe16, type: 3}
   m_PlayOnAwake: 0
@@ -253,7 +253,7 @@ AudioSource:
   m_GameObject: {fileID: 8956810903429674628}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2059622881752288051, guid: 31c8112c7b51cd941b728b1997f0fa55, type: 2}
   m_audioClip: {fileID: 8300000, guid: f0e03e9008bd3c9428a1811eb56e0eef, type: 3}
   m_Resource: {fileID: 8300000, guid: f0e03e9008bd3c9428a1811eb56e0eef, type: 3}
   m_PlayOnAwake: 0
@@ -356,7 +356,6 @@ MonoBehaviour:
   health: {fileID: 3963029941036198971}
   movement: {fileID: 2687713126762575415}
   shooting: {fileID: 8862877114354665177}
-  canMove: 0
 --- !u!114 &3963029941036198971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  direction: 0
   tiltAngle: 15
   tiltSpeed: 1
   omega1: 0
@@ -394,6 +394,8 @@ MonoBehaviour:
   phase: 0
   a: 0
   distanceToEnemy: 0
+  rotationSpeed: 2
+  maxRotationAngle: 15
 --- !u!114 &8862877114354665177
 MonoBehaviour:
   m_ObjectHideFlags: 0
