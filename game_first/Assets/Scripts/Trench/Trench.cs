@@ -29,7 +29,7 @@ public class Trench : MonoBehaviour
             12,
             -29.6f + segmentHalfLength);
 
-        numberOfSegments = 5;
+        numberOfSegments = 3;
 
         currentSegments = new List<GameObject>();
 

@@ -1,4 +1,5 @@
 using System;
+using EnemyGroup;
 using UnityEngine;
 using Random = System.Random;
 
@@ -22,7 +23,7 @@ public class EnemySpawn : MonoBehaviour
     private void CountFragmentsToSpawn(Trench.TrenchState state)
     {
         spawnedAfter++;
-        if (spawnedAfter == 4 && GameModel.CountEnemies <= 0) // спавн прямо при влете в эту часть туннеля
+        if (spawnedAfter == 2 && GameModel.CountEnemies <= 0) // спавн прямо при влете в эту часть туннеля
         {
             SpawnGroup();
         }
@@ -46,12 +47,12 @@ public class EnemySpawn : MonoBehaviour
     
     private static EnemyGroupAbstract CreateRandomGroup(int countDrones, Vector3 spawnPosition)
     {
-        var type = rand.Next(0, 1); // пока только один тип
+        var type = rand.Next(0, 2); // пока только один тип
 
         return type switch
         {
             0 => new EnemyGroupHorizontallyOrVertically(countDrones, spawnPosition),
-            // 1 => new EnemyGroupCircle(...),
+            1 => new EnemyGroupCircle(countDrones, spawnPosition),
             _ => throw new Exception("Unknown group type")
         };
     }

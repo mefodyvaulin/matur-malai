@@ -409,5 +409,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5ffd3ee663a4be6a3be936cd4bdc7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
+  bulletPrefab: {fileID: 791072956684817052, guid: 94884eb7695728049b2b419cda4e327d, type: 3}
   weapon: {fileID: 4552575087860262651}
