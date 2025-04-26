@@ -7,10 +7,9 @@ public class Trench : MonoBehaviour
 {
     [SerializeField] private GameObject[] trenchSegments;
     [SerializeField] private GameObject randomSegment;
-    [SerializeField] private Transform player;
     private List<GameObject> currentSegments;
     private float segmentHalfLength;
-    private Vector3 initialSegmentPosition;
+    public static Vector3 initialSegmentPosition;
     public static float numberOfSegments;
     private float _lastSegmentVariant = 0;
 
@@ -50,35 +49,33 @@ public class Trench : MonoBehaviour
 
     private void GenerateContinuationOfTrench()
     {
-        if (player.position.z - segmentHalfLength >= currentSegments[0].transform.position.z){
+        if (!(GameModel.PlayerPosition.z - segmentHalfLength >= currentSegments[0].transform.position.z)) return;
+        
+        var firstSegment = currentSegments[0];
+        currentSegments.RemoveAt(0);
+        Destroy(firstSegment);
 
-            var firstSegment = currentSegments[0];
-            currentSegments.RemoveAt(0);
-            Destroy(firstSegment);
+        var prefabVariant = GetRandomSegmentVariant();
 
-            var prefabVariant = GetRandomSegmentVariant();
+        firstSegment = Instantiate(trenchSegments[prefabVariant],
+            initialSegmentPosition + numberOfSegments * segmentHalfLength * Vector3.forward,
+            Quaternion.identity);
+        currentSegments.Add(firstSegment);
 
-            firstSegment = Instantiate(trenchSegments[prefabVariant],
-                initialSegmentPosition + numberOfSegments * segmentHalfLength * Vector3.forward,
-                Quaternion.identity);
-            currentSegments.Add(firstSegment);
-
-            numberOfSegments++;
-
-        }
+        numberOfSegments++;
     }
 
     private int GetRandomSegmentVariant()
     {
 
         var randInt = Random.Range(0, 20);
-        var prefabVariant = TrenchState.Default;
 
-        if (randInt < 10)
-            prefabVariant = TrenchState.Enemy;
-
-        else if (randInt == 14)
-            prefabVariant = TrenchState.Turret;
+        var prefabVariant = randInt switch
+        {
+            < 10 => TrenchState.Enemy,
+            14 => TrenchState.Turret,
+            _ => TrenchState.Default
+        };
 
         OnGenerateContinuationOfTrench?.Invoke(prefabVariant);
         _lastSegmentVariant = (int)prefabVariant;

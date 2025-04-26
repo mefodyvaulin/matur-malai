@@ -137,13 +137,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4619404635579746773}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.39, y: 6.13, z: -8}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -15.5, y: 17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 45583684253166256}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1038512280247525843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3d4fa198bb4a3a97daae92613d9953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 8462185565047553373, guid: 9d29f0a27d09e89449937c555ef3f124, type: 3}
-  - {fileID: 8956810903429674628, guid: b4957f7e8ef83a64fb983eb54ed1ee39, type: 3}
+  enemiesPrefab:
+  - {fileID: 6490832624386510082, guid: b4957f7e8ef83a64fb983eb54ed1ee39, type: 3}
+  - {fileID: -1028152125228493998, guid: 9d29f0a27d09e89449937c555ef3f124, type: 3}
