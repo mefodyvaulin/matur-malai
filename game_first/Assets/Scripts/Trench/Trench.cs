@@ -71,9 +71,7 @@ public class Trench : MonoBehaviour
 
     private int GetRandomSegmentVariant()
     {
-        var randInt = Random.Range(0, 20);
-        
-        var prefabVariant = (TrenchState)randomSegmentVariants[randInt];
+        var prefabVariant = (TrenchState)randomSegmentVariants[variantIndex];
         variantIndex++;
         if (variantIndex == randomSegmentVariants.Length)
             GenerateNewRandomSequence();
