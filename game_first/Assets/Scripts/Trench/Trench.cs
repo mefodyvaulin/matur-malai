@@ -68,13 +68,13 @@ public class Trench : MonoBehaviour
     private int GetRandomSegmentVariant()
     {
 
-        var randInt = Random.Range(0, 20);
+        var randInt = Random.Range(0, 21);
 
         var prefabVariant = randInt switch
         {
-            < 10 => TrenchState.Enemy,
-            14 => TrenchState.Turret,
-            _ => TrenchState.Default
+            <= 7 => TrenchState.Enemy,
+            <= 14 => TrenchState.Turret,
+            > 14 => TrenchState.Default
         };
 
         OnGenerateContinuationOfTrench?.Invoke(prefabVariant);
