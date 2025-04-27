@@ -392,7 +392,7 @@ MonoBehaviour:
   trenchSegments:
   - {fileID: 1904458252838805973, guid: aa489dd7284ce4b4c8e676df8ff41304, type: 3}
   - {fileID: 356992594607664942, guid: 32ba36e6c87e63c4da9e492d7115aaa8, type: 3}
-  - {fileID: 1904458252838805973, guid: aa489dd7284ce4b4c8e676df8ff41304, type: 3}
+  - {fileID: 7965444701846641320, guid: 981f283466fcb3e4e92af0bed14756a5, type: 3}
   randomSegment: {fileID: 1904458252838805973, guid: aa489dd7284ce4b4c8e676df8ff41304, type: 3}
 --- !u!1 &1855578787 stripped
 GameObject:
