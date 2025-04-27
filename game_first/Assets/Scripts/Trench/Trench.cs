@@ -11,7 +11,9 @@ public class Trench : MonoBehaviour
     private float segmentHalfLength;
     public static Vector3 initialSegmentPosition;
     public static float numberOfSegments;
-    private float _lastSegmentVariant = 0;
+    private readonly int[] weights = {100, 25, 8};
+    private int[] randomSegmentVariants;
+    private int variantIndex;
 
     public static event Action<TrenchState> OnGenerateContinuationOfTrench;
     public enum TrenchState // Enum для индексации объектов в TrenchSegment
@@ -40,6 +42,8 @@ public class Trench : MonoBehaviour
             currentSegments.Add(segment);
 
         }
+        
+        GenerateNewRandomSequence();
     }
 
     private void Update()
@@ -67,18 +71,21 @@ public class Trench : MonoBehaviour
 
     private int GetRandomSegmentVariant()
     {
-
         var randInt = Random.Range(0, 20);
-
-        var prefabVariant = randInt switch
-        {
-            < 10 => TrenchState.Enemy,
-            14 => TrenchState.Turret,
-            _ => TrenchState.Default
-        };
+        
+        var prefabVariant = (TrenchState)randomSegmentVariants[randInt];
+        variantIndex++;
+        if (variantIndex == randomSegmentVariants.Length)
+            GenerateNewRandomSequence();
 
         OnGenerateContinuationOfTrench?.Invoke(prefabVariant);
-        _lastSegmentVariant = (int)prefabVariant;
         return (int)prefabVariant;
+    }
+
+    private void GenerateNewRandomSequence()
+    {
+        variantIndex = 0;
+        randomSegmentVariants = RandomDistributions.CreateDistributionArray(weights);
+        RandomDistributions.ShuffleArray(randomSegmentVariants);
     }
 }
