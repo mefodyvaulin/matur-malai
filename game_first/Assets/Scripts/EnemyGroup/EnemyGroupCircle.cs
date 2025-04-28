@@ -6,21 +6,22 @@ public class EnemyGroupCircle : EnemyGroupAbstract
 
     // Вращение //
     private readonly float radius;
-    private float rotationSpeed = 0.5f; // Скорость вращения
+    private float rotationSpeed = 0.2f; // Скорость вращения
     private const float RotationAngle = Mathf.PI / 100f;
 
     // Растяжение //
-    private float actualRadius = 6f;
-    private float minRadius = 3f;
-    private float maxRadius = 8f;
+    private float actualRadius = 7.5f;
+    private float minRadius = 4f;
+    private float maxRadius = 11f;
     private float centerSpeed = 1f;
     private bool isUp = true;
 
 
     public EnemyGroupCircle(int countDrones, Vector3 spawnPosition) : base(countDrones, spawnPosition)
     {
-        centerOfCircle = spawnPosition + new Vector3(15, 0, 0);
-        radius = 6f;
+        centerOfCircle = spawnPosition + new Vector3(15.5f, -3, 0);
+        radius = minRadius + (maxRadius - minRadius) * 0.5f;
+        actualRadius = minRadius + (maxRadius - minRadius) * 0.5f;
     }
 
     public override Vector3 TakePosition(int index)
