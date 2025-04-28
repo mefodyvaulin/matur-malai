@@ -1,5 +1,4 @@
 using UnityEngine;
-using Random = System.Random;
 using System.Linq;
 
 public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
@@ -12,13 +11,18 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
     private static readonly float verticalSpeed = 4f;
     private static readonly float minY = Trench.initialSegmentPosition.y + 5f;
     private static readonly float maxY = Trench.initialSegmentPosition.y + 28f;
+    private static readonly float minX = Trench.initialSegmentPosition.x - 10f;
+    private static readonly float maxX = Trench.initialSegmentPosition.x + 10f;
 
+    private Vector3 moveDirection;
     public EnemyGroupHorizontallyOrVertically(int countDrones, Vector3 spawnPosition) 
         : base(countDrones, spawnPosition)
     {
         startOffset = spawnPosition + new Vector3(5, 10, 0);
         endOffset = spawnPosition + new Vector3(25, -10, -30);
 
+        moveDirection = Random.Range(0, 2) == 0 ? Vector3.up : Vector3.right;
+        
         randomRatios = GenerateRandomUniqueRatios(countDrones);
         maxRatio = countDrones - 1;
     }
@@ -30,17 +34,18 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
 
     public override void MoveGroup(Enemy enemy)
     {
-        enemy.transform.position += Vector3.up * (enemy.movement.direction * verticalSpeed * Time.deltaTime);
+        enemy.transform.position += moveDirection * (enemy.movement.direction * verticalSpeed * Time.deltaTime);
 
         var y = enemy.transform.position.y;
-        if (y >= maxY)
+        var x = enemy.transform.position.x;
+        if (y >= maxY || x >= maxX)
         {
-            enemy.transform.position = new Vector3(enemy.transform.position.x, maxY, enemy.transform.position.z);
+            //enemy.transform.position = new Vector3(enemy.transform.position.x, maxY, enemy.transform.position.z);
             enemy.movement.direction = -1;
         }
-        else if (y <= minY)
+        else if (y <= minY || x <= minX)
         {
-            enemy.transform.position = new Vector3(enemy.transform.position.x, minY, enemy.transform.position.z);
+            //enemy.transform.position = new Vector3(enemy.transform.position.x, minY, enemy.transform.position.z);
             enemy.movement.direction = 1;
         }
 
@@ -49,7 +54,7 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
 
     private static Vector3[] GenerateRandomUniqueRatios(int count)
     {
-        var rand = new Random();
+        var rand = new System.Random();
         var indices = Enumerable.Range(0, count).ToArray();
 
         var xRatios = indices.OrderBy(_ => rand.Next()).ToArray();

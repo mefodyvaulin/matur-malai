@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public static class RandomDistributions
@@ -9,13 +10,11 @@ public static class RandomDistributions
     /// <returns>Массив, содержащий сгенерированные числа.</returns>
     public static int[] CreateDistributionArray(int[] counts)
     {
-        var totalSize = 0;
-        foreach (var count in counts)
-            totalSize += count;
+        var totalSize = counts.Sum();
         var array = new int[totalSize];
         var index = 0;
-        for (int i = 0; i < counts.Length; i++)
-        for (int j = 0; j < counts[i]; j++)
+        for (var i = 0; i < counts.Length; i++)
+        for (var j = 0; j < counts[i]; j++)
             array[index++] = i;
         return array;
     }
@@ -27,13 +26,11 @@ public static class RandomDistributions
     /// <returns>Массив со случайно разбросанными величинами, количество каждого из чисел прежнее.</returns>
     public static void ShuffleArray(int[] array)
     {
-        for (int k = 0; k < 3 * array.Length; k++)
-        for (int i = array.Length - 1; i > 3; i--)
+        for (var k = 0; k < 3 * array.Length; k++)
+        for (var i = array.Length - 1; i > 3; i--)
         {
             var j = Random.Range(0, i - 2);
-            var temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+            (array[i], array[j]) = (array[j], array[i]);
         }
     }
 }
