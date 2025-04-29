@@ -38,6 +38,11 @@ public class EnemyGroupCircle : EnemyGroupAbstract
     {
         UpdateRadius();
 
+        if (Mathf.Abs(actualRadius - (minRadius)) < 0.01f
+            || Mathf.Abs(actualRadius - (maxRadius)) < 0.01f
+            || Mathf.Abs(actualRadius - (radius)) < 0.01f) 
+            enemy.shooting.UpdateShooting(0.3f);
+        
         var direction = new Vector2(
             enemy.transform.position.x - centerOfCircle.x,
             enemy.transform.position.y - centerOfCircle.y
@@ -56,7 +61,7 @@ public class EnemyGroupCircle : EnemyGroupAbstract
             0
         );
 
-        enemy.shooting.UpdateShooting();
+        //enemy.shooting.UpdateShooting();
     }
 
     private void UpdateRadius()

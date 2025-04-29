@@ -13,9 +13,12 @@ public class EnemyShooting : MonoBehaviour
         Instantiate(bulletPrefab, weapon.position, transform.rotation);
     }
 
-    public void UpdateShooting()
+    public void UpdateShooting(float rate = -1)
     {
-        if (!(Time.time >= lastFireTime + fireRate)) return;
+        if (rate < 0)
+            rate = fireRate;
+        
+        if (!(Time.time >= lastFireTime + rate)) return;
         lastFireTime = Time.time;
         Shoot();
     }
