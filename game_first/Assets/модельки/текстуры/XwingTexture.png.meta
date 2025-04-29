@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 9e2a5d74411d24cd6bd06442b85223d7
+<<<<<<<< HEAD:game_first/Assets/модельки/текстуры/textur-gas-kvas-com-3tnw-p-teksturi-krashennii-metall-2.jpg.meta
+guid: 64b49ab1a54cd604ab6537d046f91bd8
+========
+guid: ba0181e61415344dba696d0b38ec7533
+>>>>>>>> 8ad7a2c (Добавлена текстура Xwing):game_first/Assets/модельки/текстуры/XwingTexture.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
