@@ -46,12 +46,13 @@ public class EnemySpawn : MonoBehaviour
     
     private static EnemyGroupAbstract CreateRandomGroup(int countDrones, Vector3 spawnPosition)
     {
-        var type = rand.Next(0, 2);
+        var type = rand.Next(0, 3);
 
         return type switch
         {
             0 => new EnemyGroupHorizontallyOrVertically(countDrones, spawnPosition),
             1 => new EnemyGroupCircle(countDrones, spawnPosition),
+            2 => new EnemyGroupLemniskata(countDrones, spawnPosition),
             _ => throw new Exception("Unknown group type")
         };
     }
