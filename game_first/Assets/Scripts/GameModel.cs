@@ -9,8 +9,8 @@ public static class GameModel
     
     public static Vector3 PlayerPosition => Player.transform.position;
     
-    private static List<Enemy> enemies = new();
-    public static int CountEnemies => enemies.Count;
+    public static readonly Dictionary<Enemy, int> Enemies = new();
+    public static int CountEnemies => Enemies.Count;
 
     public static void SetPlayerMovement(PlayerMovement player)
     {
@@ -20,18 +20,18 @@ public static class GameModel
 
     public static void AddEnemy(Enemy enemy)
     {
-        enemies.Add(enemy);
+        Enemies.Add(enemy, Enemies.Count + 1);
     }
     
     public static void RemoveEnemy(Enemy enemy)
     {
-        enemies.Remove(enemy);
+        Enemies.Remove(enemy);
     }
 
     
     public static void ResetModel()
     {
         _player = null;
-        enemies.Clear();
+        Enemies.Clear();
     }
 }
