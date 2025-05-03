@@ -16,8 +16,8 @@ public class EnemyHealth : MonoBehaviour,  IDamageable
         if (!IsAlive)
         {
             GetComponent<Collider>().enabled = false;
-            GetComponent<MeshRenderer>().enabled = false;
-            
+            GetComponentInChildren<MeshRenderer>().enabled = false;
+
             audioSources[1].Play();
             Destroy(gameObject, audioSources[1].clip.length);
         }

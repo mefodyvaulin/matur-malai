@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
     public float smoothTime = 0.3f; // Время сглаживания
     private Vector3 velocity = Vector3.zero; // Текущая скорость камеры
 
-    private void Update()
+    private void LateUpdate()
     {
         var desiredPosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothTime);
