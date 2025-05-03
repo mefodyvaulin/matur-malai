@@ -9,7 +9,7 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
     private readonly int maxRatio;
 
     private static readonly float verticalSpeed = 4f;
-    private static readonly float minY = Trench.initialSegmentPosition.y + 5f;
+    private static readonly float minY = Trench.initialSegmentPosition.y + 4f;
     private static readonly float maxY = Trench.initialSegmentPosition.y + 28f;
     private static readonly float minX = Trench.initialSegmentPosition.x - 10f;
     private static readonly float maxX = Trench.initialSegmentPosition.x + 10f;
@@ -19,7 +19,7 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
         : base(countDrones, spawnPosition)
     {
         startOffset = spawnPosition + new Vector3(5, 10, 0);
-        endOffset = spawnPosition + new Vector3(25, -10, -30);
+        endOffset = spawnPosition + new Vector3(25, -12, -30);
 
         moveDirection = Random.Range(0, 2) == 0 ? Vector3.up : Vector3.right;
         
