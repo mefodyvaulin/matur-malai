@@ -50,8 +50,9 @@ public class EnemySpawn : MonoBehaviour
 
         return type switch
         {
-            <= 1 => new EnemyGroupHorizontallyOrVertically(countDrones, spawnPosition),
-            2 => new EnemyGroupCircle(countDrones, spawnPosition),
+            0 => new EnemyGroupHorizontallyOrVertically(countDrones, spawnPosition),
+            1 => new EnemyGroupCircle(countDrones, spawnPosition),
+            2 => new EnemyGroupLemniskata(countDrones, spawnPosition),
             _ => throw new Exception("Unknown group type")
         };
     }
