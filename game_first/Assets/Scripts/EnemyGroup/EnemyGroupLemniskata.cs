@@ -12,7 +12,7 @@ public class EnemyGroupLemniskata : EnemyGroupAbstract
     public EnemyGroupLemniskata(int countDrones, Vector3 spawnPosition) : base(countDrones, spawnPosition)
     {
         radius = 9;
-        deltaAngle = 0.01f;
+        deltaAngle = 0.02f;
         angle = 0;
         LemniskataCenter = spawnPosition + new Vector3(15.5f, -2, 0);
         enemyAngles = new List<float>();
@@ -20,7 +20,7 @@ public class EnemyGroupLemniskata : EnemyGroupAbstract
     
     public override Vector3 TakePosition(int index)
     {
-        enemyAngles.Add(Mathf.PI / 5 * index);
+        enemyAngles.Add(Mathf.PI / 6 * index);
         var xAndY = GetXAndY(Mathf.PI / 5 * index);
         return LemniskataCenter + new Vector3(
             xAndY.Item1,
