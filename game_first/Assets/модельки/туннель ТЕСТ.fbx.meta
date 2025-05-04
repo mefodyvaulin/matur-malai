@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 07e1f4cd06fbceb4694c33ee69f0a91b
+=======
+guid: ced4c640ff677460b8af0925697a3e9a
+>>>>>>> 2618351 (Правка рамки)
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
