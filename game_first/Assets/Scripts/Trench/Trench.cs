@@ -75,7 +75,6 @@ public class Trench : MonoBehaviour
         variantIndex++;
         if (variantIndex == randomSegmentVariants.Length)
             GenerateNewRandomSequence();
-
         OnGenerateContinuationOfTrench?.Invoke(prefabVariant);
         return (int)prefabVariant;
     }
