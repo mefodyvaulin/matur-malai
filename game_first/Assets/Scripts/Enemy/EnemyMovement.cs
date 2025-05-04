@@ -39,6 +39,7 @@ public class EnemyMovement : MonoBehaviour
     public void MoveFollowerPlayer(Enemy enemy)
     {
         transform.position = new Vector3(GameModel.PlayerPosition.x, GameModel.PlayerPosition.y, GameModel.PlayerPosition.z + distanceToEnemy);
+        enemy.shooting.UpdateShooting();
     }
 
 

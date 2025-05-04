@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour,  IDamageable
 {
     [SerializeField] private int hp = 50;
-    [SerializeField] private AudioSource[] audioSources;
+    [SerializeField] public AudioSource[] audioSources;
     [SerializeField] private GameObject floatingText;
     
     
@@ -17,7 +17,6 @@ public class EnemyHealth : MonoBehaviour,  IDamageable
         {
             GetComponent<Collider>().enabled = false;
             GetComponentInChildren<MeshRenderer>().enabled = false;
-
             audioSources[1].Play();
             Destroy(gameObject, audioSources[1].clip.length);
         }
