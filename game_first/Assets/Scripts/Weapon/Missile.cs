@@ -8,7 +8,7 @@ public abstract class Missile: MonoBehaviour
     public AudioSource AudioSource;
     private void Start()
     {
-        AudioSource.Play();
+        //AudioSource.Play();
         Destroy(gameObject, LifeTime);
     }
 
@@ -16,13 +16,9 @@ public abstract class Missile: MonoBehaviour
     {
         var damageable = other.GetComponent<IDamageable>(); // Проверяем, есть ли на объекте интерфейс IDamageable
         damageable?.TakeDamage(Damage);
+        Destroy(gameObject);
     }
-
-    protected virtual void OnTriggerExit(Collider other)
-    {
-        Destroy(gameObject); // Уничтожаем пулю
-    }
-
+    
     private void Update()
     {
         Move();

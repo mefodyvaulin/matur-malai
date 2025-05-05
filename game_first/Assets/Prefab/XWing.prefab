@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.25
-  bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
+  bulletPrefab: {fileID: 7863463550594445650, guid: 70277d0e4ef194c55a550ef60608bef0, type: 3}
   maxClip: 20
   reloadCooldown: 0.5
   currentClip: 0
