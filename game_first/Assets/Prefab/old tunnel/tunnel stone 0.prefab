@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 3505972765152158375}
   - component: {fileID: 7371675811785198314}
   m_Layer: 0
-  m_Name: tunnel stone
+  m_Name: tunnel stone 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -439,9 +439,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trenchSegments:
-  - {fileID: 1904458252838805973, guid: aa489dd7284ce4b4c8e676df8ff41304, type: 3}
-  - {fileID: 356992594607664942, guid: 32ba36e6c87e63c4da9e492d7115aaa8, type: 3}
-  - {fileID: 7965444701846641320, guid: 981f283466fcb3e4e92af0bed14756a5, type: 3}
+  - {fileID: 4490638380372218359, guid: 1610b1f6c60492845905406715e38b51, type: 3}
+  - {fileID: 6965599510327825665, guid: 9af7d616ccbe78740ba3feb7075a2086, type: 3}
+  - {fileID: 235011457330771469, guid: 2ebe147735af168478fa84f3099a97c2, type: 3}
   randomSegment: {fileID: 1904458252838805973, guid: aa489dd7284ce4b4c8e676df8ff41304, type: 3}
 --- !u!1 &1855578787 stripped
 GameObject:
