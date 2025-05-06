@@ -12,7 +12,7 @@ public class EnemyGroupLemniskata : EnemyGroupAbstract
     public EnemyGroupLemniskata(int countDrones, Vector3 spawnPosition) : base(countDrones, spawnPosition)
     {
         radius = 9;
-        deltaAngle = 0.02f;
+        deltaAngle = 1.4f;
         angle = 0;
         LemniskataCenter = spawnPosition + new Vector3(15.5f, -2, 0);
         enemyAngles = new List<float>();
@@ -31,7 +31,7 @@ public class EnemyGroupLemniskata : EnemyGroupAbstract
     public override void MoveGroup(Enemy enemy)
     {
         var enemyIndex = GameModel.Enemies[enemy] - 1;
-        enemyAngles[enemyIndex] += deltaAngle;
+        enemyAngles[enemyIndex] += deltaAngle * Time.deltaTime;
         var xAndY = GetXAndY(enemyAngles[enemyIndex]);
         enemy.transform.position += new Vector3(
             xAndY.Item1 + LemniskataCenter.x - enemy.transform.position.x, 
