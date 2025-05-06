@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d315ed32a79492d4fb2acf59bc5e2229, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.006
+      value: 0.010734176
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d315ed32a79492d4fb2acf59bc5e2229, type: 3}
       propertyPath: m_LocalPosition.x
@@ -89,5 +89,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce254ebf531f4485683262ad35ce6e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 3
-  speed: 50
+  AudioSource: {fileID: 0}
