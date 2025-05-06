@@ -6,12 +6,13 @@ public class Rocket : Missile
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private float rotationSpeed = 60f;
     protected override float LifeTime => 4f;
-    protected override int Damage => 0;
+    protected override int Damage => 10;
     protected override float Speed => 30f;
     private Enemy target;
 
-    private void Awake()
+    protected override void Start()
     {
+        base.Start();
         target = TakeTarget();
     }
     
@@ -43,14 +44,6 @@ public class Rocket : Missile
         {
             target = TakeTarget();
         }
-    }
-
-    protected override void OnTriggerEnter(Collider other)
-    {
-        var damageable = other.GetComponent<IDamageable>();
-        damageable?.TakeDamage(Damage);
-        // взрыв перед удалением
-        Destroy(gameObject); 
     }
 
     private Enemy TakeTarget()

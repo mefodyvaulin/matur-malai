@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class FillBar : MonoBehaviour
 {
-    [SerializeField] private MonoBehaviour providerScript; // Любой скрипт, реализующий IBarValueProvider
+    [SerializeField] private MonoBehaviour providerScript; // Любой скрипт, реализующий IFillBarProvider
     private IFillBarProvider provider;
     private Image barImage; // Компонент Image с типом Filled на этом объекте
 
@@ -13,7 +13,7 @@ public class FillBar : MonoBehaviour
         barImage = GetComponent<Image>();
 
         if (provider == null)
-            Debug.LogError("FillBar: объект не реализует IBarValueProvider!");
+            Debug.LogError("FillBar: объект не реализует IFillBarProvider!");
     }
 
     private void Update()

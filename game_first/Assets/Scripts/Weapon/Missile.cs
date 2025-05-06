@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public abstract class Missile: MonoBehaviour
+public abstract class Missile : MonoBehaviour
 {
     protected abstract float LifeTime { get; } // Время жизни пули
     protected abstract int Damage { get; }
     protected abstract float Speed { get; } // Скорость полёта вперёд (единиц в секунду)
     public AudioSource AudioSource;
-    private void Start()
+    
+    protected virtual void Start()
     {
         //AudioSource.Play();
         Destroy(gameObject, LifeTime);
