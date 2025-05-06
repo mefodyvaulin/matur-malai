@@ -885,6 +885,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: XWing
       objectReference: {fileID: 0}
+    - target: {fileID: 7120153091039379193, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
+      propertyPath: postProcessVolume
+      value: 
+      objectReference: {fileID: 1994450454}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
