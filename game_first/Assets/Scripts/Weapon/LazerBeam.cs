@@ -8,6 +8,7 @@ public class LaserBeam : MonoBehaviour
     [SerializeField] private float width = 0.5f;
     [SerializeField] private int damagePerSecond = 1;
     [SerializeField] private float damageInterval = 0.2f;
+    private float step = 0.5f; // шаг расположения лучей (их частота)
     [SerializeField] private Transform beamVisual; // Ссылка на цилиндр лазера
 
     private float damageTimer;
@@ -25,8 +26,6 @@ public class LaserBeam : MonoBehaviour
         var origin = transform.position;
         var direction = transform.forward;
         var beamLength = maxDistance;
-        
-        var radius = width * 0.5f;
 
         var offsets = CreateOffsets();
         
@@ -55,10 +54,7 @@ public class LaserBeam : MonoBehaviour
             foreach (var hit in hits)
             {
                 var damageable = hit.collider.GetComponent<IDamageable>();
-                if (damageable != null)
-                {
-                    damageable.TakeDamage(damagePerSecond);
-                }
+                damageable?.TakeDamage(damagePerSecond);
             }
 
             damageTimer = damageInterval;
@@ -70,37 +66,29 @@ public class LaserBeam : MonoBehaviour
 
     private Vector3[] CreateOffsets()
     {
-        var iteration = (int)(width * 0.5f / 1f);
-        if (iteration < 1)
-        {
-            var radius = width * 0.5f;
-            return new[]
-            {
-                Vector3.zero, 
-                transform.right * radius,
-                -transform.right * radius,
-                transform.up * radius,
-                -transform.up * radius
-            };
-        }
-        var result = new List<Vector3>(iteration * 8 + 1) { Vector3.zero };
+        var radius = width * 0.5f;
+        var rings = Mathf.CeilToInt(radius / step);
 
-        for (var i = 0; i < iteration; i++)
+        var result = new List<Vector3> { Vector3.zero };
+
+        for (var i = 1; i <= rings; i++)
         {
-            var radius = i * 1f;
-            AppendOffsetFromRadius(result, radius);
+            var currentRadius = i * step < radius ? i * step : radius;
+            var segments = Mathf.RoundToInt(2 * Mathf.PI * currentRadius / step);
+
+            for (var j = 0; j < segments; j++)
+            {
+                var angle = j * Mathf.PI * 2 / segments;
+                var offset = transform.right * (Mathf.Cos(angle) * currentRadius) +
+                             transform.up * (Mathf.Sin(angle) * currentRadius);
+                result.Add(offset);
+            }
         }
-        
+
         return result.ToArray();
     }
 
-    private void AppendOffsetFromRadius(List<Vector3> result, float radius)
-    {
-        for (var i = 0; i < 8; i++)
-        {
-            result.Add(transform.up * (2 * Mathf.PI * radius * i) / 8);
-        }
-    }
+
 
     private void UpdateBeamVisual(float length)
     {
