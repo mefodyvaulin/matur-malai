@@ -98,7 +98,7 @@ public class LaserBeam : MonoBehaviour
     {
         for (var i = 0; i < 8; i++)
         {
-            result.Add(transform.up * i / 8 * 2 * Mathf.PI * radius);
+            result.Add(transform.up * (2 * Mathf.PI * radius * i) / 8);
         }
     }
 
