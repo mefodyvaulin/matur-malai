@@ -58,6 +58,7 @@ public class LaserBeam : MonoBehaviour
         return hits;
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private void ApplyDamage(List<RaycastHit> hits)
     {
         damageTimer -= Time.deltaTime;
