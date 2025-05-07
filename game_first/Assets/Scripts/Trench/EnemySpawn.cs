@@ -46,7 +46,7 @@ public class EnemySpawn : MonoBehaviour
     
     private static EnemyGroupAbstract CreateRandomGroup(int countDrones, Vector3 spawnPosition)
     {
-        var type = rand.Next(0, 3);
+        var type = rand.Next(0, 1);
 
         return type switch
         {

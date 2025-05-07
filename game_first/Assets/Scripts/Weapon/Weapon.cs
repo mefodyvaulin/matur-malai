@@ -35,7 +35,7 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
         InputManager.LeftClick.Disable();
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         // Логика перезарядки
         Recharge();
