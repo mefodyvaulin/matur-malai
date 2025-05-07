@@ -25,11 +25,18 @@ public class LaserBeam : MonoBehaviour
     {
         var origin = transform.position;
         var direction = transform.forward;
-        var beamLength = maxDistance;
 
+        var hits = PerformRaycasts(origin, direction, out var beamLength);
+        ApplyDamage(hits);
+        UpdateBeamVisual(beamLength);
+    }
+
+    private List<RaycastHit> PerformRaycasts(Vector3 origin, Vector3 direction, out float beamLength)
+    {
+        beamLength = maxDistance;
         var offsets = CreateOffsets();
-        
         var hits = new List<RaycastHit>();
+
         foreach (var offset in offsets)
         {
             var rayOrigin = origin + offset;
@@ -47,21 +54,28 @@ public class LaserBeam : MonoBehaviour
                 }
             }
         }
-    
-        damageTimer -= Time.deltaTime;
-        if (damageTimer <= 0f)
-        {
-            foreach (var hit in hits)
-            {
-                var damageable = hit.collider.GetComponent<IDamageable>();
-                damageable?.TakeDamage(damagePerSecond);
-            }
 
-            damageTimer = damageInterval;
-        }
-
-        UpdateBeamVisual(beamLength);
+        return hits;
     }
+
+    private void ApplyDamage(List<RaycastHit> hits)
+    {
+        damageTimer -= Time.deltaTime;
+        if (damageTimer > 0f) return;
+
+        var isShoot = false;
+        foreach (var hit in hits)
+        {
+            var damageable = hit.collider.GetComponent<IDamageable>();
+            if (damageable == null) continue;
+            
+            damageable.TakeDamage(damagePerSecond);
+            isShoot = true;
+        }
+    
+        if (isShoot) damageTimer = damageInterval;
+    }
+
 
 
     private Vector3[] CreateOffsets()
