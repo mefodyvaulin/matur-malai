@@ -12,8 +12,19 @@ public static class GameModel
     public static readonly Dictionary<Enemy, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
     
+    private static float _unscaledTime;
     public static float UnscaledDeltaTime => Time.timeScale != 0 ? Time.unscaledDeltaTime : 0;
-    public static float UnscaledTime => Time.timeScale != 0 ? Time.unscaledTime : 0;
+    public static float UnscaledTime
+    {
+        get
+        {
+            if (Time.timeScale == 0)
+                return _unscaledTime;
+            _unscaledTime = Time.unscaledTime;
+            return _unscaledTime;
+        }
+    }
+
 
     public static void SetPlayerMovement(PlayerMovement player)
     {
