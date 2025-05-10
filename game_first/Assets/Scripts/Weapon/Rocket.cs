@@ -4,7 +4,7 @@ using UnityEngine;
 public class Rocket : Missile
 {
     [SerializeField] private GameObject explosionPrefab;
-    [SerializeField] private float rotationSpeed = 60f;
+    [SerializeField] private float rotationSpeed = 80f;
     protected override float LifeTime => 4f;
     protected override int Damage => 10;
     protected override float Speed => 30f;
@@ -35,7 +35,7 @@ public class Rocket : Missile
             transform.rotation = Quaternion.RotateTowards(
                 transform.rotation,
                 targetRotation,
-                rotationSpeed * Time.deltaTime
+                rotationSpeed * GameModel.UnscaledDeltaTime
             );
         }
         transform.Translate(Vector3.forward * (Speed * Time.deltaTime));

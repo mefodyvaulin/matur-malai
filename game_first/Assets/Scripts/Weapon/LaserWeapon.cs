@@ -58,10 +58,10 @@ public class LaserWeapon : Weapon
             return;
         }
 
-        if (Time.time - LastFireTime < fireRate)
+        if (GameModel.UnscaledTime - LastFireTime < fireRate)
             return;
 
-        LastFireTime = Time.time;
+        LastFireTime = GameModel.UnscaledTime;
         
         if (!laserBeam.gameObject.activeSelf)
         {
@@ -76,7 +76,7 @@ public class LaserWeapon : Weapon
         if (currentClip >= maxClip)
             return;
 
-        ReloadTimer += Time.deltaTime;
+        ReloadTimer += GameModel.UnscaledDeltaTime;
         if (ReloadTimer >= reloadCooldown)
         {
             currentClip++;

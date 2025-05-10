@@ -39,13 +39,13 @@ public class EnemyMovement : MonoBehaviour
     public void MoveFollowerPlayer(Enemy enemy)
     {
         var player = GameModel.PlayerPosition;
-        var tilt = Mathf.Cos(2f * omega1 * Time.time * tiltSpeed / 2.35f + phase) *
+        var tilt = Mathf.Cos(2f * omega1 * GameModel.UnscaledTime * tiltSpeed / 2.35f + phase) *
                    tiltAngle;
         var yTilt = -180 -tilt / 5;
-        var sinOfAng = Mathf.Sin(omega1 * Time.time * tiltSpeed / 2.35f + phase);
-        var cosOfAng = Mathf.Cos(omega1 * Time.time * tiltSpeed / 2.35f + phase);
-        var x = player.x / 1.65f + a * cosOfAng / (1 + sinOfAng * sinOfAng) + 0.45f * Mathf.Sin(omega2 * Time.time * tiltSpeed);
-        var y = 2.75f + player.y + a * cosOfAng * sinOfAng / (1 + sinOfAng * sinOfAng) - 1.5f * Mathf.Sin(omega3 * Time.time * tiltSpeed);
+        var sinOfAng = Mathf.Sin(omega1 * GameModel.UnscaledTime * tiltSpeed / 2.35f + phase);
+        var cosOfAng = Mathf.Cos(omega1 * GameModel.UnscaledTime * tiltSpeed / 2.35f + phase);
+        var x = player.x / 1.65f + a * cosOfAng / (1 + sinOfAng * sinOfAng) + 0.45f * Mathf.Sin(omega2 * GameModel.UnscaledTime * tiltSpeed);
+        var y = 2.75f + player.y + a * cosOfAng * sinOfAng / (1 + sinOfAng * sinOfAng) - 1.5f * Mathf.Sin(omega3 * GameModel.UnscaledTime * tiltSpeed);
         transform.position = new Vector3(x, y, player.z + distanceToEnemy + 3 * sinOfAng);
         transform.rotation = Quaternion.Euler(0, yTilt, tilt);
         enemy.shooting.UpdateShooting();

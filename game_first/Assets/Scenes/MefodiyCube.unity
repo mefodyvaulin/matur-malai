@@ -233,17 +233,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &686652644 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2085896231892278066, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
-  m_PrefabInstance: {fileID: 7603334739988754962}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9fe86cfbd05d4c0a82e04fedb8308bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &729276201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4795884468815129557, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
@@ -462,6 +451,10 @@ PrefabInstance:
       propertyPath: maxDistance
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5208278920767029617, guid: 929660490401044a1a10f463fea140fe, type: 3}
+      propertyPath: damagePerSecond
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6070346839118259981, guid: 929660490401044a1a10f463fea140fe, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -528,6 +521,17 @@ MonoBehaviour:
   - {fileID: 356992594607664942, guid: 32ba36e6c87e63c4da9e492d7115aaa8, type: 3}
   - {fileID: 7965444701846641320, guid: 981f283466fcb3e4e92af0bed14756a5, type: 3}
   randomSegment: {fileID: 1904458252838805973, guid: aa489dd7284ce4b4c8e676df8ff41304, type: 3}
+--- !u!114 &1693611753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4675568366202988108, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
+  m_PrefabInstance: {fileID: 7603334739988754962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0afd3db56567d415ca5410cbd8511af9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1855578787 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3653267179487207528, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
@@ -671,7 +675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 100
   width: 0.5
-  damagePerSecond: 1
+  damagePerSecond: 5
   damageInterval: 0.2
   beamVisual: {fileID: 2061894276}
 --- !u!1 &2061894275
@@ -872,7 +876,7 @@ PrefabInstance:
     - target: {fileID: 4552832513864790779, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
       propertyPath: providerScript
       value: 
-      objectReference: {fileID: 686652644}
+      objectReference: {fileID: 1693611753}
     - target: {fileID: 5376167796944611585, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1026,9 +1030,29 @@ PrefabInstance:
       propertyPath: laserBeam
       value: 
       objectReference: {fileID: 2033284532}
+    - target: {fileID: 4675568366202988108, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4795884468815129557, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567622580662793736, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
+      propertyPath: m_Name
+      value: BulletGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576151511516134102, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
+      propertyPath: m_Name
+      value: RocketGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120153091039379193, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
+      propertyPath: maxHp
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120153091039379193, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
+      propertyPath: currentHp
+      value: 999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

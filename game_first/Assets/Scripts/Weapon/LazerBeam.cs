@@ -6,7 +6,7 @@ public class LaserBeam : MonoBehaviour
 {
     [SerializeField] private float maxDistance = 100f;
     [SerializeField] private float width = 0.5f;
-    [SerializeField] private int damagePerSecond = 1;
+    [SerializeField] private int damagePerSecond = 5;
     [SerializeField] private float damageInterval = 0.2f;
     private float step = 0.5f; // шаг расположения лучей (их частота)
     [SerializeField] private Transform beamVisual; // Ссылка на цилиндр лазера
@@ -61,7 +61,7 @@ public class LaserBeam : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private void ApplyDamage(List<RaycastHit> hits)
     {
-        damageTimer -= Time.deltaTime;
+        damageTimer -= GameModel.UnscaledDeltaTime;
         if (damageTimer > 0f) return;
 
         var isShoot = false;

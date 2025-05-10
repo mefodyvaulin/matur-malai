@@ -40,14 +40,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55997150708120824}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0afd3db56567d415ca5410cbd8511af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.25
   bulletPrefab: {fileID: 0}
-  maxClip: 20
+  maxClip: 50
   reloadCooldown: 0.5
   currentClip: 0
   laserBeam: {fileID: 5524805817114956991}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 5425301178634422124}
   - component: {fileID: 2085896231892278066}
   m_Layer: 0
-  m_Name: Gun2
+  m_Name: BulletGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5567622580662793736}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9fe86cfbd05d4c0a82e04fedb8308bc, type: 3}
   m_Name: 
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 4131900244278879026}
   - component: {fileID: 2441264580469347411}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: RocketGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -438,15 +438,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6576151511516134102}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9fe86cfbd05d4c0a82e04fedb8308bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.25
+  fireRate: 0.5
   bulletPrefab: {fileID: 7863463550594445650, guid: 70277d0e4ef194c55a550ef60608bef0, type: 3}
-  maxClip: 20
-  reloadCooldown: 0.5
+  maxClip: 10
+  reloadCooldown: 1
   currentClip: 0
 --- !u!1 &7873715424463584088
 GameObject:
@@ -464,7 +464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7884402414020457493
 Transform:
   m_ObjectHideFlags: 0
@@ -495,6 +495,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 100
   width: 0.5
-  damagePerSecond: 1
+  damagePerSecond: 5
   damageInterval: 0.2
   beamVisual: {fileID: 1293468090919827491}

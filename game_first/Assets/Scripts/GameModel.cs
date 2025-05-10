@@ -11,10 +11,13 @@ public static class GameModel
     
     public static readonly Dictionary<Enemy, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
+    
+    public static float UnscaledDeltaTime => Time.timeScale != 0 ? Time.unscaledDeltaTime : 0;
+    public static float UnscaledTime => Time.timeScale != 0 ? Time.unscaledTime : 0;
 
     public static void SetPlayerMovement(PlayerMovement player)
     {
-        if ( _player != null ) return;
+        if ( _player is not null ) return;
         _player = player;
     }
 
@@ -27,7 +30,6 @@ public static class GameModel
     {
         Enemies.Remove(enemy);
     }
-
     
     public static void ResetModel()
     {

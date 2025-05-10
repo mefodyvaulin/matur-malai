@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public abstract class Missile : MonoBehaviour
 {
@@ -10,8 +11,20 @@ public abstract class Missile : MonoBehaviour
     protected virtual void Start()
     {
         //AudioSource.Play();
-        Destroy(gameObject, LifeTime);
+        StartCoroutine(DestroyAfterUnscaledTime(LifeTime));
     }
+
+    private IEnumerator DestroyAfterUnscaledTime(float time)
+    {
+        var elapsedTime = 0f;
+        while (elapsedTime < time)
+        {
+            elapsedTime += GameModel.UnscaledDeltaTime;
+            yield return null;
+        }
+        Destroy(gameObject);
+    }
+
 
     protected virtual void OnTriggerEnter(Collider other) //OnCollisionEnter(Collision other) <- можно заменить на это, если будет добавлена физика
     {
