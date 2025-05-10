@@ -5,8 +5,10 @@ using Random = System.Random;
 public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] private Enemy[] enemiesPrefab;
+    [SerializeField] private Animator hatchAnimation;
     private int spawnedAfter;
     private static readonly Random rand = new();
+
 
 
     private void Awake()
@@ -30,6 +32,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void SpawnGroup()
     {
+        hatchAnimation.SetBool("spawnMoment", true);
         var countDrones = rand.Next(3, 7);
         var group = CreateRandomGroup(countDrones, transform.position);
         
@@ -46,7 +49,7 @@ public class EnemySpawn : MonoBehaviour
     
     private static EnemyGroupAbstract CreateRandomGroup(int countDrones, Vector3 spawnPosition)
     {
-        var type = rand.Next(2, 3);
+        var type = rand.Next(0, 3);
 
         return type switch
         {

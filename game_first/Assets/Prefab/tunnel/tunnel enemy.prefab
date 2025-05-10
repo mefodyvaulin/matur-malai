@@ -26,12 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6271645242017499747}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.8565809}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.8565809, y: -17, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4085538904817261565}
+  m_Father: {fileID: 1944083106018208733}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8676118379800425743
 MeshFilter:
@@ -183,7 +183,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4085538904817261565}
-  - component: {fileID: 1794213767714414800}
   m_Layer: 0
   m_Name: tunnel enemy
   m_TagString: Untagged
@@ -205,28 +204,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1944083106018208733}
-  - {fileID: 6546217593937828514}
-  - {fileID: 6807593025291735883}
   - {fileID: 6613377683997728429}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &1794213767714414800
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6965599510327825665}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 54b2dceffb4770e40897715cab0a2480, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 54b2dceffb4770e40897715cab0a2480, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!1 &7659358043745326148
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,12 +233,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7659358043745326148}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.864394}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -4.8643947, y: -17, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4085538904817261565}
+  m_Father: {fileID: 1944083106018208733}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8755407533353698563
 MeshFilter:
@@ -323,6 +303,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1944083106018208733}
   - component: {fileID: 5369558765065515389}
+  - component: {fileID: 719564073261095082}
+  - component: {fileID: 6811129670601218145}
   m_Layer: 0
   m_Name: EnemySpawn
   m_TagString: Untagged
@@ -339,10 +321,12 @@ Transform:
   m_GameObject: {fileID: 7973625282438117197}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -15, y: 17, z: 0.0000017881389}
+  m_LocalPosition: {x: -15, y: 17, z: 0.000001788139}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6546217593937828514}
+  - {fileID: 6807593025291735883}
   m_Father: {fileID: 4085538904817261565}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &5369558765065515389
@@ -360,3 +344,43 @@ MonoBehaviour:
   enemiesPrefab:
   - {fileID: 3077978412082234152, guid: cf263d1406d47724dad04db12b2ddbda, type: 3}
   - {fileID: 1836608600145425377, guid: a00bfa7f520716b439e587f08beab38b, type: 3}
+  hatchAnimation: {fileID: 6811129670601218145}
+--- !u!111 &719564073261095082
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973625282438117197}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 4240c86954c8f5849a9576ab052ad030, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 4240c86954c8f5849a9576ab052ad030, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
+--- !u!95 &6811129670601218145
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973625282438117197}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4070f01fc717cf24bb56c303fc45bd6b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
