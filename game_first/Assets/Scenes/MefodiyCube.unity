@@ -442,7 +442,7 @@ MonoBehaviour:
   - {fileID: 4490638380372218359, guid: 1610b1f6c60492845905406715e38b51, type: 3}
   - {fileID: 6965599510327825665, guid: 9af7d616ccbe78740ba3feb7075a2086, type: 3}
   - {fileID: 235011457330771469, guid: 2ebe147735af168478fa84f3099a97c2, type: 3}
-  randomSegment: {fileID: 1904458252838805973, guid: aa489dd7284ce4b4c8e676df8ff41304, type: 3}
+  randomSegment: {fileID: 4490638380372218359, guid: 1610b1f6c60492845905406715e38b51, type: 3}
 --- !u!1 &1855578787 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3653267179487207528, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
@@ -843,15 +843,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3902620130705724693, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.2543316
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3902620130705724693, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7494324
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3902620130705724693, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.7247667
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3902620130705724693, guid: 1151c072ff0de2941849e8e2df827053, type: 3}
       propertyPath: m_LocalRotation.w

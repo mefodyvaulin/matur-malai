@@ -11,7 +11,7 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
     private static readonly float verticalSpeed = 4f;
     private static readonly float minY = Trench.initialSegmentPosition.y + 4f;
     private static readonly float maxY = Trench.initialSegmentPosition.y + 28f;
-    private static readonly float minX = Trench.initialSegmentPosition.x - 10f;
+    private static readonly float minX = Trench.initialSegmentPosition.x - 11f;
     private static readonly float maxX = Trench.initialSegmentPosition.x + 10f;
 
     private Vector3 moveDirection;
