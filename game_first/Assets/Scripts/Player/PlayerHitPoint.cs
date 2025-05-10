@@ -35,7 +35,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider
     private IEnumerator ChangeVignetteColor(Color targetColor, float duration)
     {
         Color startColor = vignette.color.value;
-        float elapsedTime = 0f;
+        var elapsedTime = 0f;
         while (elapsedTime < duration)
         {
             vignette.color.Override(Color.Lerp(startColor, targetColor, elapsedTime / duration));

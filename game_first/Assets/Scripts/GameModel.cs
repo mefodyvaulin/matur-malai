@@ -11,6 +11,7 @@ public static class GameModel
     
     public static readonly Dictionary<Enemy, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
+    public static int Score;
 
     public static void SetPlayerMovement(PlayerMovement player)
     {
@@ -26,6 +27,7 @@ public static class GameModel
     public static void RemoveEnemy(Enemy enemy)
     {
         Enemies.Remove(enemy);
+        Score += 1;
     }
 
     
