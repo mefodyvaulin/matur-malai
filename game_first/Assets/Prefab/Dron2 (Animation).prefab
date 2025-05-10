@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6394721742590275584}
   - component: {fileID: 3202007778876847009}
   - component: {fileID: 1117843304724504080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 4427210746138722004}
   - component: {fileID: 5575926983294895032}
   - component: {fileID: 5035725538018569860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: dron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6739594226499259931}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DronRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 6708672999842519477}
   - component: {fileID: 7302765526199039650}
   - component: {fileID: 8786690898907768299}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dron2 (Animation)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +528,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1518443439874681749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,6 +558,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6739594226499259931}
     m_Modifications:
+    - target: {fileID: 361866805564563711, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049948372131198596, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148303763915439676, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5797290743876432329, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalScale.y
       value: 2.909111
@@ -609,6 +621,10 @@ PrefabInstance:
     - target: {fileID: 6372615764674820455, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_Name
       value: SmallExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6372615764674820455, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6372615764674820455, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_IsActive
