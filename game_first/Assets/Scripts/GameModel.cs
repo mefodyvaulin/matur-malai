@@ -20,7 +20,7 @@ public static class GameModel
         {
             if (Time.timeScale == 0)
                 return _unscaledTime;
-            _unscaledTime = Time.unscaledTime;
+            _unscaledTime = Time.time / Time.timeScale;
             return _unscaledTime;
         }
     }
@@ -46,5 +46,23 @@ public static class GameModel
     {
         _player = null;
         Enemies.Clear();
+    }
+    
+    private static float maxTimeScale = 9f;
+    private static float cooldownBoost = 2f;
+    private static float boost = 0.02f;
+    private static float updateCooldownBoost;
+    // x - сколько минут потребуется, чтобы достичь значения value
+    // value от [1, maxTimeScale]
+    // 1 + x * 60 * boost / cooldownBoost = value
+    private static void UpTimeScale() // должен быть в Update
+    {
+        if (Time.timeScale >= maxTimeScale) return;
+        
+        updateCooldownBoost -= UnscaledDeltaTime;
+        if (updateCooldownBoost > 0) return;
+        
+        Time.timeScale += boost;
+        updateCooldownBoost = cooldownBoost;
     }
 }
