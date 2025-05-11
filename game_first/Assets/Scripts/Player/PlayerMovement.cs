@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float speed = 10f;          // Скорость полёта вперёд (единиц в секунду)
+    [SerializeField] public float speed = 10f;          // Скорость полёта вперёд (единиц в секунду)
     [SerializeField] private float rotationSpeed = 5f;   // Скорость поворота корабля (используется в Slerp)
     [SerializeField] private float maxPitchAngle = 30f;  // Максимальный угол наклона вверх/вниз (по оси X)
     [SerializeField] private float maxYawAngle = 30f;    // Максимальный угол поворота влево/вправо (по оси Y)
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
         var targetRotation = Quaternion.Euler(currentPitch, currentYaw, roll);
 
         // Плавный поворот объекта от текущего положения к целевому
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime); // RotateTowards
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * GameModel.UnscaledDeltaTime); // RotateTowards
 
     }
     private static float SolveRoll(float pitch, float yaw)

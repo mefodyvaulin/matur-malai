@@ -52,7 +52,7 @@ public static class EnemySpawnStartAnimation
         enemy.transform.position = toPosition;
         
         // Плавный поворот в нужную сторону
-        if (toPosition.z == controlPoint2.z) toPosition.z -= 0.1f;
+        if (toPosition.z == controlPoint2.z) toPosition.z -= 0.1f; // для правильного поворота
         var finalDir = (toPosition - controlPoint2).normalized;
         var finalRot = Quaternion.LookRotation(finalDir);
         yield return SmoothRotate(enemy, finalRot, turningTime);

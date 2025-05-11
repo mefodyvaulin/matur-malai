@@ -68,13 +68,13 @@ public class EnemyGroupCircle : EnemyGroupAbstract
     {
         if (isUp)
         {
-            actualRadius += centerSpeed * Time.deltaTime;
+            actualRadius += centerSpeed * GameModel.UnscaledDeltaTime;
             if (actualRadius >= maxRadius)
                 isUp = false;
         }
         else
         {
-            actualRadius -= centerSpeed * Time.deltaTime;
+            actualRadius -= centerSpeed * GameModel.UnscaledDeltaTime;
             if (actualRadius <= minRadius)
             {
                 isUp = true;

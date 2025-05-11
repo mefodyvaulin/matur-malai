@@ -34,7 +34,7 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
 
     public override void MoveGroup(Enemy enemy)
     {
-        enemy.transform.position += moveDirection * (enemy.movement.direction * verticalSpeed * Time.deltaTime);
+        enemy.transform.position += moveDirection * (enemy.movement.direction * verticalSpeed * GameModel.UnscaledDeltaTime);
 
         var y = enemy.transform.position.y;
         var x = enemy.transform.position.x;

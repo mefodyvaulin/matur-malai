@@ -18,8 +18,8 @@ public class EnemyShooting : MonoBehaviour
         if (rate < 0)
             rate = fireRate;
         
-        if (!(Time.time >= lastFireTime + rate)) return;
-        lastFireTime = Time.time;
+        if (!(GameModel.UnscaledTime >= lastFireTime + rate)) return;
+        lastFireTime = GameModel.UnscaledTime;
         Shoot();
     }
 }

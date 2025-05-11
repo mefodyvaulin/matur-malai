@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private EnemyHealth health;
+    [SerializeField] public EnemyHealth health;
     [SerializeField] public EnemyMovement movement;
     [SerializeField] public EnemyShooting shooting;
 
