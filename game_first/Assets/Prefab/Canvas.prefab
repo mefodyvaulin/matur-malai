@@ -561,7 +561,6 @@ GameObject:
   - component: {fileID: 7721924542317895888}
   - component: {fileID: 5024368127139324431}
   - component: {fileID: 6604597875293698371}
-  - component: {fileID: 8440039213085864195}
   m_Layer: 5
   m_Name: Pause
   m_TagString: Untagged
@@ -628,19 +627,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8440039213085864195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3653267179487207528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 341791351dd8c79419c142cc6226d927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 3653267179487207528}
 --- !u!1 &4514448086248094003
 GameObject:
   m_ObjectHideFlags: 0

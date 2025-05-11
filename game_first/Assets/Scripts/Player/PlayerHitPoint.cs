@@ -21,6 +21,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider
     
     public void TakeDamage(int damage)
     {
+        damageExplosion.gameObject.SetActive(true);
         damageExplosion.Play();
         vignette.color.Override(Color.red);
         StartCoroutine(ChangeVignetteColor(Color.white, 1f));

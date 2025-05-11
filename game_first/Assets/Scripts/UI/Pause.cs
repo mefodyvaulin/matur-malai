@@ -1,20 +1,26 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Pause : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
     private bool paused;
-
+    
+    [SerializeField] private PostProcessVolume postProcessVolume; 
+    private ChromaticAberration chromaticAberrationEffect;
     private void Awake()
     {
+        if (postProcessVolume != null)
+            postProcessVolume.profile.TryGetSettings(out chromaticAberrationEffect);
         InputManager.PauseON.performed += PauseOnAction;
         InputManager.PauseOFF.performed += PauseOnAction;
     }
 
     void OnEnable()
     {
+        if (chromaticAberrationEffect != null)
+            chromaticAberrationEffect.active = !chromaticAberrationEffect.active;
         InputManager.PauseON.Enable();
         InputManager.PauseON.performed += PauseOnAction;
 
@@ -25,6 +31,8 @@ public class Pause : MonoBehaviour
 
     void OnDisable()
     {
+        if (chromaticAberrationEffect != null)
+            chromaticAberrationEffect.active = !chromaticAberrationEffect.active;
         InputManager.PauseON.performed -= PauseOnAction;
         InputManager.PauseON.Disable();
 

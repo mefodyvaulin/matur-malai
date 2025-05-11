@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2650744548741546279}
+  - component: {fileID: 2771894103239550028}
   m_Layer: 0
   m_Name: defeatedObj
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   - {fileID: 3674959896153313864}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2771894103239550028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9176395224772069506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaca50ffb8a0f3641b930a629d9c713f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defeatedExplosion: {fileID: 7175576845809490525}
 --- !u!1001 &1519555453886508049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,5 +118,10 @@ PrefabInstance:
 --- !u!4 &3674959896153313864 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2744556035924557401, guid: 87a3a886835f50e4eb23de1bd1b743a7, type: 3}
+  m_PrefabInstance: {fileID: 1519555453886508049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7175576845809490525 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8539474421358245452, guid: 87a3a886835f50e4eb23de1bd1b743a7, type: 3}
   m_PrefabInstance: {fileID: 1519555453886508049}
   m_PrefabAsset: {fileID: 0}

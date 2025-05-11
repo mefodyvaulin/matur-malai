@@ -139,6 +139,7 @@ MonoBehaviour:
   currentHp: 50
   damageExplosion: {fileID: 3527786596219452068}
   defeatingObject: {fileID: 2930452353228400977, guid: 01f6bebe8a82e41479ef6cdc800a0447, type: 3}
+  postProcessVolume: {fileID: 0}
 --- !u!114 &-5067136435526583797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +413,10 @@ PrefabInstance:
     - target: {fileID: 6372615764674820455, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_Name
       value: SmallExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6372615764674820455, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
