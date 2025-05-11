@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2417580254762635774}
   - component: {fileID: 4419639056392025733}
   - component: {fileID: 8194782850723870653}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: XWing model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 7120153091039379193}
   - component: {fileID: -5067136435526583797}
   - component: {fileID: 5124728076192983540}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: XWing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5425301178634422124}
   - component: {fileID: 2085896231892278066}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Gun2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8909366819622635038}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Guns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4131900244278879026}
   - component: {fileID: 2441264580469347411}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,10 +322,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3902620130705724693}
     m_Modifications:
-    - target: {fileID: 361866805564563711, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 1731636525053436653, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.296737
@@ -338,10 +334,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.296737
       objectReference: {fileID: 0}
-    - target: {fileID: 2049948372131198596, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2335109303080038959, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.4892653
@@ -353,10 +345,6 @@ PrefabInstance:
     - target: {fileID: 2335109303080038959, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.4892653
-      objectReference: {fileID: 0}
-    - target: {fileID: 4148303763915439676, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4183128058645592704, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalScale.x
@@ -427,8 +415,8 @@ PrefabInstance:
       value: SmallExplosion
       objectReference: {fileID: 0}
     - target: {fileID: 6372615764674820455, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
-      propertyPath: m_Layer
-      value: 7
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
