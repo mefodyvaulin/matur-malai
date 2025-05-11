@@ -38,7 +38,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void MoveFollowerPlayer(Enemy enemy)
     {
-        var player = GameModel.PlayerPosition
+        var player = GameModel.PlayerPosition;
         transform.position = Vector3.Lerp(enemy.transform.position,
             new Vector3(player.x,
                         player.y,
