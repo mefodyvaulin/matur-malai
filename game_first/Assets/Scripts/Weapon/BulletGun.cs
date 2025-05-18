@@ -7,6 +7,9 @@ public class BulletGun : MissileGun
         base.Start();
         UltaTime = 30f;
         isBuffShooting = true;
+        fireRate = 0.25f;
+        maxClip = 20;
+        reloadCooldown = 0.5f;
     }
 
     protected override void Shoot()

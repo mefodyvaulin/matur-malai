@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4795884468815129557}
   - component: {fileID: 4675568366202988108}
   m_Layer: 0
-  m_Name: LaserGun
+  m_Name: CenterGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,6 +51,7 @@ MonoBehaviour:
   reloadCooldown: 0.5
   currentClip: 0
   laserBeam: {fileID: 5524805817114956991}
+  ultaTime: 10
 --- !u!1 &1341020659835035721
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,9 +262,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5425301178634422124}
-  - component: {fileID: 2085896231892278066}
+  - component: {fileID: 7474283340391977757}
+  - component: {fileID: 5468687824431238837}
   m_Layer: 0
-  m_Name: BulletGun
+  m_Name: LeftGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +286,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8909366819622635038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2085896231892278066
+--- !u!114 &7474283340391977757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,13 +295,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 5567622580662793736}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9fe86cfbd05d4c0a82e04fedb8308bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f6522a37f8da4b27a1875203357db68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.25
   bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
   maxClip: 20
   reloadCooldown: 0.5
+  currentClip: 0
+--- !u!114 &5468687824431238837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5567622580662793736}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf3ee02b2b5e4dfeb50321c8084aa13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.5
+  bulletPrefab: {fileID: 7863463550594445650, guid: 70277d0e4ef194c55a550ef60608bef0, type: 3}
+  maxClip: 10
+  reloadCooldown: 1
   currentClip: 0
 --- !u!1 &5748636177768609861
 GameObject:
@@ -396,6 +415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8909366819622635038}
+  - component: {fileID: 4944437881746378421}
   m_Layer: 0
   m_Name: Guns
   m_TagString: Untagged
@@ -421,6 +441,23 @@ Transform:
   - {fileID: 4795884468815129557}
   m_Father: {fileID: 3902620130705724693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4944437881746378421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833993858421086106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa8d6e9e387a48328063513abb251d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillBar: {fileID: 0}
+  guns:
+  - {fileID: 5567622580662793736}
+  - {fileID: 6576151511516134102}
+  - {fileID: 55997150708120824}
 --- !u!1 &6576151511516134102
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,9 +467,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4131900244278879026}
-  - component: {fileID: 2441264580469347411}
+  - component: {fileID: 3621775664806558569}
+  - component: {fileID: 6488582137909555457}
   m_Layer: 0
-  m_Name: RocketGun
+  m_Name: RightGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -453,7 +491,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8909366819622635038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2441264580469347411
+--- !u!114 &3621775664806558569
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -462,7 +500,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 6576151511516134102}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9fe86cfbd05d4c0a82e04fedb8308bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f6522a37f8da4b27a1875203357db68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.25
+  bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
+  maxClip: 20
+  reloadCooldown: 0.5
+  currentClip: 0
+--- !u!114 &6488582137909555457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6576151511516134102}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf3ee02b2b5e4dfeb50321c8084aa13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.5

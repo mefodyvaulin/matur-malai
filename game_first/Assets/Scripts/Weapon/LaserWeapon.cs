@@ -67,7 +67,7 @@ public class LaserWeapon : Weapon
 
     protected override void Ulta()
     {
-        laserBeam.width = 5f;
+        laserBeam.width = 2f;
         laserBeam.damagePerSecond = 15;
         if (!laserBeam.gameObject.activeSelf) 
         {

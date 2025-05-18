@@ -9,6 +9,9 @@ public class RocketGun : MissileGun
     {
         base.Start();
         UltaTime = 4f;
+        fireRate = 0.5f;
+        maxClip = 10;
+        reloadCooldown = 1f;
     }
     
     protected override void Ulta()
