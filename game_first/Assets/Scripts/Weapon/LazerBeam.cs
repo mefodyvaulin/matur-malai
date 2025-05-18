@@ -5,8 +5,8 @@ using UnityEngine;
 public class LaserBeam : MonoBehaviour
 {
     [SerializeField] private float maxDistance = 100f;
-    [SerializeField] private float width = 0.5f;
-    [SerializeField] private int damagePerSecond = 5;
+    [SerializeField] public float width = 0.5f;
+    [SerializeField] public int damagePerSecond = 5;
     [SerializeField] private float damageInterval = 0.2f;
     private float step = 0.5f; // шаг расположения лучей (их частота)
     [SerializeField] private Transform beamVisual; // Ссылка на цилиндр лазера

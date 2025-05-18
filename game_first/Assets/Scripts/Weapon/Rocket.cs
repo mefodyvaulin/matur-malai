@@ -8,12 +8,13 @@ public class Rocket : Missile
     protected override float LifeTime => 4f;
     protected override int Damage => 10;
     protected override float Speed => 30f;
-    private Enemy target;
+    public Enemy target;
 
     protected override void Start()
     {
         base.Start();
-        target = TakeTarget();
+        if (target is null)
+            target = TakeTarget();
     }
     
     private void OnDestroy()
@@ -35,7 +36,7 @@ public class Rocket : Missile
             transform.rotation = Quaternion.RotateTowards(
                 transform.rotation,
                 targetRotation,
-                rotationSpeed * GameModel.UnscaledDeltaTime
+                rotationSpeed * Time.deltaTime
             );
         }
         transform.Translate(Vector3.forward * (Speed * Time.deltaTime));

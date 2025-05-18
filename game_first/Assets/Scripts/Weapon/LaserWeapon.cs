@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class LaserWeapon : Weapon
 {
     [SerializeField] private LaserBeam laserBeam;
-    private bool isFiring;
+    [SerializeField] private float ultaTime = 10f;
+    private float defaultWidth;
+    private int defaultDamage;
 
     protected override void Start()
     {
@@ -13,48 +16,39 @@ public class LaserWeapon : Weapon
         {
             Debug.LogError("laserBeam не назначен!");
         }
-        laserBeam?.gameObject.SetActive(false); // Лазер по умолчанию выключен
+        else
+        {
+            UltaTime = ultaTime;
+            defaultWidth = laserBeam.width;
+            defaultDamage = laserBeam.damagePerSecond;
+            laserBeam.gameObject.SetActive(false); // по умолчанию лазер выключен
+        }
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        InputManager.LeftClick.performed += OnFirePressed;
         InputManager.LeftClick.canceled += OnFireReleased;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        InputManager.LeftClick.performed -= OnFirePressed;
         InputManager.LeftClick.canceled -= OnFireReleased;
         laserBeam?.gameObject.SetActive(false); // отключаем лазер при выключении оружия
     }
 
-    private void OnFirePressed(InputAction.CallbackContext context)
-    {
-        isFiring = true;
-    }
-
     private void OnFireReleased(InputAction.CallbackContext context)
-    {
-        isFiring = false;
-        laserBeam?.gameObject.SetActive(false);
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-
-        if (isFiring)
-            Shoot();
+    { 
+        if (!isUltaActive)
+            laserBeam?.gameObject.SetActive(false);
     }
 
     protected override void Shoot()
     {
         if (currentClip <= 0)
         {
-            laserBeam?.gameObject.SetActive(false); // отключаем лазер
+            laserBeam.gameObject.SetActive(false); // отключаем лазер
             return;
         }
 
@@ -62,13 +56,35 @@ public class LaserWeapon : Weapon
             return;
 
         LastFireTime = GameModel.UnscaledTime;
-        
+
         if (!laserBeam.gameObject.activeSelf)
         {
             laserBeam.gameObject.SetActive(true);
         }
 
         currentClip--;
+    }
+
+    protected override void Ulta()
+    {
+        laserBeam.width = 5f;
+        laserBeam.damagePerSecond = 15;
+        if (!laserBeam.gameObject.activeSelf) 
+        {
+            laserBeam.gameObject.SetActive(true);
+        }
+        StartCoroutine(WaitAndDisableUlta());
+    }
+
+    private IEnumerator WaitAndDisableUlta()
+    {
+        while (isUltaActive)
+        {
+            yield return null;
+        }
+        laserBeam.gameObject.SetActive(false);
+        laserBeam.width = defaultWidth;
+        laserBeam.damagePerSecond = defaultDamage;
     }
 
     protected override void Recharge()
