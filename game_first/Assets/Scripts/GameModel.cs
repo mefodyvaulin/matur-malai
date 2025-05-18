@@ -6,8 +6,10 @@ public static class GameModel
 {
     public static PlayerMovement Player => _player ?? throw new System.Exception("Player not set!");
     private static PlayerMovement _player;
-    
     public static Vector3 PlayerPosition => Player.transform.position;
+    
+    public static WeaponSwitcher WeaponSwitcher => _weaponSwitcher ?? throw new System.Exception("WeaponSwitcher not set!");
+    private static WeaponSwitcher _weaponSwitcher;
     
     public static readonly Dictionary<Enemy, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
@@ -30,6 +32,12 @@ public static class GameModel
     {
         if ( _player is not null ) return;
         _player = player;
+    }
+    
+    public static void SetWeaponSwitcher(WeaponSwitcher weaponSwitcher)
+    {
+        if ( _weaponSwitcher is not null ) return;
+        _weaponSwitcher = weaponSwitcher;
     }
 
     public static void AddEnemy(Enemy enemy)

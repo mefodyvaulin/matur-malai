@@ -9,6 +9,7 @@ public class WeaponSwitcher : MonoBehaviour
 
     void Start()
     {
+        GameModel.SetWeaponSwitcher(this);
         for (var i = 0; i < guns.Length; i++)
         {
             allWeapons[i] = guns[i].GetComponents<Weapon>();

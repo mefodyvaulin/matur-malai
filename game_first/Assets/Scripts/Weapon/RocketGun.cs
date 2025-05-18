@@ -22,7 +22,7 @@ public class RocketGun : MissileGun
     // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator UltaCoroutine()
     {
-        for (var i = 0; i < 5; i++)
+        for (var i = 0; i < 2; i++)
         {
             foreach (var enemy in GetRandomizedEnemiesOrNulls())
             {

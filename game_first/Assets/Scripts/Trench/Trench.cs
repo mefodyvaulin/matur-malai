@@ -14,6 +14,9 @@ public class Trench : MonoBehaviour
     private readonly int[] weights = {3, 5, 4};
     private int[] randomSegmentVariants;
     private int variantIndex;
+    
+    [SerializeField] private GameObject buffWeaponPrefab;
+
 
     public static event Action<TrenchState> OnGenerateContinuationOfTrench;
     public enum TrenchState // Enum для индексации объектов в TrenchSegment
@@ -65,6 +68,8 @@ public class Trench : MonoBehaviour
             initialSegmentPosition + numberOfSegments * segmentHalfLength * Vector3.forward,
             Quaternion.identity);
         currentSegments.Add(firstSegment);
+        
+        TrySpawnBuffWeapon(firstSegment);
 
         numberOfSegments++;
     }
@@ -85,4 +90,19 @@ public class Trench : MonoBehaviour
         randomSegmentVariants = RandomDistributions.CreateDistributionArray(weights);
         RandomDistributions.ShuffleArray(randomSegmentVariants);
     }
+    
+    private void TrySpawnBuffWeapon(GameObject segment)
+    {
+        if (!(Random.value <= 2f)) return;
+
+        var center = segment.transform.position;
+
+        var randomX = Random.Range(GameModel.Player.trenchSizeDownLeft.x, GameModel.Player.trenchSizeUpRight.x);
+        var randomY = Random.Range(GameModel.Player.trenchSizeDownLeft.y, GameModel.Player.trenchSizeUpRight.y);
+        var randomZ = Random.Range(center.z - segmentHalfLength / 2, center.z + segmentHalfLength / 2);
+
+        var randomPosition = new Vector3(randomX, randomY, randomZ);
+        Instantiate(buffWeaponPrefab, randomPosition, Quaternion.identity);
+    }
+
 }
