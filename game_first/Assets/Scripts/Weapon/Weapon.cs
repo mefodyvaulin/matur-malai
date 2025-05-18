@@ -14,6 +14,7 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
     protected float UltaTime;
     private float curUltaTime;
     protected bool isUltaActive;
+    protected bool isBuffShooting = false;
     
     public float MaxValue => maxClip;
     public float CurrentValue => currentClip;
@@ -55,9 +56,9 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
             {
                 isUltaActive = false;
             }
-            return;
+            if (!isBuffShooting) return;
         }
-        if (false)
+        if (InputManager.LeftClick.IsPressed())
             Shoot();
     }
 

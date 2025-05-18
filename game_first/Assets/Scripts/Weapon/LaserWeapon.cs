@@ -18,7 +18,7 @@ public class LaserWeapon : Weapon
         }
         else
         {
-            UltaTime = ultaTime;
+            UltaTime = 10f;
             defaultWidth = laserBeam.width;
             defaultDamage = laserBeam.damagePerSecond;
             laserBeam.gameObject.SetActive(false); // по умолчанию лазер выключен

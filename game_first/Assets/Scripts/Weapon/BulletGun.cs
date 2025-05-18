@@ -1,62 +1,29 @@
-using System;
-using System.Collections;
-using System.Linq;
 using UnityEngine;
 
-public class BulletGun : Weapon
+public class BulletGun : MissileGun
 {
     protected override void Start()
     {
         base.Start();
-        UltaTime = 1f;
-    }
-
-    protected override void Recharge()
-    {
-        if (currentClip >= maxClip) return;
-        ReloadTimer += GameModel.UnscaledDeltaTime;
-        if (!(ReloadTimer >= reloadCooldown)) return;
-        currentClip++;
-        ReloadTimer = 0f;
+        UltaTime = 30f;
+        isBuffShooting = true;
     }
 
     protected override void Shoot()
     {
         if (!(GameModel.UnscaledTime >= LastFireTime + fireRate && currentClip > 0)) return;
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
-        currentClip--;
-        LastFireTime = GameModel.UnscaledTime;
+        if (!isUltaActive) return;
+        
+        float[] angles = { -5f, -2.5f, 2.5f,  5f };
+        foreach (var angle in angles)
+        {
+            var rotationWithOffset = Quaternion.Euler(transform.rotation.eulerAngles.x + angle, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+            Instantiate(bulletPrefab, transform.position, rotationWithOffset);
+        }
+        base.Shoot();
     }
-
+    
     protected override void Ulta()
     {
-        StartCoroutine(UltaCoroutine());
-    }
-
-    // ReSharper disable Unity.PerformanceAnalysis
-    private IEnumerator UltaCoroutine()
-    {
-        for (var i = 0; i < 5; i++)
-        {
-            foreach (var enemy in GetRandomizedEnemiesOrNulls())
-            {
-                var bulletObj = Instantiate(bulletPrefab, transform.position, transform.rotation);
-                var rocket = bulletObj.GetComponent<Rocket>();
-                if (rocket is not null)
-                {
-                    rocket.target = enemy;
-                }
-                yield return new WaitForSeconds(0.1f);
-            }
-        }
-    }
-
-    private static Enemy[] GetRandomizedEnemiesOrNulls()
-    {
-        if (GameModel.Enemies.Keys.Count > 0) 
-            return GameModel.Enemies.Keys
-                .OrderBy(_ => Guid.NewGuid())
-                .ToArray();
-        return new Enemy[] { null, null, null };        
     }
 }
