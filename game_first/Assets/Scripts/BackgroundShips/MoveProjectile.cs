@@ -13,7 +13,7 @@ public class MoveProjectile: MonoBehaviour
 
     private IEnumerator MoveAndDestroyCoroutine()
     {
-        float elapsedTime = 0f;
+        var elapsedTime = 0f;
 
         while (elapsedTime < lifetime)
         {

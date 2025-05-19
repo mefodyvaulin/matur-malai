@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3060686362265853919}
   - component: {fileID: 1944021776023555266}
   - component: {fileID: -7998011124235013043}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 0}
   explosionPrefab: {fileID: 532268390656924293, guid: 38fceecc203b440319dcefa0b1b24cc8, type: 3}
+  rotationSpeed: 80
 --- !u!64 &1944021776023555266
 MeshCollider:
   m_ObjectHideFlags: 0

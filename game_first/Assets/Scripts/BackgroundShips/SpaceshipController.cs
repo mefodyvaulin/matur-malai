@@ -22,7 +22,8 @@ public class SpaceshipController : MonoBehaviour
         nextFireTime =  Random.Range(0f, 1f / fireRate);
         nextDamageTime = Random.Range(0f, 1f / damageRate);
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         delta = Time.time <= timeToPosition ? speed * Time.time : delta;
         transform.position = initialPosition + 
@@ -34,21 +35,20 @@ public class SpaceshipController : MonoBehaviour
                 Shoot();
             nextFireTime = Time.time + 1f / fireRate;
         }
-        if (Time.time >= nextDamageTime)
-        {
-            int randomDamagePosition = Random.Range(0, damageExplosions.Length);
-            damageExplosions[randomDamagePosition].Play();
-            nextDamageTime = Time.time + 1f / damageRate;
-        }
+
+        if (!(Time.time >= nextDamageTime)) return;
+        var randomDamagePosition = Random.Range(0, damageExplosions.Length);
+        damageExplosions[randomDamagePosition].Play();
+        nextDamageTime = Time.time + 1f / damageRate;
     }
 
-    void Shoot()
+    private void Shoot()
     {
-        float randomYRotation = Random.Range(yRandomLeftBorderAngle, yRandomRightBorderAngle);
-        float randomXRotation = Random.Range(-xRandomAngle, xRandomAngle);
-        int randomSpawnPosition = Random.Range(0, firePoints.Length);
+        var randomYRotation = Random.Range(yRandomLeftBorderAngle, yRandomRightBorderAngle);
+        var randomXRotation = Random.Range(-xRandomAngle, xRandomAngle);
+        var randomSpawnPosition = Random.Range(0, firePoints.Length);
 
-        Quaternion randomRotation = firePoints[randomSpawnPosition].rotation * Quaternion.Euler(randomXRotation, randomYRotation, 0);
+        var randomRotation = firePoints[randomSpawnPosition].rotation * Quaternion.Euler(randomXRotation, randomYRotation, 0);
 
         Instantiate(projectilePrefab, firePoints[randomSpawnPosition].position, randomRotation);
     }

@@ -6,7 +6,7 @@ public class TimeOfPlayCounter : MonoBehaviour
 {
     [FormerlySerializedAs("text")] [SerializeField] private TextMeshProUGUI textOfScore;
 
-    void Update()
+    private void Update()
     {
         if (Time.timeScale != 0)
             textOfScore.text = (Time.time * 100).ToString("F0");

@@ -20,7 +20,7 @@ public class MovebackgroundFighter: MonoBehaviour
 
     private IEnumerator MoveAndDestroyCoroutine()
     {
-        float elapsedTime = 0f;
+        var elapsedTime = 0f;
 
         while (elapsedTime < lifetime)
         {
@@ -36,17 +36,17 @@ public class MovebackgroundFighter: MonoBehaviour
                 nextSpawnDamage = Time.time + 1f / damageRate;
             }
             transform.position += moveSpeed * Time.deltaTime * transform.forward;
-            transform.Rotate(-Mathf.Abs(0.5f * Mathf.Sin(Time.time)), 
+            transform.Rotate(-Mathf.Abs(0.1f * Mathf.Sin(Time.time)),
                 0f, 
-                0.8f * Mathf.Cos(Time.time));
+                0.16f * Mathf.Cos(Time.time));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         Destroy(gameObject);
     }
-    
-    void Shoot()
+
+    private void Shoot()
     {
         Instantiate(projectilePrefab, 
             transform.position + Random.Range(-2, 4) * transform.forward, 

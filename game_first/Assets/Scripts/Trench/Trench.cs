@@ -10,7 +10,7 @@ public class Trench : MonoBehaviour
     private List<GameObject> currentSegments;
     private float segmentHalfLength;
     public static Vector3 initialSegmentPosition;
-    public static float numberOfSegments;
+    private static float numberOfSegments;
     private readonly int[] weights = {3, 5, 4};
     private int[] randomSegmentVariants;
     private int variantIndex;

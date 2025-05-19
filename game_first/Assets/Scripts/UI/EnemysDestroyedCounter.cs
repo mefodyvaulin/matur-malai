@@ -7,10 +7,8 @@ public class EnemysDestroyedCounter : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textOfTime;
     void Update()
     {
-        if (score != GameModel.Score)
-        {
-            score = GameModel.Score;
-            textOfTime.text = $"Enemys destroyed: {score}";
-        }
+        if (score == GameModel.Score) return;
+        score = GameModel.Score;
+        textOfTime.text = $"Enemys destroyed: {score}";
     }
 }

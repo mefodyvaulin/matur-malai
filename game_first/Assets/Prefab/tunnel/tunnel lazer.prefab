@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4592831746280531991}
-  m_Layer: 0
+  - component: {fileID: -1144192845313214674}
+  m_Layer: 9
   m_Name: tunnel lazer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,6 +34,28 @@ Transform:
   - {fileID: 5889094615525337367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &-1144192845313214674
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235011457330771469}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7204494863590649665, guid: c5ef6d7641797457e85df47481d0399e, type: 3}
 --- !u!1 &4218641329594625586
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +67,7 @@ GameObject:
   - component: {fileID: 5372633437621486707}
   - component: {fileID: 271028680913692690}
   - component: {fileID: 584914673486063271}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tunnel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5889094615525337367}
   - component: {fileID: 4447166017429897960}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LazewrSpawn
   m_TagString: Respawn
   m_Icon: {fileID: 0}
