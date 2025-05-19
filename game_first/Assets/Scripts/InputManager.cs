@@ -2,11 +2,12 @@ using UnityEngine.InputSystem;
 
 public static class InputManager
 {
-    public static UserInputAction UserInputAction = new();
+    private static UserInputAction UserInputAction = new();
     public static InputAction MouseMove = UserInputAction.XWing.MouseMovment;
     public static InputAction LeftClick = UserInputAction.XWing.WeaponMovement;
     public static InputAction PauseON = UserInputAction.XWing.Pause;
     public static InputAction PauseOFF = UserInputAction.Pause.Pause;
+    public static InputAction Ulta = UserInputAction.XWing.Ulta;
 
     public static void EnablePlayer()
     {

@@ -6,11 +6,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] public EnemyHealth health;
     [SerializeField] public EnemyMovement movement;
     [SerializeField] public EnemyShooting shooting;
-
-
+    private Animator animator;
+    
     private void Awake()
     {
         GameModel.AddEnemy(this);
+        animator = GetComponent<Animator>();
     }
 
     private void OnDestroy()
@@ -22,7 +23,7 @@ public class Enemy : MonoBehaviour
     {
         if (!health.IsAlive)
         {
-            GetComponent<Animator>().enabled = false;
+            animator.enabled = false;
             shooting.enabled = false;
             movement.enabled = false;
             Destroy(gameObject, health.audioSources[1].clip.length);
@@ -32,7 +33,7 @@ public class Enemy : MonoBehaviour
         movement.Move?.Invoke(this);
         if (GameModel.CountEnemies != 1) return;
         movement.ClearMove();
-        GetComponent<Animator>().SetLayerWeight(1, 1);
+        animator.SetLayerWeight(1, 1);
         movement.Move += movement.MoveFollowerPlayer;
     }
 }

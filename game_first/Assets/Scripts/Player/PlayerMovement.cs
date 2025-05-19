@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxYawAngle = 30f;    // Максимальный угол поворота влево/вправо (по оси Y)
     [SerializeField] private float sensitivity = 1f;     // Чувствительность мыши — насколько сильно движение мыши влияет на поворот
     [SerializeField] private float centeringSpeed = 10f; // Скорость возврата корабля в нейтральное положение, когда мышь не двигается
-    [SerializeField] private Vector2 trenchSizeUpRight = new(15f, 40f);     // Ограничение тоннеля верхний правый угол
-    [SerializeField] private Vector2 trenchSizeDownLeft = new(-10f, 16f);      // Ограничение тоннеля нижний левый угол
+    [SerializeField] public Vector2 trenchSizeUpRight = new(15f, 40f);     // Ограничение тоннеля верхний правый угол
+    [SerializeField] public Vector2 trenchSizeDownLeft = new(-10f, 16f);      // Ограничение тоннеля нижний левый угол
     [SerializeField] private float timeSpeed = 1f;
 
     // === Текущие углы поворота ===
@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             currentYaw = Mathf.MoveTowards(currentYaw, 0f, centeringSpeed * Time.deltaTime);
         }
 
-        var roll = SolveRoll(currentPitch, currentYaw);
+        var roll = -currentYaw * 1.5f + currentPitch * 0.5f;
         var targetRotation = Quaternion.Euler(currentPitch, currentYaw, roll);
 
         // Плавный поворот объекта от текущего положения к целевому

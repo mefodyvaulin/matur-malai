@@ -22,20 +22,24 @@ public abstract class Missile : MonoBehaviour
             elapsedTime += GameModel.UnscaledDeltaTime;
             yield return null;
         }
-        Destroy(gameObject);
+        Die();
     }
-
-
+    
     protected virtual void OnTriggerEnter(Collider other) //OnCollisionEnter(Collision other) <- можно заменить на это, если будет добавлена физика
     {
         var damageable = other.GetComponent<IDamageable>(); // Проверяем, есть ли на объекте интерфейс IDamageable
         damageable?.TakeDamage(Damage);
-        Destroy(gameObject);
+        Die();
     }
     
     private void Update()
     {
         Move();
+    }
+    
+    protected virtual void Die()
+    {
+        Destroy(gameObject);
     }
 
     protected abstract void Move();

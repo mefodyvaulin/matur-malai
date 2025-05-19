@@ -35,7 +35,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider
     
     private IEnumerator ChangeVignetteColor(Color targetColor, float duration)
     {
-        Color startColor = vignette.color.value;
+        var startColor = vignette.color.value;
         var elapsedTime = 0f;
         while (elapsedTime < duration)
         {

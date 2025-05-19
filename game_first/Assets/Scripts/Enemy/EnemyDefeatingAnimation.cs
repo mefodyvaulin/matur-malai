@@ -4,12 +4,13 @@ using UnityEngine;
 public class EnemyDefeatingAnimation : MonoBehaviour
 {
     [SerializeField] ParticleSystem defeatedExplosion;
-    void Start()
+
+    private void Start()
     {
         StartCoroutine(PlayAndDestroy());
     }
-    
-    IEnumerator PlayAndDestroy()
+
+    private IEnumerator PlayAndDestroy()
     {
         defeatedExplosion.Play();
         yield return new WaitUntil(() => !defeatedExplosion.isPlaying);

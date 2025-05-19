@@ -20,6 +20,12 @@ public class FillBar : MonoBehaviour
     {
         barImage.fillAmount = provider.CurrentValue / provider.MaxValue;
     }
+
+    public void SetProvider(MonoBehaviour newProviderScript)
+    {
+        providerScript = newProviderScript;
+        provider = newProviderScript as IFillBarProvider;
+    }
 }
 
 
