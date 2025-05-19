@@ -33,11 +33,7 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
         InputManager.LeftClick.Enable();
         isUltaActive = false;
     }
-
-    protected virtual void OnDisable()
-    {
-        InputManager.LeftClick.Disable();
-    }
+    
 
     protected virtual void Update()
     {

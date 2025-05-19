@@ -38,8 +38,8 @@ public class BuffWeapon : MonoBehaviour
         if (other.GetComponent<PlayerMovement>())
         {
             SwitchWeapon();
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
     
     private void SwitchWeapon()

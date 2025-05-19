@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             currentYaw = Mathf.MoveTowards(currentYaw, 0f, centeringSpeed * Time.deltaTime);
         }
 
-        var roll = SolveRoll(currentPitch, currentYaw);
+        var roll = -currentYaw * 1.5f + currentPitch * 0.5f;
         var targetRotation = Quaternion.Euler(currentPitch, currentYaw, roll);
 
         // Плавный поворот объекта от текущего положения к целевому

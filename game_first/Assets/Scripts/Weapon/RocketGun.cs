@@ -5,6 +5,7 @@ using System.Linq;
 
 public class RocketGun : MissileGun
 {
+    private Rocket rocketPrefab;
     protected override void Start()
     {
         base.Start();
@@ -12,26 +13,22 @@ public class RocketGun : MissileGun
         fireRate = 0.5f;
         maxClip = 10;
         reloadCooldown = 1f;
+        rocketPrefab = bulletPrefab.GetComponent<Rocket>();
     }
     
     protected override void Ulta()
     {
         StartCoroutine(UltaCoroutine());
     }
-
-    // ReSharper disable Unity.PerformanceAnalysis
+    
     private IEnumerator UltaCoroutine()
     {
         for (var i = 0; i < 2; i++)
         {
             foreach (var enemy in GetRandomizedEnemiesOrNulls())
             {
-                var bulletObj = Instantiate(bulletPrefab, transform.position, transform.rotation);
-                var rocket = bulletObj.GetComponent<Rocket>();
-                if (rocket is not null)
-                {
-                    rocket.target = enemy;
-                }
+                var rocket = Instantiate(rocketPrefab, transform.position, transform.rotation);
+                rocket.target = enemy;
                 yield return new WaitForSeconds(0.1f);
             }
         }

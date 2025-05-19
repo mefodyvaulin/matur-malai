@@ -190,8 +190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 50
   currentHp: 50
-  damageExplosion: {fileID: 0}
-  defeatingObject: {fileID: 0}
+  damageExplosion: {fileID: 489523231305322811}
+  defeatingObject: {fileID: 9176395224772069506, guid: a8b785c60f65fa547b56db3d92c70cc7, type: 3}
   postProcessVolume: {fileID: 0}
 --- !u!114 &-5067136435526583797
 MonoBehaviour:
@@ -636,6 +636,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+--- !u!198 &489523231305322811 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 63275411451312604, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+  m_PrefabInstance: {fileID: 444711151986747623}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6223960771911031086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5797290743876432329, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}

@@ -104,5 +104,4 @@ public class Trench : MonoBehaviour
         var randomPosition = new Vector3(randomX, randomY, randomZ);
         Instantiate(buffWeaponPrefab, randomPosition, Quaternion.identity);
     }
-
 }

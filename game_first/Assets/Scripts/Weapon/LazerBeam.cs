@@ -68,7 +68,7 @@ public class LaserBeam : MonoBehaviour
         foreach (var hit in hits)
         {
             var damageable = hit.collider.GetComponent<IDamageable>();
-            if (damageable == null) continue;
+            if (damageable is null) continue;
             
             damageable.TakeDamage(damagePerSecond);
             isShoot = true;

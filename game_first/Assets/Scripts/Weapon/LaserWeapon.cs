@@ -31,9 +31,8 @@ public class LaserWeapon : Weapon
         InputManager.LeftClick.canceled += OnFireReleased;
     }
 
-    protected override void OnDisable()
+    protected void OnDisable()
     {
-        base.OnDisable();
         InputManager.LeftClick.canceled -= OnFireReleased;
         laserBeam?.gameObject.SetActive(false); // отключаем лазер при выключении оружия
     }
