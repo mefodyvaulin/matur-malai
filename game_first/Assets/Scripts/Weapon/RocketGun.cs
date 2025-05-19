@@ -23,7 +23,7 @@ public class RocketGun : MissileGun
     
     private IEnumerator UltaCoroutine()
     {
-        for (var i = 0; i < 2; i++)
+        for (var i = 0; i < 3; i++)
         {
             foreach (var enemy in GetRandomizedEnemiesOrNulls())
             {

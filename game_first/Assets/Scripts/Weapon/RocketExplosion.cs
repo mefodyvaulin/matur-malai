@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RocketExplosion : MonoBehaviour
@@ -25,8 +26,19 @@ public class RocketExplosion : MonoBehaviour
                 processed.Add(obj);
             }
         }
-        
-        Destroy(gameObject, 0.1f);
+
+        StartCoroutine(DestroyAfterUnscaledTime(0.1f));
+    }
+    
+    private IEnumerator DestroyAfterUnscaledTime(float time)
+    {
+        var elapsedTime = 0f;
+        while (elapsedTime < time)
+        {
+            elapsedTime += GameModel.UnscaledDeltaTime;
+            yield return null;
+        }
+        Destroy(gameObject);
     }
     
     private void OnDrawGizmosSelected()

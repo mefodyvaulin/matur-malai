@@ -7,7 +7,7 @@ public class Rocket : Missile
     [SerializeField] private float rotationSpeed = 80f;
     protected override float LifeTime => 4f;
     protected override int Damage => 10;
-    protected override float Speed => 30f;
+    protected override float Speed => 20f;
     public Enemy target;
 
     protected override void Start()
@@ -16,10 +16,11 @@ public class Rocket : Missile
         if (target is null)
             target = TakeTarget();
     }
-    
-    private void OnDestroy()
+
+    protected override void Die()
     {
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        base.Die();
     }
     
     protected override void Move()
@@ -39,7 +40,7 @@ public class Rocket : Missile
                 rotationSpeed * Time.deltaTime
             );
         }
-        transform.Translate(Vector3.forward * (Speed * Time.deltaTime));
+        transform.Translate(Vector3.forward * (GameModel.Player.speed * Time.deltaTime + Speed * GameModel.UnscaledDeltaTime));
 
         if (!(target is not null && target.health.IsAlive))
         {

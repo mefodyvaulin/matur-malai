@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BulletGun : MissileGun
 {
+    private float[] angles = { -5f, -2.5f, 2.5f, 5f };
     protected override void Start()
     {
         base.Start();
@@ -15,13 +16,14 @@ public class BulletGun : MissileGun
     protected override void Shoot()
     {
         if (!(GameModel.UnscaledTime >= LastFireTime + fireRate && currentClip > 0)) return;
-        if (!isUltaActive) return;
-        
-        float[] angles = { -5f, -2.5f, 2.5f,  5f };
-        foreach (var angle in angles)
+        if (isUltaActive)
         {
-            var rotationWithOffset = Quaternion.Euler(transform.rotation.eulerAngles.x + angle, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-            Instantiate(bulletPrefab, transform.position, rotationWithOffset);
+            foreach (var angle in angles)
+            {
+                var rotationWithOffset = Quaternion.Euler(transform.rotation.eulerAngles.x + angle,
+                    transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+                Instantiate(bulletPrefab, transform.position, rotationWithOffset);
+            }
         }
         base.Shoot();
     }

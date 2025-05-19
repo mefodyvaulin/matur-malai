@@ -31,7 +31,7 @@ public class EnemyGroupLemniskata : EnemyGroupAbstract
     public override void MoveGroup(Enemy enemy)
     {
         var enemyIndex = GameModel.Enemies[enemy] - 1;
-        enemyAngles[enemyIndex] += deltaAngle * Time.deltaTime;
+        enemyAngles[enemyIndex] += deltaAngle * GameModel.UnscaledDeltaTime;
         var xAndY = GetXAndY(enemyAngles[enemyIndex]);
         enemy.transform.position += new Vector3(
             xAndY.Item1 + LemniskataCenter.x - enemy.transform.position.x, 

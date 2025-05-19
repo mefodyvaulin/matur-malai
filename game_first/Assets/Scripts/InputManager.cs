@@ -7,6 +7,7 @@ public static class InputManager
     public static InputAction LeftClick = UserInputAction.XWing.WeaponMovement;
     public static InputAction PauseON = UserInputAction.XWing.Pause;
     public static InputAction PauseOFF = UserInputAction.Pause.Pause;
+    public static InputAction Ulta = UserInputAction.XWing.Ulta;
 
     public static void EnablePlayer()
     {

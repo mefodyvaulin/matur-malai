@@ -31,6 +31,7 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
         // в котором обращаться к другой кнопке оружия (предварительно, создав ее в InputMap)
         // если таки пушек будет больше половины, лучше сделать абстрактным
         InputManager.LeftClick.Enable();
+        InputManager.Ulta.Enable();
         isUltaActive = false;
     }
     
@@ -39,7 +40,7 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
     {
         Recharge();
         
-        if (InputManager.LeftClick.IsPressed() && !isUltaActive)
+        if (InputManager.Ulta.IsPressed() && !isUltaActive)
         {
             curUltaTime = UltaTime;
             isUltaActive = true;

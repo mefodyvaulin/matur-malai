@@ -7,9 +7,16 @@ public class BulletEnemy: Missile
     protected override float Speed => 50f;
     protected override void Move()
     {
-        transform.Translate(Vector3.forward * (Speed * GameModel.UnscaledDeltaTime - GameModel.Player.speed * Time.deltaTime));
+        transform.Translate(Vector3.forward * (Speed * GameModel.UnscaledDeltaTime));
     }
 }
+
+/* ВАРИАНТ_1
+   protected override void Move()
+   {
+       transform.Translate(Vector3.forward * (Speed * GameModel.UnscaledDeltaTime - GameModel.Player.speed * Time.deltaTime));
+   }
+ */
 
 /* ВАРИАНТ_2
    private float? previousZ = null;

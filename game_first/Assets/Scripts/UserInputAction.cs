@@ -117,6 +117,15 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ulta"",
+                    ""type"": ""Button"",
+                    ""id"": ""3e396e2b-694a-4510-ba0e-f87127527ba2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -150,6 +159,17 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""WeaponMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90c53ff7-9582-40e5-b5e3-e9124ec4df5a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ulta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -707,6 +727,7 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
         m_XWing_MouseMovment = m_XWing.FindAction("MouseMovment", throwIfNotFound: true);
         m_XWing_Pause = m_XWing.FindAction("Pause", throwIfNotFound: true);
         m_XWing_WeaponMovement = m_XWing.FindAction("WeaponMovement", throwIfNotFound: true);
+        m_XWing_Ulta = m_XWing.FindAction("Ulta", throwIfNotFound: true);
         // Pause
         m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
         m_Pause_Pause = m_Pause.FindAction("Pause", throwIfNotFound: true);
@@ -807,6 +828,7 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_XWing_MouseMovment;
     private readonly InputAction m_XWing_Pause;
     private readonly InputAction m_XWing_WeaponMovement;
+    private readonly InputAction m_XWing_Ulta;
     /// <summary>
     /// Provides access to input actions defined in input action map "XWing".
     /// </summary>
@@ -830,6 +852,10 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "XWing/WeaponMovement".
         /// </summary>
         public InputAction @WeaponMovement => m_Wrapper.m_XWing_WeaponMovement;
+        /// <summary>
+        /// Provides access to the underlying input action "XWing/Ulta".
+        /// </summary>
+        public InputAction @Ulta => m_Wrapper.m_XWing_Ulta;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -865,6 +891,9 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
             @WeaponMovement.started += instance.OnWeaponMovement;
             @WeaponMovement.performed += instance.OnWeaponMovement;
             @WeaponMovement.canceled += instance.OnWeaponMovement;
+            @Ulta.started += instance.OnUlta;
+            @Ulta.performed += instance.OnUlta;
+            @Ulta.canceled += instance.OnUlta;
         }
 
         /// <summary>
@@ -885,6 +914,9 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
             @WeaponMovement.started -= instance.OnWeaponMovement;
             @WeaponMovement.performed -= instance.OnWeaponMovement;
             @WeaponMovement.canceled -= instance.OnWeaponMovement;
+            @Ulta.started -= instance.OnUlta;
+            @Ulta.performed -= instance.OnUlta;
+            @Ulta.canceled -= instance.OnUlta;
         }
 
         /// <summary>
@@ -1237,6 +1269,13 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnWeaponMovement(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ulta" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUlta(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Pause" which allows adding and removing callbacks.
