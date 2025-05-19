@@ -44,15 +44,12 @@ public class SpaceshipController : MonoBehaviour
 
     void Shoot()
     {
-        // Генерируем случайный угол от -35 до -60
         float randomYRotation = Random.Range(yRandomLeftBorderAngle, yRandomRightBorderAngle);
         float randomXRotation = Random.Range(-xRandomAngle, xRandomAngle);
         int randomSpawnPosition = Random.Range(0, firePoints.Length);
 
-        // Создаем новый поворот, добавляя случайный угол к начальному повороту
         Quaternion randomRotation = firePoints[randomSpawnPosition].rotation * Quaternion.Euler(randomXRotation, randomYRotation, 0);
 
-        // Создаем объект с новым поворотом
         Instantiate(projectilePrefab, firePoints[randomSpawnPosition].position, randomRotation);
     }
 }

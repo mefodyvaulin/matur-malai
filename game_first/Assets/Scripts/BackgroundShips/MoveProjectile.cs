@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class MoveProjectile: MonoBehaviour
 {
-    public float moveSpeed = 5f; // Скорость движения
-    private const float lifetime = 15f; // Время жизни объекта
+    public float moveSpeed = 5f;
+    private const float lifetime = 15f;
 
     void Start()
     {
-        // Запускаем корутину для движения и удаления объекта
         StartCoroutine(MoveAndDestroyCoroutine());
     }
 
@@ -18,13 +17,11 @@ public class MoveProjectile: MonoBehaviour
 
         while (elapsedTime < lifetime)
         {
-            // Двигаем объект вперед
-            transform.position += transform.forward * moveSpeed * Time.deltaTime;
+            transform.position +=  moveSpeed * Time.deltaTime * transform.forward;
             elapsedTime += Time.deltaTime;
-            yield return null; // Ждем следующий кадр
+            yield return null; 
         }
-
-        // Удаляем объект со сцены
+        
         Destroy(gameObject);
     }
 }

@@ -28,14 +28,13 @@ public class backgroundFightersController : MonoBehaviour
 
     void SpawnFighter()
     {
-        // Генерируем случайный угол от -35 до -60
+
         float randomYRotation = Random.Range(yRandomLeftBorderAngle, yRandomRightBorderAngle);
         int randomSpawnPosition = Random.Range(0, spawnPoints.Length);
 
-        // Создаем новый поворот, добавляя случайный угол к начальному повороту
+
         Quaternion randomRotation = spawnPoints[randomSpawnPosition].rotation * Quaternion.Euler(0, randomYRotation, 0);
 
-        // Создаем объект с новым поворотом
         Instantiate(fighterPrefabs[Random.Range(0, 2)], spawnPoints[randomSpawnPosition].position, randomRotation);
     }
 }
