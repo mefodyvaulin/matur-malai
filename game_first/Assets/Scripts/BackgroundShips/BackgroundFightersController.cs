@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class backgroundFightersController : MonoBehaviour
+public class BackgroundFightersController : MonoBehaviour
 {
     [SerializeField] private GameObject[] fighterPrefabs;
     [SerializeField] private Transform[] spawnPoints;
@@ -14,7 +13,8 @@ public class backgroundFightersController : MonoBehaviour
     {
         nextSpawnTime =  Random.Range(0f, 1f / spawnRate);
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         transform.position = new Vector3(GameModel.PlayerPosition.x, 
             36, 
@@ -26,14 +26,14 @@ public class backgroundFightersController : MonoBehaviour
         }
     }
 
-    void SpawnFighter()
+    private void SpawnFighter()
     {
 
-        float randomYRotation = Random.Range(yRandomLeftBorderAngle, yRandomRightBorderAngle);
-        int randomSpawnPosition = Random.Range(0, spawnPoints.Length);
+        var randomYRotation = Random.Range(yRandomLeftBorderAngle, yRandomRightBorderAngle);
+        var randomSpawnPosition = Random.Range(0, spawnPoints.Length);
 
 
-        Quaternion randomRotation = spawnPoints[randomSpawnPosition].rotation * Quaternion.Euler(0, randomYRotation, 0);
+        var randomRotation = spawnPoints[randomSpawnPosition].rotation * Quaternion.Euler(0, randomYRotation, 0);
 
         Instantiate(fighterPrefabs[Random.Range(0, 2)], spawnPoints[randomSpawnPosition].position, randomRotation);
     }

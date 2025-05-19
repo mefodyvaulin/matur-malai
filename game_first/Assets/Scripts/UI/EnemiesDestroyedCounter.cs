@@ -9,6 +9,6 @@ public class EnemysDestroyedCounter : MonoBehaviour
     {
         if (score == GameModel.Score) return;
         score = GameModel.Score;
-        textOfTime.text = $"Enemys destroyed: {score}";
+        textOfTime.text = $"Enemies destroyed: {score}";
     }
 }

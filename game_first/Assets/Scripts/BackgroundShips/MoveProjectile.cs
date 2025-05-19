@@ -6,7 +6,7 @@ public class MoveProjectile: MonoBehaviour
     public float moveSpeed = 5f;
     private const float lifetime = 15f;
 
-    void Start()
+    private void Start()
     {
         StartCoroutine(MoveAndDestroyCoroutine());
     }

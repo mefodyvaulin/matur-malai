@@ -9,10 +9,10 @@ public class SpaceshipController : MonoBehaviour
     public float damageRate = 0.1f;
     public Vector3 initialPosition = new (100, 75, 0);
     public float speed = 2f;
-    private float nextFireTime = 0f;
-    private float nextDamageTime = 0f;
+    private float nextFireTime;
+    private float nextDamageTime;
     public float timeToPosition = 25f;
-    private float delta = 0;
+    private float delta;
     public float xRandomAngle = 30f;
     public float yRandomLeftBorderAngle = -60f;
     public float yRandomRightBorderAngle = -35f;

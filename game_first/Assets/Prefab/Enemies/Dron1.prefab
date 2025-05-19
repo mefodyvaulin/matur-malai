@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4127327286559998095}
   - component: {fileID: 4268896540850416945}
   m_Layer: 8
-  m_Name: Dron1 (Animation)
+  m_Name: Dron1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

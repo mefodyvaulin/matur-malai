@@ -12,7 +12,7 @@ public class MovebackgroundFighter: MonoBehaviour
     private float nextSpawnDamage = 0f;
     public float damageRate = 0.5f;
 
-    void Start()
+    private void Start()
     {
         nextSpawnShoot =  Random.Range(0f, 1f / shootRate);
         StartCoroutine(MoveAndDestroyCoroutine());
