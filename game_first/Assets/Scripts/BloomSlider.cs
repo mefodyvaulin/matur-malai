@@ -9,7 +9,7 @@ public class BloomSlider : MonoBehaviour
 
     private Bloom bloomEffect;
 
-    void Start()
+    private void Start()
     {
         if (postProcessVolume.profile.TryGetSettings(out bloomEffect))
         {
@@ -18,7 +18,7 @@ public class BloomSlider : MonoBehaviour
         }
     }
 
-    void OnSliderValueChanged(float value)
+    private void OnSliderValueChanged(float value)
     {
         if (bloomEffect != null)
             bloomEffect.intensity.value = value;

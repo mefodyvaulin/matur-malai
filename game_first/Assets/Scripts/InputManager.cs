@@ -2,7 +2,7 @@ using UnityEngine.InputSystem;
 
 public static class InputManager
 {
-    public static UserInputAction UserInputAction = new();
+    private static UserInputAction UserInputAction = new();
     public static InputAction MouseMove = UserInputAction.XWing.MouseMovment;
     public static InputAction LeftClick = UserInputAction.XWing.WeaponMovement;
     public static InputAction PauseON = UserInputAction.XWing.Pause;

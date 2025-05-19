@@ -404,7 +404,6 @@ GameObject:
   - component: {fileID: 4542160417729132949}
   - component: {fileID: 6708672999842519477}
   - component: {fileID: 7302765526199039650}
-  - component: {fileID: 8786690898907768299}
   m_Layer: 8
   m_Name: Dron2 (Animation)
   m_TagString: Untagged
@@ -503,22 +502,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!111 &8786690898907768299
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5370454882870474731}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 6ea279ad9bac5e347bde0414208ad524, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!1 &6571974537714293865
 GameObject:
   m_ObjectHideFlags: 0
