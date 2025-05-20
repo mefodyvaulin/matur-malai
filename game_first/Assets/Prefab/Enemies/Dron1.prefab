@@ -65,13 +65,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   direction: 0
-  tiltAngle: 30
-  tiltSpeed: 1
-  omega1: 0
-  omega2: 0
-  omega3: 0
-  phase: 0
-  a: 0
   distanceToEnemy: 0
   rotationSpeed: 2
   maxRotationAngle: 15
