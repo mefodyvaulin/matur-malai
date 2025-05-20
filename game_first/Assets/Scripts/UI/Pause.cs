@@ -26,10 +26,11 @@ public class Pause : MonoBehaviour
     {
         paused = !paused;
         Time.timeScale = paused ? 0 : 1;
-        pauseMenu.SetActive(paused);
+        if(pauseMenu != null) pauseMenu.SetActive(paused);
+        if(stat != null) stat.SetActive(!paused);
         if (chromaticAberrationEffect != null)
             chromaticAberrationEffect.active = !chromaticAberrationEffect.active;
-        stat.SetActive(!paused);
+
         AudioListener.pause = paused;
 
         if (paused) InputManager.EnableUI();
