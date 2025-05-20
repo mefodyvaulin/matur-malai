@@ -111,7 +111,7 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""WeaponMovement"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""7937931d-4742-4843-9976-04083dcadd73"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -155,7 +155,7 @@ public partial class @UserInputAction: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""6be998bf-0d36-4b02-80bd-54d52fee120b"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Hold(pressPoint=1.401298E-45)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""WeaponMovement"",

@@ -44,7 +44,10 @@ public class PlayerMovement : MonoBehaviour
     private void Update() // Главный игровой цикл — вызывается каждый кадр
     {
         if (Time.timeScale > 0f)
+        {
             Time.timeScale = timeSpeed;
+        }
+
         MoveForward();
         UpdateRotation();
         ClampPositionInsideTrench();
