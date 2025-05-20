@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2645184761769468238}
   - component: {fileID: 4127327286559998095}
   - component: {fileID: 4268896540850416945}
+  - component: {fileID: 8915138189838592954}
   m_Layer: 8
   m_Name: Dron1
   m_TagString: Untagged
@@ -104,6 +105,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &8915138189838592954
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2473245897088815995}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: c2305cecd37410d4e935816b44f2dbe1, type: 2}
+  - {fileID: 7400000, guid: 368195077d3c7d74e991f25dca3ca36c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &4528918029391098307
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -12,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
     public int direction;
 
     [SerializeField] private float distanceToEnemy;
-    
+
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private float maxRotationAngle = 15f;
     
@@ -33,8 +34,10 @@ public class EnemyMovement : MonoBehaviour
             new Vector3(player.x,
                         player.y,
                         player.z + distanceToEnemy),
-            speed * GameModel.UnscaledTime);
-        enemy.shooting.UpdateShooting();
+            speed * GameModel.UnscaledDeltaTime * 0.3f);
+        if (Mathf.Abs(player.x - (transform.position.x)) < 0.01f
+            || Mathf.Abs(player.x - (transform.position.x)) < 0.01f)
+            enemy.shooting.UpdateShooting(0.3f);
     }
 
     public void DefaultMove()
@@ -57,7 +60,6 @@ public class EnemyMovement : MonoBehaviour
 
         transform.Translate(Vector3.back * deltaZ);
     }
-
 
     public void ClearMove()
     {

@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public EnemyMovement movement;
     [SerializeField] public EnemyShooting shooting;
     private Animator animator;
+    private bool startFollow;
     
     private void Awake()
     {
@@ -32,8 +33,11 @@ public class Enemy : MonoBehaviour
 
         movement.Move?.Invoke(this);
         if (GameModel.CountEnemies != 1) return;
-        movement.ClearMove();
+        if (startFollow) return;
         animator.SetLayerWeight(1, 1);
-        movement.Move += movement.MoveFollowerPlayer;
+        movement.ClearMove();
+        movement.Move = movement.MoveFollowerPlayer;
+        startFollow = true;
     }
+
 }

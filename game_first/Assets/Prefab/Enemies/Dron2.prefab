@@ -404,6 +404,7 @@ GameObject:
   - component: {fileID: 4542160417729132949}
   - component: {fileID: 6708672999842519477}
   - component: {fileID: 7302765526199039650}
+  - component: {fileID: -2869545212504575929}
   m_Layer: 8
   m_Name: Dron2
   m_TagString: Untagged
@@ -456,13 +457,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   direction: 0
-  tiltAngle: 30
-  tiltSpeed: 1
-  omega1: 0
-  omega2: 0
-  omega3: 0
-  phase: 0
-  a: 0
   distanceToEnemy: 0
   rotationSpeed: 2
   maxRotationAngle: 15
@@ -502,6 +496,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &-2869545212504575929
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5370454882870474731}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: c2305cecd37410d4e935816b44f2dbe1, type: 2}
+  - {fileID: 7400000, guid: 368195077d3c7d74e991f25dca3ca36c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &6571974537714293865
 GameObject:
   m_ObjectHideFlags: 0
