@@ -7,6 +7,7 @@ public class Trench : MonoBehaviour
 {
     [SerializeField] private GameObject[] trenchSegments;
     [SerializeField] private GameObject randomSegment;
+    [SerializeField] private Renderer referenceRenderer;
     private List<GameObject> currentSegments;
     private float segmentHalfLength;
     public static Vector3 initialSegmentPosition;
@@ -28,8 +29,7 @@ public class Trench : MonoBehaviour
 
     private void Start()
     {
-        segmentHalfLength = 82f;
-
+        segmentHalfLength = referenceRenderer.bounds.size.z;
         initialSegmentPosition = new Vector3(2.52f,
             12,
             -29.6f + segmentHalfLength);
