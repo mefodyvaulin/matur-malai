@@ -1,13 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemyMovement : MonoBehaviour
 {
+    private static readonly int Wait = Animator.StringToHash("Wait");
+    private static readonly int Mans = Animator.StringToHash("Mans");
     [SerializeField] private float speed = 10f;
     
     public int direction;
@@ -30,14 +28,18 @@ public class EnemyMovement : MonoBehaviour
 
     public void MoveFollowerPlayer(Enemy enemy)
     {
-
+        animator.SetLayerWeight(1, 1);
         var player = GameModel.PlayerPosition;
-        if (Mathf.Abs(player.x - GameModel.Player.trenchSizeUpRight.x) < 0.7f ||
-            Mathf.Abs(player.x - GameModel.Player.trenchSizeDownLeft.x) < 0.7f )
-            StartCoroutine(WaitForAnimationToEnd(1));
+        if (Mathf.Abs(player.x - GameModel.Player.trenchSizeUpRight.x) < 1f ||
+            Mathf.Abs(player.x - GameModel.Player.trenchSizeDownLeft.x) < 1f)
+        {
+            animator.SetBool(Wait, true);
+            animator.SetBool(Mans, false);
+        }
         else
         {
-            animator.SetLayerWeight(1, 1);
+            animator.SetBool(Wait, false);
+            animator.SetBool(Mans, true);
         }
         transform.position = Vector3.Lerp(enemy.transform.position,
             new Vector3(player.x,
@@ -45,23 +47,7 @@ public class EnemyMovement : MonoBehaviour
                         player.z + distanceToEnemy),
             speed * GameModel.UnscaledDeltaTime * 0.3f);
 
-        enemy.shooting.UpdateShooting(0.3f);
-    }
-
-    private IEnumerator WaitForAnimationToEnd(int layerIndex)
-    {
-        // Проверяем, есть ли активная анимация на слое
-        while (animator.GetCurrentAnimatorClipInfo(layerIndex).Length > 0)
-        {
-            var stateInfo = animator.GetCurrentAnimatorStateInfo(layerIndex);
-
-            if (stateInfo.normalizedTime >= 1f)
-                break;
-
-            yield return null;
-        }
-
-        animator.SetLayerWeight(layerIndex, 0f);
+        enemy.shooting.UpdateShooting(0.5f);
     }
 
     public void DefaultMove()
