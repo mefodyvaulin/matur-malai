@@ -5,7 +5,7 @@ public class LazerSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject[] lazersPrefab;
     private int spawnedAfter;
-    private GameObject lazer;
+    private GameObject lazerPrefab;
 
 
     private void Awake()
@@ -15,7 +15,7 @@ public class LazerSpawn : MonoBehaviour
 
     private void OnDestroy()
     {
-        Destroy(lazer);
+        Destroy(lazerPrefab);
         Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
     }
 
@@ -31,7 +31,7 @@ public class LazerSpawn : MonoBehaviour
     private void SpawnLazer()
     {
         var (index, vector) = GetRandomPosition();
-        lazer = Instantiate(lazersPrefab[index], transform.position + vector, Quaternion.identity);
+        lazerPrefab = Instantiate(lazersPrefab[index], transform.position + vector, Quaternion.identity);
     }
 
     private (int, Vector3) GetRandomPosition()

@@ -6,7 +6,7 @@ public class EnemyGroupCircle : EnemyGroupAbstract
 
     // Вращение //
     private readonly float radius;
-    private float rotationSpeed = 0.2f; // Скорость вращения
+    private float rotationSpeed = 10f; // Скорость вращения
     private const float RotationAngle = Mathf.PI / 100f;
 
     // Растяжение //
@@ -19,7 +19,10 @@ public class EnemyGroupCircle : EnemyGroupAbstract
 
     public EnemyGroupCircle(int countDrones, Vector3 spawnPosition) : base(countDrones, spawnPosition)
     {
-        centerOfCircle = spawnPosition + new Vector3(15.5f, -3, 0);
+        if (GameModel.PlayerPosition.x > spawnPosition.x)
+            centerOfCircle = spawnPosition + new Vector3(15.5f, -3, 0);
+        else
+            centerOfCircle = spawnPosition - new Vector3(15.5f, -3, 0);
         actualRadius = minRadius + (maxRadius - minRadius) * 0.5f;
         radius = actualRadius;
     }
@@ -47,7 +50,7 @@ public class EnemyGroupCircle : EnemyGroupAbstract
             enemy.transform.position.x - centerOfCircle.x,
             enemy.transform.position.y - centerOfCircle.y
         );
-        var angel = RotationAngle * rotationSpeed;
+        var angel = RotationAngle * rotationSpeed * GameModel.UnscaledDeltaTime;
         var newDirection = new Vector2(
             direction.x * Mathf.Cos(angel) - direction.y * Mathf.Sin(angel),
             direction.x * Mathf.Sin(angel) + direction.y * Mathf.Cos(angel)

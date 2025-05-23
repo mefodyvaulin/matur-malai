@@ -14,7 +14,10 @@ public class EnemyGroupLemniskata : EnemyGroupAbstract
         radius = 9;
         deltaAngle = 1.4f;
         angle = 0;
-        LemniskataCenter = spawnPosition + new Vector3(15.5f, -2, 0);
+        if (GameModel.PlayerPosition.x > spawnPosition.x)
+            LemniskataCenter = spawnPosition + new Vector3(15.5f, -3, 0);
+        else
+            LemniskataCenter = spawnPosition - new Vector3(15.5f, -3, 0);
         enemyAngles = new List<float>();
     }
     

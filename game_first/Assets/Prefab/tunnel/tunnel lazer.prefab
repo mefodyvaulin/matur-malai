@@ -191,3 +191,11 @@ MonoBehaviour:
   lazersPrefab:
   - {fileID: 2646949773430021977, guid: 76296a2d3ff72a245a61fdb1567c1fd0, type: 3}
   - {fileID: 7734717781567746609, guid: ac8e7d40c54a48c41ae814652e65cebb, type: 3}
+  lazerMaterials:
+  - {fileID: 2100000, guid: 7642f8757fcd9db49ab04bfa50c9e129, type: 2}
+  - {fileID: 2100000, guid: c8be329e1a6360949bf37a2b75af6af8, type: 2}
+  - {fileID: 2100000, guid: b4ffb34611e8e954da6efa077d48a045, type: 2}
+  - {fileID: 2100000, guid: 7712559f514abfd47ae2d578d743033d, type: 2}
+  - {fileID: 2100000, guid: 30d1375be6b140e4f96f5bdcc5745bf6, type: 2}
+  - {fileID: 2100000, guid: 428cbedafa72a994b86e1735a2e62906, type: 2}
+  - {fileID: 2100000, guid: 8de699489ae7a874ba601c6d08359a43, type: 2}
