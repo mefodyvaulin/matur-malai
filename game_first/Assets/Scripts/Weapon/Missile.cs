@@ -10,7 +10,7 @@ public abstract class Missile : MonoBehaviour
     
     protected virtual void Start()
     {
-        //AudioSource.Play();
+        AudioSource.Play();
         StartCoroutine(DestroyAfterUnscaledTime(LifeTime));
     }
 

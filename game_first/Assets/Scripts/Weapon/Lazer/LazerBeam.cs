@@ -10,7 +10,6 @@ public class LaserBeam : MonoBehaviour
     [SerializeField] private float damageInterval = 0.2f;
     private float step = 0.5f; // шаг расположения лучей (их частота)
     [SerializeField] private Transform beamVisual; // Ссылка на цилиндр лазера
-
     private float damageTimer;
 
     private void Awake()

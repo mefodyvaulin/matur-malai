@@ -6,11 +6,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] public EnemyHealth health;
     [SerializeField] public EnemyMovement movement;
     [SerializeField] public EnemyShooting shooting;
-
+    private float deathTime;
     private bool startFollow;
     
     private void Awake()
     {
+        deathTime = health.audioSources[1].clip.length;
         GameModel.AddEnemy(this);
     }
 
@@ -25,7 +26,7 @@ public class Enemy : MonoBehaviour
         {
             shooting.enabled = false;
             movement.enabled = false;
-            Destroy(gameObject, health.audioSources[1].clip.length);
+            Destroy(gameObject, deathTime);
             return;
         }
 
