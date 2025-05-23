@@ -33,4 +33,14 @@ public static class RandomDistributions
             (array[i], array[j]) = (array[j], array[i]);
         }
     }
+
+    public static void ShuffleArray(AudioClip[] array)
+    {
+        for (var k = 0; k < 3 * array.Length; k++)
+        for (var i = array.Length - 1; i > 3; i--)
+        {
+            var j = Random.Range(0, i - 2);
+            (array[i], array[j]) = (array[j], array[i]);
+        }
+    }
 }
