@@ -19,10 +19,9 @@ public class EnemyGroupCircle : EnemyGroupAbstract
 
     public EnemyGroupCircle(int countDrones, Vector3 spawnPosition) : base(countDrones, spawnPosition)
     {
-        if (GameModel.PlayerPosition.x > spawnPosition.x)
-            centerOfCircle = spawnPosition + new Vector3(15.5f, -3, 0);
-        else
-            centerOfCircle = spawnPosition - new Vector3(15.5f, -3, 0);
+        var i = IsMirror(GameModel.PlayerPosition, spawnPosition);
+        centerOfCircle = spawnPosition + new Vector3(15.5f * i, -3, 0);
+
         actualRadius = minRadius + (maxRadius - minRadius) * 0.5f;
         radius = actualRadius;
     }

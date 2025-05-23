@@ -18,16 +18,12 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
     public EnemyGroupHorizontallyOrVertically(int countDrones, Vector3 spawnPosition) 
         : base(countDrones, spawnPosition)
     {
-        if (GameModel.PlayerPosition.x > spawnPosition.x)
-        {
-            startOffset = spawnPosition + new Vector3(5, 10, 0);
-            endOffset = spawnPosition + new Vector3(25, -12, -30);
-        }
-        else
-        {
-            startOffset = spawnPosition + new Vector3(-5, 10, 0);
-            endOffset = spawnPosition + new Vector3(-25, -12, -30);
-        }
+        var i = IsMirror(GameModel.PlayerPosition, spawnPosition);
+
+        startOffset = spawnPosition + new Vector3(5 * i, 10, 0);
+        endOffset = spawnPosition + new Vector3(25 * i, -12, -30);
+
+
 
         moveDirection = Random.Range(0, 2) == 0 ? Vector3.up : Vector3.right;
         

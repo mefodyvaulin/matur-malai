@@ -14,4 +14,9 @@ public abstract class EnemyGroupAbstract
     public abstract Vector3 TakePosition(int index);
 
     public abstract void MoveGroup(Enemy enemy);
+
+    protected int IsMirror(Vector3 position, Vector3 spawnPoint)
+    {
+        return position.x > spawnPoint.x ? 1 : -1;
+    }
 }
