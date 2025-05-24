@@ -25,8 +25,8 @@ public class WeaponSwitcher : MonoBehaviour
             foreach (var weapon in allWeapons[gunIndex])
             {
                 weapon.enabled = weapon is T;
-                
-                if (!weapon.enabled || isFirst) continue;
+                if (weapon.enabled) weapon.FullRecharge();
+                else if (isFirst) continue;
                 isFirst = true;
                 fillBar.SetProvider(weapon);
             }

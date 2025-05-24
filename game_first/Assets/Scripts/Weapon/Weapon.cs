@@ -59,6 +59,11 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
             Shoot();
     }
 
+    public void FullRecharge()
+    {
+        currentClip = maxClip;
+    }
+
     protected abstract void Recharge(); // Метод перезарядки должна реализовать каждая конкретная пушка
     protected abstract void Shoot(); // Метод стрельбы  реализовать каждая конкретная пушка
     protected abstract void Ulta(); // УЛЬТА
