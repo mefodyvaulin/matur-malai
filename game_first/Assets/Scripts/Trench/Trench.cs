@@ -12,7 +12,7 @@ public class Trench : MonoBehaviour
     private float segmentHalfLength;
     public static Vector3 initialSegmentPosition;
     private static float numberOfSegments;
-    private readonly int[] weights = {0, 2, 1, 0};
+    private readonly int[] weights = {0, 0, 0, 1};
     private int[] randomSegmentVariants;
     private int variantIndex;
     

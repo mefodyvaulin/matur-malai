@@ -1,12 +1,19 @@
+using System.Collections;
 using UnityEngine;
 
-public class LazerWall : MonoBehaviour
+public abstract class LazerWallAbstract : MonoBehaviour
 {
-    private int Damage = 10;
+    protected abstract int Damage { get; }
 
+    void Start()
+    {
+        StartCoroutine(Move());
+    }
     protected virtual void OnTriggerEnter(Collider other) //OnCollisionEnter(Collision other) <- можно заменить на это, если будет добавлена физика
     {
         var damageable = other.GetComponent<IDamageable>(); // Проверяем, есть ли на объекте интерфейс IDamageable
         damageable?.TakeDamage(Damage);
     }
+
+    protected abstract IEnumerator Move();
 }
