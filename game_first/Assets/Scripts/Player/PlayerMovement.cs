@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxYawAngle = 30f;    // Максимальный угол поворота влево/вправо (по оси Y)
     [SerializeField] private float sensitivity = 1f;     // Чувствительность мыши — насколько сильно движение мыши влияет на поворот
     [SerializeField] private float centeringSpeed = 10f; // Скорость возврата корабля в нейтральное положение, когда мышь не двигается
-    [SerializeField] public Vector2 trenchSizeUpRight = new(15f, 40f);     // Ограничение тоннеля верхний правый угол
-    [SerializeField] public Vector2 trenchSizeDownLeft = new(-10f, 16f);      // Ограничение тоннеля нижний левый угол
+    [SerializeField] public Vector2 trenchSizeUpRight = new(14.5f, 40f);     // Ограничение тоннеля верхний правый угол
+    [SerializeField] public Vector2 trenchSizeDownLeft = new(-9.5f, 16f);    // Ограничение тоннеля нижний левый угол
     [SerializeField] private float timeSpeed = 1f;
 
     // === Текущие углы поворота ===

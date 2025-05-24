@@ -4,13 +4,15 @@ using System.Collections;
 
 public static class EnemySpawnStartAnimation
 {
-    private static readonly float departurTime = 2f;
+    private static readonly float moveForwardTime = 0.2f;
+    private static readonly float departurTime = 1.8f;
     private static readonly float turningTime = 0.5f;
     
     public static IEnumerator MoveToPosition(Enemy enemy, Vector3 toPosition, Action<Enemy> moveGroup)
     {
+        //yield return MoveForward(enemy, moveForwardTime);
         var startPosition = enemy.transform.position;
-
+        //var nearlyWall = NearlyWall(toPosition);
         var controlPoint1 = new Vector3(
             (startPosition.x + toPosition.x) * 0.75f,
             2 * startPosition.y - toPosition.y,
@@ -60,6 +62,23 @@ public static class EnemySpawnStartAnimation
         enemy.movement.DefaultMove();
         enemy.movement.Move += moveGroup;
     }
+
+    private static IEnumerator MoveForward(Enemy enemy, float time)
+    {
+        var originalPosition = enemy.transform.position;
+        var offsetPosition = originalPosition + 4 * enemy.transform.forward.normalized;
+  
+        var elapsedOffset = 0f;
+
+        while (elapsedOffset < time)
+        {
+            var t = elapsedOffset / time;
+            enemy.transform.position = Vector3.Lerp(originalPosition, offsetPosition, t);
+            elapsedOffset += Time.deltaTime;
+            yield return null;
+        }
+        enemy.transform.position = offsetPosition;
+    }
     
     private static IEnumerator SmoothRotate(Enemy enemy, Quaternion targetRotation, float time)
     {
@@ -74,5 +93,15 @@ public static class EnemySpawnStartAnimation
         }
 
         enemy.transform.rotation = targetRotation;
+    }
+
+    private static float NearlyWall(Vector3 toPosition)
+    {
+        if (Mathf.Abs(toPosition.x - GameModel.PlayerMovement.trenchSizeDownLeft.x) <= 1f
+            || Mathf.Abs(toPosition.x - GameModel.PlayerMovement.trenchSizeUpRight.x) <= 1f)
+        {
+            return toPosition.x + 10f;
+        }
+        return toPosition.x;
     }
 }

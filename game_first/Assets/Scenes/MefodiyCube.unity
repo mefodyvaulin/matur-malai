@@ -226,7 +226,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5067136435526583797, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
       propertyPath: trenchSizeUpRight.x
-      value: 15
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: -5067136435526583797, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
       propertyPath: trenchSizeUpRight.y
@@ -234,7 +234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5067136435526583797, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
       propertyPath: trenchSizeDownLeft.x
-      value: -10
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: -5067136435526583797, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
       propertyPath: trenchSizeDownLeft.y

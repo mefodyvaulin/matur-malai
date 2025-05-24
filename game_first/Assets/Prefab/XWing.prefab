@@ -297,8 +297,8 @@ MonoBehaviour:
   maxYawAngle: 30
   sensitivity: 1
   centeringSpeed: 10
-  trenchSizeUpRight: {x: 15, y: 40}
-  trenchSizeDownLeft: {x: -10, y: 16}
+  trenchSizeUpRight: {x: 14.5, y: 40}
+  trenchSizeDownLeft: {x: -9.5, y: 16}
   timeSpeed: 1
 --- !u!64 &5124728076192983540
 MeshCollider:
