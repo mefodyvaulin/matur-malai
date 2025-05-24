@@ -75,7 +75,11 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
             result[i] = new Vector3(xRatios[i], yRatios[i], zRatios[i]);
         }
 
-        return result;
+        return result
+            .OrderBy(v => v.x)
+            .ThenBy(v => v.y)
+            .ThenBy(v => v.z)
+            .ToArray();
     }
 
     private static Vector3 InterpolateWithRatio(Vector3 from, Vector3 to, Vector3 ratioVector, float totalRatio)

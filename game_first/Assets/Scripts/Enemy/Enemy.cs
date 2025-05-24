@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -7,7 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public EnemyMovement movement;
     [SerializeField] public EnemyShooting shooting;
     private float deathTime;
-    private bool startFollow;
+    private bool isStartFollow;
     
     private void Awake()
     {
@@ -32,11 +33,18 @@ public class Enemy : MonoBehaviour
 
         movement.Move?.Invoke(this);
         if (GameModel.CountEnemies != 1) return;
-        if (startFollow) return;
-
-        movement.ClearMove();
-        movement.Move = movement.MoveFollowerPlayer;
-        startFollow = true;
+        if (isStartFollow) return;
+        
+        StartCoroutine(StartFollow());
     }
 
+    private IEnumerator StartFollow()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (GameModel.CountEnemies != 1) yield break;
+        
+        movement.ClearMove();
+        movement.Move = movement.MoveFollowerPlayer;
+        isStartFollow = true;
+    }
 }

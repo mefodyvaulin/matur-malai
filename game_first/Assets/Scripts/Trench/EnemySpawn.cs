@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Random = System.Random;
 
@@ -35,11 +36,11 @@ public class EnemySpawn : MonoBehaviour
         spawnedAfter++;
         if (spawnedAfter == 2 && GameModel.CountEnemies <= 0) // спавн прямо при влете в эту часть туннеля
         {
-            SpawnGroup();
+            StartCoroutine(SpawnGroup());
         }
     }
 
-    private void SpawnGroup()
+    private IEnumerator SpawnGroup()
     {
         hatchAnimation.SetBool("spawnMoment", true);
         var countDrones = rand.Next(3, 7);
@@ -52,7 +53,8 @@ public class EnemySpawn : MonoBehaviour
             
             var finalPosition = group.TakePosition(i);
 
-            StartMoving(enemy, finalPosition, group.MoveGroup);
+            StartMoving(enemy, finalPosition, group.MoveGroup, i);
+            yield return new WaitForSeconds(0.2f);
         }
     }
     
@@ -61,8 +63,8 @@ public class EnemySpawn : MonoBehaviour
         return randomGroup.Pop()(countDrones, spawnPosition);
     }
 
-    private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<Enemy> moveGroup)
+    private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<Enemy> moveGroup, int i)
     {
-        StartCoroutine(EnemySpawnStartAnimation.MoveToPosition(enemy, targetPosition, moveGroup));
+        StartCoroutine(EnemySpawnStartAnimation.MoveToPosition(enemy, targetPosition, moveGroup, i));
     }
 }
