@@ -18,8 +18,8 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
     public EnemyGroupHorizontallyOrVertically(int countDrones, Vector3 spawnPosition)
         : base(countDrones, spawnPosition)
     {
-        startOffset = new Vector3(maxX, maxY, spawnPosition.z);
-        endOffset = new Vector3(minX, minY, spawnPosition.z - 30);
+        startOffset = new Vector3(maxX - 1, maxY - 1, spawnPosition.z);
+        endOffset = new Vector3(minX + 1, minY + 1, spawnPosition.z - 30);
 
         moveDirection = Random.Range(0, 2) == 0 ? Vector3.up : Vector3.right;
 
