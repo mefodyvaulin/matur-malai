@@ -9,6 +9,7 @@ public abstract class AbstractBuff : MonoBehaviour
     private void Update()
     {
         RotateAround();
+        ShouldDie();
     }
 
     private void RotateAround()
@@ -23,6 +24,12 @@ public abstract class AbstractBuff : MonoBehaviour
             DoBuff();
             Destroy(gameObject);
         }
+    }
+
+    private void ShouldDie()
+    {
+        if (GameModel.PlayerPosition.z - transform.position.z > 100f)
+            Destroy(gameObject);
     }
 
     protected abstract void DoBuff();

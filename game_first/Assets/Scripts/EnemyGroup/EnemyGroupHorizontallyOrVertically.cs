@@ -60,7 +60,7 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
         enemy.shooting.UpdateShooting();
     }
 
-    private static Vector3[] GenerateRandomUniqueRatios(int count)
+    private Vector3[] GenerateRandomUniqueRatios(int count)
     {
         var rand = new System.Random();
         var indices = Enumerable.Range(0, count).ToArray();
@@ -76,9 +76,9 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
         }
 
         return result
-            .OrderBy(v => v.x)
-            .ThenBy(v => v.y)
-            .ThenBy(v => v.z)
+            .OrderByDescending(v => Mathf.Abs(v.x - spawnPosition.x))
+            .ThenByDescending(v => Mathf.Abs(v.y - spawnPosition.y))
+            .ThenByDescending(v => Mathf.Abs(v.z - spawnPosition.z))
             .ToArray();
     }
 
