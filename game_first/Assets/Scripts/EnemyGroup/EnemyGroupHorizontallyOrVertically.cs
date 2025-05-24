@@ -9,24 +9,20 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
     private readonly int maxRatio;
 
     private static readonly float verticalSpeed = 4f;
-    private static readonly float minY = Trench.initialSegmentPosition.y + 4f;
-    private static readonly float maxY = Trench.initialSegmentPosition.y + 28f;
-    private static readonly float minX = Trench.initialSegmentPosition.x - 11f;
-    private static readonly float maxX = Trench.initialSegmentPosition.x + 10f;
+    private static readonly float minY = GameModel.Player.trenchSizeDownLeft.y;
+    private static readonly float maxY = GameModel.Player.trenchSizeUpRight.y;
+    private static readonly float minX = GameModel.Player.trenchSizeDownLeft.x;
+    private static readonly float maxX = GameModel.Player.trenchSizeUpRight.x;
 
     private Vector3 moveDirection;
-    public EnemyGroupHorizontallyOrVertically(int countDrones, Vector3 spawnPosition) 
+    public EnemyGroupHorizontallyOrVertically(int countDrones, Vector3 spawnPosition)
         : base(countDrones, spawnPosition)
     {
-        var i = IsMirror(GameModel.PlayerPosition, spawnPosition);
-
-        startOffset = spawnPosition + new Vector3(5 * i, 10, 0);
-        endOffset = spawnPosition + new Vector3(25 * i, -12, -30);
-
-
+        startOffset = new Vector3(maxX, maxY, spawnPosition.z);
+        endOffset = new Vector3(minX, minY, spawnPosition.z - 30);
 
         moveDirection = Random.Range(0, 2) == 0 ? Vector3.up : Vector3.right;
-        
+
         randomRatios = GenerateRandomUniqueRatios(countDrones);
         maxRatio = countDrones - 1;
     }
@@ -40,17 +36,29 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
     {
         enemy.transform.position += moveDirection * (enemy.movement.direction * verticalSpeed * GameModel.UnscaledDeltaTime);
 
-        var y = enemy.transform.position.y;
-        var x = enemy.transform.position.x;
-        if (y >= maxY || x >= maxX)
+        if (moveDirection == Vector3.up)
         {
-            //enemy.transform.position = new Vector3(enemy.transform.position.x, maxY, enemy.transform.position.z);
-            enemy.movement.direction = -1;
+            var y = enemy.transform.position.y;
+            if (y >= maxY)
+            {
+                enemy.movement.direction = -1;
+            }
+            else if (y <= minY)
+            {
+                enemy.movement.direction = 1;
+            }
         }
-        else if (y <= minY || x <= minX)
+        else
         {
-            //enemy.transform.position = new Vector3(enemy.transform.position.x, minY, enemy.transform.position.z);
-            enemy.movement.direction = 1;
+            var x = enemy.transform.position.x;
+            if (x >= maxX)
+            {
+                enemy.movement.direction = -1;
+            }
+            else if (x <= minX)
+            {
+                enemy.movement.direction = 1;
+            }
         }
 
         enemy.shooting.UpdateShooting();
