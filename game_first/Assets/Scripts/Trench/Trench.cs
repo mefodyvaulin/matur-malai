@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class Trench : MonoBehaviour
 {
     [SerializeField] private GameObject[] trenchSegments;
-    private readonly int[] weightsTrench = {0, 2, 1, 0};
+    private readonly int[] weightsTrench = {1, 2, 2, 4};
     private WeightedRandomStack<GameObject> randomTrench;
     
     [SerializeField] private GameObject[] buffPrefabs;
@@ -68,7 +68,7 @@ public class Trench : MonoBehaviour
     
     private void TrySpawnBuffWeapon(GameObject segment)
     {
-        if (!(Random.value <= 2f)) return;
+        if (!(Random.value <= 0.7f)) return;
 
         var center = segment.transform.position;
 

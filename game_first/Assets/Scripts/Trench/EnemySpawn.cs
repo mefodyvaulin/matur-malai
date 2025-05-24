@@ -8,8 +8,17 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private Animator hatchAnimation;
     private int spawnedAfter;
     private static readonly Random rand = new();
-
-
+    
+    private static WeightedRandomStack<Func<int, Vector3, EnemyGroupAbstract>> randomGroup = new
+        (
+            new Func<int, Vector3, EnemyGroupAbstract>[]
+            {
+                (countDrones, spawnPosition) => new EnemyGroupHorizontallyOrVertically(countDrones, spawnPosition),
+                (countDrones, spawnPosition) => new EnemyGroupCircle(countDrones, spawnPosition),
+                (countDrones, spawnPosition) => new EnemyGroupLemniskata(countDrones, spawnPosition),
+            },
+            new [] {3, 2, 2}
+        );
 
     private void Awake()
     {
@@ -49,15 +58,7 @@ public class EnemySpawn : MonoBehaviour
     
     private static EnemyGroupAbstract CreateRandomGroup(int countDrones, Vector3 spawnPosition)
     {
-        var type = rand.Next(0, 3);
-
-        return type switch
-        {
-            0 => new EnemyGroupHorizontallyOrVertically(countDrones, spawnPosition),
-            1 => new EnemyGroupCircle(countDrones, spawnPosition),
-            2 => new EnemyGroupLemniskata(countDrones, spawnPosition),
-            _ => throw new Exception("Unknown group type")
-        };
+        return randomGroup.Pop()(countDrones, spawnPosition);
     }
 
     private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<Enemy> moveGroup)
