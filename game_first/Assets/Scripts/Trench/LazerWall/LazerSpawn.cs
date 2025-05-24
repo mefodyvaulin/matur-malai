@@ -38,7 +38,7 @@ public class LazerSpawn : MonoBehaviour
 
     private (int, Vector3) GetRandomPosition()
     {
-        var index = Random.Range(2, lazersPrefab.Length);
+        var index = Random.Range(0, lazersPrefab.Length);
         return index switch
         {
             0 => (0, new Vector3(Random.Range(-1, 2) * 10, 0, Random.Range(-1, 2) * 24)),

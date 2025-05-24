@@ -258,8 +258,8 @@ Transform:
   m_Children:
   - {fileID: 8909366819622635038}
   - {fileID: 2417580254762635774}
-  - {fileID: 6223960771911031086}
   - {fileID: 7328738517258689664}
+  - {fileID: 6223960771911031086}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7120153091039379193
@@ -527,6 +527,8 @@ MonoBehaviour:
   - {fileID: 5567622580662793736}
   - {fileID: 6576151511516134102}
   - {fileID: 55997150708120824}
+  ultaLight: {fileID: 2100000, guid: b2e5743998e481d44b76f3edd5c03ec1, type: 2}
+  ultaLightSwitcher: {fileID: 8351102269573854445}
 --- !u!1 &6434849083272605630
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7328738517258689664}
   m_Layer: 0
-  m_Name: ' flashlights'
+  m_Name: UltaLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -938,7 +940,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8351102269573854445}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

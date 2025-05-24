@@ -4,7 +4,8 @@ public class WeaponSwitcher : MonoBehaviour
 {
     [SerializeField] private FillBar fillBar;
     [SerializeField] private GameObject[] guns;
-
+    [SerializeField] public Material ultaLight;
+    [SerializeField] public GameObject ultaLightSwitcher;
     private Weapon[][] allWeapons = new Weapon[3][];
 
     private void Start()

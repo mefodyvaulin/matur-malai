@@ -11,6 +11,7 @@ public class BulletGun : MissileGun
         fireRate = 0.25f;
         maxClip = 20;
         reloadCooldown = 0.5f;
+
     }
 
     protected override void Shoot()
@@ -26,6 +27,7 @@ public class BulletGun : MissileGun
             }
         }
         base.Shoot();
+
     }
     
     protected override void Ulta()

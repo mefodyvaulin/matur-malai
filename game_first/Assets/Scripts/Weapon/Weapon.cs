@@ -33,6 +33,7 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
         InputManager.LeftClick.Enable();
         InputManager.Ulta.Enable();
         isUltaActive = false;
+        SwitchUltaLights();
     }
     
 
@@ -45,6 +46,7 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
             curUltaTime = UltaTime;
             isUltaActive = true;
             Ulta();
+            SwitchUltaLights();
         }
         if (isUltaActive)
         {
@@ -52,6 +54,7 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
             if (curUltaTime <= 0)
             {
                 isUltaActive = false;
+                SwitchUltaLights();
             }
             if (!isBuffShooting) return;
         }
@@ -59,6 +62,14 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
             Shoot();
     }
 
+    private void SwitchUltaLights()
+    {
+        if (isUltaActive)
+        {
+            GameModel.WeaponSwitcher.ultaLight.color = Color.cyan;
+        }
+        GameModel.WeaponSwitcher.ultaLightSwitcher.SetActive(isUltaActive);
+    }
     protected abstract void Recharge(); // Метод перезарядки должна реализовать каждая конкретная пушка
     protected abstract void Shoot(); // Метод стрельбы  реализовать каждая конкретная пушка
     protected abstract void Ulta(); // УЛЬТА
