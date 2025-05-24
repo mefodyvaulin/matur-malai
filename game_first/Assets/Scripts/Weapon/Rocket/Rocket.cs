@@ -40,7 +40,7 @@ public class Rocket : Missile
                 rotationSpeed * Time.deltaTime
             );
         }
-        transform.Translate(Vector3.forward * (GameModel.Player.speed * Time.deltaTime + Speed * GameModel.UnscaledDeltaTime));
+        transform.Translate(Vector3.forward * (GameModel.PlayerMovement.speed * Time.deltaTime + Speed * GameModel.UnscaledDeltaTime));
 
         if (!(target is not null && target.health.IsAlive))
         {

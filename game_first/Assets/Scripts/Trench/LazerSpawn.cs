@@ -19,7 +19,7 @@ public class LazerSpawn : MonoBehaviour
         Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
     }
 
-    private void CountFragmentsToSpawn(Trench.TrenchState state)
+    private void CountFragmentsToSpawn()
     {
         spawnedAfter++;
         if (spawnedAfter == 2)

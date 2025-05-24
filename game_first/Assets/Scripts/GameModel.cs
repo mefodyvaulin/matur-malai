@@ -4,12 +4,15 @@ using System.Collections.Generic;
 
 public static class GameModel
 {
-    public static PlayerMovement Player => _player ?? throw new System.Exception("Player not set!");
-    private static PlayerMovement _player;
-    public static Vector3 PlayerPosition => Player.transform.position;
+    public static PlayerMovement PlayerMovement => _playerMovement ?? throw new System.Exception("PlayerMovement not set!");
+    private static PlayerMovement _playerMovement;
+    public static Vector3 PlayerPosition => PlayerMovement.transform.position;
     
     public static WeaponSwitcher WeaponSwitcher => _weaponSwitcher ?? throw new System.Exception("WeaponSwitcher not set!");
     private static WeaponSwitcher _weaponSwitcher;
+    
+    public static PlayerHitPoint PlayerHitPoint => _playerHitPoint ?? throw new System.Exception("WeaponSwitcher not set!");
+    private static PlayerHitPoint _playerHitPoint;
     
     public static readonly Dictionary<Enemy, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
@@ -30,14 +33,20 @@ public static class GameModel
 
     public static void SetPlayerMovement(PlayerMovement player)
     {
-        if ( _player is not null ) return;
-        _player = player;
+        if ( _playerMovement is not null ) return;
+        _playerMovement = player;
     }
     
     public static void SetWeaponSwitcher(WeaponSwitcher weaponSwitcher)
     {
         if ( _weaponSwitcher is not null ) return;
         _weaponSwitcher = weaponSwitcher;
+    }
+    
+    public static void SetPlayerHitPoint(PlayerHitPoint playerHitPoint)
+    {
+        if ( _playerHitPoint is not null ) return;
+        _playerHitPoint = playerHitPoint;
     }
 
     public static void AddEnemy(Enemy enemy)
@@ -54,7 +63,7 @@ public static class GameModel
     
     public static void ResetModel()
     {
-        _player = null;
+        _playerMovement = null;
         Enemies.Clear();
     }
 

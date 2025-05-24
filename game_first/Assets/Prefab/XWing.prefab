@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 50
-  currentHp: 50
+  CurrentHp: 50
   damageExplosion: {fileID: 489523231305322811}
   defeatingObject: {fileID: 9176395224772069506, guid: a8b785c60f65fa547b56db3d92c70cc7, type: 3}
   postProcessVolume: {fileID: 0}

@@ -6,28 +6,22 @@ using Random = UnityEngine.Random;
 public class Trench : MonoBehaviour
 {
     [SerializeField] private GameObject[] trenchSegments;
-    [SerializeField] private GameObject randomSegment;
-    [SerializeField] private Renderer referenceRenderer;
-    private List<GameObject> currentSegments;
-    private float segmentHalfLength;
-    public static Vector3 initialSegmentPosition;
-    private static float numberOfSegments;
-    private readonly int[] weights = {0, 2, 1, 0};
-    private int[] randomSegmentVariants;
-    private int variantIndex;
+    private readonly int[] weightsTrench = {0, 2, 1, 0};
+    private WeightedRandomStack<GameObject> randomTrench;
     
-    [SerializeField] private GameObject buffWeaponPrefab;
-
-
-    public static event Action<TrenchState> OnGenerateContinuationOfTrench;
-    public enum TrenchState // Enum для индексации объектов в TrenchSegment
-    {
-        Default = 0,
-        Enemy = 1,
-        EnemyMirror = 2,
-        Turret = 3
-    }
-
+    [SerializeField] private GameObject[] buffPrefabs;
+    private readonly int[] weightsBuff = {3, 2};
+    private WeightedRandomStack<GameObject> randomBuffs;
+    
+    [SerializeField] private Renderer referenceRenderer;
+    private float segmentHalfLength;
+    private static Vector3 initialSegmentPosition;
+    
+    private Queue<GameObject> currentSegments;
+    private static float countSegments;
+    
+    public static event Action OnGenerateContinuationOfTrench; // вызвать до создания туннеля
+    
     private void Start()
     {
         segmentHalfLength = referenceRenderer.bounds.size.z;
@@ -35,19 +29,19 @@ public class Trench : MonoBehaviour
             12,
             -29.6f + segmentHalfLength);
 
-        numberOfSegments = 3;
+        countSegments = 3;
 
-        currentSegments = new List<GameObject>();
+        currentSegments = new Queue<GameObject>();
 
-        for (var i = -1; i < numberOfSegments; i++){
+        for (var i = -1; i < countSegments; i++){
             var segment = Instantiate(trenchSegments[0],
                 initialSegmentPosition + i * segmentHalfLength * Vector3.forward,
                 Quaternion.identity);
-            currentSegments.Add(segment);
-
+            currentSegments.Enqueue(segment);
         }
 
-        GenerateNewRandomSequence();
+        randomTrench = new WeightedRandomStack<GameObject>(trenchSegments, weightsTrench);
+        randomBuffs = new WeightedRandomStack<GameObject>(buffPrefabs, weightsBuff);
     }
 
     private void Update()
@@ -57,39 +51,19 @@ public class Trench : MonoBehaviour
 
     private void GenerateContinuationOfTrench()
     {
-        if (!(GameModel.PlayerPosition.z - segmentHalfLength >= currentSegments[0].transform.position.z)) return;
+        if (!(GameModel.PlayerPosition.z - segmentHalfLength >= currentSegments.Peek().transform.position.z)) return;
         
-        var firstSegment = currentSegments[0];
-        currentSegments.RemoveAt(0);
+        var firstSegment = currentSegments.Dequeue();
         Destroy(firstSegment);
-
-        var prefabVariant = GetRandomSegmentVariant();
-
-        firstSegment = Instantiate(trenchSegments[prefabVariant],
-            initialSegmentPosition + numberOfSegments * segmentHalfLength * Vector3.forward,
-            Quaternion.identity);
-        currentSegments.Add(firstSegment);
         
-        TrySpawnBuffWeapon(firstSegment);
-
-        numberOfSegments++;
-    }
-
-    private int GetRandomSegmentVariant()
-    {
-        var prefabVariant = (TrenchState)randomSegmentVariants[variantIndex];
-        variantIndex++;
-        if (variantIndex == randomSegmentVariants.Length)
-            GenerateNewRandomSequence();
-        OnGenerateContinuationOfTrench?.Invoke(prefabVariant);
-        return (int)prefabVariant;
-    }
-
-    private void GenerateNewRandomSequence()
-    {
-        variantIndex = 0;
-        randomSegmentVariants = RandomDistributions.CreateDistributionArray(weights);
-        RandomDistributions.ShuffleArray(randomSegmentVariants);
+        OnGenerateContinuationOfTrench?.Invoke();
+        var newSegment = Instantiate(randomTrench.Pop(),
+            initialSegmentPosition + countSegments * segmentHalfLength * Vector3.forward,
+            Quaternion.identity);
+        currentSegments.Enqueue(newSegment);
+        
+        TrySpawnBuffWeapon(newSegment);
+        countSegments++;
     }
     
     private void TrySpawnBuffWeapon(GameObject segment)
@@ -98,11 +72,12 @@ public class Trench : MonoBehaviour
 
         var center = segment.transform.position;
 
-        var randomX = Random.Range(GameModel.Player.trenchSizeDownLeft.x, GameModel.Player.trenchSizeUpRight.x);
-        var randomY = Random.Range(GameModel.Player.trenchSizeDownLeft.y, GameModel.Player.trenchSizeUpRight.y);
+        var randomX = Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.x, GameModel.PlayerMovement.trenchSizeUpRight.x);
+        var randomY = Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.y, GameModel.PlayerMovement.trenchSizeUpRight.y);
         var randomZ = Random.Range(center.z - segmentHalfLength / 2, center.z + segmentHalfLength / 2);
 
         var randomPosition = new Vector3(randomX, randomY, randomZ);
-        Instantiate(buffWeaponPrefab, randomPosition, Quaternion.identity);
+        
+        Instantiate(randomBuffs.Pop(), randomPosition, Quaternion.identity);
     }
 }

@@ -10,7 +10,6 @@ public class BuffWeapon : AbstractBuff
     {
         weaponType = (WeaponType)Random.Range(0, System.Enum.GetValues(typeof(WeaponType)).Length);
         
-        // Получаем Renderer
         var rend = GetComponent<Renderer>();
         if (rend is null) return;
         rend.material.color = weaponType switch

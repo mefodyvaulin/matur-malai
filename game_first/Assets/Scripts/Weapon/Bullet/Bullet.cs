@@ -9,6 +9,6 @@ public class Bullet : Missile
 
     protected override void Move() // Постоянное движение вперёд(по Z)
     {
-        transform.Translate(Vector3.forward * (GameModel.Player.speed * Time.deltaTime + Speed * GameModel.UnscaledDeltaTime));
+        transform.Translate(Vector3.forward * (GameModel.PlayerMovement.speed * Time.deltaTime + Speed * GameModel.UnscaledDeltaTime));
     }
 }

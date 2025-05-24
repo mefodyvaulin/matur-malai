@@ -9,10 +9,6 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
     private readonly int maxRatio;
 
     private static readonly float verticalSpeed = 4f;
-    private static readonly float minY = GameModel.Player.trenchSizeDownLeft.y;
-    private static readonly float maxY = GameModel.Player.trenchSizeUpRight.y;
-    private static readonly float minX = GameModel.Player.trenchSizeDownLeft.x;
-    private static readonly float maxX = GameModel.Player.trenchSizeUpRight.x;
 
     private Vector3 moveDirection;
     public EnemyGroupHorizontallyOrVertically(int countDrones, Vector3 spawnPosition)

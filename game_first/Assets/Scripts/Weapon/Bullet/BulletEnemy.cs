@@ -14,7 +14,7 @@ public class BulletEnemy: Missile
 /* ВАРИАНТ_1
    protected override void Move()
    {
-       transform.Translate(Vector3.forward * (Speed * GameModel.UnscaledDeltaTime - GameModel.Player.speed * Time.deltaTime));
+       transform.Translate(Vector3.forward * (Speed * GameModel.UnscaledDeltaTime - GameModel.PlayerMovement.speed * Time.deltaTime));
    }
  */
 
@@ -27,7 +27,7 @@ public class BulletEnemy: Missile
        if (!previousZ.HasValue)
        {
            previousZ = currentZ;
-           deltaZ = GameModel.Player.speed * Time.deltaTime;
+           deltaZ = GameModel.PlayerMovement.speed * Time.deltaTime;
        }
        else
        {

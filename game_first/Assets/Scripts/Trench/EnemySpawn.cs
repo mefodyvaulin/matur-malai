@@ -21,7 +21,7 @@ public class EnemySpawn : MonoBehaviour
         Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
     }
 
-    private void CountFragmentsToSpawn(Trench.TrenchState state)
+    private void CountFragmentsToSpawn()
     {
         spawnedAfter++;
         if (spawnedAfter == 2 && GameModel.CountEnemies <= 0) // спавн прямо при влете в эту часть туннеля
@@ -49,7 +49,7 @@ public class EnemySpawn : MonoBehaviour
     
     private static EnemyGroupAbstract CreateRandomGroup(int countDrones, Vector3 spawnPosition)
     {
-        var type = rand.Next(0, 1);
+        var type = rand.Next(0, 3);
 
         return type switch
         {
