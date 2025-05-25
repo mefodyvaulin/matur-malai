@@ -11,6 +11,7 @@ namespace Buffs
         private float lastPlayerSpeed;
         private float lastPlayerRotationSpeed;
         private float lastCameraSmoothTime;
+        private System.Type lastWeapon;
 
         protected override IEnumerator DoBuff()
         {
@@ -24,6 +25,7 @@ namespace Buffs
             
             KillEnemies();
             GameModel.PlayerMovement.rotationSpeed = 0;
+            lastWeapon = GameModel.WeaponSwitcher.DisableAllAndGetActiveWeaponType();
             
             yield return CenteringCoroutine();
             
@@ -69,6 +71,7 @@ namespace Buffs
             GameModel.PlayerMovement.rotationSpeed = lastPlayerRotationSpeed;
             GameModel.PlayerMovement.speed = lastPlayerSpeed;
             GameModel.CameraFollow.smoothTime = lastCameraSmoothTime;
+            GameModel.WeaponSwitcher.SetWeapon(lastWeapon, fullRecharge: false);
             
             EnemySpawn.CanSpawn = true;
             GameModel.PlayerHitPoint.isIndestructibleSpeedBuff = false;
