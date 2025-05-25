@@ -596,6 +596,7 @@ MonoBehaviour:
   - {fileID: 4511315536703389260, guid: 0379325fd6d2b45c38a36b98b0c222b0, type: 3}
   - {fileID: 1696569697518613698, guid: d3b14b06e6b4341f1831b41776d586e2, type: 3}
   - {fileID: 1696569697518613698, guid: 84dcec32a5a15440d9a87cee11890331, type: 3}
+  - {fileID: 1696569697518613698, guid: c9683becabc1146a0af323f6ca413114, type: 3}
   referenceRenderer: {fileID: 3946666197706151738, guid: 523c568818f6846918d18803faf49183, type: 3}
 --- !u!114 &1838434700 stripped
 MonoBehaviour:
@@ -856,6 +857,10 @@ PrefabInstance:
     - target: {fileID: 9166729006989984157, guid: fefab924153fe0b44b9b7453e317ac4d, type: 3}
       propertyPath: m_Name
       value: BackgroundScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166729006989984157, guid: fefab924153fe0b44b9b7453e317ac4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -13,6 +13,8 @@ public static class GameModel
     
     public static PlayerHitPoint PlayerHitPoint => _playerHitPoint ?? throw new System.Exception("PlayerHitPoint not set!");
     private static PlayerHitPoint _playerHitPoint;
+    public static Collider PlayerCollider => _playerCollider ?? throw new System.Exception("PlayerHitPoint not set!");
+    private static Collider _playerCollider;
     
     public static CameraFollow CameraFollow => _cameraFollow ?? throw new System.Exception("CameraFollow not set!");
     private static CameraFollow _cameraFollow;
@@ -50,6 +52,7 @@ public static class GameModel
     {
         if ( _playerHitPoint is not null ) return;
         _playerHitPoint = playerHitPoint;
+        _playerCollider = playerHitPoint.GetComponent<Collider>();
     }
     
     public static void SetCameraFollow(CameraFollow cameraFollow)

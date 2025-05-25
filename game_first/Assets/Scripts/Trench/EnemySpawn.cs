@@ -7,6 +7,7 @@ public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] private Enemy[] enemiesPrefab;
     [SerializeField] private Animator hatchAnimation;
+    [SerializeField] private Shield shield;
     
     private int spawnedAfter;
     public static bool CanSpawn = true;
@@ -58,7 +59,7 @@ public class EnemySpawn : MonoBehaviour
         {
             var enemyIndex = rand.Next(enemiesPrefab.Length);
             var enemy = Instantiate(enemiesPrefab[enemyIndex], transform.position, transform.rotation);
-            
+            SpawnWithShield(enemy);
             var finalPosition = group.TakePosition(i);
 
             StartMoving(enemy, finalPosition, group.MoveGroup, i);
@@ -74,5 +75,13 @@ public class EnemySpawn : MonoBehaviour
     private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<Enemy> moveGroup, int i)
     {
         StartCoroutine(EnemySpawnStartAnimation.MoveToPosition(enemy, targetPosition, moveGroup, i));
+    }
+
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void SpawnWithShield(Enemy enemy)
+    {
+        if (!(UnityEngine.Random.value <= 0.05f)) return;
+        var currentShield = Instantiate(shield, enemy.health.EnemyCollider.bounds.center, enemy.transform.rotation);
+        currentShield.Init(enemy.health.EnemyCollider);
     }
 }

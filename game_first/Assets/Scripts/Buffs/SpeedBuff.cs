@@ -7,6 +7,7 @@ namespace Buffs
     public class SpeedBuff : AbstractBuff
     {
         private const int boost = 100;
+        private const float timeBoost = 1.5f;
         private float lastPlayerSpeed;
         private float lastPlayerRotationSpeed;
         private float lastCameraSmoothTime;
@@ -29,13 +30,14 @@ namespace Buffs
             GameModel.PlayerMovement.speed = boost * lastPlayerSpeed;
             GameModel.CameraFollow.smoothTime = lastCameraSmoothTime / boost;
             
-            yield return DestroyAfterUnscaledTime(1.5f);
+            yield return DestroyAfterUnscaledTime(timeBoost);
         }
 
         private static void KillEnemies()
         {
             foreach (var enemy in GameModel.Enemies.Keys)
             {
+                enemy.health.isIndestructibleShield = false;
                 enemy.health.TakeDamage(1000);
             }
         }

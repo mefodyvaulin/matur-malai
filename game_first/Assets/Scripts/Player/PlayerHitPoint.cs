@@ -1,31 +1,34 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Serialization;
 
-public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider
+public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider, ICanShield
 {
-    [SerializeField] private int maxHp = 50;
-    [FormerlySerializedAs("currentHp")] public int CurrentHp = 50;
     [SerializeField] ParticleSystem damageExplosion;
     [SerializeField] GameObject defeatingObject;
     public PostProcessVolume postProcessVolume;
     private Vignette vignette;
     public bool isIndestructibleSpeedBuff = false;
+    public bool isIndestructibleShield { get; set; }
     
-    public float MaxValue => maxHp;
+    public int MaxHp => 50;
+    public int CurrentHp { get; set; }
+    public bool IsAlive => CurrentHp > 0;
+    public float MaxValue => MaxHp;
     public float CurrentValue => CurrentHp;
     
     private void Start()
     {
-        CurrentHp = maxHp;
+        CurrentHp = MaxHp;
         postProcessVolume.profile.TryGetSettings(out vignette);
         GameModel.SetPlayerHitPoint(this);
     }
-    
+
     public void TakeDamage(int damage)
     {
-        if (isIndestructibleSpeedBuff) return;
+        if (isIndestructibleSpeedBuff || isIndestructibleShield) return;
         
         damageExplosion.gameObject.SetActive(true);
         damageExplosion.Play();
