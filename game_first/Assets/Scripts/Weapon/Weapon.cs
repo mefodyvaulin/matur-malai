@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public abstract class Weapon : MonoBehaviour, IFillBarProvider
 {
@@ -11,9 +12,9 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
     [SerializeField] protected int currentClip;               // Текущая обойма
     protected float LastFireTime;                             // Последний выстрел для кд между патронами
     protected float ReloadTimer;                              // Таймер для кд
-    protected float UltaTime;
-    private float curUltaTime;
-    protected bool isUltaActive;
+    public float UltaTime;
+    public float СurUltaTime;
+    public bool isUltaActive;
     protected bool isBuffShooting = false;
     
     public float MaxValue => maxClip;
@@ -40,17 +41,19 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
     {
         Recharge();
         
-        if (InputManager.Ulta.IsPressed() && !isUltaActive)
+        if (InputManager.Ulta.IsPressed() && !isUltaActive && GameModel.WeaponSwitcher.CanUlta)
         {
-            curUltaTime = UltaTime;
+            СurUltaTime = UltaTime;
             isUltaActive = true;
+            GameModel.WeaponSwitcher.SetIsUltaActive();
             Ulta();
         }
         if (isUltaActive)
         {
-            curUltaTime -= GameModel.UnscaledDeltaTime;
-            if (curUltaTime <= 0)
+            СurUltaTime -= GameModel.UnscaledDeltaTime;
+            if (СurUltaTime <= 0)
             {
+                СurUltaTime = 0;
                 isUltaActive = false;
             }
             if (!isBuffShooting) return;

@@ -57,6 +57,8 @@ public class EnemySpawn : MonoBehaviour
         
         for (var i = 0; i < countDrones; i++)
         {
+            if (!CanSpawn) yield break;
+            
             var enemyIndex = rand.Next(enemiesPrefab.Length);
             var enemy = Instantiate(enemiesPrefab[enemyIndex], transform.position, transform.rotation);
             SpawnWithShield(enemy);

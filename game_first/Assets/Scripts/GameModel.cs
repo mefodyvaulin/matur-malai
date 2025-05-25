@@ -69,6 +69,7 @@ public static class GameModel
     public static void RemoveEnemy(Enemy enemy)
     {
         Enemies.Remove(enemy);
+        WeaponSwitcher.PourInUlta(1);
         Score += 1;
     }
 
