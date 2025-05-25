@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour,  IDamageable
     
     public bool IsAlive => hp > 0;
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public void TakeDamage(int damage)
     {
         damageExplosion.gameObject.SetActive(true);

@@ -11,8 +11,11 @@ public static class GameModel
     public static WeaponSwitcher WeaponSwitcher => _weaponSwitcher ?? throw new System.Exception("WeaponSwitcher not set!");
     private static WeaponSwitcher _weaponSwitcher;
     
-    public static PlayerHitPoint PlayerHitPoint => _playerHitPoint ?? throw new System.Exception("WeaponSwitcher not set!");
+    public static PlayerHitPoint PlayerHitPoint => _playerHitPoint ?? throw new System.Exception("PlayerHitPoint not set!");
     private static PlayerHitPoint _playerHitPoint;
+    
+    public static CameraFollow CameraFollow => _cameraFollow ?? throw new System.Exception("CameraFollow not set!");
+    private static CameraFollow _cameraFollow;
     
     public static readonly Dictionary<Enemy, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
@@ -47,6 +50,12 @@ public static class GameModel
     {
         if ( _playerHitPoint is not null ) return;
         _playerHitPoint = playerHitPoint;
+    }
+    
+    public static void SetCameraFollow(CameraFollow cameraFollow)
+    {
+        if ( _cameraFollow is not null ) return;
+        _cameraFollow = cameraFollow;
     }
 
     public static void AddEnemy(Enemy enemy)

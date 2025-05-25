@@ -10,7 +10,7 @@ public class Trench : MonoBehaviour
     private WeightedRandomStack<GameObject> randomTrench;
     
     [SerializeField] private GameObject[] buffPrefabs;
-    private readonly int[] weightsBuff = {3, 2};
+    private readonly int[] weightsBuff = {5, 6, 1};
     private WeightedRandomStack<GameObject> randomBuffs;
     
     [SerializeField] private Renderer referenceRenderer;

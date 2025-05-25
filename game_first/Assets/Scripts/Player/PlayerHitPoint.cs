@@ -11,6 +11,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider
     [SerializeField] GameObject defeatingObject;
     public PostProcessVolume postProcessVolume;
     private Vignette vignette;
+    public bool isIndestructibleSpeedBuff = false;
     
     public float MaxValue => maxHp;
     public float CurrentValue => CurrentHp;
@@ -24,6 +25,8 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider
     
     public void TakeDamage(int damage)
     {
+        if (isIndestructibleSpeedBuff) return;
+        
         damageExplosion.gameObject.SetActive(true);
         damageExplosion.Play();
         vignette.color.Override(Color.red);

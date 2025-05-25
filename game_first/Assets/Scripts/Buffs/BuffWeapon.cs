@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,7 +22,7 @@ public class BuffWeapon : AbstractBuff
         };
     }
     
-    protected override void DoBuff()
+    protected override IEnumerator DoBuff()
     {
         switch (weaponType)
         {
@@ -37,6 +38,7 @@ public class BuffWeapon : AbstractBuff
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        yield break;
     }
 }
 

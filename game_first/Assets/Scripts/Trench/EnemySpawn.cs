@@ -7,7 +7,9 @@ public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] private Enemy[] enemiesPrefab;
     [SerializeField] private Animator hatchAnimation;
+    
     private int spawnedAfter;
+    public static bool CanSpawn = true;
     private static readonly Random rand = new();
     
     private static WeightedRandomStack<Func<int, Vector3, EnemyGroupAbstract>> randomGroup = new
@@ -33,6 +35,12 @@ public class EnemySpawn : MonoBehaviour
 
     private void CountFragmentsToSpawn()
     {
+        if (!CanSpawn || GameModel.PlayerPosition.z - transform.position.z >= 0)
+        {
+            spawnedAfter = 0;
+            return;
+        }
+        
         spawnedAfter++;
         if (spawnedAfter == 2 && GameModel.CountEnemies <= 0) // спавн прямо при влете в эту часть туннеля
         {
