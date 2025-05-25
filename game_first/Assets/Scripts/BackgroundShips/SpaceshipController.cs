@@ -25,7 +25,7 @@ public class SpaceshipController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        delta = Time.time <= timeToPosition ? speed * Time.time : delta;
+        delta = Time.time <= timeToPosition ? speed * Time.time : speed * timeToPosition;
         transform.position = initialPosition + 
                              new Vector3(0, 0, GameModel.PlayerPosition.z) + 
                              transform.forward * delta;

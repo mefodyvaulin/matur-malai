@@ -8,6 +8,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider
     [SerializeField] private int currentHp = 50;
     [SerializeField] ParticleSystem damageExplosion;
     [SerializeField] GameObject defeatingObject;
+    [SerializeField] GameObject gameOverPanel;
     public PostProcessVolume postProcessVolume;
     private Vignette vignette;
     
@@ -28,6 +29,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider
         currentHp -= damage;
         if (currentHp <= 0)
         {
+            gameOverPanel.SetActive(true);
             Instantiate(defeatingObject, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

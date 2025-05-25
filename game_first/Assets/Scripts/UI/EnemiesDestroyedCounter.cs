@@ -5,6 +5,12 @@ public class EnemysDestroyedCounter : MonoBehaviour
 {
     private int score;
     [SerializeField] private TextMeshProUGUI textOfTime;
+
+    private void Awake()
+    {
+        score = 0;
+    }
+    
     void Update()
     {
         if (score == GameModel.Score) return;

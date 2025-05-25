@@ -6,7 +6,7 @@ public class MovebackgroundFighter: MonoBehaviour
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] ParticleSystem damageExplosion;
     public float moveSpeed = 40f; 
-    private const float lifetime = 18f; 
+    private const float lifetime = 13f; 
     public float shootRate = 0.5f;
     private float nextSpawnShoot = 0f;
     private float nextSpawnDamage = 0f;
@@ -36,9 +36,9 @@ public class MovebackgroundFighter: MonoBehaviour
                 nextSpawnDamage = Time.time + 1f / damageRate;
             }
             transform.position += moveSpeed * Time.deltaTime * transform.forward;
-            transform.Rotate(-Mathf.Abs(0.1f * Mathf.Sin(Time.time)),
+            transform.Rotate(-Mathf.Abs(0.4f * Mathf.Sin(Time.time)),
                 0f, 
-                0.16f * Mathf.Cos(Time.time));
+                0.6f * Mathf.Cos(Time.time));
             elapsedTime += Time.deltaTime;
             yield return null;
         }

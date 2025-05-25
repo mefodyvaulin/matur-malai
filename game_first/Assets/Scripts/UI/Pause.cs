@@ -32,7 +32,7 @@ public class Pause : MonoBehaviour
         if(pauseMenu != null) pauseMenu.SetActive(paused);
         if(stat != null) stat.SetActive(!paused);
         if (chromaticAberrationEffect != null)
-            chromaticAberrationEffect.active = !chromaticAberrationEffect.active;
+            chromaticAberrationEffect.active = paused;
 
         if (paused) InputManager.EnableUI();
         else InputManager.EnablePlayer();

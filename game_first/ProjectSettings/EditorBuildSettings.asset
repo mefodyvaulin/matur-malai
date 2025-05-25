@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenuScene.unity
+    guid: d42d3e41f51af354c9815b3fe68a44d0
+  - enabled: 1
+    path: Assets/Scenes/MefodiyCube.unity
+    guid: cee4939d09c8fc146b261877ac25fa9a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 71c3e2ae3e0179a458bac8f3a2c8c599, type: 3}
   m_UseUCBPForAssetBundles: 0
