@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -6,7 +5,16 @@ public static class GameModel
 {
     public static PlayerMovement Player => _player ?? throw new System.Exception("Player not set!");
     private static PlayerMovement _player;
-    public static Vector3 PlayerPosition => Player.transform.position;
+    public static Vector3 PlayerPosition => playerTransform.position;
+
+    public static Transform playerTransform;
+
+    public static int playersMoney = 15000;
+    
+    public static Texture currentTexture;
+    public static Texture selectedTexture;
+    public static int selectedTextureCost;
+    public static List<Texture> playersTextures = new ();
     
     public static WeaponSwitcher WeaponSwitcher => _weaponSwitcher ?? throw new System.Exception("WeaponSwitcher not set!");
     private static WeaponSwitcher _weaponSwitcher;
@@ -26,6 +34,11 @@ public static class GameModel
             _unscaledTime = Time.time / Time.timeScale;
             return _unscaledTime;
         }
+    }
+    
+    public static void SetPlayerTransform(Transform transform)
+    {
+        playerTransform = transform;
     }
 
     public static void SetPlayerMovement(PlayerMovement player)

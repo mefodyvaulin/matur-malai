@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 948833823875577583}
   - component: {fileID: 2275042234066394382}
   - component: {fileID: 7495076429545427564}
-  - component: {fileID: 6411461840742105391}
+  - component: {fileID: -6888214301658357788}
   m_Layer: 0
   m_Name: XWing model
   m_TagString: Untagged
@@ -88,7 +88,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6411461840742105391
+--- !u!114 &-6888214301658357788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1971732820839704131, guid: 1aa77f49c416af648995006d11fae604, type: 3}
   damageExplosion: {fileID: 397405599489762245}
-  moveSpeed: 50
-  shootRate: 0.33
-  damageRate: 0.2
+  moveSpeed: 40
+  shootRate: 0.5
+  damageRate: 0.5
 --- !u!1001 &388174811727452697
 PrefabInstance:
   m_ObjectHideFlags: 0
