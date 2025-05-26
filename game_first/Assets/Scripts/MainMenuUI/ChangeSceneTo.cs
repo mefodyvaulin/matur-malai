@@ -7,6 +7,10 @@ public class ChangeSceneTo : MonoBehaviour
     
     public void StartGameScene()
     {
+        AudioListener.pause = false;
+        GameModel.ResetModel();
         SceneManager.LoadSceneAsync(sceneName);
+        Time.timeScale = 1;
     }
+
 }

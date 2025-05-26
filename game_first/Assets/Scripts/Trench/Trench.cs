@@ -12,7 +12,7 @@ public class Trench : MonoBehaviour
     private float segmentHalfLength;
     public static Vector3 initialSegmentPosition;
     private static float numberOfSegments;
-    private readonly int[] weights = {0, 1, 1, 0};
+    private readonly int[] weights = {1, 5, 5, 1};
     private int[] randomSegmentVariants;
     private int variantIndex;
     
@@ -94,7 +94,7 @@ public class Trench : MonoBehaviour
     
     private void TrySpawnBuffWeapon(GameObject segment)
     {
-        if (!(Random.value <= 2f)) return;
+        if (!(Random.value <= 30f)) return;
 
         var center = segment.transform.position;
 

@@ -40,25 +40,37 @@ public class Helper : MonoBehaviour
         while (true)
         {
             if (task.IsPressed())
+            {
+                SwitchAnim("wait", "yes");
                 break;
-            yield return null;
+            }
+            yield return new WaitForSeconds(1f);
         }
+        SwitchAnim("yes", "wait");
     }
 
     private void Update()
     {
-        var desiredPosition = GameModel.PlayerPosition + Vector3.forward * 10 + direction;
+        var desiredPosition = GameModel.PlayerPosition + Vector3.forward * 10f;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, 0.1f);
     }
 
     private IEnumerator PrintText(string str)
     {
         var text0 = "";
+        SwitchAnim("wait", "educate");
         for (var i = 0; i < str.Length; i++)
         {
             text0 += str[i];
             text.text = text0;
             yield return new WaitForSeconds(0.1f);
         }
+        SwitchAnim("educate", "wait");
+    }
+
+    private void SwitchAnim(string off, string on)
+    {
+        animator.SetBool(off, false);
+        animator.SetBool(on, true);
     }
 }

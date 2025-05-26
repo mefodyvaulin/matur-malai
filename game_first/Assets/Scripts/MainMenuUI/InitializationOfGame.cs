@@ -6,6 +6,7 @@ public class InitializationOfGame : MonoBehaviour
     [SerializeField] Material material;
     private void Awake()
     {
+        AudioListener.pause = false;
         material.SetTexture("_MainTex", defaultTexture);
         GameModel.currentTexture = defaultTexture;
         GameModel.selectedTexture = defaultTexture;

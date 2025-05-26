@@ -22,6 +22,12 @@ public class Pause : MonoBehaviour
         InputManager.PauseON.performed += PauseOnAction;
     }
 
+    void OnDestroy()
+    {
+        InputManager.PauseOFF.performed -= PauseOnAction;
+        InputManager.PauseON.performed -= PauseOnAction;
+    }
+
 
     private void PauseOnAction(InputAction.CallbackContext obj)
     {

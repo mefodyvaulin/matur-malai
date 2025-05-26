@@ -1,26 +1,33 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using Random = UnityEngine.Random;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] public AudioSource audioSource;
     [SerializeField] public List<AudioClip> musicClips = new();
     private int currentTrackIndex = 5;
 
+    private static MusicManager instance = null;
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
         PlayRandomTrack();
     }
 
-    private IEnumerator Wait()
+    private void Update()
     {
-        while (audioSource.isPlaying || Time.timeScale == 0)
-        {
-            yield return null;
-        }
-
+        if (audioSource.isPlaying) return;
         PlayRandomTrack();
     }
 
@@ -29,7 +36,6 @@ public class MusicManager : MonoBehaviour
         currentTrackIndex = index;
         audioSource.clip = musicClips[currentTrackIndex];
         audioSource.Play();
-        StartCoroutine(Wait());
     }
 
     private void PlayRandomTrack()

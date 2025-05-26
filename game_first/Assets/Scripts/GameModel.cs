@@ -7,7 +7,7 @@ public static class GameModel
     private static PlayerMovement _player;
     public static Vector3 PlayerPosition => playerTransform.position;
 
-    public static Transform playerTransform;
+    private static Transform playerTransform;
 
     public static int playersMoney = 15000;
     
@@ -68,6 +68,7 @@ public static class GameModel
     public static void ResetModel()
     {
         _player = null;
+        _weaponSwitcher = null;
         Enemies.Clear();
     }
 

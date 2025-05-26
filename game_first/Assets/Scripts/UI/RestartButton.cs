@@ -7,7 +7,9 @@ public class RestartButton : MonoBehaviour
     
     public void RestartCurrentScene()
     {
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 }
 
