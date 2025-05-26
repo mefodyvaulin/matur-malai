@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4641944680602765210}
   - component: {fileID: 7544147079172177807}
   - component: {fileID: 1185590760125583932}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LazerVertical 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 1817532694643358835}
   - component: {fileID: 6678141923295313915}
   - component: {fileID: 7834412561990258963}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MeshLazerVertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2782638307440097757}
   - component: {fileID: 1775932496096585113}
   - component: {fileID: 4706318114867008564}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MeshLazerGorizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: -6777782642531275950}
   - component: {fileID: 1182743437213111517}
   - component: {fileID: 1340426470949338380}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LazerGorizontal 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

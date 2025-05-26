@@ -58,6 +58,7 @@ public class Enemy : MonoBehaviour
 
     public void UpdateShootings(float rate = -1)
     {
+        if (!health.IsAlive) return;
         foreach (var shooting in shootings)
         {
             shooting.UpdateShooting(rate);

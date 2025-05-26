@@ -41,6 +41,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider, ICan
             gameOverPanel.SetActive(true);
             Instantiate(defeatingObject, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            GameModel.ResetModel();
         }
     }
     

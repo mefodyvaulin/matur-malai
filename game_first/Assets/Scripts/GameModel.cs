@@ -6,7 +6,7 @@ public static class GameModel
 {
     public static PlayerMovement PlayerMovement => _playerMovement ?? throw new System.Exception("PlayerMovement not set!");
     private static PlayerMovement _playerMovement;
-    public static Vector3 PlayerPosition => PlayerMovement.transform.position;
+    public static Vector3 PlayerPosition => playerTransform.position;
 
     private static Transform playerTransform;
 
