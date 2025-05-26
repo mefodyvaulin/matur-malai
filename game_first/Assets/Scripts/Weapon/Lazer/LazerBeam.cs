@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class LaserBeam : MonoBehaviour
 {
-    [SerializeField] private float maxDistance = 100f;
+    [SerializeField] protected float maxDistance = 100f;
     [SerializeField] public float width = 0.5f;
     [SerializeField] public int damagePerSecond = 5;
-    [SerializeField] private float damageInterval = 0.2f;
-    private float step = 0.5f; // шаг расположения лучей (их частота)
-    [SerializeField] private Transform beamVisual; // Ссылка на цилиндр лазера
+    [SerializeField] protected float damageInterval = 0.2f;
+    protected float step = 0.5f; // шаг расположения лучей (их частота)
+    [SerializeField] protected Transform beamVisual; // Ссылка на цилиндр лазера
     private float damageTimer;
 
-    private void Awake()
+    protected virtual void Awake()
     {
+        if (step < width) step = width;
         if (beamVisual is null)
         {
             Debug.LogError("beamVisual не назначен!");
@@ -104,7 +105,7 @@ public class LaserBeam : MonoBehaviour
 
 
 
-    private void UpdateBeamVisual(float length)
+    protected virtual void UpdateBeamVisual(float length)
     {
         // Позиционируем лазер (вдоль Z, центр — в середине луча)
         beamVisual.localScale = new Vector3(width, length * 0.5f, width); // длина по Z

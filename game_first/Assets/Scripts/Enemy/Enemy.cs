@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] public EnemyHealth health;
     [SerializeField] public EnemyMovement movement;
-    [SerializeField] public EnemyShooting shooting;
+    [SerializeField] public EnemyShooting[] shootings;
     private float deathTime;
     private bool isStartFollow;
     
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     {
         if (!health.IsAlive)
         {
-            shooting.enabled = false;
+            EnableShootings(false);
             movement.enabled = false;
             Destroy(gameObject, deathTime);
             return;
@@ -46,5 +46,21 @@ public class Enemy : MonoBehaviour
         movement.ClearMove();
         movement.Move = movement.MoveFollowerPlayer;
         isStartFollow = true;
+    }
+
+    private void EnableShootings(bool enable)
+    {
+        foreach (var shooting in shootings)
+        {
+            shooting.enabled = enable;
+        }
+    }
+
+    public void UpdateShootings(float rate = -1)
+    {
+        foreach (var shooting in shootings)
+        {
+            shooting.UpdateShooting(rate);
+        }
     }
 }

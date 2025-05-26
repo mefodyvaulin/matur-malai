@@ -39,7 +39,7 @@ public class EnemyGroupLemniskata : EnemyGroupAbstract
             xAndY.Item1 + LemniskataCenter.x - enemy.transform.position.x, 
             xAndY.Item2 + LemniskataCenter.y - enemy.transform.position.y, 
             0);
-        enemy.shooting.UpdateShooting();
+        enemy.UpdateShootings();
     }
 
     private (float, float) GetXAndY(float ang)

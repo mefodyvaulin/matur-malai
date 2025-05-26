@@ -47,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
                         player.z + distanceToEnemy),
             speed * GameModel.UnscaledDeltaTime * 0.3f);
 
-        enemy.shooting.UpdateShooting(0.5f);
+        enemy.UpdateShootings(0.5f);
     }
 
     public void DefaultMove()

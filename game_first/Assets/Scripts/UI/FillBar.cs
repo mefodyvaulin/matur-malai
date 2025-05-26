@@ -18,6 +18,7 @@ public class FillBar : MonoBehaviour
 
     private void Update()
     {
+        if (provider == null) return;
         barImage.fillAmount = provider.CurrentValue / provider.MaxValue;
     }
 

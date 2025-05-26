@@ -57,7 +57,7 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
             }
         }
 
-        enemy.shooting.UpdateShooting();
+        enemy.UpdateShootings();
     }
 
     private Vector3[] GenerateRandomUniqueRatios(int count)
