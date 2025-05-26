@@ -27,7 +27,7 @@ public class MusicManager : MonoBehaviour
 
     private void Update()
     {
-        if (audioSource.isPlaying) return;
+        if (audioSource.isPlaying || Time.timeScale == 0) return;
         PlayRandomTrack();
     }
 

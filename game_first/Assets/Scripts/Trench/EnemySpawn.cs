@@ -43,7 +43,7 @@ public class EnemySpawn : MonoBehaviour
         }
         
         spawnedAfter++;
-        if (spawnedAfter == 2 && GameModel.CountEnemies <= 0) // спавн прямо при влете в эту часть туннеля
+        if (spawnedAfter == 15 && GameModel.CountEnemies <= 0) // спавн прямо при влете в эту часть туннеля
         {
             StartCoroutine(SpawnGroup());
         }
