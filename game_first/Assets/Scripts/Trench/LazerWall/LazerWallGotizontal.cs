@@ -11,9 +11,9 @@ public class LazerWallGotizontal: LazerWallAbstract
         var direction = Vector3.up;
         while (true)
         {
-            if (transform.position.y < GameModel.Player.trenchSizeDownLeft.y)
+            if (transform.position.y < GameModel.PlayerMovement.trenchSizeDownLeft.y)
                 direction = Vector3.up;
-            else if (transform.position.y + 6f > GameModel.Player.trenchSizeUpRight.y)
+            else if (transform.position.y + 6f > GameModel.PlayerMovement.trenchSizeUpRight.y)
                 direction = Vector3.down;
             transform.position += direction * (GameModel.UnscaledDeltaTime * Speed);
             yield return null;

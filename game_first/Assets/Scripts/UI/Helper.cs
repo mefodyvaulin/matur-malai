@@ -44,7 +44,8 @@ public class Helper : MonoBehaviour
                 SwitchAnim("wait", "yes");
                 break;
             }
-            yield return new WaitForSeconds(1f);
+
+            yield return null;
         }
         SwitchAnim("yes", "wait");
     }
