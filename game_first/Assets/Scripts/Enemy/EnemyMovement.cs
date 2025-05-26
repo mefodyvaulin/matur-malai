@@ -30,8 +30,8 @@ public class EnemyMovement : MonoBehaviour
     {
         animator.SetLayerWeight(1, 1);
         var player = GameModel.PlayerPosition;
-        if (Mathf.Abs(player.x - GameModel.Player.trenchSizeUpRight.x) < 1f ||
-            Mathf.Abs(player.x - GameModel.Player.trenchSizeDownLeft.x) < 1f)
+        if (Mathf.Abs(player.x - GameModel.PlayerMovement.trenchSizeUpRight.x) < 1f ||
+            Mathf.Abs(player.x - GameModel.PlayerMovement.trenchSizeDownLeft.x) < 1f)
         {
             animator.SetBool(Wait, true);
             animator.SetBool(Mans, false);

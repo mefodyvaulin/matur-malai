@@ -3,6 +3,7 @@ using UnityEngine;
 
 public static class RandomDistributions
 {
+    private static readonly System.Random rand = new();
     /// <summary>
     /// Генерирует массив, заполненный числами от 0 до n-1, с учетом заданных вероятностей.
     /// </summary>
@@ -26,20 +27,9 @@ public static class RandomDistributions
     /// <returns>Массив со случайно разбросанными величинами, количество каждого из чисел прежнее.</returns>
     public static void ShuffleArray(int[] array)
     {
-        for (var k = 0; k < 3 * array.Length; k++)
-        for (var i = array.Length - 1; i > 3; i--)
+        for (var i = array.Length - 1; i > 0; i--)
         {
-            var j = Random.Range(0, i - 2);
-            (array[i], array[j]) = (array[j], array[i]);
-        }
-    }
-
-    public static void ShuffleArray(AudioClip[] array)
-    {
-        for (var k = 0; k < 3 * array.Length; k++)
-        for (var i = array.Length - 1; i > 3; i--)
-        {
-            var j = Random.Range(0, i - 2);
+            var j = rand.Next(0, i + 1);
             (array[i], array[j]) = (array[j], array[i]);
         }
     }

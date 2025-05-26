@@ -1,26 +1,37 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour,  IDamageable
+public class EnemyHealth : MonoBehaviour,  IDamageable, ICanShield
 {
-    [SerializeField] private int hp = 50;
+    public int MaxHp => 50;
+    public int CurrentHp { get; set; }
     [SerializeField] public AudioSource[] audioSources;
     [SerializeField] private GameObject floatingText;
     [SerializeField] ParticleSystem damageExplosion;
     [SerializeField] GameObject defeatingObject;
+    public bool isIndestructibleShield { get; set; }
     
-    public bool IsAlive => hp > 0;
+    public bool IsAlive => CurrentHp > 0;
+    public Collider EnemyCollider;
 
+    public void Awake()
+    {
+        CurrentHp = MaxHp;
+        EnemyCollider = GetComponent<Collider>();
+    }
+
+    // ReSharper disable Unity.PerformanceAnalysis
     public void TakeDamage(int damage)
     {
+        if (isIndestructibleShield) return;
+        
         damageExplosion.gameObject.SetActive(true);
-        hp -= damage;
+        CurrentHp -= damage;
         if (!IsAlive)
         {
             Instantiate(defeatingObject, transform.position, Quaternion.identity);
             
-            GetComponent<Collider>().enabled = false;
+            EnemyCollider.enabled = false;
             GetComponentInChildren<MeshRenderer>().enabled = false;
             audioSources[1].Play();
             Destroy(gameObject, audioSources[1].clip.length);

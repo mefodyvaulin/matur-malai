@@ -9,6 +9,11 @@ public class CameraFollow : MonoBehaviour
     public float smoothTime = 0.3f; // Время сглаживания
     private Vector3 velocity = Vector3.zero; // Текущая скорость камеры
 
+    private void Awake()
+    {
+        GameModel.SetCameraFollow(this);
+    }
+
     private void LateUpdate()
     {
         var desiredPosition = target.position + offset;

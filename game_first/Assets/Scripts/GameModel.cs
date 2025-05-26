@@ -1,16 +1,17 @@
+using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
 public static class GameModel
 {
-    public static PlayerMovement Player => _player ?? throw new System.Exception("Player not set!");
-    private static PlayerMovement _player;
-    public static Vector3 PlayerPosition => playerTransform.position;
+    public static PlayerMovement PlayerMovement => _playerMovement ?? throw new System.Exception("PlayerMovement not set!");
+    private static PlayerMovement _playerMovement;
+    public static Vector3 PlayerPosition => PlayerMovement.transform.position;
 
     private static Transform playerTransform;
 
     public static int playersMoney = 15000;
-    
+
     public static Texture currentTexture;
     public static Texture selectedTexture;
     public static int selectedTextureCost;
@@ -19,6 +20,14 @@ public static class GameModel
     public static WeaponSwitcher WeaponSwitcher => _weaponSwitcher ?? throw new System.Exception("WeaponSwitcher not set!");
     private static WeaponSwitcher _weaponSwitcher;
     
+    public static PlayerHitPoint PlayerHitPoint => _playerHitPoint ?? throw new System.Exception("PlayerHitPoint not set!");
+    private static PlayerHitPoint _playerHitPoint;
+    public static Collider PlayerCollider => _playerCollider ?? throw new System.Exception("PlayerHitPoint not set!");
+    private static Collider _playerCollider;
+
+    public static CameraFollow CameraFollow => _cameraFollow ?? throw new System.Exception("CameraFollow not set!");
+    private static CameraFollow _cameraFollow;
+
     public static readonly Dictionary<Enemy, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
     public static int Score;
@@ -35,7 +44,7 @@ public static class GameModel
             return _unscaledTime;
         }
     }
-    
+
     public static void SetPlayerTransform(Transform transform)
     {
         playerTransform = transform;
@@ -43,14 +52,27 @@ public static class GameModel
 
     public static void SetPlayerMovement(PlayerMovement player)
     {
-        if ( _player is not null ) return;
-        _player = player;
+        if ( _playerMovement is not null ) return;
+        _playerMovement = player;
     }
     
     public static void SetWeaponSwitcher(WeaponSwitcher weaponSwitcher)
     {
         if ( _weaponSwitcher is not null ) return;
         _weaponSwitcher = weaponSwitcher;
+    }
+
+    public static void SetPlayerHitPoint(PlayerHitPoint playerHitPoint)
+    {
+        if ( _playerHitPoint is not null ) return;
+        _playerHitPoint = playerHitPoint;
+        _playerCollider = playerHitPoint.GetComponent<Collider>();
+    }
+
+    public static void SetCameraFollow(CameraFollow cameraFollow)
+    {
+        if ( _cameraFollow is not null ) return;
+        _cameraFollow = cameraFollow;
     }
 
     public static void AddEnemy(Enemy enemy)
@@ -61,14 +83,19 @@ public static class GameModel
     public static void RemoveEnemy(Enemy enemy)
     {
         Enemies.Remove(enemy);
+        WeaponSwitcher.PourInUlta(1);
         Score += 1;
     }
 
     
     public static void ResetModel()
     {
-        _player = null;
+        _playerMovement = null;
         _weaponSwitcher = null;
+        _cameraFollow = null;
+        _playerHitPoint = null;
+        _playerCollider = null;
+        Score = 0;
         Enemies.Clear();
     }
 

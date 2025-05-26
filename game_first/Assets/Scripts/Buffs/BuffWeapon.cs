@@ -1,17 +1,16 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class BuffWeapon : MonoBehaviour
+public class BuffWeapon : AbstractBuff
 {
-    [SerializeField] private float rotationSpeed = 50f;
     private WeaponType weaponType;
     
     private void Start()
     {
         weaponType = (WeaponType)Random.Range(0, System.Enum.GetValues(typeof(WeaponType)).Length);
         
-        // Получаем Renderer
         var rend = GetComponent<Renderer>();
         if (rend is null) return;
         rend.material.color = weaponType switch
@@ -22,27 +21,8 @@ public class BuffWeapon : MonoBehaviour
             _ => rend.material.color
         };
     }
-
-    private void Update()
-    {
-        RotateAround();
-    }
-
-    private void RotateAround()
-    {
-        transform.Rotate(Vector3.up * (rotationSpeed * GameModel.UnscaledDeltaTime));
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<PlayerMovement>())
-        {
-            SwitchWeapon();
-            Destroy(gameObject);
-        }
-    }
     
-    private void SwitchWeapon()
+    protected override IEnumerator DoBuff()
     {
         switch (weaponType)
         {
@@ -58,6 +38,7 @@ public class BuffWeapon : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        yield break;
     }
 }
 

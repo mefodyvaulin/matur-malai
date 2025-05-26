@@ -4,14 +4,14 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] public float speed = 10f;          // Скорость полёта вперёд (единиц в секунду)
-    [SerializeField] private float rotationSpeed = 5f;   // Скорость поворота корабля (используется в Slerp)
+    [SerializeField] public float speed = 10f;           // Скорость полёта вперёд (единиц в секунду)
+    [SerializeField] public float rotationSpeed = 5f;    // Скорость поворота корабля (используется в Slerp)
     [SerializeField] private float maxPitchAngle = 30f;  // Максимальный угол наклона вверх/вниз (по оси X)
     [SerializeField] private float maxYawAngle = 30f;    // Максимальный угол поворота влево/вправо (по оси Y)
     [SerializeField] private float sensitivity = 1f;     // Чувствительность мыши — насколько сильно движение мыши влияет на поворот
     [SerializeField] private float centeringSpeed = 10f; // Скорость возврата корабля в нейтральное положение, когда мышь не двигается
-    [SerializeField] public Vector2 trenchSizeUpRight = new(15f, 40f);     // Ограничение тоннеля верхний правый угол
-    [SerializeField] public Vector2 trenchSizeDownLeft = new(-10f, 16f);      // Ограничение тоннеля нижний левый угол
+    [SerializeField] public Vector2 trenchSizeUpRight = new(14.5f, 40f);     // Ограничение тоннеля верхний правый угол
+    [SerializeField] public Vector2 trenchSizeDownLeft = new(-9.5f, 16f);    // Ограничение тоннеля нижний левый угол
     [SerializeField] private float timeSpeed = 1f;
 
     // === Текущие углы поворота ===
@@ -92,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * GameModel.UnscaledDeltaTime); // RotateTowards
 
     }
+    
     private static float SolveRoll(float pitch, float yaw)
     {
         return -yaw * 1.5f + pitch * 0.5f;

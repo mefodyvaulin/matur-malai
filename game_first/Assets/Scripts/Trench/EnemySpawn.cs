@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Random = System.Random;
 
@@ -6,10 +7,22 @@ public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] private Enemy[] enemiesPrefab;
     [SerializeField] private Animator hatchAnimation;
+    [SerializeField] private Shield shield;
+    
     private int spawnedAfter;
+    public static bool CanSpawn = true;
     private static readonly Random rand = new();
-
-
+    
+    private static WeightedRandomStack<Func<int, Vector3, EnemyGroupAbstract>> randomGroup = new
+        (
+            new Func<int, Vector3, EnemyGroupAbstract>[]
+            {
+                (countDrones, spawnPosition) => new EnemyGroupHorizontallyOrVertically(countDrones, spawnPosition),
+                (countDrones, spawnPosition) => new EnemyGroupCircle(countDrones, spawnPosition),
+                (countDrones, spawnPosition) => new EnemyGroupLemniskata(countDrones, spawnPosition),
+            },
+            new [] {3, 2, 2}
+        );
 
     private void Awake()
     {
@@ -21,16 +34,22 @@ public class EnemySpawn : MonoBehaviour
         Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
     }
 
-    private void CountFragmentsToSpawn(Trench.TrenchState state)
+    private void CountFragmentsToSpawn()
     {
+        if (!CanSpawn || GameModel.PlayerPosition.z - transform.position.z >= 0)
+        {
+            spawnedAfter = 0;
+            return;
+        }
+        
         spawnedAfter++;
         if (spawnedAfter == 2 && GameModel.CountEnemies <= 0) // спавн прямо при влете в эту часть туннеля
         {
-            SpawnGroup();
+            StartCoroutine(SpawnGroup());
         }
     }
 
-    private void SpawnGroup()
+    private IEnumerator SpawnGroup()
     {
         hatchAnimation.SetBool("spawnMoment", true);
         var countDrones = rand.Next(3, 7);
@@ -38,30 +57,33 @@ public class EnemySpawn : MonoBehaviour
         
         for (var i = 0; i < countDrones; i++)
         {
+            if (!CanSpawn) yield break;
+            
             var enemyIndex = rand.Next(enemiesPrefab.Length);
             var enemy = Instantiate(enemiesPrefab[enemyIndex], transform.position, transform.rotation);
-            
+            SpawnWithShield(enemy);
             var finalPosition = group.TakePosition(i);
 
-            StartMoving(enemy, finalPosition, group.MoveGroup);
+            StartMoving(enemy, finalPosition, group.MoveGroup, i);
+            yield return new WaitForSeconds(0.2f);
         }
     }
     
     private static EnemyGroupAbstract CreateRandomGroup(int countDrones, Vector3 spawnPosition)
     {
-        var type = rand.Next(0, 1);
-
-        return type switch
-        {
-            0 => new EnemyGroupHorizontallyOrVertically(countDrones, spawnPosition),
-            1 => new EnemyGroupCircle(countDrones, spawnPosition),
-            2 => new EnemyGroupLemniskata(countDrones, spawnPosition),
-            _ => throw new Exception("Unknown group type")
-        };
+        return randomGroup.Pop()(countDrones, spawnPosition);
     }
 
-    private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<Enemy> moveGroup)
+    private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<Enemy> moveGroup, int i)
     {
-        StartCoroutine(EnemySpawnStartAnimation.MoveToPosition(enemy, targetPosition, moveGroup));
+        StartCoroutine(EnemySpawnStartAnimation.MoveToPosition(enemy, targetPosition, moveGroup, i));
+    }
+
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void SpawnWithShield(Enemy enemy)
+    {
+        if (!(UnityEngine.Random.value <= 0.05f)) return;
+        var currentShield = Instantiate(shield, enemy.health.EnemyCollider.bounds.center, enemy.transform.rotation);
+        currentShield.Init(enemy.health.EnemyCollider);
     }
 }

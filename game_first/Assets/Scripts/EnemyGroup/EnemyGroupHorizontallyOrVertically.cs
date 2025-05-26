@@ -9,17 +9,13 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
     private readonly int maxRatio;
 
     private static readonly float verticalSpeed = 4f;
-    private static readonly float minY = GameModel.Player.trenchSizeDownLeft.y;
-    private static readonly float maxY = GameModel.Player.trenchSizeUpRight.y;
-    private static readonly float minX = GameModel.Player.trenchSizeDownLeft.x;
-    private static readonly float maxX = GameModel.Player.trenchSizeUpRight.x;
 
     private Vector3 moveDirection;
     public EnemyGroupHorizontallyOrVertically(int countDrones, Vector3 spawnPosition)
         : base(countDrones, spawnPosition)
     {
-        startOffset = new Vector3(maxX, maxY, spawnPosition.z);
-        endOffset = new Vector3(minX, minY, spawnPosition.z - 30);
+        startOffset = new Vector3(maxX - 1, maxY - 1, spawnPosition.z);
+        endOffset = new Vector3(minX + 1, minY + 1, spawnPosition.z - 30);
 
         moveDirection = Random.Range(0, 2) == 0 ? Vector3.up : Vector3.right;
 
@@ -64,7 +60,7 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
         enemy.shooting.UpdateShooting();
     }
 
-    private static Vector3[] GenerateRandomUniqueRatios(int count)
+    private Vector3[] GenerateRandomUniqueRatios(int count)
     {
         var rand = new System.Random();
         var indices = Enumerable.Range(0, count).ToArray();
@@ -79,7 +75,11 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
             result[i] = new Vector3(xRatios[i], yRatios[i], zRatios[i]);
         }
 
-        return result;
+        return result
+            .OrderByDescending(v => Mathf.Abs(v.x - spawnPosition.x))
+            .ThenByDescending(v => Mathf.Abs(v.y - spawnPosition.y))
+            .ThenByDescending(v => Mathf.Abs(v.z - spawnPosition.z))
+            .ToArray();
     }
 
     private static Vector3 InterpolateWithRatio(Vector3 from, Vector3 to, Vector3 ratioVector, float totalRatio)

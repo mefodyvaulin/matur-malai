@@ -10,8 +10,11 @@ public class RocketExplosion : MonoBehaviour
     {
         var colliders = Physics.OverlapSphere(transform.position, radius);
         
-        var processed = new System.Collections.Generic.HashSet<GameObject>();
-
+        var processed = new System.Collections.Generic.HashSet<GameObject>
+        {
+            GameModel.PlayerMovement.gameObject
+        };
+        
         foreach (var collider in colliders)
         {
             var obj = collider.gameObject;
