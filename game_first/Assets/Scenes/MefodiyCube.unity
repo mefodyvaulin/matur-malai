@@ -240,6 +240,10 @@ PrefabInstance:
       propertyPath: trenchSizeDownLeft.y
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 55997150708120824, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3902620130705724693, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -288,6 +292,10 @@ PrefabInstance:
       propertyPath: fillBar
       value: 
       objectReference: {fileID: 379644541}
+    - target: {fileID: 5524805817114956991, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7120153091039379193, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
       propertyPath: maxHp
       value: 50

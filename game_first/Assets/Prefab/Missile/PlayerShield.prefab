@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8276589589849587678}
   - component: {fileID: 1472188048457942386}
   - component: {fileID: 2406386950874328496}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6dbd0e47ff2334daca5073f2ae1eef5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,5 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c42525b17b24650b1397fa801ff6cf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillBar: {fileID: 0}
   AudioSource: {fileID: 0}
+  fillBar: {fileID: 0}
