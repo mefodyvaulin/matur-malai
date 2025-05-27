@@ -6,13 +6,15 @@ using Random = UnityEngine.Random;
 public class Trench : MonoBehaviour
 {
     [SerializeField] private GameObject[] trenchSegments;
-    private readonly int[] weightsTrench = {0, 0, 0, 4};
+    private readonly int[] weightsTrench = {1, 5, 5, 4};
     private WeightedRandomStack<GameObject> randomTrench;
     
     [SerializeField] private GameObject[] buffPrefabs;
     private readonly int[] weightsBuff = {6, 3, 1, 3, 2};
     private WeightedRandomStack<GameObject> randomBuffs;
-    
+
+    [SerializeField] private GameObject star;
+
     [SerializeField] private Renderer referenceRenderer;
     private float segmentHalfLength;
     private static Vector3 initialSegmentPosition;
@@ -30,7 +32,9 @@ public class Trench : MonoBehaviour
             -29.6f + segmentHalfLength);
 
         countSegments = 3;
-
+        var randomX = Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.x, GameModel.PlayerMovement.trenchSizeUpRight.x);
+        var randomY = Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.y, GameModel.PlayerMovement.trenchSizeUpRight.y);
+        startSpawnStars = new Vector2(randomX, randomY);
         currentSegments = new Queue<GameObject>();
 
         for (var i = -1; i < countSegments; i++){
@@ -63,9 +67,36 @@ public class Trench : MonoBehaviour
         currentSegments.Enqueue(newSegment);
         
         TrySpawnBuffWeapon(newSegment);
+        SpawnStar();
         countSegments++;
     }
-    
+
+    private Vector2 startSpawnStars, endSpawnStars;
+    private void SpawnStar()
+    {
+        endSpawnStars = new Vector2(
+            Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.x, GameModel.PlayerMovement.trenchSizeUpRight.x),
+            Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.y, GameModel.PlayerMovement.trenchSizeUpRight.y)
+        );
+
+        var startZ = countSegments * segmentHalfLength;
+
+        var steps = (int)segmentHalfLength / 10;
+        for (var i = 0; i < steps; i++)
+        {
+
+            var t = (float)i / steps;
+            Vector2 lerpedPos = Vector2.Lerp(startSpawnStars, endSpawnStars, t);
+
+
+            var currentZ = startZ + i * 10f;
+            Instantiate(star, new Vector3(lerpedPos.x, lerpedPos.y, currentZ), Quaternion.identity);
+        }
+
+
+        startSpawnStars = endSpawnStars;
+    }
+
     private void TrySpawnBuffWeapon(GameObject segment)
     {
         if (!(Random.value <= 0.7f)) return;

@@ -32,6 +32,7 @@ public static class GameModel
     public static int CountEnemies => Enemies.Count;
     public static int Score;
 
+
     private static float _unscaledTime;
     public static float UnscaledDeltaTime => Time.timeScale != 0 ? Time.unscaledDeltaTime : 0;
     public static float UnscaledTime

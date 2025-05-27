@@ -47,7 +47,7 @@ public class LazerSpawn : MonoBehaviour
 
     private IEnumerable<LazerWallIndetifity> GetRandomPosition()
     {
-        var index = Random.Range(4, lazersPrefab.Length);
+        var index = Random.Range(0, lazersPrefab.Length);
         var count = index < 4 ? 1 : 10;
         for (int i = 0; i < count; i++)
         {
