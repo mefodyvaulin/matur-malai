@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Shield : MonoBehaviour, IDamageable
 {
@@ -9,6 +11,8 @@ public class Shield : MonoBehaviour, IDamageable
     
     protected Collider targetCollider;
     protected ICanShield targetShield;
+    [SerializeField] private GameObject floatingTextPrefab;
+
 
     public int MaxHp => 40;
     public int CurrentHp { get; set; }
@@ -17,6 +21,7 @@ public class Shield : MonoBehaviour, IDamageable
     public virtual void Init(Collider targetCollider)
     {
         this.targetCollider = targetCollider;
+
 
         var target = targetCollider.gameObject;
 
@@ -41,6 +46,12 @@ public class Shield : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         CurrentHp -= damage;
+        if (floatingTextPrefab != null)
+        {
+            var textDamage = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+            textDamage.GetComponentInChildren<TextMeshPro>().text = damage.ToString();
+            Destroy(textDamage, 1f);
+        }
         if (CurrentHp <= 0)
              Die();
     }

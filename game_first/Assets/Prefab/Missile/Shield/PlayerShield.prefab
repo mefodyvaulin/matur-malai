@@ -122,4 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 0}
+  floatingTextPrefab: {fileID: 0}
   fillBar: {fileID: 0}
