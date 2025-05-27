@@ -23,7 +23,7 @@ public class LazerSpawn : MonoBehaviour
     private void CountFragmentsToSpawn()
     {
         spawnedAfter++;
-        if (spawnedAfter == 3)
+        if (spawnedAfter == 2)
         {
             SpawnLazer();
         }
