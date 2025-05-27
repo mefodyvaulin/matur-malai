@@ -9,6 +9,8 @@ public class LaserWeapon : Weapon
     private float defaultWidth;
     private int defaultDamage;
 
+    protected override Color UltaColor => Color.green;
+
     protected override void Start()
     {
         base.Start();

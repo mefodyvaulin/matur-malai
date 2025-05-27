@@ -5,7 +5,7 @@ public class WeaponSwitcher : MonoBehaviour, IFillBarProvider
 {
     [SerializeField] private FillBar fillBar;
     [SerializeField] private GameObject[] guns;
-    [SerializeField] public Material ultaLight;
+    [SerializeField] public MeshRenderer[] meshRenderers;
     [SerializeField] public GameObject ultaLightSwitcher;
     private Weapon[][] allWeapons = new Weapon[3][];
     

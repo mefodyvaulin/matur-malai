@@ -6,6 +6,8 @@ using System.Linq;
 public class RocketGun : MissileGun
 {
     private Rocket rocketPrefab;
+    protected override Color UltaColor => Color.magenta;
+
     protected override void Start()
     {
         base.Start();
@@ -20,7 +22,9 @@ public class RocketGun : MissileGun
     {
         StartCoroutine(UltaCoroutine());
     }
-    
+
+
+
     private IEnumerator UltaCoroutine()
     {
         for (var i = 0; i < 3; i++)

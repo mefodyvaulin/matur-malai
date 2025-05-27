@@ -16,6 +16,7 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
     public float СurUltaTime;
     public bool isUltaActive;
     protected bool isBuffShooting = false;
+    protected abstract Color UltaColor { get; }
     
     public float MaxValue => maxClip;
     public float CurrentValue => currentClip;
@@ -67,12 +68,15 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
 
     private void SwitchUltaLights()
     {
-        if (isUltaActive)
-        {
-            GameModel.WeaponSwitcher.ultaLight.color = Color.cyan;
-        }
         GameModel.WeaponSwitcher.ultaLightSwitcher.SetActive(isUltaActive);
+        if (!isUltaActive) return;
+        foreach (var meshRenderer in GameModel.WeaponSwitcher.meshRenderers)
+        {
+            meshRenderer.material.SetColor("_Color", UltaColor);
+            meshRenderer.material.SetColor("_EmissionColor", UltaColor);
+        }
     }
+
 
     public void FullRecharge()
     {
