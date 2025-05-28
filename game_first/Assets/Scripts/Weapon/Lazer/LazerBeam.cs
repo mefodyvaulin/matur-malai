@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LaserBeam : MonoBehaviour
 {
-    [SerializeField] protected float maxDistance = 100f;
+    [SerializeField] protected float maxDistance = 150f;
     [SerializeField] public float width = 0.5f;
     [SerializeField] public int damagePerSecond = 5;
     [SerializeField] protected float damageInterval = 0.2f;

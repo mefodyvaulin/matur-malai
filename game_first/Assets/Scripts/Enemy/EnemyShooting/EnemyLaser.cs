@@ -10,12 +10,19 @@ public class EnemyLaser : EnemyShooting
         minFireRate = 0.5f;
         laserShoot = bulletPrefab.GetComponent<LaserShoot>();
         if (laserShoot == null) throw new Exception("LaserShoot component doesn't exist");
+        base.Awake();
     }
 
     protected override void Shoot()
     {
         laserShoot.gameObject.SetActive(true);
     }
-    
-    
+
+    protected override void StopShoot()
+    {
+    }
+
+    protected override void Animation(EnemyAbstarct enemy)
+    {
+    }
 }

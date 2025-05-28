@@ -5,6 +5,8 @@ using Random = UnityEngine.Random;
 
 public class Trench : MonoBehaviour
 {
+    [SerializeField] private GameObject bossTrenchSegment;
+    
     [SerializeField] private GameObject[] trenchSegments;
     private readonly int[] weightsTrench = {1, 2, 2, 4};
     private WeightedRandomStack<GameObject> randomTrench;
@@ -18,7 +20,7 @@ public class Trench : MonoBehaviour
     private static Vector3 initialSegmentPosition;
     
     private Queue<GameObject> currentSegments;
-    private static float countSegments;
+    private static int countSegments;
     
     public static event Action OnGenerateContinuationOfTrench; // вызвать до создания туннеля
     
@@ -57,7 +59,8 @@ public class Trench : MonoBehaviour
         Destroy(firstSegment);
         
         OnGenerateContinuationOfTrench?.Invoke();
-        var newSegment = Instantiate(randomTrench.Pop(),
+        var curTrench = countSegments == 5 ? bossTrenchSegment : randomTrench.Pop();
+        var newSegment = Instantiate(curTrench,
             initialSegmentPosition + countSegments * segmentHalfLength * Vector3.forward,
             Quaternion.identity);
         currentSegments.Enqueue(newSegment);

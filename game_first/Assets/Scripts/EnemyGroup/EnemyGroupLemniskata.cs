@@ -30,7 +30,7 @@ public class EnemyGroupLemniskata : EnemyGroupAbstract
             0);
     }
 
-    public override void MoveGroup(Enemy enemy)
+    public override void MoveGroup(EnemyAbstarct enemy)
     {
         var enemyIndex = GameModel.Enemies[enemy] - 1;
         enemyAngles[enemyIndex] += deltaAngle * GameModel.UnscaledDeltaTime;
@@ -39,7 +39,7 @@ public class EnemyGroupLemniskata : EnemyGroupAbstract
             xAndY.Item1 + LemniskataCenter.x - enemy.transform.position.x, 
             xAndY.Item2 + LemniskataCenter.y - enemy.transform.position.y, 
             0);
-        enemy.UpdateShootings();
+        enemy.UpdateAllShootings();
     }
 
     private (float, float) GetXAndY(float ang)

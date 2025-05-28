@@ -50,6 +50,9 @@ MonoBehaviour:
   maxClip: 50
   reloadCooldown: 0.5
   currentClip: 0
+  UltaTime: 0
+  "\u0421urUltaTime": 0
+  isUltaActive: 0
   laserBeam: {fileID: 5524805817114956991}
   ultaTime: 10
 --- !u!1 &1341020659835035721
@@ -274,11 +277,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026800ac6aba945269176bef49bf0089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 50
-  CurrentHp: 50
   damageExplosion: {fileID: 489523231305322811}
   defeatingObject: {fileID: 9176395224772069506, guid: a8b785c60f65fa547b56db3d92c70cc7, type: 3}
+  gameOverPanel: {fileID: 0}
   postProcessVolume: {fileID: 0}
+  isIndestructibleSpeedBuff: 0
 --- !u!114 &-5067136435526583797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +375,9 @@ MonoBehaviour:
   maxClip: 20
   reloadCooldown: 0.5
   currentClip: 0
+  UltaTime: 0
+  "\u0421urUltaTime": 0
+  isUltaActive: 0
 --- !u!114 &5468687824431238837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,6 +395,9 @@ MonoBehaviour:
   maxClip: 10
   reloadCooldown: 1
   currentClip: 0
+  UltaTime: 0
+  "\u0421urUltaTime": 0
+  isUltaActive: 0
 --- !u!1 &5748636177768609861
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,6 +674,9 @@ MonoBehaviour:
   maxClip: 20
   reloadCooldown: 0.5
   currentClip: 0
+  UltaTime: 0
+  "\u0421urUltaTime": 0
+  isUltaActive: 0
 --- !u!114 &6488582137909555457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,6 +694,9 @@ MonoBehaviour:
   maxClip: 10
   reloadCooldown: 1
   currentClip: 0
+  UltaTime: 0
+  "\u0421urUltaTime": 0
+  isUltaActive: 0
 --- !u!1 &7714718600322193216
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df8dc36536aa41fd8db3b5e4e20cd43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 100
+  maxDistance: 200
   width: 0.5
   damagePerSecond: 5
   damageInterval: 0.2

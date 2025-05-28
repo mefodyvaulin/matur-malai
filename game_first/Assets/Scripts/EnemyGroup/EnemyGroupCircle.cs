@@ -35,14 +35,14 @@ public class EnemyGroupCircle : EnemyGroupAbstract
         );
     }
 
-    public override void MoveGroup(Enemy enemy)
+    public override void MoveGroup(EnemyAbstarct enemy)
     {
         UpdateRadius();
 
         if (Mathf.Abs(actualRadius - (minRadius)) < 0.2f
             || Mathf.Abs(actualRadius - (maxRadius)) < 0.2f
             || Mathf.Abs(actualRadius - (radius)) < 0.2f) 
-            enemy.UpdateShootings(0.5f);
+            enemy.UpdateAllShootings(0.5f);
         
         var direction = new Vector2(
             enemy.transform.position.x - centerOfCircle.x,

@@ -10,7 +10,7 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private Shield shield;
     
     private int spawnedAfter;
-    public static bool CanSpawn = true;
+    public static bool CanSpawn = false;
     private static readonly Random rand = new();
     
     private static WeightedRandomStack<Func<int, Vector3, EnemyGroupAbstract>> randomGroup = new
@@ -74,7 +74,7 @@ public class EnemySpawn : MonoBehaviour
         return randomGroup.Pop()(countDrones, spawnPosition);
     }
 
-    private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<Enemy> moveGroup, int i)
+    private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<EnemyAbstarct> moveGroup, int i)
     {
         StartCoroutine(EnemySpawnStartAnimation.MoveToPosition(enemy, targetPosition, moveGroup, i));
     }

@@ -288,6 +288,10 @@ PrefabInstance:
       propertyPath: fillBar
       value: 
       objectReference: {fileID: 2119506272}
+    - target: {fileID: 5524805817114956991, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
+      propertyPath: maxDistance
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6488582137909555457, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -455,6 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c50b6391924fe4b9ecf5daf8b86a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossTrenchSegment: {fileID: 4490638380372218359, guid: a3370f553ce504031a1425d47a7a60ff, type: 3}
   trenchSegments:
   - {fileID: 4490638380372218359, guid: 1610b1f6c60492845905406715e38b51, type: 3}
   - {fileID: 6965599510327825665, guid: 9af7d616ccbe78740ba3feb7075a2086, type: 3}
@@ -752,7 +757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9166729006989984157, guid: fefab924153fe0b44b9b7453e317ac4d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

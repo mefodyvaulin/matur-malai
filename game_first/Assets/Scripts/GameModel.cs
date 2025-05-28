@@ -6,7 +6,7 @@ public static class GameModel
 {
     public static PlayerMovement PlayerMovement => _playerMovement ?? throw new System.Exception("PlayerMovement not set!");
     private static PlayerMovement _playerMovement;
-    public static Vector3 PlayerPosition => playerTransform.position;
+    public static Vector3 PlayerPosition => playerTransform?.position ?? throw new System.Exception("PlayerTransform not set!");
 
     private static Transform playerTransform;
 
@@ -28,7 +28,7 @@ public static class GameModel
     public static CameraFollow CameraFollow => _cameraFollow ?? throw new System.Exception("CameraFollow not set!");
     private static CameraFollow _cameraFollow;
 
-    public static readonly Dictionary<Enemy, int> Enemies = new();
+    public static readonly Dictionary<EnemyAbstarct, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
     public static int Score;
 
@@ -75,12 +75,12 @@ public static class GameModel
         _cameraFollow = cameraFollow;
     }
 
-    public static void AddEnemy(Enemy enemy)
+    public static void AddEnemy(EnemyAbstarct enemy)
     {
         Enemies.Add(enemy, Enemies.Count + 1);
     }
     
-    public static void RemoveEnemy(Enemy enemy)
+    public static void RemoveEnemy(EnemyAbstarct enemy)
     {
         Enemies.Remove(enemy);
         WeaponSwitcher.PourInUlta(1);

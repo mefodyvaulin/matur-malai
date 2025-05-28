@@ -11,13 +11,10 @@ public class EnemyMovement : MonoBehaviour
     public int direction;
 
     [SerializeField] private float distanceToEnemy;
-
-    [SerializeField] private float rotationSpeed = 2f;
-    [SerializeField] private float maxRotationAngle = 15f;
     private Animator animator;
     private float? previousZ = null;
 
-    public Action<Enemy> Move;
+    public Action<EnemyAbstarct> Move;
 
     private void Awake()
     {
@@ -26,7 +23,7 @@ public class EnemyMovement : MonoBehaviour
         distanceToEnemy = Random.Range(25f, 35f);
     }
 
-    public void MoveFollowerPlayer(Enemy enemy)
+    public void MoveFollowerPlayer(EnemyAbstarct enemy)
     {
         animator.SetLayerWeight(1, 1);
         var player = GameModel.PlayerPosition;
@@ -47,7 +44,7 @@ public class EnemyMovement : MonoBehaviour
                         player.z + distanceToEnemy),
             speed * GameModel.UnscaledDeltaTime * 0.3f);
 
-        enemy.UpdateShootings(0.5f);
+        enemy.UpdateAllShootings(0.5f);
     }
 
     public void DefaultMove()
@@ -55,7 +52,7 @@ public class EnemyMovement : MonoBehaviour
         Move += MoveBack;
     }
     
-    private void MoveBack(Enemy enemy)
+    private void MoveBack(EnemyAbstarct enemy)
     {
         var currentZ = GameModel.PlayerPosition.z;
 
@@ -68,7 +65,8 @@ public class EnemyMovement : MonoBehaviour
         var deltaZ = currentZ - previousZ.Value;
         previousZ = currentZ;
 
-        transform.Translate(Vector3.back * deltaZ);
+        //transform.Translate(Vector3.back * deltaZ);
+        transform.Translate(Vector3.forward * deltaZ, Space.World);
     }
 
     public void ClearMove()
