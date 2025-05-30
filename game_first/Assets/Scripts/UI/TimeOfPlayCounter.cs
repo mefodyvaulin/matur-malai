@@ -8,7 +8,8 @@ public class TimeOfPlayCounter : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale != 0)
-            textOfScore.text = (Time.time * 100).ToString("F0");
+        if (Time.timeScale == 0) return;
+        textOfScore.text = (Time.time * 100).ToString("F0");
+        GameModel.sessionScore = int.Parse(textOfScore.text);
     }
 }

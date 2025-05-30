@@ -12,6 +12,6 @@ public class MoneyUpdater : MonoBehaviour
 
     private void Update()
     {
-       textMesh.text = GameModel.playersMoney.ToString();
+       textMesh.text = GameModel.PlayersMoney.ToString();
     }
 }

@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -10,12 +9,41 @@ public static class GameModel
 
     private static Transform playerTransform;
 
-    public static int playersMoney = 15000;
+    public static SaveAllData saveAllData;
 
-    public static Texture currentTexture;
+    public static int playerSessionMoney;
+    public static int PlayersMoney
+    {
+        get => saveAllData.playersMoney;
+        set => saveAllData.playersMoney = value;
+    }
+
+    public static Texture CurrentTexture
+    {
+        get => saveAllData.currentTexture;
+        set => saveAllData.currentTexture = value;
+    }
+    public static List<Texture> PlayersTextures
+    {
+        get => saveAllData.playersTextures;
+        set => saveAllData.playersTextures = value;
+    }
+
+    public static int sessionScore;
+    public static List<int> LastGamesScore
+    {
+        get => saveAllData.lastScores;
+        set => saveAllData.lastScores = value;
+    }
+
+    public static int BestScore
+    {
+        get => saveAllData.bestScore;
+        set => saveAllData.bestScore = value;
+    }
+
     public static Texture selectedTexture;
     public static int selectedTextureCost;
-    public static List<Texture> playersTextures = new ();
     
     public static WeaponSwitcher WeaponSwitcher => _weaponSwitcher ?? throw new System.Exception("WeaponSwitcher not set!");
     private static WeaponSwitcher _weaponSwitcher;
@@ -30,8 +58,8 @@ public static class GameModel
 
     public static readonly Dictionary<Enemy, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
-    public static int Score;
 
+    
 
     private static float _unscaledTime;
     public static float UnscaledDeltaTime => Time.timeScale != 0 ? Time.unscaledDeltaTime : 0;
@@ -85,7 +113,6 @@ public static class GameModel
     {
         Enemies.Remove(enemy);
         WeaponSwitcher.PourInUlta(1);
-        Score += 1;
     }
 
     
@@ -96,9 +123,12 @@ public static class GameModel
         _cameraFollow = null;
         _playerHitPoint = null;
         _playerCollider = null;
-        Score = 0;
+        SetMoney();
+        SetScore();
         Enemies.Clear();
     }
+
+    
 
     private static float maxTimeScale = 9f;
     private static float cooldownBoost = 2f;
@@ -116,5 +146,21 @@ public static class GameModel
 
         Time.timeScale += boost;
         updateCooldownBoost = cooldownBoost;
+    }
+
+    private static void SetScore()
+    {
+        LastGamesScore.Add(sessionScore);
+        if (LastGamesScore.Count == 6) LastGamesScore.RemoveAt(LastGamesScore.Count - 1);
+        if (sessionScore > BestScore)
+        {
+            BestScore = sessionScore;
+        }
+    }
+    
+    private static void SetMoney()
+    {
+        PlayersMoney += playerSessionMoney;
+        playerSessionMoney = 0;
     }
 }

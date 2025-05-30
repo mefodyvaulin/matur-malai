@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8905b2c6c645384eba778c8105ef7e6, type: 3}
   m_Name: SaveAllData
   m_EditorClassIdentifier: 
-  money: 15000
-  textures:
+  playersMoney: 3710
+  bestScore: 2002
+  lastScores: d2070000
+  currentTexture: {fileID: 2800000, guid: 80a3bc346421a0e408e7a87bc7099c3c, type: 3}
+  playersTextures:
   - {fileID: 2800000, guid: 00324ce00070647d19b2b6f32743d7d3, type: 3}
+  - {fileID: 2800000, guid: 849e172d1eba8fb4398f1430dc39c2cf, type: 3}
+  - {fileID: 2800000, guid: 80a3bc346421a0e408e7a87bc7099c3c, type: 3}
+  - {fileID: 2800000, guid: 7add593d75f0efc4cb9695ca8d8dbe88, type: 3}

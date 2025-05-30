@@ -4,9 +4,9 @@ public class SelectSkinButton : MonoBehaviour
 {
     public void SelectSkin()
     {
-        if (GameModel.playersTextures.Contains(GameModel.selectedTexture))
+        if (GameModel.PlayersTextures.Contains(GameModel.selectedTexture))
         {
-            GameModel.currentTexture = GameModel.selectedTexture;
+            GameModel.CurrentTexture = GameModel.selectedTexture;
         }
     }
 }

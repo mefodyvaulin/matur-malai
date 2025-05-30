@@ -4,7 +4,10 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "SaveAllData", menuName = "ScriptableObjects/SaveAllData", order = 1)]
 public class SaveAllData : ScriptableObject
 {
-    public int money;
-    public List<Texture> textures;
+    public int playersMoney;
+    public int bestScore;
+    public List<int> lastScores;
+    public Texture currentTexture;
+    public List<Texture> playersTextures;
 }
 

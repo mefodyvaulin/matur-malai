@@ -8,9 +8,8 @@ public class ChangeSceneTo : MonoBehaviour
     public void StartGameScene()
     {
         AudioListener.pause = false;
-        GameModel.ResetModel();
+        if (sceneName == "MainMenuScene") GameModel.ResetModel();
         SceneManager.LoadSceneAsync(sceneName);
         Time.timeScale = 1;
     }
-
 }

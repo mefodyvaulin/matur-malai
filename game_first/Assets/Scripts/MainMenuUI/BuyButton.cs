@@ -7,12 +7,12 @@ public class BuyButton : MonoBehaviour
     
     public void Buy()
     {
-        if (GameModel.selectedTextureCost <= GameModel.playersMoney &&
-            !GameModel.playersTextures.Contains(GameModel.selectedTexture))
+        if (GameModel.selectedTextureCost <= GameModel.PlayersMoney &&
+            !GameModel.PlayersTextures.Contains(GameModel.selectedTexture))
         {
-            GameModel.playersMoney -= GameModel.selectedTextureCost;
-            moneyTextMesh.text = GameModel.playersMoney.ToString();
-            GameModel.playersTextures.Add(GameModel.selectedTexture);
+            GameModel.PlayersMoney -= GameModel.selectedTextureCost;
+            moneyTextMesh.text = GameModel.PlayersMoney.ToString();
+            GameModel.PlayersTextures.Add(GameModel.selectedTexture);
         }
     }
 }

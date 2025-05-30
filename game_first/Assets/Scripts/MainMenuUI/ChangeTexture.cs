@@ -12,7 +12,7 @@ public class ChangeTexture : MonoBehaviour
     {
         if (material != null && newTexture != null)
         {
-            if (GameModel.playersTextures.Contains(newTexture))
+            if (GameModel.PlayersTextures.Contains(newTexture))
                 costTextMesh.text = "Bought!";
             else
                 costTextMesh.text = costOfTexture.ToString();

@@ -4,7 +4,7 @@ public class Star: AbstractBuff
 {
     protected override IEnumerator DoBuff()
     {
-        GameModel.playersMoney += 10;
+        GameModel.playerSessionMoney += 10;
         yield break;
     }
 }
