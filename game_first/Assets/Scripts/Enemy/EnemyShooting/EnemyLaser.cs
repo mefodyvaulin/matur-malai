@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyLaser : EnemyShooting
 {
     private LaserShoot laserShoot;
-    private void Awake()
+    protected override void Awake()
     {
         fireRate = 2.7f;
         minFireRate = 0.5f;
@@ -19,10 +19,6 @@ public class EnemyLaser : EnemyShooting
     }
 
     protected override void StopShoot()
-    {
-    }
-
-    protected override void Animation(EnemyAbstarct enemy)
     {
     }
 }

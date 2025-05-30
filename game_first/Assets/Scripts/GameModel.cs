@@ -28,22 +28,13 @@ public static class GameModel
     public static CameraFollow CameraFollow => _cameraFollow ?? throw new System.Exception("CameraFollow not set!");
     private static CameraFollow _cameraFollow;
 
-    public static readonly Dictionary<EnemyAbstarct, int> Enemies = new();
+    public static readonly Dictionary<EnemyAbstract, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
     public static int Score;
 
-    private static float _unscaledTime;
-    public static float UnscaledDeltaTime => Time.timeScale != 0 ? Time.unscaledDeltaTime : 0;
-    public static float UnscaledTime
-    {
-        get
-        {
-            if (Time.timeScale == 0)
-                return _unscaledTime;
-            _unscaledTime = Time.time / Time.timeScale;
-            return _unscaledTime;
-        }
-    }
+    private static TimeManager _timeManager;
+    public static float UnscaledDeltaTime => _timeManager.UnscaledDeltaTime;
+    public static float UnscaledTime => _timeManager.UnscaledTime; 
 
     public static void SetPlayerTransform(Transform transform)
     {
@@ -74,13 +65,19 @@ public static class GameModel
         if ( _cameraFollow is not null ) return;
         _cameraFollow = cameraFollow;
     }
+    
+    public static void SetTimeManager(TimeManager timeManager)
+    {
+        if ( _timeManager is not null ) return;
+        _timeManager = timeManager;
+    }
 
-    public static void AddEnemy(EnemyAbstarct enemy)
+    public static void AddEnemy(EnemyAbstract enemy)
     {
         Enemies.Add(enemy, Enemies.Count + 1);
     }
     
-    public static void RemoveEnemy(EnemyAbstarct enemy)
+    public static void RemoveEnemy(EnemyAbstract enemy)
     {
         Enemies.Remove(enemy);
         WeaponSwitcher.PourInUlta(1);
@@ -95,6 +92,7 @@ public static class GameModel
         _cameraFollow = null;
         _playerHitPoint = null;
         _playerCollider = null;
+        _timeManager = null;
         Score = 0;
         Enemies.Clear();
     }

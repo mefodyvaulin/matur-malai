@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
     private Animator animator;
     private float? previousZ = null;
 
-    public Action<EnemyAbstarct> Move;
+    public Action<EnemyAbstract> Move;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class EnemyMovement : MonoBehaviour
         distanceToEnemy = Random.Range(25f, 35f);
     }
 
-    public void MoveFollowerPlayer(EnemyAbstarct enemy)
+    public void MoveFollowerPlayer(EnemyAbstract enemy)
     {
         animator.SetLayerWeight(1, 1);
         var player = GameModel.PlayerPosition;
@@ -52,7 +52,7 @@ public class EnemyMovement : MonoBehaviour
         Move += MoveBack;
     }
     
-    private void MoveBack(EnemyAbstarct enemy)
+    private void MoveBack(EnemyAbstract enemy)
     {
         var currentZ = GameModel.PlayerPosition.z;
 

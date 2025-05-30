@@ -30,7 +30,7 @@ public class EnemyGroupLemniskata : EnemyGroupAbstract
             0);
     }
 
-    public override void MoveGroup(EnemyAbstarct enemy)
+    public override void MoveGroup(EnemyAbstract enemy)
     {
         var enemyIndex = GameModel.Enemies[enemy] - 1;
         enemyAngles[enemyIndex] += deltaAngle * GameModel.UnscaledDeltaTime;

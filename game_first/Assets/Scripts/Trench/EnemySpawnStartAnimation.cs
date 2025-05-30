@@ -8,7 +8,7 @@ public static class EnemySpawnStartAnimation
     private static readonly float departurTime = 2f;
     private static readonly float turningTime = 0.5f;
     
-    public static IEnumerator MoveToPosition(EnemyAbstarct enemy, Vector3 toPosition, Action<EnemyAbstarct> moveGroup, int i,
+    public static IEnumerator MoveToPosition(EnemyAbstract enemy, Vector3 toPosition, Action<EnemyAbstract> moveGroup, int i,
         Vector3? controlPoint1 = null, Vector3? controlPoint2 = null, float flightTime = 0)
     {
         //yield return MoveForward(enemy, moveForwardTime);
@@ -67,7 +67,7 @@ public static class EnemySpawnStartAnimation
         enemy.movement.Move += moveGroup;
     }
 
-    private static IEnumerator MoveForward(EnemyAbstarct enemy, float time)
+    private static IEnumerator MoveForward(EnemyAbstract enemy, float time)
     {
         var originalPosition = enemy.transform.position;
         var offsetPosition = originalPosition + 4 * enemy.transform.forward.normalized;
@@ -84,7 +84,7 @@ public static class EnemySpawnStartAnimation
         enemy.transform.position = offsetPosition;
     }
     
-    private static IEnumerator SmoothRotate(EnemyAbstarct enemy, Quaternion targetRotation, float time)
+    private static IEnumerator SmoothRotate(EnemyAbstract enemy, Quaternion targetRotation, float time)
     {
         var startRotation = enemy.transform.rotation;
         var elapsed = 0f;

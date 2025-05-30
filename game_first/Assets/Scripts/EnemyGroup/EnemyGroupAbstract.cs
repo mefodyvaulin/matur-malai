@@ -17,5 +17,5 @@ public abstract class EnemyGroupAbstract
 
     public abstract Vector3 TakePosition(int index);
 
-    public abstract void MoveGroup(EnemyAbstarct enemy);
+    public abstract void MoveGroup(EnemyAbstract enemy);
 }

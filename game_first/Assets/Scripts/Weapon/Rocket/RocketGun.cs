@@ -34,12 +34,12 @@ public class RocketGun : MissileGun
         }
     }
 
-    private static EnemyAbstarct[] GetRandomizedEnemiesOrNulls()
+    private static EnemyAbstract[] GetRandomizedEnemiesOrNulls()
     {
         if (GameModel.Enemies.Keys.Count > 0) 
             return GameModel.Enemies.Keys
                 .OrderBy(_ => Guid.NewGuid())
                 .ToArray();
-        return new EnemyAbstarct[] { null, null, null };        
+        return new EnemyAbstract[] { null, null, null };        
     }
 }

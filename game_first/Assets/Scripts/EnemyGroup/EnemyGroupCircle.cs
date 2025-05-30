@@ -35,7 +35,7 @@ public class EnemyGroupCircle : EnemyGroupAbstract
         );
     }
 
-    public override void MoveGroup(EnemyAbstarct enemy)
+    public override void MoveGroup(EnemyAbstract enemy)
     {
         UpdateRadius();
 

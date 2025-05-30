@@ -74,7 +74,7 @@ public class EnemySpawn : MonoBehaviour
         return randomGroup.Pop()(countDrones, spawnPosition);
     }
 
-    private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<EnemyAbstarct> moveGroup, int i)
+    private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<EnemyAbstract> moveGroup, int i)
     {
         StartCoroutine(EnemySpawnStartAnimation.MoveToPosition(enemy, targetPosition, moveGroup, i));
     }

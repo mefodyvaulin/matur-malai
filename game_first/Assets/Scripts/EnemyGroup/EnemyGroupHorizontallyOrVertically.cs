@@ -28,7 +28,7 @@ public class EnemyGroupHorizontallyOrVertically : EnemyGroupAbstract
         return InterpolateWithRatio(startOffset, endOffset, randomRatios[index], maxRatio);
     }
 
-    public override void MoveGroup(EnemyAbstarct enemy)
+    public override void MoveGroup(EnemyAbstract enemy)
     {
         enemy.transform.position += moveDirection * (enemy.movement.direction * verticalSpeed * GameModel.UnscaledDeltaTime);
 

@@ -10,8 +10,4 @@ public class EnemyGun : EnemyShooting
     protected override void StopShoot()
     {
     }
-    
-    protected override void Animation(EnemyAbstarct enemy)
-    {
-    }
 }

@@ -17,7 +17,7 @@ public abstract class EnemyShooting : MonoBehaviour
 
     private float returnTime = 1f;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         lastShootTime = -fireRate;
         lastAnimationTime = -fireRate;
@@ -38,7 +38,7 @@ public abstract class EnemyShooting : MonoBehaviour
         Shoot();
     }
 
-    public virtual void UpdateShootAnimation(EnemyAbstarct enemy, float rate = -1, bool animate = true)
+    public virtual void UpdateShootAnimation(EnemyAbstract enemy, float rate = -1, bool animate = true)
     {
         if (!animate)
         {
@@ -56,19 +56,19 @@ public abstract class EnemyShooting : MonoBehaviour
     protected abstract void Shoot();
     protected abstract void StopShoot();
 
-    protected virtual void Animation(EnemyAbstarct enemy)
+    protected virtual void Animation(EnemyAbstract enemy)
     {
         startPosition = enemy.transform.position;
         startRotation = enemy.transform.rotation;
     }
 
-    private void StopShootAnimation(EnemyAbstarct enemy)
+    private void StopShootAnimation(EnemyAbstract enemy)
     {
         StopAllCoroutines();
         StartCoroutine(ReturnToStartCoroutine(enemy));
     }
 
-    private IEnumerator ReturnToStartCoroutine(EnemyAbstarct enemy)
+    private IEnumerator ReturnToStartCoroutine(EnemyAbstract enemy)
     {
         var fromPos = enemy.transform.position;
         var fromRot = enemy.transform.rotation;

@@ -23,23 +23,23 @@ public class SpaceshipController : MonoBehaviour
         nextDamageTime = Random.Range(0f, 1f / damageRate);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         delta = Time.time <= timeToPosition ? speed * Time.time : speed * timeToPosition;
         transform.position = initialPosition + 
                              new Vector3(0, 0, GameModel.PlayerPosition.z) + 
                              transform.forward * delta;
-        if (Time.time >= nextFireTime)
+        if (GameModel.UnscaledTime >= nextFireTime)
         {
             for(var i = 0; i < Random.Range(1, 4); i++)
                 Shoot();
-            nextFireTime = Time.time + 1f / fireRate;
+            nextFireTime = GameModel.UnscaledTime + 1f / fireRate;
         }
 
-        if (!(Time.time >= nextDamageTime)) return;
+        if (!(GameModel.UnscaledTime >= nextDamageTime)) return;
         var randomDamagePosition = Random.Range(0, damageExplosions.Length);
         damageExplosions[randomDamagePosition].Play();
-        nextDamageTime = Time.time + 1f / damageRate;
+        nextDamageTime = GameModel.UnscaledTime + 1f / damageRate;
     }
 
     private void Shoot()

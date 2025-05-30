@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Enemy : EnemyAbstarct
+public class Enemy : EnemyAbstract
 {
     private bool isStartFollow;
 
