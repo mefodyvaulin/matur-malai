@@ -22,6 +22,9 @@ public static class GameModel
     public static CameraFollow CameraFollow => _cameraFollow ?? throw new System.Exception("CameraFollow not set!");
     private static CameraFollow _cameraFollow;
 
+    public static PlayerShield Shield => _shield ?? throw new System.Exception("Shied not set!");
+    private static PlayerShield _shield;
+
     public static readonly Dictionary<Enemy, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
 
@@ -43,6 +46,11 @@ public static class GameModel
     public static void SetPlayerTransform(Transform transform)
     {
         playerTransform = transform;
+    }
+
+    public static void SetPlayerShied(PlayerShield shield)
+    {
+        _shield = shield;
     }
 
     public static void SetPlayerMovement(PlayerMovement player)

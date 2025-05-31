@@ -9,6 +9,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider, ICan
     [SerializeField] ParticleSystem damageExplosion;
     [SerializeField] GameObject defeatingObject;
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] PlayerShield shield;
     public PostProcessVolume postProcessVolume;
     private Vignette vignette;
     public bool isIndestructibleSpeedBuff = false;
@@ -22,6 +23,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider, ICan
     
     private void Start()
     {
+        GameModel.SetPlayerShied(shield);
         CurrentHp = MaxHp;
         postProcessVolume.profile.TryGetSettings(out vignette);
         GameModel.SetPlayerHitPoint(this);

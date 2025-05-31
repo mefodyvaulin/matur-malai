@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class FillBar : MonoBehaviour
 {
-    [SerializeField] private MonoBehaviour providerScript; // Любой скрипт, реализующий IFillBarProvider
+    [SerializeField] public MonoBehaviour providerScript; // Любой скрипт, реализующий IFillBarProvider
     private IFillBarProvider provider;
     private Image barImage; // Компонент Image с типом Filled на этом объекте
 

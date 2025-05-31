@@ -3176,7 +3176,7 @@ MonoBehaviour:
   - {fileID: 2017818659}
   targetObject: {fileID: 409157201}
   textMesh: {fileID: 775521197}
-  costTextMesh: {fileID: 1312107141}
+  costTextMesh: {fileID: 1697773443}
 --- !u!1 &1697773441
 GameObject:
   m_ObjectHideFlags: 0

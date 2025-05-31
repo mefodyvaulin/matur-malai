@@ -1,29 +1,66 @@
 using System;
 using System.Collections;
-using System.Linq;
+using TMPro;
 using UnityEngine;
 
-public class PlayerShield : Shield, IFillBarProvider
+public class PlayerShield : MonoBehaviour, IFillBarProvider, IDamageable
 {
-    [SerializeField] private FillBar fillBar;
+    [SerializeField] private GameObject fillBar;
     private Renderer shieldRenderer;
+    public AudioSource AudioSource;
+
+    private Collider targetCollider;
+    private ICanShield targetShield;
+    [SerializeField] private GameObject floatingTextPrefab;
     private static float LifeTime => 20f;
 
-    public float MaxValue => MaxHp;
     public float CurrentValue => CurrentHp;
+    public float MaxValue => MaxHp;
+
+    public int MaxHp => 40;
+
+    public int CurrentHp
+    {
+        get => _currentHp;
+        set => _currentHp = value;
+    }
+
+    public bool UpLifeTime;
     
     private float blinkDuration = 3f; // время мигания в секундах
     private float visibleInterval = 0.3f; // сколько щит виден/невидим при мигании
-    
-    // ReSharper disable Unity.PerformanceAnalysis
-    public override void Init(Collider targetCollider)
-    {
-        shieldRenderer = GetComponent<Renderer>();
-        
-        base.Init(targetCollider);
+    private int _currentHp;
 
-        if (fillBar) fillBar.enabled = true;
+    // ReSharper disable Unity.PerformanceAnalysis
+
+    private void OnEnable()
+    {
+        CurrentHp = MaxHp;
+        shieldRenderer = GetComponent<Renderer>();
+
+        targetCollider = GameModel.PlayerCollider;
+
+
+        var target = targetCollider.gameObject;
+
+        targetShield = target.GetComponent<ICanShield>();
+        if (targetShield == null) throw new Exception("Target can not shield.");
+        targetShield.isIndestructibleShield = true;
+        transform.position = targetCollider.bounds.center;
+
+
+        if (AudioSource) AudioSource.Play();
+
+        fillBar.SetActive(true);
+        fillBar.GetComponentInChildren<FillBar>().providerScript = this;
+
         StartCoroutine(DestroyAfterUnscaledTime(LifeTime));
+    }
+
+    public void ReanimateShield()
+    {
+        UpLifeTime = true;
+        CurrentHp = MaxHp;
     }
 
     private IEnumerator DestroyAfterUnscaledTime(float time)
@@ -42,6 +79,11 @@ public class PlayerShield : Shield, IFillBarProvider
                     shieldRenderer.enabled = isVisible;
             }
 
+            if (UpLifeTime)
+            {
+                elapsedTime = 0;
+                UpLifeTime = false;
+            }
             yield return null;
         }
 
@@ -52,9 +94,23 @@ public class PlayerShield : Shield, IFillBarProvider
         Die();
     }
 
-    protected override void Die()
+    public void TakeDamage(int damage)
     {
-        if (fillBar) fillBar.enabled = false;
-        base.Die();
+        CurrentHp -= damage;
+        if (floatingTextPrefab != null)
+        {
+            var textDamage = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+            textDamage.GetComponentInChildren<TextMeshPro>().text = damage.ToString();
+            Destroy(textDamage, 1f);
+        }
+        if (CurrentHp <= 0)
+            Die();
+    }
+
+    private void Die()
+    {
+        targetShield.isIndestructibleShield = false;
+        fillBar.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
