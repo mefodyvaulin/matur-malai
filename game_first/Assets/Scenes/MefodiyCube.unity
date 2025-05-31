@@ -240,6 +240,10 @@ PrefabInstance:
       propertyPath: trenchSizeDownLeft.y
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 3621775664806558569, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 5492925267657599817, guid: bf5039a48a1b50a479d9c459724d8115, type: 3}
     - target: {fileID: 3902620130705724693, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.2543316
@@ -308,10 +312,18 @@ PrefabInstance:
       propertyPath: 'meshRenderers.Array.data[3]'
       value: 
       objectReference: {fileID: 539716281}
+    - target: {fileID: 5468687824431238837, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7863463550594445650, guid: a19b85530dfe7654489bb552ab0a928f, type: 3}
     - target: {fileID: 6488582137909555457, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6488582137909555457, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7863463550594445650, guid: a19b85530dfe7654489bb552ab0a928f, type: 3}
     - target: {fileID: 7120153091039379193, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
       propertyPath: maxHp
       value: 50
@@ -332,6 +344,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1bbd611258993644ca8ab2f6aadd4b38, type: 2}
+    - target: {fileID: 7474283340391977757, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 5492925267657599817, guid: bf5039a48a1b50a479d9c459724d8115, type: 3}
     - target: {fileID: 7873715424463584088, guid: 2afe293458f990942b38f939f3b9ff9d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1014,10 +1030,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5896431012752068181, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
 --- !u!1001 &4474464617143398197
 PrefabInstance:
