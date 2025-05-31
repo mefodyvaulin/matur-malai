@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class Trench : MonoBehaviour
 {
     [SerializeField] private GameObject[] trenchSegments;
-    private readonly int[] weightsTrench = {1, 5, 5, 4};
+    private readonly int[] weightsTrench = {100, 5, 5, 4};
     private WeightedRandomStack<GameObject> randomTrench;
     
     [SerializeField] private GameObject[] buffPrefabs;

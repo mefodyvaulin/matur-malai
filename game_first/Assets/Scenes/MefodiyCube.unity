@@ -1088,6 +1088,14 @@ PrefabInstance:
       propertyPath: providerScript
       value: 
       objectReference: {fileID: 187349043}
+    - target: {fileID: 3926993740079149634, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
+      propertyPath: m_Name
+      value: ShieldFillBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101984216714672421, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
+      propertyPath: providerScript
+      value: 
+      objectReference: {fileID: 2406386950874328496, guid: 10816d956144e42a09725c0ef69828e5, type: 3}
     - target: {fileID: 4222684169154403255, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1236,6 +1244,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 54
       objectReference: {fileID: 0}
+    - target: {fileID: 7088173381372432621, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088173381372432621, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088173381372432621, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
+      propertyPath: m_Color.r
+      value: 0.64387417
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670455734619368615, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8783639118342762988, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -1243,6 +1267,10 @@ PrefabInstance:
     - target: {fileID: 8783639118342762988, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112880677747673893, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
