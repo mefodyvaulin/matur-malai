@@ -8,7 +8,7 @@ public class FOVSlider : MonoBehaviour
 
     private void Start()
     {
-        mainCamera.fieldOfView = fovSlider.value;
+        fovSlider.value = mainCamera.fieldOfView;
         fovSlider.onValueChanged.AddListener(OnSliderValueChanged);
     }
 

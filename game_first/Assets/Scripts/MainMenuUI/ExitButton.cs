@@ -6,8 +6,7 @@ public class ExitButton : MonoBehaviour
 
     public void ExitGame()
     {
-        gameData.playersMoney = GameModel.PlayersMoney;
-        foreach (var texture in GameModel.PlayersTextures)
+        foreach (var texture in TextureManager.PlayersTextures)
             if (!gameData.playersTextures.Contains(texture))
                 gameData.playersTextures.Add(texture);
     }

@@ -6,7 +6,8 @@ public class DataManager : MonoBehaviour
 
     private void Start()
     {
-        GameModel.saveAllData = gameData;
+        TextureManager.saveAllData = gameData;
+        Statistic.saveAllData = gameData;
     }
 }
 

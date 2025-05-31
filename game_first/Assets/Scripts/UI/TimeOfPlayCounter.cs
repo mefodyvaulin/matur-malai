@@ -4,12 +4,13 @@ using UnityEngine.Serialization;
 
 public class TimeOfPlayCounter : MonoBehaviour
 {
-    [FormerlySerializedAs("text")] [SerializeField] private TextMeshProUGUI textOfScore;
+    [SerializeField] private TextMeshProUGUI textOfScore;
+
 
     private void Update()
     {
-        if (Time.timeScale == 0) return;
-        textOfScore.text = (Time.time * 100).ToString("F0");
-        GameModel.sessionScore = int.Parse(textOfScore.text);
+        if (Time.timeScale == 0 || GameModel.PlayerHitPoint is null) return;
+        textOfScore.text = (Time.timeSinceLevelLoad * 100).ToString("F0");
+        Statistic.sessionScore = int.Parse(textOfScore.text);
     }
 }

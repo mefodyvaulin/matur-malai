@@ -51,7 +51,7 @@ public class ShopAnimation : MonoBehaviour
             buyButton.SetActive(false);
             foreach (var button in skinButtons)
                 button.SetActive(false);
-            material.SetTexture("_MainTex", GameModel.CurrentTexture);
+            material.SetTexture("_MainTex", TextureManager.CurrentTexture);
         }
 
         isScaledUp = !isScaledUp;

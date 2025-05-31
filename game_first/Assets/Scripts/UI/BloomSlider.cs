@@ -11,11 +11,9 @@ public class BloomSlider : MonoBehaviour
 
     private void Start()
     {
-        if (postProcessVolume.profile.TryGetSettings(out bloomEffect))
-        {
-            bloomEffect.intensity.value = bloomSlider.value;
-            bloomSlider.onValueChanged.AddListener(OnSliderValueChanged);
-        }
+        if (!postProcessVolume.profile.TryGetSettings(out bloomEffect)) return;
+        bloomSlider.value = bloomEffect.intensity.value;
+        bloomSlider.onValueChanged.AddListener(OnSliderValueChanged);
     }
 
     private void OnSliderValueChanged(float value)
