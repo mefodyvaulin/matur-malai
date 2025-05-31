@@ -6,10 +6,12 @@ public class ShopAnimation : MonoBehaviour
 {
     public Material material;
     
+    [SerializeField] GameObject musicSlider;
+    [SerializeField] GameObject soundSlider;
+    
     [SerializeField] GameObject costText;
     
     [SerializeField] GameObject playButton;
-    [SerializeField] GameObject selectButton;
     [SerializeField] GameObject buyButton;
     
     [SerializeField] GameObject[] skinButtons;
@@ -25,6 +27,7 @@ public class ShopAnimation : MonoBehaviour
     private bool isScaledUp = true;
     
     [SerializeField] private TextMeshProUGUI textMesh;
+    [SerializeField] private TextMeshProUGUI costTextMesh;
     
     public void ToggleScaleAndRotate()
     {
@@ -33,10 +36,12 @@ public class ShopAnimation : MonoBehaviour
             StartCoroutine(ScaleAndRotateObject(targetObject.transform.localScale.x, initialScaleX, leftYAngle,
                 rightYAngle));
             textMesh.text = "To menu";
+            costTextMesh.text = "Selected";
             playButton.SetActive(false);
-            selectButton.SetActive(true);
             costText.SetActive(true);
             buyButton.SetActive(true);
+            musicSlider.SetActive(false);
+            soundSlider.SetActive(false);
             foreach (var button in skinButtons)
                 button.SetActive(true);
         }
@@ -47,8 +52,9 @@ public class ShopAnimation : MonoBehaviour
             textMesh.text = "Shop";
             playButton.SetActive(true);
             costText.SetActive(false);
-            selectButton.SetActive(false);
             buyButton.SetActive(false);
+            musicSlider.SetActive(true);
+            soundSlider.SetActive(true);
             foreach (var button in skinButtons)
                 button.SetActive(false);
             material.SetTexture("_MainTex", TextureManager.CurrentTexture);

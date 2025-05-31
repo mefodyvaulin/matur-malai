@@ -13,9 +13,14 @@ public class ChangeTexture : MonoBehaviour
         if (material != null && newTexture != null)
         {
             if (TextureManager.PlayersTextures.Contains(newTexture))
-                costTextMesh.text = "Bought!";
+            {
+                if (newTexture == TextureManager.CurrentTexture)
+                    costTextMesh.text = "Selected";
+                else
+                    costTextMesh.text = "Not selected";
+            }
             else
-                costTextMesh.text = costOfTexture.ToString();
+                costTextMesh.text = "Cost: " + costOfTexture;
             material.SetTexture("_MainTex", newTexture);
             TextureManager.selectedTexture = newTexture;
             TextureManager.selectedTextureCost = costOfTexture;
