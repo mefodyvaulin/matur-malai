@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        UpdateAnimation();
         if (!health.IsAlive)
         {
             EnableShootings(false);
@@ -36,6 +37,11 @@ public class Enemy : MonoBehaviour
         if (isStartFollow) return;
         
         StartCoroutine(StartFollow());
+    }
+
+    private void UpdateAnimation()
+    {
+        movement.animator.speed = Time.timeScale == 0 ? 0 : 1;
     }
 
     private IEnumerator StartFollow()

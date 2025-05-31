@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private float maxRotationAngle = 15f;
-    private Animator animator;
+    public Animator animator;
     private float? previousZ = null;
 
     public Action<Enemy> Move;
@@ -22,6 +22,7 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         direction = Random.Range(0, 2) == 1 ? 1 : -1;
         distanceToEnemy = Random.Range(25f, 35f);
     }
@@ -45,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
             new Vector3(player.x,
                         player.y,
                         player.z + distanceToEnemy),
-            speed * GameModel.UnscaledDeltaTime * 0.3f);
+            speed * Time.deltaTime * 0.3f);
 
         enemy.UpdateShootings(0.5f);
     }
