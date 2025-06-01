@@ -507,15 +507,127 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 844190811}
     - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: bossTrenchSegment
+      value: 
+      objectReference: {fileID: 4490638380372218359, guid: 4f6ffea35b3be4d45af96e1f67817039, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: emptyStartSegment
+      value: 
+      objectReference: {fileID: 2232426205732747532, guid: aec305172ae014031b005e76673f79f4, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
       propertyPath: 'buffPrefabs.Array.data[2]'
       value: 
       objectReference: {fileID: 4822681235905131590, guid: 88f5d9e18bba5fc42b866ad831597553, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[0].trenches.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[1].trenches.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[2].trenches.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[0].trenches.Array.data[0].item
+      value: 
+      objectReference: {fileID: 4490638380372218359, guid: ef6c25e566a2f4b018f3a425a870189f, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[0].trenches.Array.data[1].item
+      value: 
+      objectReference: {fileID: 6965599510327825665, guid: 24b98e483a2014d2ca6d050d599e0084, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[0].trenches.Array.data[2].item
+      value: 
+      objectReference: {fileID: 8782787889764813020, guid: a42e03f53551f421c8e40fa1708e3d99, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[0].trenches.Array.data[3].item
+      value: 
+      objectReference: {fileID: 235011457330771469, guid: 77c93f95da659445f9da23dd0c191961, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[1].trenches.Array.data[0].item
+      value: 
+      objectReference: {fileID: 4490638380372218359, guid: 819e3886220344378997f4c5081467ce, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[1].trenches.Array.data[1].item
+      value: 
+      objectReference: {fileID: 6965599510327825665, guid: 50201c59fe6754560b3174cb4f416066, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[1].trenches.Array.data[2].item
+      value: 
+      objectReference: {fileID: 8782787889764813020, guid: 29f8ce8c1f6234f64b6445c58ed6918b, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[1].trenches.Array.data[3].item
+      value: 
+      objectReference: {fileID: 235011457330771469, guid: 322be200852e7497bb7689ab14e52a2d, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[2].trenches.Array.data[0].item
+      value: 
+      objectReference: {fileID: 4490638380372218359, guid: 8cadbb1fc9120410baf53739fa67715f, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[2].trenches.Array.data[1].item
+      value: 
+      objectReference: {fileID: 235011457330771469, guid: 2a2ee74a3853d4676bb369b848172430, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[2].trenches.Array.data[2].item
+      value: 
+      objectReference: {fileID: 8782787889764813020, guid: a42e03f53551f421c8e40fa1708e3d99, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[2].trenches.Array.data[3].item
+      value: 
+      objectReference: {fileID: 235011457330771469, guid: 77c93f95da659445f9da23dd0c191961, type: 3}
     - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
       propertyPath: locations.Array.data[0].trenches.Array.data[0].weight
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[0].trenches.Array.data[1].weight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[0].trenches.Array.data[2].weight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
       propertyPath: locations.Array.data[0].trenches.Array.data[3].weight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[1].trenches.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[1].trenches.Array.data[1].weight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[1].trenches.Array.data[2].weight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[1].trenches.Array.data[3].weight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[2].trenches.Array.data[0].weight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[2].trenches.Array.data[1].weight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[2].trenches.Array.data[2].weight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locations.Array.data[2].trenches.Array.data[3].weight
       value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1028,10 +1140,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5896431012752068181, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
 --- !u!1001 &4474464617143398197
 PrefabInstance:
