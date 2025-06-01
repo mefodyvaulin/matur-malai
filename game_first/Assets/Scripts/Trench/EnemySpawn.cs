@@ -8,8 +8,9 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private Enemy[] enemiesPrefab;
     [SerializeField] private Animator hatchAnimation;
     [SerializeField] private Shield shield;
-    
-    private int spawnedAfter;
+
+    private int spawnedAfter = 1;
+    private bool spawned = false;
     public static bool CanSpawn = true;
     private static readonly Random rand = new();
     
@@ -34,17 +35,16 @@ public class EnemySpawn : MonoBehaviour
         Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
     }
 
-    private void CountFragmentsToSpawn()
+    private void CountFragmentsToSpawn(float segmentLenght)
     {
-        if (!CanSpawn || GameModel.PlayerPosition.z - transform.position.z >= 0)
-        {
-            spawnedAfter = 0;
-            return;
-        }
+        if (!CanSpawn) return;
         
-        spawnedAfter++;
-        if (spawnedAfter == 2 && GameModel.CountEnemies <= 0) // спавн прямо при влете в эту часть туннеля
+        if (transform.position.z - GameModel.PlayerPosition.z <= spawnedAfter * segmentLenght &&
+            transform.position.z - GameModel.PlayerPosition.z > spawnedAfter * segmentLenght - 0.96f
+            && GameModel.CountEnemies <= 0
+            && !spawned)
         {
+            spawned = true;
             StartCoroutine(SpawnGroup());
         }
     }
@@ -74,7 +74,7 @@ public class EnemySpawn : MonoBehaviour
         return randomGroup.Pop()(countDrones, spawnPosition);
     }
 
-    private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<Enemy> moveGroup, int i)
+    private void StartMoving(Enemy enemy, Vector3 targetPosition, Action<EnemyAbstract> moveGroup, int i)
     {
         StartCoroutine(EnemySpawnStartAnimation.MoveToPosition(enemy, targetPosition, moveGroup, i));
     }

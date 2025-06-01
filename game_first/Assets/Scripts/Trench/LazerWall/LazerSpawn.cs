@@ -8,7 +8,8 @@ using Random = UnityEngine.Random;
 public class LazerSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject[] lazersPrefab;
-    private int spawnedAfter;
+    private int spawnedAfter = 2;
+    private bool spawned = false;
     private GameObject lazerPrefab;
 
     private void Awake()
@@ -23,11 +24,12 @@ public class LazerSpawn : MonoBehaviour
         Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
     }
 
-    private void CountFragmentsToSpawn()
+    private void CountFragmentsToSpawn(float segmentLenght)
     {
-        spawnedAfter++;
-        if (spawnedAfter == 2)
+        if (transform.position.z - GameModel.PlayerPosition.z <= spawnedAfter * segmentLenght
+            && !spawned)
         {
+            spawned = true;
             SpawnLazer();
         }
     }

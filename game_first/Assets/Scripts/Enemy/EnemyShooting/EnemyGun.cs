@@ -6,4 +6,8 @@ public class EnemyGun : EnemyShooting
     {
         Instantiate(bulletPrefab, transform.position, transform.rotation);
     }
+    
+    protected override void StopShoot()
+    {
+    }
 }

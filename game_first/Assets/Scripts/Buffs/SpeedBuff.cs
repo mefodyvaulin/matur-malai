@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -12,6 +13,13 @@ namespace Buffs
         private float lastPlayerRotationSpeed;
         private float lastCameraSmoothTime;
         private System.Type lastWeapon;
+
+        private void Awake()
+        {
+            if (GameModel.GenerateTrench.IsBossLocation 
+                && transform.position.z >= GameModel.GenerateTrench.BossLocationSegmentPosition) 
+                Destroy(gameObject);
+        }
 
         protected override IEnumerator DoBuff()
         {
@@ -65,6 +73,9 @@ namespace Buffs
             var elapsedTime = 0f;
             while (elapsedTime < time)
             {
+                if (GameModel.GenerateTrench.IsBossLocation
+                    && GameModel.PlayerPosition.z >= GameModel.GenerateTrench.BossLocationSegmentPosition)
+                    break;
                 elapsedTime += GameModel.UnscaledDeltaTime;
                 yield return null;
             }

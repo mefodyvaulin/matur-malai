@@ -8,23 +8,27 @@ public static class EnemySpawnStartAnimation
     private static readonly float departurTime = 2f;
     private static readonly float turningTime = 0.5f;
     
-    public static IEnumerator MoveToPosition(Enemy enemy, Vector3 toPosition, Action<Enemy> moveGroup, int i)
+    public static IEnumerator MoveToPosition(EnemyAbstract enemy, Vector3 toPosition, Action<EnemyAbstract> moveGroup, int i,
+        Vector3? controlPoint1 = null, Vector3? controlPoint2 = null, float flightTime = 0)
     {
         //yield return MoveForward(enemy, moveForwardTime);
-        var time = departurTime - i * 0.2f;
+        if (flightTime <= 0) flightTime = departurTime;
+        var time = flightTime - i * 0.2f;
+        
         var startPosition = enemy.transform.position;
-        var controlPoint1 = new Vector3(
+        controlPoint1 ??= new Vector3(
             (GameModel.PlayerMovement.trenchSizeDownLeft.x + GameModel.PlayerMovement.trenchSizeUpRight.x) / 2,
             (GameModel.PlayerMovement.trenchSizeDownLeft.y + GameModel.PlayerMovement.trenchSizeUpRight.y) / 2,
             startPosition.z
         );
-
-        var controlPoint2 = new Vector3(
+        controlPoint2 ??= new Vector3(
             toPosition.x,
             toPosition.y,
             toPosition.z + (startPosition.z - toPosition.z) * 0.5f
         );
-
+        var cp1 = controlPoint1.Value;
+        var cp2 = controlPoint2.Value;
+        
         var elapsed = 0f;
         var previousPosition = startPosition;
 
@@ -32,7 +36,7 @@ public static class EnemySpawnStartAnimation
         {
             var t = elapsed / time;
             var curvedPosition = Bezier.Cubic(
-                startPosition, controlPoint1, controlPoint2, toPosition, t);
+                startPosition, cp1, cp2, toPosition, t);
 
             enemy.transform.position = curvedPosition;
 
@@ -54,8 +58,8 @@ public static class EnemySpawnStartAnimation
         enemy.transform.position = toPosition;
         
         // Плавный поворот в нужную сторону
-        if (toPosition.z == controlPoint2.z) toPosition.z -= 0.1f; // для правильного поворота
-        var finalDir = (toPosition - controlPoint2).normalized;
+        if (toPosition.z == cp2.z) toPosition.z -= 0.1f; // для правильного поворота
+        var finalDir = (toPosition - cp2).normalized;
         var finalRot = Quaternion.LookRotation(finalDir);
         yield return SmoothRotate(enemy, finalRot, turningTime);
         
@@ -63,7 +67,7 @@ public static class EnemySpawnStartAnimation
         enemy.movement.Move += moveGroup;
     }
 
-    private static IEnumerator MoveForward(Enemy enemy, float time)
+    private static IEnumerator MoveForward(EnemyAbstract enemy, float time)
     {
         var originalPosition = enemy.transform.position;
         var offsetPosition = originalPosition + 4 * enemy.transform.forward.normalized;
@@ -80,7 +84,7 @@ public static class EnemySpawnStartAnimation
         enemy.transform.position = offsetPosition;
     }
     
-    private static IEnumerator SmoothRotate(Enemy enemy, Quaternion targetRotation, float time)
+    private static IEnumerator SmoothRotate(EnemyAbstract enemy, Quaternion targetRotation, float time)
     {
         var startRotation = enemy.transform.rotation;
         var elapsed = 0f;

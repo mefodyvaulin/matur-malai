@@ -27,7 +27,7 @@ public class RocketGun : MissileGun
 
     private IEnumerator UltaCoroutine()
     {
-        for (var i = 0; i < 3; i++)
+        for (var i = 0; i < 4; i++)
         {
             foreach (var enemy in GetRandomizedEnemiesOrNulls())
             {
@@ -38,12 +38,12 @@ public class RocketGun : MissileGun
         }
     }
 
-    private static Enemy[] GetRandomizedEnemiesOrNulls()
+    private static EnemyAbstract[] GetRandomizedEnemiesOrNulls()
     {
         if (GameModel.Enemies.Keys.Count > 0) 
             return GameModel.Enemies.Keys
                 .OrderBy(_ => Guid.NewGuid())
                 .ToArray();
-        return new Enemy[] { null, null, null };        
+        return new EnemyAbstract[] { null, null, null };        
     }
 }

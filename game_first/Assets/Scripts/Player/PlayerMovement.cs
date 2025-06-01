@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float centeringSpeed = 10f; // Скорость возврата корабля в нейтральное положение, когда мышь не двигается
     [SerializeField] public Vector2 trenchSizeUpRight = new(14.5f, 40f);     // Ограничение тоннеля верхний правый угол
     [SerializeField] public Vector2 trenchSizeDownLeft = new(-9.5f, 16f);    // Ограничение тоннеля нижний левый угол
-    [SerializeField] private float timeSpeed = 1f;
 
     // === Текущие углы поворота ===
     private float currentPitch = 0f;                     // Текущий угол наклона по оси X (вверх/вниз)
@@ -43,11 +42,6 @@ public class PlayerMovement : MonoBehaviour
     
     private void Update() // Главный игровой цикл — вызывается каждый кадр
     {
-        if (Time.timeScale > 0f)
-        {
-            Time.timeScale = timeSpeed;
-        }
-
         MoveForward();
         UpdateRotation();
         ClampPositionInsideTrench();

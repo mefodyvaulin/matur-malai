@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ab90457d9dc4e438f3d853eb472c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 50
+  Hp: 50
   audioSources:
   - {fileID: 6394721742590275584}
   - {fileID: 3202007778876847009}
@@ -621,7 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795ab49d987b4731b3f2dec82a9f47af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 100
+  maxDistance: 150
   width: 0.5
   damagePerSecond: 5
   damageInterval: 0.2
@@ -694,8 +696,6 @@ MonoBehaviour:
   speed: 10
   direction: 0
   distanceToEnemy: 0
-  rotationSpeed: 2
-  maxRotationAngle: 15
 --- !u!95 &7302765526199039650
 Animator:
   serializedVersion: 7

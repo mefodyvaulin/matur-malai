@@ -24,22 +24,23 @@ public class MovebackgroundFighter: MonoBehaviour
 
         while (elapsedTime < lifetime)
         {
-            if (Time.time >= nextSpawnShoot)
+            if (GameModel.UnscaledTime >= nextSpawnShoot)
             {
                 for(var i = 0; i < Random.Range(1, 4); i++)
                     Shoot();
-                nextSpawnShoot = Time.time + 1f / shootRate;
+                nextSpawnShoot = GameModel.UnscaledTime + 1f / shootRate;
             }
-            if (Time.time >= nextSpawnDamage)
+            if (GameModel.UnscaledTime >= nextSpawnDamage)
             {
                 damageExplosion.Play();
-                nextSpawnDamage = Time.time + 1f / damageRate;
+                nextSpawnDamage = GameModel.UnscaledTime + 1f / damageRate;
             }
-            transform.position += moveSpeed * Time.deltaTime * transform.forward;
-            transform.Rotate(-Mathf.Abs(0.4f * Mathf.Sin(Time.time)),
+            var dynamicBoost = Mathf.Clamp(Time.timeScale, 0f, 2f);
+            transform.position += (moveSpeed * dynamicBoost * GameModel.UnscaledDeltaTime) * transform.forward;
+            transform.Rotate(-Mathf.Abs(0.4f * Mathf.Sin(GameModel.UnscaledTime)),
                 0f, 
-                0.6f * Mathf.Cos(Time.time));
-            elapsedTime += Time.deltaTime;
+                0.6f * Mathf.Cos(GameModel.UnscaledTime));
+            elapsedTime += GameModel.UnscaledDeltaTime;
             yield return null;
         }
 

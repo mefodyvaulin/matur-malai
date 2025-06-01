@@ -30,7 +30,7 @@ public class WeaponSwitcher : MonoBehaviour, IFillBarProvider
         {
             allWeapons[i] = guns[i].GetComponents<Weapon>();
         }
-        SetWeapon<BulletGun>();
+        SetWeapon<RocketGun>();
     }
 
     private void SetWeaponInternal(Func<Weapon, bool> shouldEnablePredicate, bool fullRecharge)

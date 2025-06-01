@@ -5,10 +5,10 @@ public class Rocket : Missile
 {
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private float rotationSpeed = 80f;
-    protected override float LifeTime => 4f;
+    protected override float LifeTime => 10f;
     protected override int Damage => 10;
     protected override float Speed => 20f;
-    public Enemy target;
+    public EnemyAbstract target;
 
     protected override void Start()
     {
@@ -48,7 +48,7 @@ public class Rocket : Missile
         }
     }
 
-    private Enemy TakeTarget()
+    private EnemyAbstract TakeTarget()
     {
         return GameModel.Enemies.Keys
             .OrderBy(enemy => Vector3.Distance(enemy.transform.position, transform.position))

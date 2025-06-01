@@ -1,9 +1,12 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour,  IDamageable, ICanShield
 {
-    public int MaxHp => 50;
+    [SerializeField] int maxHp = 50;
+    [SerializeField] int Hp = 50;
+    public int MaxHp => maxHp;
     public int CurrentHp { get; set; }
     [SerializeField] public AudioSource[] audioSources;
     [SerializeField] private GameObject floatingText;
@@ -16,8 +19,13 @@ public class EnemyHealth : MonoBehaviour,  IDamageable, ICanShield
 
     public void Awake()
     {
-        CurrentHp = MaxHp;
+        CurrentHp = MaxHp / 2 + 1;
         EnemyCollider = GetComponent<Collider>();
+    }
+
+    private void Update()
+    {
+        Hp = CurrentHp;
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
