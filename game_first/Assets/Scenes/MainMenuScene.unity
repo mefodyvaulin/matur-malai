@@ -4851,6 +4851,7 @@ MonoBehaviour:
   costText: {fileID: 1312107139}
   playButton: {fileID: 1840600736}
   buyButton: {fileID: 1805393524}
+  recordsButton: {fileID: 736163950}
   skinButtons:
   - {fileID: 1495869494}
   - {fileID: 167246431}

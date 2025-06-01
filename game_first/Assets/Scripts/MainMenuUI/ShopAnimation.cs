@@ -13,6 +13,7 @@ public class ShopAnimation : MonoBehaviour
     
     [SerializeField] GameObject playButton;
     [SerializeField] GameObject buyButton;
+    [SerializeField] GameObject recordsButton;
     
     [SerializeField] GameObject[] skinButtons;
     
@@ -38,6 +39,7 @@ public class ShopAnimation : MonoBehaviour
             textMesh.text = "To menu";
             costTextMesh.text = "Selected";
             playButton.SetActive(false);
+            recordsButton.SetActive(false);
             costText.SetActive(true);
             buyButton.SetActive(true);
             musicSlider.SetActive(false);
@@ -51,6 +53,7 @@ public class ShopAnimation : MonoBehaviour
                 leftYAngle));
             textMesh.text = "Shop";
             playButton.SetActive(true);
+            recordsButton.SetActive(true);
             costText.SetActive(false);
             buyButton.SetActive(false);
             musicSlider.SetActive(true);
