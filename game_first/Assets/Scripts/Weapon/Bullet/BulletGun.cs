@@ -3,7 +3,7 @@ using UnityEngine;
 public class BulletGun : MissileGun
 {
     private float[] angles = { -5f, -2.5f, 2.5f, 5f };
-    protected override Color UltaColor => Color.red;
+    public override Color UltaColor => new Color32(255, 129, 200, 255);
 
     protected override void Start()
     {

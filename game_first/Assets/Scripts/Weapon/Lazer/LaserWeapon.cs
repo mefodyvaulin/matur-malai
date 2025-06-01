@@ -9,7 +9,7 @@ public class LaserWeapon : Weapon
     private float defaultWidth;
     private int defaultDamage;
 
-    protected override Color UltaColor => Color.green;
+    public override Color UltaColor => new Color32(62, 173, 62, 255);
 
     protected override void Start()
     {

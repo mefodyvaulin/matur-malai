@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponSwitcher : MonoBehaviour, IFillBarProvider
 {
     [SerializeField] private FillBar fillBar;
+    private Image _imageFillBar => fillBar.gameObject.GetComponent<Image>();
     [SerializeField] private GameObject[] guns;
     [SerializeField] public MeshRenderer[] meshRenderers;
     [SerializeField] public GameObject ultaLightSwitcher;
@@ -35,6 +37,7 @@ public class WeaponSwitcher : MonoBehaviour, IFillBarProvider
     {
         var isFirst = false;
         countCurrentWeapon = 0;
+
         for (var gunIndex = 0; gunIndex < guns.Length; gunIndex++)
         {
             foreach (var weapon in allWeapons[gunIndex])
@@ -48,6 +51,7 @@ public class WeaponSwitcher : MonoBehaviour, IFillBarProvider
                 if (isFirst) continue;
                 isFirst = true;
                 CurrentWeapon = weapon;
+                _imageFillBar.color = CurrentWeapon.UltaColor;
                 fillBar.SetProvider(weapon);
             }
         }

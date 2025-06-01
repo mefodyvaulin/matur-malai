@@ -16,7 +16,7 @@ public abstract class Weapon : MonoBehaviour, IFillBarProvider
     public float СurUltaTime;
     public bool isUltaActive;
     protected bool isBuffShooting = false;
-    protected abstract Color UltaColor { get; }
+    public abstract Color UltaColor { get; }
     
     public float MaxValue => maxClip;
     public float CurrentValue => currentClip;
