@@ -11,13 +11,13 @@ public class LazerSpawn : MonoBehaviour
     private int spawnedAfter = 2;
     private bool spawned = false;
     private GameObject lazerPrefab;
+    [SerializeField] private bool isShip;
 
     private void Awake()
     {
         Trench.OnGenerateContinuationOfTrench += CountFragmentsToSpawn;
     }
-
-
+    
     private void OnDestroy()
     {
         Destroy(lazerPrefab);
@@ -40,7 +40,7 @@ public class LazerSpawn : MonoBehaviour
         var lazerWalls = GetRandomPosition();
         foreach (var lazerWall in lazerWalls)
         {
-            lazerPrefab = Instantiate(lazersPrefab[lazerWall.Index], transform.position + lazerWall.Position, lazerWall.Rotation);
+            lazerPrefab = Instantiate(lazersPrefab[0], transform.position + lazerWall.Position, lazerWall.Rotation);
             lazerPrefab.transform.localScale = lazerWall.Scale;
             Destroy(lazerPrefab, 20);
         }
@@ -50,11 +50,10 @@ public class LazerSpawn : MonoBehaviour
 
     private IEnumerable<LazerWallIndetifity> GetRandomPosition()
     {
-        var index = Random.Range(0, lazersPrefab.Length);
-        var count = index < 4 ? 1 : 10;
-        for (int i = 0; i < count; i++)
+        var count = isShip ? 10 : Random.Range(1, 4);
+        for (var i = 0; i < count; i++)
         {
-            yield return new LazerWallIndetifity(index);
+            yield return new LazerWallIndetifity(isShip? 2 : Random.Range(0, 2));
         }
     }
 
@@ -62,7 +61,6 @@ public class LazerSpawn : MonoBehaviour
 
 class LazerWallIndetifity
 {
-    public int Index;
     public Vector3 Position;
     public Vector3 Scale;
     public Quaternion Rotation;
@@ -71,7 +69,7 @@ class LazerWallIndetifity
         {
             0,
             (
-                new Edge<Vector3>(new (-10, 0, -24), new (10, 0, 24)),  // Pos
+                new Edge<Vector3>(new (-10, 0, -24), new (10, 0, 24)), 
                 new Edge<Vector3>(new(1,2,2), new(1,2,2)),
                 new Edge<Quaternion>(Quaternion.Euler(0,0,0), Quaternion.Euler(0,0,0))
             )
@@ -79,29 +77,12 @@ class LazerWallIndetifity
         {
             1,
             (
-                new Edge<Vector3>(new(-16, 4, -24), new(-16, 22, 24)),
+                new Edge<Vector3>(new(-15, 4, -24), new(-15, 22, 24)),
                 new Edge<Vector3>(new(1,2,2), new(1,2,2)),
-                new Edge<Quaternion>(Quaternion.Euler(0,0,0), Quaternion.Euler(0,0,0))
+                new Edge<Quaternion>(Quaternion.Euler(0,0,-90), Quaternion.Euler(0,0,-90))
             )
         },
-        {
-            2,
-            (
-                new Edge<Vector3>(new(-10, 0, -24), new(10, 0, 24)),  // Pos
-                new Edge<Vector3>(new(1,2,2), new(1,2,2)),
-                new Edge<Quaternion>(Quaternion.Euler(0,0,0), Quaternion.Euler(0,0,0))
-            )
-        },
-        {
-            3,
-            (
-                new Edge<Vector3>(new(-16, 4, -24), new(-16, 22, 24)),
-                new Edge<Vector3>(new(1,2,2), new(1,2,2)),
-                new Edge<Quaternion>(Quaternion.Euler(0,0,0), Quaternion.Euler(0,0,0))
-            )
-
-        },
-        {4, GenerateRandomLazerShip()}
+        {2, GenerateRandomLazerShip()}
 
     };
 
@@ -135,7 +116,6 @@ class LazerWallIndetifity
     public LazerWallIndetifity(int index)
     {
         var edge = dict[index];
-        Index = index;
         Position = GetRandomBetween(edge.Pos.Down, edge.Pos.Up);
         Scale = GetRandomBetween(edge.Scale.Down, edge.Scale.Up);
         Scale.y = Scale.x;
@@ -171,7 +151,4 @@ class LazerWallIndetifity
             Down = down;
         }
     }
-
 }
-
-

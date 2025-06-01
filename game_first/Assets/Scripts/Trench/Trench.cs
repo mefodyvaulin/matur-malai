@@ -8,6 +8,7 @@ public class Trench : MonoBehaviour
     [SerializeField] private GameObject star;
     private bool starCanSpawn = true;
     
+    [SerializeField] private GameObject emptyStartSegment;
     [Min(5)] [SerializeField] private int totalNumberOfFloodedTrenches = 50;
     [SerializeField] public GameObject bossBar;
     private int skipStartTrenches = 2;
@@ -41,7 +42,9 @@ public class Trench : MonoBehaviour
     private bool isInstantiateSegments;
     
     public static event Action<float> OnGenerateContinuationOfTrench; // вызвать до создания туннеля
-
+    
+    private bool isTraining => Helper.isEducation;
+    
     public void Awake()
     {
         GameModel.SetGenerateTrench(this);
@@ -63,7 +66,7 @@ public class Trench : MonoBehaviour
         countSegments = skipStartTrenches;
         for (var i = -1; i < skipStartTrenches; i++)
         {
-            var segment = Instantiate(locations[locationIndex].trenches[0].item,
+            var segment = Instantiate(emptyStartSegment,
                 initialSegmentPosition + i * segmentLength * Vector3.forward,
                 Quaternion.identity);
             currentSegments.Enqueue((segment, null));
@@ -82,6 +85,12 @@ public class Trench : MonoBehaviour
 
     private void UpdateLocation()
     {
+        if (isTraining)
+        {
+            locationSegmentIndex = 0;
+            locationIndex = 0;
+            return;
+        }
         if (locationSegmentIndex < locationSegmentsCount 
             || (IsBossLocation && BossTrenchExists)
             ) return;
@@ -122,6 +131,10 @@ public class Trench : MonoBehaviour
 
     private GameObject TakeSpecialOrDefaultSegment()
     {
+        if (isTraining)
+        {
+            return emptyStartSegment;
+        }
         if (IsBossLocation
             && locationSegmentIndex >= 3 
             && !BossTrenchExists 
@@ -135,7 +148,7 @@ public class Trench : MonoBehaviour
     
     private GameObject TrySpawnBuff(GameObject segment)
     {
-        if (!(Random.value <= 0.7f)) return null;
+        if (!(Random.value <= 0.7f) || isTraining) return null;
 
         var center = segment.transform.position;
 
@@ -148,7 +161,7 @@ public class Trench : MonoBehaviour
         return Instantiate(randomBuffs.Pop(), randomPosition, Quaternion.identity);
     }
 
-    private void ReloadSegments()
+    public void ReloadSegments()
     {
         InstantiateSegments(CleanNewTrenchSegments());
     }
@@ -202,7 +215,7 @@ public class Trench : MonoBehaviour
     private Vector2 startSpawnStars, endSpawnStars;
     private void SpawnStar()
     {
-        if (!(Random.value <= 0.5f) || !starCanSpawn) return;
+        if (!(Random.value <= 0.5f) || !starCanSpawn || isTraining) return;
         
         endSpawnStars = new Vector2(
             Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.x, GameModel.PlayerMovement.trenchSizeUpRight.x),

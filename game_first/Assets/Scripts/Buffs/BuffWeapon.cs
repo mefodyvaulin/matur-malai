@@ -15,9 +15,9 @@ public class BuffWeapon : AbstractBuff
         if (rend is null) return;
         rend.material.color = weaponType switch
         {
-            WeaponType.Laser => Color.red,
-            WeaponType.Bullet => Color.green,
-            WeaponType.Rocket => Color.cyan,
+            WeaponType.Laser => new Color32(62, 173, 62, 255),
+            WeaponType.Bullet => new Color32(255, 129, 200, 255),
+            WeaponType.Rocket => new Color32(140, 92, 233, 255),
             _ => rend.material.color
         };
     }
