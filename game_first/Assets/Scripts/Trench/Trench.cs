@@ -5,82 +5,191 @@ using Random = UnityEngine.Random;
 
 public class Trench : MonoBehaviour
 {
-    [SerializeField] private GameObject bossTrenchSegment;
+    [Min(5)] [SerializeField] private int totalNumberOfFloodedTrenches = 50;
+    private int skipStartTrenches = 2;
     
-    [SerializeField] private GameObject[] trenchSegments;
-    private readonly int[] weightsTrench = {1, 2, 2, 4};
+    [SerializeField] private GameObject bossTrenchSegment;
+    [SerializeField] private Location[] locations;
+    [Min(5)] [SerializeField] private int locationSegmentsCount = 50;
+    private int locationIndex = 0;
+    private int locationSegmentIndex = 0;
+    public bool IsBossLocation => locationIndex == locations.Length - 1;
     private WeightedRandomStack<GameObject> randomTrench;
     
     [SerializeField] private GameObject[] buffPrefabs;
-    private readonly int[] weightsBuff = {6, 3, 1, 3, 2};
+    private readonly int[] weightsBuff = {0, 0, 1, 0, 0};
     private WeightedRandomStack<GameObject> randomBuffs;
     
     [SerializeField] private Renderer referenceRenderer;
-    private float segmentHalfLength;
+    private float segmentLength;
     private static Vector3 initialSegmentPosition;
     
-    private Queue<GameObject> currentSegments;
-    private static int countSegments;
+    private Queue<(GameObject trench, GameObject buff)> currentSegments;
+    private int countSegments;
+
+    public bool BossTrenchExists { get; set; }
+    public float BossLocationSegmentPosition => bossLocationSegment * segmentLength;
+    private int bossLocationSegment;
     
-    public static event Action OnGenerateContinuationOfTrench; // вызвать до создания туннеля
+    private const int maxSegmentsAhead = 4;
+
+    private bool isInstantiateSegments;
     
+    public static event Action<float> OnGenerateContinuationOfTrench; // вызвать до создания туннеля
+
+    public void Awake()
+    {
+        GameModel.SetGenerateTrench(this);
+    }
+
     private void Start()
     {
-        segmentHalfLength = referenceRenderer.bounds.size.z;
+        segmentLength = referenceRenderer.bounds.size.z;
         initialSegmentPosition = new Vector3(2.52f,
             12,
-            -29.6f + segmentHalfLength);
-
-        countSegments = 3;
-
-        currentSegments = new Queue<GameObject>();
-
-        for (var i = -1; i < countSegments; i++){
-            var segment = Instantiate(trenchSegments[0],
-                initialSegmentPosition + i * segmentHalfLength * Vector3.forward,
+            -29.6f + segmentLength);
+        
+        currentSegments = new Queue<(GameObject trench, GameObject buff)>();
+        
+        locationSegmentIndex = skipStartTrenches;
+        countSegments = skipStartTrenches;
+        for (var i = -1; i < skipStartTrenches; i++)
+        {
+            var segment = Instantiate(locations[locationIndex].trenches[0].item,
+                initialSegmentPosition + i * segmentLength * Vector3.forward,
                 Quaternion.identity);
-            currentSegments.Enqueue(segment);
+            currentSegments.Enqueue((segment, null));
         }
-
-        randomTrench = new WeightedRandomStack<GameObject>(trenchSegments, weightsTrench);
+        randomTrench = new WeightedRandomStack<GameObject>(locations[locationIndex].trenches);
         randomBuffs = new WeightedRandomStack<GameObject>(buffPrefabs, weightsBuff);
+        InstantiateSegments(totalNumberOfFloodedTrenches - skipStartTrenches);
     }
 
     private void Update()
     {
+        UpdateLocation();
         GenerateContinuationOfTrench();
+    }
+
+    private void UpdateLocation()
+    {
+        if (locationSegmentIndex < locationSegmentsCount 
+            || (IsBossLocation && BossTrenchExists)
+            ) return;
+        
+        var lastLocation = IsBossLocation;
+        locationSegmentIndex = 0;
+        locationIndex = locationIndex == locations.Length - 1 ? 0 : locationIndex + 1;
+        randomTrench = new WeightedRandomStack<GameObject>(locations[locationIndex].trenches);
+        
+        if (IsBossLocation)
+        {
+            bossLocationSegment = countSegments;
+        }
+        if (lastLocation)
+        {
+            ReloadSegments();
+        }
     }
 
     private void GenerateContinuationOfTrench()
     {
-        if (!(GameModel.PlayerPosition.z - segmentHalfLength >= currentSegments.Peek().transform.position.z)) return;
+        if (!(GameModel.PlayerPosition.z - segmentLength >= currentSegments.Peek().trench.transform.position.z)) return;
         
         var firstSegment = currentSegments.Dequeue();
-        Destroy(firstSegment);
+        Destroy(firstSegment.trench);
         
-        OnGenerateContinuationOfTrench?.Invoke();
-        var curTrench = countSegments == 5 ? bossTrenchSegment : randomTrench.Pop();
-        var newSegment = Instantiate(curTrench,
-            initialSegmentPosition + countSegments * segmentHalfLength * Vector3.forward,
+        OnGenerateContinuationOfTrench?.Invoke(segmentLength);
+        var newSegment = Instantiate(TakeSpecialOrDefaultSegment(),
+            initialSegmentPosition + countSegments * segmentLength * Vector3.forward,
             Quaternion.identity);
-        currentSegments.Enqueue(newSegment);
-        
-        TrySpawnBuffWeapon(newSegment);
+        var buff = TrySpawnBuff(newSegment);
+        currentSegments.Enqueue((newSegment, buff));
+        locationSegmentIndex++;
         countSegments++;
     }
-    
-    private void TrySpawnBuffWeapon(GameObject segment)
+
+    private GameObject TakeSpecialOrDefaultSegment()
     {
-        if (!(Random.value <= 0.7f)) return;
+        if (IsBossLocation
+            && locationSegmentIndex >= 3 
+            && !BossTrenchExists 
+            )
+        {
+            BossTrenchExists = true;
+            return bossTrenchSegment;
+        }
+        return randomTrench.Pop();
+    }
+    
+    private GameObject TrySpawnBuff(GameObject segment)
+    {
+        if (!(Random.value <= 0.7f)) return null;
 
         var center = segment.transform.position;
 
         var randomX = Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.x, GameModel.PlayerMovement.trenchSizeUpRight.x);
         var randomY = Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.y, GameModel.PlayerMovement.trenchSizeUpRight.y);
-        var randomZ = Random.Range(center.z - segmentHalfLength / 2, center.z + segmentHalfLength / 2);
+        var randomZ = Random.Range(center.z - segmentLength / 2, center.z + segmentLength / 2);
 
         var randomPosition = new Vector3(randomX, randomY, randomZ);
         
-        Instantiate(randomBuffs.Pop(), randomPosition, Quaternion.identity);
+        return Instantiate(randomBuffs.Pop(), randomPosition, Quaternion.identity);
     }
+
+    private void ReloadSegments()
+    {
+        InstantiateSegments(CleanNewTrenchSegments());
+    }
+    
+    private int CleanNewTrenchSegments()
+    {
+        var playerZ = GameModel.PlayerPosition.z;
+        var maxZ = playerZ + maxSegmentsAhead * segmentLength;
+
+        var removedCount = 0;
+        var filteredSegments = new Queue<(GameObject trench, GameObject buff)>();
+        while (currentSegments.Count > 0)
+        {
+            var segment = currentSegments.Dequeue();
+
+            if (segment.trench != null && segment.trench.transform.position.z <= maxZ)
+            {
+                filteredSegments.Enqueue(segment);
+            }
+            else
+            {
+                Destroy(segment.trench);
+                Destroy(segment.buff);
+                removedCount++;
+            }
+        }
+        
+        currentSegments = filteredSegments;
+        countSegments -= removedCount;
+        return removedCount;
+    }
+    
+    private void InstantiateSegments(int count)
+    {
+        isInstantiateSegments = true;
+        for (var i = 0; i < count; i++)
+        {
+            UpdateLocation();
+            var segment = Instantiate(TakeSpecialOrDefaultSegment(),
+                initialSegmentPosition + countSegments * segmentLength * Vector3.forward,
+                Quaternion.identity);
+            var buff = TrySpawnBuff(segment);
+            currentSegments.Enqueue((segment, buff));
+            locationSegmentIndex++;
+            countSegments++;
+        }
+        isInstantiateSegments = false;
+    }
+}
+
+[Serializable]
+public class Location
+{
+    public GameObjectWithWeight[] trenches;
 }

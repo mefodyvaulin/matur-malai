@@ -8,7 +8,8 @@ public class BossSpawn : MonoBehaviour
     [SerializeField] private Boss BossPrefab;
     //[SerializeField] private Animator hatchAnimation;
     
-    private int spawnedAfter;
+    private int spawnedAfter = 3;
+    private bool spawned = false;
     
     private void Awake()
     {
@@ -20,11 +21,11 @@ public class BossSpawn : MonoBehaviour
         Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
     }
 
-    private void CountFragmentsToSpawn()
+    private void CountFragmentsToSpawn(float segmentLenght)
     {
-        spawnedAfter++;
-        if (spawnedAfter == 2)//&& GameModel.CountEnemies <= 0)
+        if (transform.position.z - GameModel.PlayerPosition.z <= spawnedAfter * segmentLenght && !spawned)
         {
+            spawned = true;
             SpawnBoss();
         }
     }

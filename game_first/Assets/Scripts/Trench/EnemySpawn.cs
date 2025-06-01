@@ -8,9 +8,10 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private Enemy[] enemiesPrefab;
     [SerializeField] private Animator hatchAnimation;
     [SerializeField] private Shield shield;
-    
-    private int spawnedAfter;
-    public static bool CanSpawn = false;
+
+    private int spawnedAfter = 1;
+    private bool spawned = false;
+    public static bool CanSpawn = true;
     private static readonly Random rand = new();
     
     private static WeightedRandomStack<Func<int, Vector3, EnemyGroupAbstract>> randomGroup = new
@@ -34,17 +35,16 @@ public class EnemySpawn : MonoBehaviour
         Trench.OnGenerateContinuationOfTrench -= CountFragmentsToSpawn;
     }
 
-    private void CountFragmentsToSpawn()
+    private void CountFragmentsToSpawn(float segmentLenght)
     {
-        if (!CanSpawn || GameModel.PlayerPosition.z - transform.position.z >= 0)
-        {
-            spawnedAfter = 0;
-            return;
-        }
+        if (!CanSpawn) return;
         
-        spawnedAfter++;
-        if (spawnedAfter == 2 && GameModel.CountEnemies <= 0) // спавн прямо при влете в эту часть туннеля
+        if (transform.position.z - GameModel.PlayerPosition.z <= spawnedAfter * segmentLenght &&
+            transform.position.z - GameModel.PlayerPosition.z > spawnedAfter * segmentLenght - 0.96f
+            && GameModel.CountEnemies <= 0
+            && !spawned)
         {
+            spawned = true;
             StartCoroutine(SpawnGroup());
         }
     }

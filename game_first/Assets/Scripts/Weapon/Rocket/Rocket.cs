@@ -5,7 +5,7 @@ public class Rocket : Missile
 {
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private float rotationSpeed = 80f;
-    protected override float LifeTime => 4f;
+    protected override float LifeTime => 10f;
     protected override int Damage => 10;
     protected override float Speed => 20f;
     public EnemyAbstract target;

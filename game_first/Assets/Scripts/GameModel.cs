@@ -27,6 +27,9 @@ public static class GameModel
 
     public static CameraFollow CameraFollow => _cameraFollow ?? throw new System.Exception("CameraFollow not set!");
     private static CameraFollow _cameraFollow;
+    
+    public static Trench GenerateTrench => _generateTrench ?? throw new System.Exception("GenerateTrench not set!");
+    private static Trench _generateTrench;
 
     public static readonly Dictionary<EnemyAbstract, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
@@ -34,7 +37,9 @@ public static class GameModel
 
     private static TimeManager _timeManager;
     public static float UnscaledDeltaTime => _timeManager.UnscaledDeltaTime;
-    public static float UnscaledTime => _timeManager.UnscaledTime; 
+    public static float UnscaledTime => _timeManager.UnscaledTime;
+
+    public static bool BossIsAlive { get; set; }
 
     public static void SetPlayerTransform(Transform transform)
     {
@@ -71,6 +76,12 @@ public static class GameModel
         if ( _timeManager is not null ) return;
         _timeManager = timeManager;
     }
+    
+    public static void SetGenerateTrench(Trench generateTrench)
+    {
+        if ( _generateTrench is not null ) return;
+        _generateTrench = generateTrench;
+    }
 
     public static void AddEnemy(EnemyAbstract enemy)
     {
@@ -93,25 +104,13 @@ public static class GameModel
         _playerHitPoint = null;
         _playerCollider = null;
         _timeManager = null;
+        _generateTrench = null;
+        
         Score = 0;
+        playerTransform = null;
+        BossIsAlive = false;
+        EnemySpawn.CanSpawn = true;
+        
         Enemies.Clear();
-    }
-
-    private static float maxTimeScale = 9f;
-    private static float cooldownBoost = 2f;
-    private static float boost = 0.02f;
-    private static float updateCooldownBoost;
-    // x - сколько минут потребуется, чтобы достичь значения value
-    // value от [1, maxTimeScale]
-    // 1 + x * 60 * boost / cooldownBoost = value
-    private static void UpTimeScale() // должен быть в Update
-    {
-        if (Time.timeScale >= maxTimeScale) return;
-
-        updateCooldownBoost -= UnscaledDeltaTime;
-        if (updateCooldownBoost > 0) return;
-
-        Time.timeScale += boost;
-        updateCooldownBoost = cooldownBoost;
     }
 }

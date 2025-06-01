@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ab90457d9dc4e438f3d853eb472c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 50
+  Hp: 50
   audioSources:
   - {fileID: 6394721742590275584}
   - {fileID: 3202007778876847009}
@@ -372,8 +374,6 @@ MonoBehaviour:
   speed: 10
   direction: 0
   distanceToEnemy: 0
-  rotationSpeed: 2
-  maxRotationAngle: 15
 --- !u!95 &7302765526199039650
 Animator:
   serializedVersion: 7
@@ -499,7 +499,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7539088538631814011}
-  m_Mesh: {fileID: 1184562550181980990, guid: e6b0d9e7c7d114b8ca8b2f5200860611, type: 3}
+  m_Mesh: {fileID: 1184562550181980990, guid: 672f6084665b846f38049d694dad1580, type: 3}
 --- !u!23 &2821758442953573625
 MeshRenderer:
   m_ObjectHideFlags: 0

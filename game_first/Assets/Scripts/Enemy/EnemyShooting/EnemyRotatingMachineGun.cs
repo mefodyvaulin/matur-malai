@@ -13,9 +13,9 @@ public class EnemyRotatingMachineGun : EnemyShooting
     const int shotsPerCycle = 10;
     
     private Quaternion cycleOriginalRotation;
-    private EnemyAbstarct enemy;
+    private EnemyAbstract enemy;
     private Coroutine shootCoroutine;
-    protected void Awake()
+    protected override void Awake()
     {
         allTime = (duration + preparationTime * 2 + rotateZTime) * 4 + preparationTime * 4;
         fireRate = allTime + 1;
@@ -23,7 +23,7 @@ public class EnemyRotatingMachineGun : EnemyShooting
         base.Awake();
     }
 
-    protected override void Animation(EnemyAbstarct enemy)
+    protected override void Animation(EnemyAbstract enemy)
     {
         base.Animation(enemy);
         this.enemy = enemy;

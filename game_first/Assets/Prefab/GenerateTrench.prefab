@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4695221503584859758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4110117391747395385}
+  - component: {fileID: 6329037702755258064}
+  m_Layer: 0
+  m_Name: GenerateTrench
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4110117391747395385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695221503584859758}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6329037702755258064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695221503584859758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c50b6391924fe4b9ecf5daf8b86a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalNumberOfFloodedTrenches: 50
+  bossTrenchSegment: {fileID: 4490638380372218359, guid: a3370f553ce504031a1425d47a7a60ff, type: 3}
+  locations:
+  - trenches:
+    - item: {fileID: 4490638380372218359, guid: 1610b1f6c60492845905406715e38b51, type: 3}
+      weight: 0
+    - item: {fileID: 6965599510327825665, guid: 9af7d616ccbe78740ba3feb7075a2086, type: 3}
+      weight: 2
+    - item: {fileID: 8782787889764813020, guid: d3323175ecd6f3549b9b4afc04eb1c3d, type: 3}
+      weight: 2
+    - item: {fileID: 235011457330771469, guid: 2ebe147735af168478fa84f3099a97c2, type: 3}
+      weight: 0
+  - trenches:
+    - item: {fileID: 2232426205732747532, guid: 523c568818f6846918d18803faf49183, type: 3}
+      weight: 1
+  - trenches:
+    - item: {fileID: 2232426205732747532, guid: 523c568818f6846918d18803faf49183, type: 3}
+      weight: 1
+  locationSegmentsCount: 20
+  buffPrefabs:
+  - {fileID: 4511315536703389260, guid: 0379325fd6d2b45c38a36b98b0c222b0, type: 3}
+  - {fileID: 1696569697518613698, guid: d3b14b06e6b4341f1831b41776d586e2, type: 3}
+  - {fileID: 1696569697518613698, guid: 84dcec32a5a15440d9a87cee11890331, type: 3}
+  - {fileID: 1696569697518613698, guid: c9683becabc1146a0af323f6ca413114, type: 3}
+  - {fileID: 1696569697518613698, guid: 2974ceeccdf6f4359b13a6b20d406c99, type: 3}
+  referenceRenderer: {fileID: 3946666197706151738, guid: 523c568818f6846918d18803faf49183, type: 3}
