@@ -107,8 +107,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.9728525
+  m_Center: {x: -0.011924868, y: 0, z: 0}
 --- !u!114 &2406386950874328496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,4 +123,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 0}
   floatingTextPrefab: {fileID: 0}
-  fillBar: {fileID: 0}
+  fillBar: {fileID: 8706014183482725615, guid: 4eab495a16d7b3b4dad07efdfaa67642, type: 3}

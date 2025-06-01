@@ -50,6 +50,9 @@ MonoBehaviour:
   maxClip: 50
   reloadCooldown: 0.5
   currentClip: 0
+  UltaTime: 0
+  "\u0421urUltaTime": 0
+  isUltaActive: 0
   laserBeam: {fileID: 5524805817114956991}
   ultaTime: 10
 --- !u!1 &1341020659835035721
@@ -258,6 +261,7 @@ Transform:
   m_Children:
   - {fileID: 8909366819622635038}
   - {fileID: 2417580254762635774}
+  - {fileID: 5435660898312205310}
   - {fileID: 7328738517258689664}
   - {fileID: 6223960771911031086}
   m_Father: {fileID: 0}
@@ -274,11 +278,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026800ac6aba945269176bef49bf0089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 50
-  CurrentHp: 50
   damageExplosion: {fileID: 489523231305322811}
   defeatingObject: {fileID: 9176395224772069506, guid: a8b785c60f65fa547b56db3d92c70cc7, type: 3}
+  gameOverPanel: {fileID: 0}
+  shield: {fileID: 2406386950874328496, guid: 10816d956144e42a09725c0ef69828e5, type: 3}
   postProcessVolume: {fileID: 0}
+  isIndestructibleSpeedBuff: 0
 --- !u!114 &-5067136435526583797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,8 +302,8 @@ MonoBehaviour:
   maxYawAngle: 30
   sensitivity: 1
   centeringSpeed: 10
-  trenchSizeUpRight: {x: 14.5, y: 40}
-  trenchSizeDownLeft: {x: -9.5, y: 16}
+  trenchSizeUpRight: {x: 15, y: 40}
+  trenchSizeDownLeft: {x: -10, y: 16}
   timeSpeed: 1
 --- !u!64 &5124728076192983540
 MeshCollider:
@@ -368,10 +373,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.25
-  bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
+  bulletPrefab: {fileID: 5492925267657599817, guid: bf5039a48a1b50a479d9c459724d8115, type: 3}
   maxClip: 20
   reloadCooldown: 0.5
   currentClip: 0
+  UltaTime: 0
+  "\u0421urUltaTime": 0
+  isUltaActive: 0
 --- !u!114 &5468687824431238837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,10 +393,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.5
-  bulletPrefab: {fileID: 7863463550594445650, guid: 70277d0e4ef194c55a550ef60608bef0, type: 3}
+  bulletPrefab: {fileID: 7863463550594445650, guid: a19b85530dfe7654489bb552ab0a928f, type: 3}
   maxClip: 10
   reloadCooldown: 1
   currentClip: 0
+  UltaTime: 0
+  "\u0421urUltaTime": 0
+  isUltaActive: 0
 --- !u!1 &5748636177768609861
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +464,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1bbd611258993644ca8ab2f6aadd4b38, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -527,7 +538,11 @@ MonoBehaviour:
   - {fileID: 5567622580662793736}
   - {fileID: 6576151511516134102}
   - {fileID: 55997150708120824}
-  ultaLight: {fileID: 2100000, guid: b2e5743998e481d44b76f3edd5c03ec1, type: 2}
+  meshRenderers:
+  - {fileID: 8730767877974978947}
+  - {fileID: 7466428227140406460}
+  - {fileID: 8227751587154094481}
+  - {fileID: 3090599617784889889}
   ultaLightSwitcher: {fileID: 8351102269573854445}
 --- !u!1 &6434849083272605630
 GameObject:
@@ -661,10 +676,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.25
-  bulletPrefab: {fileID: 5492925267657599817, guid: d6ba97513facd4086bc79fd2976aa5c9, type: 3}
+  bulletPrefab: {fileID: 5492925267657599817, guid: bf5039a48a1b50a479d9c459724d8115, type: 3}
   maxClip: 20
   reloadCooldown: 0.5
   currentClip: 0
+  UltaTime: 0
+  "\u0421urUltaTime": 0
+  isUltaActive: 0
 --- !u!114 &6488582137909555457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,16 +690,143 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6576151511516134102}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: faf3ee02b2b5e4dfeb50321c8084aa13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.5
-  bulletPrefab: {fileID: 7863463550594445650, guid: 70277d0e4ef194c55a550ef60608bef0, type: 3}
+  bulletPrefab: {fileID: 7863463550594445650, guid: a19b85530dfe7654489bb552ab0a928f, type: 3}
   maxClip: 10
   reloadCooldown: 1
   currentClip: 0
+  UltaTime: 0
+  "\u0421urUltaTime": 0
+  isUltaActive: 0
+--- !u!1 &6889076348643480210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5435660898312205310}
+  - component: {fileID: 3143658260640266092}
+  - component: {fileID: 8194236439062635947}
+  - component: {fileID: 8415167887973004153}
+  - component: {fileID: 12084611045690864}
+  m_Layer: 7
+  m_Name: PlayerShield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5435660898312205310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889076348643480210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3902620130705724693}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3143658260640266092
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889076348643480210}
+  m_Mesh: {fileID: 289301614986012343, guid: 6c87925bb10594fd5ac1a51743a9fe8d, type: 3}
+--- !u!23 &8194236439062635947
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889076348643480210}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6dbd0e47ff2334daca5073f2ae1eef5b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &8415167887973004153
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889076348643480210}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.9728525
+  m_Center: {x: -0.011924868, y: 0, z: 0}
+--- !u!114 &12084611045690864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889076348643480210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c42525b17b24650b1397fa801ff6cf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 0}
+  floatingTextPrefab: {fileID: 0}
+  fillBar: {fileID: 8706014183482725615, guid: 4eab495a16d7b3b4dad07efdfaa67642, type: 3}
 --- !u!1 &7714718600322193216
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7884402414020457493
 Transform:
   m_ObjectHideFlags: 0
