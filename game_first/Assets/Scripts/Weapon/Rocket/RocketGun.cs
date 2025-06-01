@@ -6,7 +6,7 @@ using System.Linq;
 public class RocketGun : MissileGun
 {
     private Rocket rocketPrefab;
-    protected override Color UltaColor => Color.magenta;
+    public override Color UltaColor => new Color32(140, 92, 233, 255);
 
     protected override void Start()
     {
