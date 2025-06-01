@@ -8,7 +8,8 @@ public class BuySelectButton : MonoBehaviour
     
     public void BuySelectSkin()
     {
-        if (!TextureManager.PlayersTextures.Contains(TextureManager.selectedTexture))
+        if (!TextureManager.PlayersTextures.Contains(TextureManager.selectedTexture) &&
+            TextureManager.selectedTexture is not null)
         {
             if (Statistic.PlayersMoney >= TextureManager.selectedTextureCost)
             {
@@ -23,7 +24,8 @@ public class BuySelectButton : MonoBehaviour
         else
         {
             textMesh.text = "Selected";
-            TextureManager.CurrentTexture = TextureManager.selectedTexture;
+            if (TextureManager.selectedTexture is not null)
+                TextureManager.CurrentTexture = TextureManager.selectedTexture;
         }
     }
 }
