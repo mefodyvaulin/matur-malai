@@ -39,10 +39,11 @@ public class EnemySpawn : MonoBehaviour
     {
         if (!CanSpawn) return;
         
-        if (transform.position.z - GameModel.PlayerPosition.z <= spawnedAfter * segmentLenght &&
-            transform.position.z - GameModel.PlayerPosition.z > spawnedAfter * segmentLenght - 0.96f
-            && GameModel.CountEnemies <= 0
-            && !spawned)
+        if (!spawned &&
+            transform.position.z - GameModel.PlayerPosition.z <= spawnedAfter * segmentLenght &&
+            transform.position.z - GameModel.PlayerPosition.z > spawnedAfter * segmentLenght - 0.96f &&
+            GameModel.CountEnemies <= 0
+            )
         {
             spawned = true;
             StartCoroutine(SpawnGroup());

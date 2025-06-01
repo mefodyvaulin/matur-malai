@@ -655,7 +655,7 @@ MonoBehaviour:
   audioSources:
   - {fileID: 4037933651699499713}
   - {fileID: 5881356456508379275}
-  floatingText: {fileID: 2267761962456244929, guid: 491942dbac820574db6d3311f3e912c4, type: 3}
+  floatingText: {fileID: 2267761962456244929, guid: abe8cd724b8f34a59b6de24c60e402ae, type: 3}
   damageExplosion: {fileID: 908119305994995301}
   defeatingObject: {fileID: 9176395224772069506, guid: a8b785c60f65fa547b56db3d92c70cc7, type: 3}
   EnemyCollider: {fileID: 2248321578331140648}

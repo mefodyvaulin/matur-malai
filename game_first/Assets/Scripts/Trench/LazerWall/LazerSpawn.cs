@@ -26,8 +26,9 @@ public class LazerSpawn : MonoBehaviour
 
     private void CountFragmentsToSpawn(float segmentLenght)
     {
-        if (transform.position.z - GameModel.PlayerPosition.z <= spawnedAfter * segmentLenght
-            && !spawned)
+        if (!spawned 
+            && transform.position.z - GameModel.PlayerPosition.z <= spawnedAfter * segmentLenght 
+            && transform.position.z - GameModel.PlayerPosition.z > spawnedAfter * segmentLenght - 0.96f)
         {
             spawned = true;
             SpawnLazer();

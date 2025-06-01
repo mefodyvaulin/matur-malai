@@ -75,6 +75,7 @@ public class Trench : MonoBehaviour
 
     private void Update()
     {
+        OnGenerateContinuationOfTrench?.Invoke(segmentLength);
         UpdateLocation();
         GenerateContinuationOfTrench();
     }
@@ -109,7 +110,6 @@ public class Trench : MonoBehaviour
         var firstSegment = currentSegments.Dequeue();
         Destroy(firstSegment.trench);
         
-        OnGenerateContinuationOfTrench?.Invoke(segmentLength);
         var newSegment = Instantiate(TakeSpecialOrDefaultSegment(),
             initialSegmentPosition + countSegments * segmentLength * Vector3.forward,
             Quaternion.identity);

@@ -7,7 +7,7 @@ public class BossSpawn : MonoBehaviour
 {
     [SerializeField] private Boss BossPrefab;
     
-    private int spawnedAfter = 3;
+    private float spawnedAfter = 1.5f;
     private bool spawned = false;
     
     private void Awake()
@@ -22,7 +22,8 @@ public class BossSpawn : MonoBehaviour
 
     private void CountFragmentsToSpawn(float segmentLenght)
     {
-        if (transform.position.z - GameModel.PlayerPosition.z <= spawnedAfter * segmentLenght && !spawned)
+        if (!spawned && transform.position.z - GameModel.PlayerPosition.z <= spawnedAfter * segmentLenght 
+            && transform.position.z - GameModel.PlayerPosition.z > spawnedAfter * segmentLenght - 0.96f)
         {
             spawned = true;
             SpawnBoss();
