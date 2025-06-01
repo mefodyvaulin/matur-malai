@@ -13,6 +13,7 @@ public class Helper : MonoBehaviour
     private Dictionary<string, InputAction> tasks;
     Vector3 direction;
     private bool end;
+    public static bool isEducation = false; //включается в OnEnable
     public AudioSource audio;
 
     private void Start()
@@ -25,6 +26,11 @@ public class Helper : MonoBehaviour
             { "Нажми ESC для приостановки игры", InputManager.PauseOFF }
         };
         StartCoroutine(Education());
+    }
+
+    private void OnEnable()
+    {
+        isEducation = true;
     }
 
     private IEnumerator Education()
@@ -82,7 +88,11 @@ public class Helper : MonoBehaviour
         yield return new WaitForSeconds(2f);
         transform.position = Vector3.Lerp(transform.position, transform.position * 10, 1);
         if (transform.position.y > trenchRightUp.y + 50)
+        {
+            isEducation = false;
+            GameModel.GenerateTrench.ReloadSegments();
             Destroy(gameObject);
+        }
     }
 
     private IEnumerator PrintText(string str)
