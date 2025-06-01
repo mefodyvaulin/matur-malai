@@ -189,5 +189,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lazersPrefab:
-  - {fileID: 2646949773430021977, guid: 023a2881119ac0e43bf4d4393c0ebbf0, type: 3}
+  - {fileID: 2646949773430021977, guid: 170d4423e8f6f7245b7c9b82a5136115, type: 3}
   isShip: 0

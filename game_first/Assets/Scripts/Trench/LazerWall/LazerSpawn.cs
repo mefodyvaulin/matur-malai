@@ -53,7 +53,7 @@ public class LazerSpawn : MonoBehaviour
         var count = isShip ? 10 : Random.Range(1, 4);
         for (var i = 0; i < count; i++)
         {
-            yield return new LazerWallIndetifity(isShip? 2 : Random.Range(0, 2));
+            yield return new LazerWallIndetifity(isShip? 2 : Random.Range(0, 2), isShip? 1 : 4f);
         }
     }
 
@@ -77,8 +77,8 @@ class LazerWallIndetifity
         {
             1,
             (
-                new Edge<Vector3>(new(-15, 4, -24), new(-15, 22, 24)),
-                new Edge<Vector3>(new(1,2,2), new(1,2,2)),
+                new Edge<Vector3>(new(-15, 4.5f, -24), new(-15, 22, 24)),
+                new Edge<Vector3>(new(1,1,2), new(1,1,2)),
                 new Edge<Quaternion>(Quaternion.Euler(0,0,-90), Quaternion.Euler(0,0,-90))
             )
         },
@@ -113,14 +113,22 @@ class LazerWallIndetifity
         return (null, null, null);
     }
 
-    public LazerWallIndetifity(int index)
+    public LazerWallIndetifity(int index, float step)
     {
         var edge = dict[index];
-        Position = GetRandomBetween(edge.Pos.Down, edge.Pos.Up);
+        Position = GetRandomBetweenWithStep(edge.Pos.Down, edge.Pos.Up, step);
         Scale = GetRandomBetween(edge.Scale.Down, edge.Scale.Up);
         Scale.y = Scale.x;
         Rotation = GetRandomBetween(edge.Rotation.Down, edge.Rotation.Up);
 
+    }
+
+    private static Vector3 GetRandomBetweenWithStep(Vector3 min, Vector3 max, float step)
+    {
+        var randomX = Random.Range(min.x / step, max.x / step);
+        var randomY = Random.Range(min.y / step, max.y / step);
+        var randomZ = Random.Range(min.z / step, max.z / step);
+        return new Vector3(randomX, randomY, randomZ) * step;
     }
 
     private static Vector3 GetRandomBetween(Vector3 min, Vector3 max)
