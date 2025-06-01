@@ -5,6 +5,8 @@ public class Boss : EnemyAbstract, IFillBarProvider
 
     protected override void Awake()
     {
+        GameModel.GenerateTrench.bossBar.gameObject.SetActive(true);
+        GameModel.GenerateTrench.bossBar.gameObject.GetComponentInChildren<FillBar>().SetProvider(this);
         KillEnemies();
         GameModel.BossIsAlive = true;
         base.Awake();
@@ -16,6 +18,7 @@ public class Boss : EnemyAbstract, IFillBarProvider
         base.OnDestroy();
         GameModel.BossIsAlive = false;
         EnemySpawn.CanSpawn = true;
+        GameModel.GenerateTrench.bossBar.gameObject.SetActive(false);
         GameModel.GenerateTrench.BossTrenchExists = false;
     }
     

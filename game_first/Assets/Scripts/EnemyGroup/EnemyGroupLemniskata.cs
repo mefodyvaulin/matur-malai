@@ -12,7 +12,7 @@ public class EnemyGroupLemniskata : EnemyGroupAbstract
     public EnemyGroupLemniskata(int countDrones, Vector3 spawnPosition) : base(countDrones, spawnPosition)
     {
         radius = 9;
-        deltaAngle = 1.4f;
+        deltaAngle = 1.4f / 2;
         angle = 0;
         
         LemniskataCenter = new Vector3((maxX + minX) / 2, (maxY + minY) / 2, spawnPosition.z);

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2602655821353791341}
   - component: {fileID: 3717759521321093356}
   - component: {fileID: 1913353288674722468}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1067201060243064626}
   - component: {fileID: 3389097341082970008}
   - component: {fileID: 7123434112153269587}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LaserBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 437019961931853735}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UltaLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 3893532510341053916}
   - component: {fileID: 4632633967146404589}
   - component: {fileID: 1264011714155207350}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 8239091345185737476}
   - component: {fileID: 3536437396642816250}
   - component: {fileID: 530474229308929718}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 2949568723190412363}
   - component: {fileID: 296549924784414778}
   - component: {fileID: 2900561251835116946}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1729415680532215097}
   - component: {fileID: 2826676735077318034}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Guns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 6553589494539948053}
   - component: {fileID: 5901776314853771342}
   - component: {fileID: 4154676890928775718}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   - component: {fileID: 5961414715566549600}
   - component: {fileID: 2400284072511293747}
   - component: {fileID: 304669607383924635}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -867,7 +867,7 @@ GameObject:
   - component: {fileID: 2418694746403108469}
   - component: {fileID: 8844393828980159568}
   - component: {fileID: 5278342421482598662}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +954,7 @@ GameObject:
   - component: {fileID: 102366792698269150}
   - component: {fileID: 6487885852971174188}
   - component: {fileID: 2646641610299448019}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: XWing 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1019,7 +1019,6 @@ MonoBehaviour:
   centeringSpeed: 10
   trenchSizeUpRight: {x: 15, y: 40}
   trenchSizeDownLeft: {x: -10, y: 16}
-  timeSpeed: 1
 --- !u!64 &2646641610299448019
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1052,7 +1051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2389744606424553714}
   - component: {fileID: 2541867632761214315}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CenterGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1108,7 +1107,7 @@ GameObject:
   - component: {fileID: 4767214016663560921}
   - component: {fileID: 6841466750629758370}
   - component: {fileID: 1305415077025105050}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: XWing model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1191,6 +1190,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6164468951890683442}
     m_Modifications:
+    - target: {fileID: 361866805564563711, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049948372131198596, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148303763915439676, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5797290743876432329, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1234,6 +1245,10 @@ PrefabInstance:
     - target: {fileID: 6372615764674820455, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_Name
       value: SmallExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6372615764674820455, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6372615764674820455, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_IsActive

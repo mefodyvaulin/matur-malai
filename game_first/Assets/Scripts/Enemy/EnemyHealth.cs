@@ -13,13 +13,14 @@ public class EnemyHealth : MonoBehaviour,  IDamageable, ICanShield
     [SerializeField] ParticleSystem damageExplosion;
     [SerializeField] GameObject defeatingObject;
     public bool isIndestructibleShield { get; set; }
+    public bool isIndestructibleSpawn { get; set; }
     
     public bool IsAlive => CurrentHp > 0;
     public Collider EnemyCollider;
 
     public void Awake()
     {
-        CurrentHp = MaxHp / 2 + 1;
+        CurrentHp = MaxHp;
         EnemyCollider = GetComponent<Collider>();
     }
 
@@ -31,7 +32,7 @@ public class EnemyHealth : MonoBehaviour,  IDamageable, ICanShield
     // ReSharper disable Unity.PerformanceAnalysis
     public void TakeDamage(int damage)
     {
-        if (isIndestructibleShield) return;
+        if (isIndestructibleShield || isIndestructibleSpawn) return;
         
         damageExplosion.gameObject.SetActive(true);
         CurrentHp -= damage;

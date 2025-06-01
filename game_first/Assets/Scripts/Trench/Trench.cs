@@ -5,7 +5,11 @@ using Random = UnityEngine.Random;
 
 public class Trench : MonoBehaviour
 {
+    [SerializeField] private GameObject star;
+    private bool starCanSpawn = true;
+    
     [Min(5)] [SerializeField] private int totalNumberOfFloodedTrenches = 50;
+    [SerializeField] public GameObject bossBar;
     private int skipStartTrenches = 2;
     
     [SerializeField] private GameObject bossTrenchSegment;
@@ -15,6 +19,7 @@ public class Trench : MonoBehaviour
     private int locationSegmentIndex = 0;
     public bool IsBossLocation => locationIndex == locations.Length - 1;
     private WeightedRandomStack<GameObject> randomTrench;
+    
     
     [SerializeField] private GameObject[] buffPrefabs;
     private readonly int[] weightsBuff = {0, 0, 1, 0, 0};
@@ -44,6 +49,9 @@ public class Trench : MonoBehaviour
 
     private void Start()
     {
+        startSpawnStars = new Vector2(
+            Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.x, GameModel.PlayerMovement.trenchSizeUpRight.x),
+            Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.y, GameModel.PlayerMovement.trenchSizeUpRight.y));
         segmentLength = referenceRenderer.bounds.size.z;
         initialSegmentPosition = new Vector3(2.52f,
             12,
@@ -85,9 +93,11 @@ public class Trench : MonoBehaviour
         if (IsBossLocation)
         {
             bossLocationSegment = countSegments;
+            starCanSpawn = false;
         }
         if (lastLocation)
         {
+            starCanSpawn = true;
             ReloadSegments();
         }
     }
@@ -107,6 +117,7 @@ public class Trench : MonoBehaviour
         currentSegments.Enqueue((newSegment, buff));
         locationSegmentIndex++;
         countSegments++;
+        SpawnStar();
     }
 
     private GameObject TakeSpecialOrDefaultSegment()
@@ -183,8 +194,37 @@ public class Trench : MonoBehaviour
             currentSegments.Enqueue((segment, buff));
             locationSegmentIndex++;
             countSegments++;
+            SpawnStar();
         }
         isInstantiateSegments = false;
+    }
+    
+    private Vector2 startSpawnStars, endSpawnStars;
+    private void SpawnStar()
+    {
+        if (!(Random.value <= 0.5f) || !starCanSpawn) return;
+        
+        endSpawnStars = new Vector2(
+            Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.x, GameModel.PlayerMovement.trenchSizeUpRight.x),
+            Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.y, GameModel.PlayerMovement.trenchSizeUpRight.y)
+        );
+
+        var startZ = countSegments * segmentLength;
+
+        var steps = (int)segmentLength / 10;
+        for (var i = 0; i < steps; i++)
+        {
+
+            var t = (float)i / steps;
+            var lerpedPos = Vector2.Lerp(startSpawnStars, endSpawnStars, t);
+
+
+            var currentZ = startZ + i * 10f;
+            Instantiate(star, new Vector3(lerpedPos.x, lerpedPos.y, currentZ), Quaternion.identity);
+        }
+
+
+        startSpawnStars = endSpawnStars;
     }
 }
 

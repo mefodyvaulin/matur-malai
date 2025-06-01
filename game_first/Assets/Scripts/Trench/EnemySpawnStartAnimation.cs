@@ -12,6 +12,7 @@ public static class EnemySpawnStartAnimation
         Vector3? controlPoint1 = null, Vector3? controlPoint2 = null, float flightTime = 0)
     {
         //yield return MoveForward(enemy, moveForwardTime);
+        if (enemy is Boss) enemy.health.isIndestructibleSpawn = true;
         if (flightTime <= 0) flightTime = departurTime;
         var time = flightTime - i * 0.2f;
         
@@ -65,6 +66,7 @@ public static class EnemySpawnStartAnimation
         
         enemy.movement.DefaultMove();
         enemy.movement.Move += moveGroup;
+        if (enemy is Boss) enemy.health.isIndestructibleSpawn = false;
     }
 
     private static IEnumerator MoveForward(EnemyAbstract enemy, float time)

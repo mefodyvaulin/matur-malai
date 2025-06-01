@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 1000
-  Hp: 50
+  Hp: 1000
   audioSources:
   - {fileID: 4037933651699499713}
   - {fileID: 5881356456508379275}
@@ -674,6 +674,7 @@ MonoBehaviour:
   speed: 10
   direction: 0
   distanceToEnemy: 0
+  animator: {fileID: 0}
 --- !u!114 &1616339717675857650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -951,7 +952,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1bbd611258993644ca8ab2f6aadd4b38, type: 2}
+  - {fileID: 2100000, guid: 887454b3b4600f4488a704c698e80cfd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

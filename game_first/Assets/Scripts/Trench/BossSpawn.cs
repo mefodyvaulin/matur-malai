@@ -6,7 +6,6 @@ using Random = System.Random;
 public class BossSpawn : MonoBehaviour
 {
     [SerializeField] private Boss BossPrefab;
-    //[SerializeField] private Animator hatchAnimation;
     
     private int spawnedAfter = 3;
     private bool spawned = false;
@@ -32,7 +31,6 @@ public class BossSpawn : MonoBehaviour
 
     private void SpawnBoss()
     {
-        //hatchAnimation.SetBool("spawnMoment", true);
         var bossGroup = new EnemyGroupBoss(1, transform.position);
         var boss = Instantiate(BossPrefab, transform.position, transform.rotation);
         var finalPosition = bossGroup.TakePosition(0);

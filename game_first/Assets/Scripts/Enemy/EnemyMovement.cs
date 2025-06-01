@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        if (animator != null) animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         direction = Random.Range(0, 2) == 1 ? 1 : -1;
         distanceToEnemy = Random.Range(25f, 35f);
     }
