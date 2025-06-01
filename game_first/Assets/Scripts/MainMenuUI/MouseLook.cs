@@ -8,7 +8,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (Mouse.current.leftButton.isPressed)
+        if (Mouse.current.leftButton.isPressed && GameModel.mouseInXwingColliderZone)
         {
             mouseDelta = Mouse.current.delta.ReadValue();
             float rotationAmount = (-1) * mouseDelta.x * rotationSpeed;
