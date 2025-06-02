@@ -7,8 +7,8 @@ namespace Buffs
 {
     public class SpeedBuff : AbstractBuff
     {
-        private const int boost = 100;
-        private const float timeBoost = 1.5f;
+        private const int boost = 50;
+        private const float timeBoost = 1f;
         private float lastPlayerSpeed;
         private float lastPlayerRotationSpeed;
         private float lastCameraSmoothTime;
@@ -58,6 +58,11 @@ namespace Buffs
             
             while (Quaternion.Angle(GameModel.PlayerMovement.transform.rotation, targetRotation) > 0.01f)
             {
+                if (Time.timeScale == 0)
+                {
+                    yield return null;
+                    continue;
+                }
                 GameModel.PlayerMovement.transform.rotation = Quaternion.Slerp(
                     GameModel.PlayerMovement.transform.rotation,
                     targetRotation,
@@ -73,9 +78,15 @@ namespace Buffs
             var elapsedTime = 0f;
             while (elapsedTime < time)
             {
-                if (GameModel.GenerateTrench.IsBossLocation
-                    && GameModel.PlayerPosition.z >= GameModel.GenerateTrench.BossLocationSegmentPosition)
+                if (Time.timeScale == 0)
+                {
+                    yield return null;
+                    continue;
+                }
+                if (GameModel.GenerateTrench.speedStop)
+                {
                     break;
+                }
                 elapsedTime += GameModel.UnscaledDeltaTime;
                 yield return null;
             }

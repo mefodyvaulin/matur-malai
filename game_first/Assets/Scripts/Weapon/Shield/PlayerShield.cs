@@ -70,6 +70,11 @@ public class PlayerShield : MonoBehaviour, IFillBarProvider, IDamageable
 
         while (elapsedTime < time)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             elapsedTime += GameModel.UnscaledDeltaTime;
             if (time - elapsedTime <= blinkDuration)
             {
@@ -91,7 +96,6 @@ public class PlayerShield : MonoBehaviour, IFillBarProvider, IDamageable
         // Убедимся, что щит виден перед уничтожением
         if (shieldRenderer != null)
             shieldRenderer.enabled = true;
-
         Die();
     }
 

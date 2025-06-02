@@ -390,6 +390,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 194627843}
     - target: {fileID: 102366792698269150, guid: 3d919a80788764af8ada1948d52e4cd9, type: 3}
+      propertyPath: isTraining
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 102366792698269150, guid: 3d919a80788764af8ada1948d52e4cd9, type: 3}
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 1283590119}
@@ -531,9 +535,17 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: 'buffPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 9095174153456128225, guid: 226200dc61430427faa58b1205521d81, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
       propertyPath: 'buffPrefabs.Array.data[2]'
       value: 
       objectReference: {fileID: 4822681235905131590, guid: 88f5d9e18bba5fc42b866ad831597553, type: 3}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: 'buffPrefabs.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2154488419348655228, guid: c589523ddfcb6471888e42cf56dcd8a7, type: 3}
     - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
       propertyPath: locations.Array.data[0].trenches.Array.size
       value: 4

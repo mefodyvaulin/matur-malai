@@ -24,6 +24,11 @@ public class MovebackgroundFighter: MonoBehaviour
 
         while (elapsedTime < lifetime)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             if (GameModel.UnscaledTime >= nextSpawnShoot)
             {
                 for(var i = 0; i < Random.Range(1, 4); i++)

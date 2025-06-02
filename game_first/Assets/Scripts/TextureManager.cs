@@ -18,9 +18,4 @@ public static class TextureManager
         get => saveAllData.playersTextures;
         set => saveAllData.playersTextures = value;
     }
-
-
-
-
-
 }

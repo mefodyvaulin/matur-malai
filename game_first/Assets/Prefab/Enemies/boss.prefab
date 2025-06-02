@@ -451,7 +451,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1bbd611258993644ca8ab2f6aadd4b38, type: 2}
+  - {fileID: 2100000, guid: 887454b3b4600f4488a704c698e80cfd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -650,8 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ab90457d9dc4e438f3d853eb472c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 1000
-  Hp: 1000
+  maxHp: 2000
   audioSources:
   - {fileID: 4037933651699499713}
   - {fileID: 5881356456508379275}

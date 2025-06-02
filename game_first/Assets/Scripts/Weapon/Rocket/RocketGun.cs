@@ -31,16 +31,21 @@ public class RocketGun : MissileGun
         {
             foreach (var enemy in GetRandomizedEnemiesOrNulls())
             {
+                if (Time.timeScale == 0)
+                {
+                    yield return null;
+                    continue;
+                }
                 var rocket = Instantiate(rocketPrefab, transform.position, transform.rotation);
                 rocket.target = enemy;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.2f);
             }
         }
     }
 
     private static EnemyAbstract[] GetRandomizedEnemiesOrNulls()
     {
-        if (GameModel.Enemies.Keys.Count > 0) 
+        if (GameModel.Enemies.Keys.Count > 0 && !GameModel.BossIsAlive) 
             return GameModel.Enemies.Keys
                 .OrderBy(_ => Guid.NewGuid())
                 .ToArray();
