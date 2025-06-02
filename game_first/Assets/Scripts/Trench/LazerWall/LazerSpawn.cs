@@ -56,7 +56,7 @@ public class LazerSpawn : MonoBehaviour
                 yield return null;
                 continue;
             }
-            yield return new LazerWallIndetifity(isShip? 2 : Random.Range(0, 2));
+            yield return new LazerWallIndetifity(isShip? 2 : Random.Range(0, 2), isShip? 4 : 0);
         }
     }
 
@@ -116,7 +116,7 @@ class LazerWallIndetifity
         return (null, null, null);
     }
 
-    public LazerWallIndetifity(int index)
+    public LazerWallIndetifity(int index, float step)
     {
         var edge = dict[index];
         Position = GetRandomBetweenWithStep(edge.Pos.Down, edge.Pos.Up, step);
