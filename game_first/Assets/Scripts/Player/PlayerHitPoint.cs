@@ -41,6 +41,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider, ICan
         if (CurrentHp <= 0)
         {
             gameOverPanel.SetActive(true);
+            Cursor.visible = true;
             Instantiate(defeatingObject, transform.position, Quaternion.identity);
             Destroy(gameObject);
             GameModel.ResetModel();

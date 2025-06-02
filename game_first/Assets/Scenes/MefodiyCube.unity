@@ -1191,6 +1191,10 @@ PrefabInstance:
       propertyPath: textOfGold
       value: 
       objectReference: {fileID: 181306125}
+    - target: {fileID: 2492833077047281126, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2536991062056141843, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5

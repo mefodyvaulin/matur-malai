@@ -9,5 +9,6 @@ public class SaveAllData : ScriptableObject
     public List<int> lastScores;
     public Texture currentTexture;
     public List<Texture> playersTextures;
+    public bool isFirstGame = true;
 }
 

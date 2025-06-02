@@ -35,6 +35,7 @@ public class PlayerShield : MonoBehaviour, IFillBarProvider, IDamageable
 
     private void OnEnable()
     {
+        shieldRenderer.enabled = true;
         CurrentHp = MaxHp;
         shieldRenderer = GetComponent<Renderer>();
 

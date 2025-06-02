@@ -57,7 +57,7 @@ public class Helper : MonoBehaviour
                 break;
             }
 
-            if (GameModel.UnscaledTime - timeStarted > 10)
+            if (GameModel.UnscaledTime - timeStarted > 7)
                 break;
             yield return null;
         }

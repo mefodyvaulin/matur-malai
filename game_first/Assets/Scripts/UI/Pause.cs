@@ -32,6 +32,7 @@ public class Pause : MonoBehaviour
     private void PauseOnAction(InputAction.CallbackContext obj)
     {
         paused = !paused;
+        Cursor.visible = paused;
         AudioListener.pause = paused;
         if (Time.timeScale != 0) timeScale = Time.timeScale;
         Time.timeScale = paused ? 0 : timeScale;

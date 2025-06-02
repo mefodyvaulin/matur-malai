@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 using Random = UnityEngine.Random;
 
 public class MusicManager : MonoBehaviour
@@ -31,7 +30,7 @@ public class MusicManager : MonoBehaviour
         PlayRandomTrack();
     }
 
-    private void PlayTrack(int index)
+    public void PlayTrack(int index)
     {
         currentTrackIndex = index;
         audioSource.clip = musicClips[currentTrackIndex];
