@@ -378,6 +378,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 194627843}
     - target: {fileID: 102366792698269150, guid: 3d919a80788764af8ada1948d52e4cd9, type: 3}
+      propertyPath: isTraining
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 102366792698269150, guid: 3d919a80788764af8ada1948d52e4cd9, type: 3}
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 1283590119}

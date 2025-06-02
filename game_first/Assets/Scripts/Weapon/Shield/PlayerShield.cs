@@ -95,7 +95,6 @@ public class PlayerShield : MonoBehaviour, IFillBarProvider, IDamageable
         // Убедимся, что щит виден перед уничтожением
         if (shieldRenderer != null)
             shieldRenderer.enabled = true;
-
         Die();
     }
 
