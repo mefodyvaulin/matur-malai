@@ -7455,7 +7455,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4509655759914599139, guid: 012407f13de5ae447980c1d79e7c58e7, type: 3}
       propertyPath: m_Name
-      value: Music (1)
+      value: Music
       objectReference: {fileID: 0}
     - target: {fileID: 4509655759914599139, guid: 012407f13de5ae447980c1d79e7c58e7, type: 3}
       propertyPath: m_IsActive
