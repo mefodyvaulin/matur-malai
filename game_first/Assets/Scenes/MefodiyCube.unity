@@ -356,6 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xWing: {fileID: 470515364}
+  helper: {fileID: 1985297351777237387}
 --- !u!4 &1094445178
 Transform:
   m_ObjectHideFlags: 0
@@ -1151,11 +1152,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5896431012752068181, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
+--- !u!1 &1985297351777237387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 419325207155853245, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
+  m_PrefabInstance: {fileID: 1985297351777237386}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4474464617143398197
 PrefabInstance:
   m_ObjectHideFlags: 0

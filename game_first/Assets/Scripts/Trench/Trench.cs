@@ -43,7 +43,7 @@ public class Trench : MonoBehaviour
     
     public static event Action<float> OnGenerateContinuationOfTrench; // вызвать до создания туннеля
     
-    private bool isTraining => Helper.isEducation;
+    private bool isTraining => Helper.helperAlive;
     
     public void Awake()
     {

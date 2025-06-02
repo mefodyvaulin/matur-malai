@@ -32,7 +32,7 @@ public static class GameModel
     public static readonly Dictionary<EnemyAbstract, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
 
-    
+    public static bool isEducation = false;
 
     private static TimeManager _timeManager;
     public static float UnscaledDeltaTime => _timeManager.UnscaledDeltaTime;
@@ -108,7 +108,8 @@ public static class GameModel
         _playerCollider = null;
         _timeManager = null;
         _generateTrench = null;
-
+        isEducation = false;
+        Helper.helperAlive = false;
         playerTransform = null;
         BossIsAlive = false;
         EnemySpawn.CanSpawn = true;
