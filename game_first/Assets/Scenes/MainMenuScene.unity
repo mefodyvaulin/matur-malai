@@ -7469,10 +7469,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Music
       objectReference: {fileID: 0}
-    - target: {fileID: 4509655759914599139, guid: 012407f13de5ae447980c1d79e7c58e7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4944073586059115459, guid: 012407f13de5ae447980c1d79e7c58e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -66.20909
@@ -7517,10 +7513,6 @@ PrefabInstance:
       propertyPath: musicClips.Array.size
       value: 23
       objectReference: {fileID: 0}
-    - target: {fileID: 6075148890825229587, guid: 012407f13de5ae447980c1d79e7c58e7, type: 3}
-      propertyPath: 'musicClips.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 5c5e82d0f3384ff49a4d3a457b3b1b07, type: 3}
     - target: {fileID: 6075148890825229587, guid: 012407f13de5ae447980c1d79e7c58e7, type: 3}
       propertyPath: 'musicClips.Array.data[1]'
       value: 
