@@ -10,7 +10,7 @@ public static class GameModel
 
     private static Transform playerTransform;
 
-    public static bool mouseInXwingColliderZone = false;
+
     
     public static WeaponSwitcher WeaponSwitcher => _weaponSwitcher ?? throw new System.Exception("WeaponSwitcher not set!");
     private static WeaponSwitcher _weaponSwitcher;
