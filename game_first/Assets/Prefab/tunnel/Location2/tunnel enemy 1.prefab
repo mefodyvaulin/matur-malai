@@ -52,6 +52,7 @@ MonoBehaviour:
   - {fileID: 3077978412082234152, guid: cf263d1406d47724dad04db12b2ddbda, type: 3}
   - {fileID: 1836608600145425377, guid: a00bfa7f520716b439e587f08beab38b, type: 3}
   - {fileID: 1836608600145425377, guid: 02fcfb5e2bcb743eabd1beda20e4c13f, type: 3}
+  - {fileID: 1836608600145425377, guid: 02fcfb5e2bcb743eabd1beda20e4c13f, type: 3}
   hatchAnimation: {fileID: 3501575627008108961}
   shield: {fileID: 7774641620215653102, guid: 7ddfa866f6d4946828ab6fbe67d38420, type: 3}
 --- !u!111 &7972358368761832542

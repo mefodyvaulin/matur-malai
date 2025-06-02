@@ -9,6 +9,7 @@ public class RestartButton : MonoBehaviour
     {
         Time.timeScale = 1;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         Statistic.SaveStat();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

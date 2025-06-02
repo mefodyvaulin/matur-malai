@@ -35,7 +35,7 @@ public class PlayerShield : MonoBehaviour, IFillBarProvider, IDamageable
 
     private void OnEnable()
     {
-        shieldRenderer.enabled = true;
+        //shieldRenderer.enabled = true;
         CurrentHp = MaxHp;
         shieldRenderer = GetComponent<Renderer>();
 
@@ -114,6 +114,8 @@ public class PlayerShield : MonoBehaviour, IFillBarProvider, IDamageable
 
     private void Die()
     {
+        if (shieldRenderer != null)
+            shieldRenderer.enabled = true;
         targetShield.isIndestructibleShield = false;
         fillBar.SetActive(false);
         gameObject.SetActive(false);

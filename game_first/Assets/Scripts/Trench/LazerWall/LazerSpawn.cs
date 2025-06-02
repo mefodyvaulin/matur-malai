@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.Vector3;
 using Random = UnityEngine.Random;
 
 public class LazerSpawn : MonoBehaviour
@@ -56,7 +53,7 @@ public class LazerSpawn : MonoBehaviour
                 yield return null;
                 continue;
             }
-            yield return new LazerWallIndetifity(isShip? 2 : Random.Range(0, 2), isShip? 4 : 0);
+            yield return new LazerWallIndetifity(isShip? 2 : Random.Range(0, 2), isShip? 1 : 4);
         }
     }
 

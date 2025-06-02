@@ -95,7 +95,7 @@ public static class GameModel
     public static void RemoveEnemy(EnemyAbstract enemy)
     {
         Enemies.Remove(enemy);
-        WeaponSwitcher.PourInUlta(1);
+        _weaponSwitcher?.PourInUlta(1);
     }
 
     

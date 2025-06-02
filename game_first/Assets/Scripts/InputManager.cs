@@ -21,4 +21,10 @@ public static class InputManager
         UserInputAction.Pause.Enable();
     }
 
+    public static void DisablePauseON()
+    {
+        PauseON.Disable();
+        PauseOFF.Disable();
+    }
+
 }

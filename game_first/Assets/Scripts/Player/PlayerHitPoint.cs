@@ -21,8 +21,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider, ICan
     public bool IsAlive => CurrentHp > 0;
     public float MaxValue => MaxHp;
     public float CurrentValue => CurrentHp;
-    
-    public bool isTraining = false;
+
     private float blinkDuration = 4f;
     private float visibleInterval = 0.3f;
     public Renderer playerRenderer;
@@ -46,7 +45,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider, ICan
         CurrentHp -= damage;
         if (CurrentHp <= 0)
         {
-            if (isTraining)
+            if (GameModel.isEducation)
             {
                 CurrentHp = MaxHp;
                 if (GameModel.Shield != null)
@@ -57,6 +56,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider, ICan
             }
             gameOverPanel.SetActive(true);
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             Instantiate(defeatingObject, transform.position, Quaternion.identity);
             Destroy(gameObject);
             GameModel.ResetModel();

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,11 +7,13 @@ using Random = UnityEngine.Random;
 public class Trench : MonoBehaviour
 {
     [SerializeField] private GameObject star;
+    [SerializeField] GameObject gameWinPanel;
     private bool starCanSpawn = true;
     
     [SerializeField] private GameObject emptyStartSegment;
     [Min(5)] [SerializeField] private int totalNumberOfFloodedTrenches = 50;
     [SerializeField] public GameObject bossBar;
+    [SerializeField] public GameObject firework;
     private int skipStartTrenches = 2;
     
     [SerializeField] private GameObject bossTrenchSegment;
@@ -23,13 +26,13 @@ public class Trench : MonoBehaviour
     
     
     [SerializeField] private GameObject[] buffPrefabs;
-    private readonly int[] weightsBuff = {0, 0, 1, 0, 0}; // {6, 3, 1, 3, 2};
+    private readonly int[] weightsBuff = {6, 3, 500, 3, 2}; // {6, 3, 1, 3, 2};
     private WeightedRandomStack<GameObject> randomBuffs;
-    
+
     [SerializeField] private Renderer referenceRenderer;
     private float segmentLength;
     private static Vector3 initialSegmentPosition;
-    
+
     private Queue<(GameObject trench, GameObject buff)> currentSegments;
     private int countSegments;
 
@@ -37,16 +40,17 @@ public class Trench : MonoBehaviour
     private Queue<float> startSegmentLocations;
     public float BossLocationSegmentPosition => bossLocationSegment * segmentLength;
     private int bossLocationSegment;
-    
+
     private const int maxSegmentsAhead = 4;
 
     private bool isInstantiateSegments;
     public bool speedStop;
-    
+
     public static event Action<float> OnGenerateContinuationOfTrench; // вызвать до создания туннеля
-    
+
     private bool isTraining => Helper.helperAlive;
-    
+    private bool wasTraining;
+
     public void Awake()
     {
         GameModel.SetGenerateTrench(this);
@@ -54,6 +58,7 @@ public class Trench : MonoBehaviour
 
     private void Start()
     {
+        wasTraining = isTraining;
         startSpawnStars = new Vector2(
             Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.x, GameModel.PlayerMovement.trenchSizeUpRight.x),
             Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.y, GameModel.PlayerMovement.trenchSizeUpRight.y));
@@ -64,7 +69,7 @@ public class Trench : MonoBehaviour
 
         startSegmentLocations = new Queue<float>();
         currentSegments = new Queue<(GameObject trench, GameObject buff)>();
-        
+
         locationSegmentIndex = skipStartTrenches;
         countSegments = skipStartTrenches;
         for (var i = -1; i < skipStartTrenches; i++)
@@ -101,16 +106,16 @@ public class Trench : MonoBehaviour
             locationIndex = 0;
             return;
         }
-        if (locationSegmentIndex < locationSegmentsCount 
+        if (locationSegmentIndex < locationSegmentsCount
             || (IsBossLocation && BossTrenchExists)
             ) return;
-        
+
         var lastLocation = IsBossLocation;
         locationSegmentIndex = 0;
         startSegmentLocations.Enqueue(countSegments);
         locationIndex = locationIndex == locations.Length - 1 ? 0 : locationIndex + 1;
         randomTrench = new WeightedRandomStack<GameObject>(locations[locationIndex].trenches);
-        
+
         if (IsBossLocation)
         {
             bossLocationSegment = countSegments;
@@ -118,9 +123,27 @@ public class Trench : MonoBehaviour
         }
         if (lastLocation)
         {
+            if (wasTraining)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                InputManager.DisablePauseON();
+                StartCoroutine(FireworkSpawn());
+            }
             starCanSpawn = true;
             ReloadSegments();
         }
+    }
+
+    private IEnumerator FireworkSpawn()
+    {
+        for (var i = 0; i < 20; i++)
+        {
+            Instantiate(firework, GameModel.PlayerPosition + new Vector3(Random.Range(-2,2), Random.Range(-2, 2), 10), Quaternion.identity);
+            yield return new WaitForSeconds(0.5f);
+        }
+        Time.timeScale = 0;
+        gameWinPanel.SetActive(true);
     }
 
     private void GenerateContinuationOfTrench()

@@ -33,6 +33,7 @@ public class Pause : MonoBehaviour
     {
         paused = !paused;
         Cursor.visible = paused;
+        Cursor.lockState = paused ? CursorLockMode.None : CursorLockMode.Locked;
         AudioListener.pause = paused;
         if (Time.timeScale != 0) timeScale = Time.timeScale;
         Time.timeScale = paused ? 0 : timeScale;
