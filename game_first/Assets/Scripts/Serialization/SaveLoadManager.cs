@@ -9,14 +9,14 @@ public static class SaveLoadManager
     {
         string json = JsonUtility.ToJson(gameData);
         File.WriteAllText(filePath, json);
-        Debug.Log("Game data saved to " + filePath);
+        //Debug.Log("Game data saved to " + filePath);
     }
 
     public static void LoadData(SaveAllData gameData)
     {
         string json = File.ReadAllText(filePath);
         JsonUtility.FromJsonOverwrite(json, gameData);
-        Debug.Log("Game data loaded from " + filePath);
+        //Debug.Log("Game data loaded from " + filePath);
     }
 }
 
