@@ -70,7 +70,7 @@ public class Helper : MonoBehaviour
                 break;
             }
 
-            if (GameModel.UnscaledTime - timeStarted > 7)
+            if (GameModel.UnscaledTime - timeStarted > 4)
                 break;
             yield return null;
         }
@@ -121,7 +121,7 @@ public class Helper : MonoBehaviour
             }
             text0 += str[i];
             text.text = text0;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.02f);
         }
         SwitchAnim("educate", "wait");
     }

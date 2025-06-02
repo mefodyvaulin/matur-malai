@@ -116,4 +116,10 @@ public static class GameModel
         
         Enemies.Clear();
     }
+
+    public static void ResetEducate()
+    {
+        isEducation = false;
+        Helper.helperAlive = false;
+    }
 }

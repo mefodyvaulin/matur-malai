@@ -8,10 +8,15 @@ public class ChangeSceneTo : MonoBehaviour
     public void StartGameScene(bool education)
     {
         AudioListener.pause = false;
-        GameModel.ResetModel();
+
+        if (sceneName == "MefodiyCube") GameModel.ResetModel();
         Cursor.visible = sceneName != "MefodiyCube";
         Cursor.lockState = sceneName != "MefodiyCube"? CursorLockMode.None: CursorLockMode.Locked;
-        if (sceneName == "MainMenuScene") Statistic.SaveStat();
+        if (sceneName == "MainMenuScene")
+        {
+            GameModel.ResetEducate();
+            Statistic.SaveStat();
+        }
         SceneManager.LoadSceneAsync(sceneName);
         GameModel.isEducation = education;
         Time.timeScale = 1;

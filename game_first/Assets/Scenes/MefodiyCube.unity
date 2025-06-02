@@ -1142,10 +1142,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5896431012752068181, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
 --- !u!1 &1985297351777237387 stripped
 GameObject:
@@ -1168,6 +1165,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1994450451}
+    - target: {fileID: 1072647236769210038, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1744330358931886467, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
       propertyPath: m_Name
       value: Canvas
