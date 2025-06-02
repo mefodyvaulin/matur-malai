@@ -1061,7 +1061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 419325207155853245, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1409640686915882925, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1114,11 +1114,11 @@ PrefabInstance:
     - target: {fileID: 5082303414731774756, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: -8921568238191422434, guid: 640600ec6489eca4786d29b6b1434579, type: 2}
+      objectReference: {fileID: -8921568238191422434, guid: e0414333366adef49b12f607cad7a594, type: 2}
     - target: {fileID: 5172298883719740862, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 640600ec6489eca4786d29b6b1434579, type: 2}
+      objectReference: {fileID: 11400000, guid: e0414333366adef49b12f607cad7a594, type: 2}
     - target: {fileID: 5172298883719740862, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
       propertyPath: m_fontStyle
       value: 32
@@ -1138,7 +1138,7 @@ PrefabInstance:
     - target: {fileID: 5172298883719740862, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -8921568238191422434, guid: 640600ec6489eca4786d29b6b1434579, type: 2}
+      objectReference: {fileID: -8921568238191422434, guid: e0414333366adef49b12f607cad7a594, type: 2}
     - target: {fileID: 5172298883719740862, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4292203989
@@ -1166,7 +1166,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5896431012752068181, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: a69f88978b12eae46bb343b9746e1a1b, type: 3}
 --- !u!1 &1985297351777237387 stripped
 GameObject:

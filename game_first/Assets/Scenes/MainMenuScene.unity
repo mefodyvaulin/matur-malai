@@ -320,6 +320,18 @@ PrefabInstance:
       propertyPath: musicManager
       value: 
       objectReference: {fileID: 1102645727}
+    - target: {fileID: 5182155356841865842, guid: e67d70806bdaed548ac2cbcddec32db1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -958.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182155356841865842, guid: e67d70806bdaed548ac2cbcddec32db1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -539.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182155356841865842, guid: e67d70806bdaed548ac2cbcddec32db1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.43
+      objectReference: {fileID: 0}
     - target: {fileID: 5934776373786329468, guid: e67d70806bdaed548ac2cbcddec32db1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
