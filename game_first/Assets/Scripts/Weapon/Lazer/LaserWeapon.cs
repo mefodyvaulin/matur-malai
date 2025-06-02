@@ -26,6 +26,9 @@ public class LaserWeapon : Weapon
             defaultDamage = laserBeam.damagePerSecond;
             defaultInterval = laserBeam.damageInterval;
             laserBeam.gameObject.SetActive(false); // по умолчанию лазер выключен
+            var buffLayer = LayerMask.NameToLayer("Buff");
+            var buffMask = 1 << buffLayer;
+            laserBeam.SetLayerMask(~buffMask);
         }
     }
 

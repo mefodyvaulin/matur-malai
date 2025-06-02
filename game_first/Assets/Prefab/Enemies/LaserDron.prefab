@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 50
-  Hp: 50
   audioSources:
   - {fileID: 6394721742590275584}
   - {fileID: 3202007778876847009}
@@ -373,7 +372,7 @@ GameObject:
   - component: {fileID: 3375714321862955126}
   - component: {fileID: 5096155488735695492}
   - component: {fileID: 8330649046585283470}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,6 +695,7 @@ MonoBehaviour:
   speed: 10
   direction: 0
   distanceToEnemy: 0
+  animator: {fileID: 0}
 --- !u!95 &7302765526199039650
 Animator:
   serializedVersion: 7

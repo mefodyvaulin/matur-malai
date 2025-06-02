@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7120417347635758693}
   - component: {fileID: -5319042749178312359}
   - component: {fileID: 304972570885321496}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BuffWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,9 +204,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6271877109242852978, guid: 3b73239e29bfa4d0dae0cff3d30328e6, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 9095174153456128225, guid: 3b73239e29bfa4d0dae0cff3d30328e6, type: 3}
       propertyPath: m_Name
       value: CubeRocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095174153456128225, guid: 3b73239e29bfa4d0dae0cff3d30328e6, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9095174153456128225, guid: 3b73239e29bfa4d0dae0cff3d30328e6, type: 3}
       propertyPath: m_IsActive
@@ -275,9 +283,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4476455938999125376, guid: 141e3528917fd4241ab0d8212a06c065, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 9095174153456128225, guid: 141e3528917fd4241ab0d8212a06c065, type: 3}
       propertyPath: m_Name
       value: CubeLaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095174153456128225, guid: 141e3528917fd4241ab0d8212a06c065, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9095174153456128225, guid: 141e3528917fd4241ab0d8212a06c065, type: 3}
       propertyPath: m_IsActive
@@ -350,9 +366,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7335922408891676748, guid: 7fe0884f102cf44a5a8d9008be1cbd93, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 9095174153456128225, guid: 7fe0884f102cf44a5a8d9008be1cbd93, type: 3}
       propertyPath: m_Name
       value: CubeBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095174153456128225, guid: 7fe0884f102cf44a5a8d9008be1cbd93, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9095174153456128225, guid: 7fe0884f102cf44a5a8d9008be1cbd93, type: 3}
       propertyPath: m_IsActive

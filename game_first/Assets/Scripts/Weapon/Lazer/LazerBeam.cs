@@ -11,6 +11,7 @@ public class LaserBeam : MonoBehaviour
     protected float step = 0.5f; // шаг расположения лучей (их частота)
     [SerializeField] protected Transform beamVisual; // Ссылка на цилиндр лазера
     private float damageTimer;
+    protected LayerMask hitLayers;
 
     protected virtual void Awake()
     {
@@ -19,6 +20,11 @@ public class LaserBeam : MonoBehaviour
         {
             Debug.LogError("beamVisual не назначен!");
         }
+    }
+
+    public void SetLayerMask(LayerMask layerMask)
+    {
+        hitLayers = layerMask;
     }
 
     private void Update()
@@ -40,7 +46,7 @@ public class LaserBeam : MonoBehaviour
         foreach (var offset in offsets)
         {
             var rayOrigin = origin + offset;
-            if (Physics.Raycast(rayOrigin, direction, out var hit, maxDistance))
+            if (Physics.Raycast(rayOrigin, direction, out var hit, maxDistance, layerMask: hitLayers))
             {
                 if (beamLength > hit.distance)
                 {

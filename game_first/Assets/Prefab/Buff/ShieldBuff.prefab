@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 223264346547295874}
   - component: {fileID: 6672985979283315109}
   - component: {fileID: 6083150011072466971}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ShieldBuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,4 +150,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
-  shield: {fileID: 2406386950874328496, guid: 10816d956144e42a09725c0ef69828e5, type: 3}

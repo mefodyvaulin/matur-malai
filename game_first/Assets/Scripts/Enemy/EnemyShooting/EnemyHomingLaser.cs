@@ -23,6 +23,12 @@ public class EnemyHomingLaser : EnemyShooting
         if (laserBeam == null) throw new Exception("LaserBeam component doesn't exist");
         laserBeam.width = 0.3f;
         base.Awake();
+        
+        var buffLayer = LayerMask.NameToLayer("Buff");
+        var shieldLayer = LayerMask.NameToLayer("LazerWall");
+        var buffMask = 1 << buffLayer;
+        var shieldMask = 1 << shieldLayer;
+        laserBeam.SetLayerMask(~(buffMask | shieldMask));
     }
 
     protected override void Shoot()

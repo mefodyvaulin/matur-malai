@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4735810131408040208}
   - component: {fileID: -7164825023126255012}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: RocketExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,5 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e518ee56005408cae05e72ab1669f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
   radius: 5

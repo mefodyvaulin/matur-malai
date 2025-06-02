@@ -394,6 +394,10 @@ PrefabInstance:
       propertyPath: fillBar
       value: 
       objectReference: {fileID: 2119506272}
+    - target: {fileID: 3198454759137069922, guid: 3d919a80788764af8ada1948d52e4cd9, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 6164468951890683442, guid: 3d919a80788764af8ada1948d52e4cd9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -445,6 +449,14 @@ PrefabInstance:
     - target: {fileID: 7173844356095164119, guid: 3d919a80788764af8ada1948d52e4cd9, type: 3}
       propertyPath: floatingTextPrefab
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025918310052084327, guid: 3d919a80788764af8ada1948d52e4cd9, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414412609626836584, guid: 3d919a80788764af8ada1948d52e4cd9, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
