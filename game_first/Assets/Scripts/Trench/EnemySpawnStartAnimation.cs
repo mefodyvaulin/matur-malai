@@ -35,6 +35,11 @@ public static class EnemySpawnStartAnimation
 
         while (elapsed < time)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             var t = elapsed / time;
             var curvedPosition = Bezier.Cubic(
                 startPosition, cp1, cp2, toPosition, t);
@@ -78,6 +83,11 @@ public static class EnemySpawnStartAnimation
 
         while (elapsedOffset < time)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             var t = elapsedOffset / time;
             enemy.transform.position = Vector3.Lerp(originalPosition, offsetPosition, t);
             elapsedOffset += Time.deltaTime;
@@ -93,6 +103,11 @@ public static class EnemySpawnStartAnimation
 
         while (elapsed < time)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             enemy.transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsed / time);
             elapsed += Time.deltaTime;
             yield return null;

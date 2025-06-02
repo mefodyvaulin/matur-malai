@@ -5,21 +5,28 @@ using Random = UnityEngine.Random;
 
 public class BuffWeapon : AbstractBuff
 {
+    public GameObject laserRendererObj;
+    public GameObject bulletRendererObj;
+    public GameObject rocketRendererObj;
+
     private WeaponType weaponType;
-    
+
     private void Start()
     {
         weaponType = (WeaponType)Random.Range(0, System.Enum.GetValues(typeof(WeaponType)).Length);
-        
-        var rend = GetComponent<Renderer>();
-        if (rend is null) return;
-        rend.material.color = weaponType switch
+
+        switch (weaponType)
         {
-            WeaponType.Laser => new Color32(62, 173, 62, 255),
-            WeaponType.Bullet => new Color32(255, 129, 200, 255),
-            WeaponType.Rocket => new Color32(140, 92, 233, 255),
-            _ => rend.material.color
-        };
+            case WeaponType.Laser:
+                laserRendererObj.SetActive(true);
+                break;
+            case WeaponType.Bullet:
+                bulletRendererObj.SetActive(true);
+                break;
+            case WeaponType.Rocket:
+                rocketRendererObj.SetActive(true);
+                break;
+        }
     }
     
     protected override IEnumerator DoBuff()

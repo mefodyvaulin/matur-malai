@@ -14,6 +14,17 @@ public abstract class LazerWallAbstract : MonoBehaviour
         var damageable = other.GetComponent<IDamageable>(); // Проверяем, есть ли на объекте интерфейс IDamageable
         damageable?.TakeDamage(Damage);
     }
+    
+    protected virtual void Update()
+    {
+        ShouldDie();
+    }
+    
+    private void ShouldDie()
+    {
+        if (GameModel.PlayerPosition.z - transform.position.z > 100f)
+            Destroy(gameObject);
+    }
 
     protected abstract IEnumerator Move();
 }

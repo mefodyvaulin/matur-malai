@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour,  IDamageable, ICanShield
 {
-    [SerializeField] int maxHp = 50;
-    [SerializeField] int Hp = 50;
+    [SerializeField] int maxHp = 60;
     public int MaxHp => maxHp;
     public int CurrentHp { get; set; }
     [SerializeField] public AudioSource[] audioSources;
@@ -26,7 +25,6 @@ public class EnemyHealth : MonoBehaviour,  IDamageable, ICanShield
 
     private void Update()
     {
-        Hp = CurrentHp;
     }
 
     // ReSharper disable Unity.PerformanceAnalysis

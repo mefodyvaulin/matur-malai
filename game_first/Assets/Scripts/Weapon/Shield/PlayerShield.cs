@@ -69,6 +69,11 @@ public class PlayerShield : MonoBehaviour, IFillBarProvider, IDamageable
 
         while (elapsedTime < time)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             elapsedTime += GameModel.UnscaledDeltaTime;
             if (time - elapsedTime <= blinkDuration)
             {

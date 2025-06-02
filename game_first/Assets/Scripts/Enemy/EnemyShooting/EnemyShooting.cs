@@ -77,6 +77,11 @@ public abstract class EnemyShooting : MonoBehaviour
 
         while (elapsed < returnTime)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             elapsed += Time.unscaledDeltaTime;
             var t = Mathf.Clamp01(elapsed / returnTime);
             

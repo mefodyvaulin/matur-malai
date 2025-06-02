@@ -7,7 +7,7 @@ public class LaserBeam : MonoBehaviour
     [SerializeField] protected float maxDistance = 150f;
     [SerializeField] public float width = 0.5f;
     [SerializeField] public int damagePerSecond = 5;
-    [SerializeField] protected float damageInterval = 0.2f;
+    [SerializeField] public float damageInterval = 0.2f;
     protected float step = 0.5f; // шаг расположения лучей (их частота)
     [SerializeField] protected Transform beamVisual; // Ссылка на цилиндр лазера
     private float damageTimer;

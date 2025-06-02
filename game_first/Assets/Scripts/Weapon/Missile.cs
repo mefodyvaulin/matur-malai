@@ -20,6 +20,11 @@ public abstract class Missile : MonoBehaviour
         var elapsedTime = 0f;
         while (elapsedTime < time)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             elapsedTime += GameModel.UnscaledDeltaTime;
             yield return null;
         }

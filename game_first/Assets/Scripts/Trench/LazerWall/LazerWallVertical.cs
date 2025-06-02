@@ -23,6 +23,11 @@ public class LazerWallVertical : LazerWallAbstract
 
         while (true)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             if (isGorizontal)
             {
                 if (transform.position.y < GameModel.PlayerMovement.trenchSizeDownLeft.y)

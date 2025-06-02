@@ -8,7 +8,7 @@ public abstract class AbstractBuff : MonoBehaviour
     [SerializeField] private float rotationSpeed = 50f;
     private bool isActive = false;
     
-    private void Update()
+    protected virtual void Update()
     {
         RotateAround();
         ShouldDie();

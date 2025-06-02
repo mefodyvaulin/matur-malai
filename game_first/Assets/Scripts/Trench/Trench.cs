@@ -23,7 +23,7 @@ public class Trench : MonoBehaviour
     
     
     [SerializeField] private GameObject[] buffPrefabs;
-    private readonly int[] weightsBuff = {0, 0, 1, 0, 0};
+    private readonly int[] weightsBuff = {0, 0, 1, 0, 0}; // {6, 3, 1, 3, 2};
     private WeightedRandomStack<GameObject> randomBuffs;
     
     [SerializeField] private Renderer referenceRenderer;
@@ -34,12 +34,14 @@ public class Trench : MonoBehaviour
     private int countSegments;
 
     public bool BossTrenchExists { get; set; }
+    private Queue<float> startSegmentLocations;
     public float BossLocationSegmentPosition => bossLocationSegment * segmentLength;
     private int bossLocationSegment;
     
     private const int maxSegmentsAhead = 4;
 
     private bool isInstantiateSegments;
+    public bool speedStop;
     
     public static event Action<float> OnGenerateContinuationOfTrench; // вызвать до создания туннеля
     
@@ -59,7 +61,8 @@ public class Trench : MonoBehaviour
         initialSegmentPosition = new Vector3(2.52f,
             12,
             -29.6f + segmentLength);
-        
+
+        startSegmentLocations = new Queue<float>();
         currentSegments = new Queue<(GameObject trench, GameObject buff)>();
         
         locationSegmentIndex = skipStartTrenches;
@@ -78,9 +81,16 @@ public class Trench : MonoBehaviour
 
     private void Update()
     {
+        speedStop = false;
         OnGenerateContinuationOfTrench?.Invoke(segmentLength);
         UpdateLocation();
         GenerateContinuationOfTrench();
+        if (GameModel.GenerateTrench.startSegmentLocations.Count > 0
+            && GameModel.PlayerPosition.z >= startSegmentLocations.Peek() * segmentLength)
+        {
+            speedStop = true;
+            startSegmentLocations.Dequeue();
+        }
     }
 
     private void UpdateLocation()
@@ -97,6 +107,7 @@ public class Trench : MonoBehaviour
         
         var lastLocation = IsBossLocation;
         locationSegmentIndex = 0;
+        startSegmentLocations.Enqueue(countSegments);
         locationIndex = locationIndex == locations.Length - 1 ? 0 : locationIndex + 1;
         randomTrench = new WeightedRandomStack<GameObject>(locations[locationIndex].trenches);
         
@@ -163,6 +174,7 @@ public class Trench : MonoBehaviour
 
     public void ReloadSegments()
     {
+        startSegmentLocations.Clear();
         InstantiateSegments(CleanNewTrenchSegments());
     }
     

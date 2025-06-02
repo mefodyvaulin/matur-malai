@@ -37,6 +37,11 @@ public class Helper : MonoBehaviour
     {
         foreach (var task in tasks)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             yield return StartCoroutine(PrintText(task.Key));
             yield return StartCoroutine(CheckAns(task.Value));
             yield return new WaitForSeconds(1f);
@@ -50,6 +55,11 @@ public class Helper : MonoBehaviour
         var timeStarted = GameModel.UnscaledTime;
         while (true)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             if (task.IsPressed())
             {
                 SwitchAnim("wait", "yes");
@@ -101,6 +111,11 @@ public class Helper : MonoBehaviour
         SwitchAnim("wait", "educate");
         for (var i = 0; i < str.Length; i++)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             text0 += str[i];
             text.text = text0;
             yield return new WaitForSeconds(0.05f);

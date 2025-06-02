@@ -15,7 +15,7 @@ public class PlayerHitPoint : MonoBehaviour, IDamageable, IFillBarProvider, ICan
     public bool isIndestructibleSpeedBuff = false;
     public bool isIndestructibleShield { get; set; }
     
-    public int MaxHp => 50;
+    public int MaxHp => 80;
     public int CurrentHp { get; set; }
     public bool IsAlive => CurrentHp > 0;
     public float MaxValue => MaxHp;

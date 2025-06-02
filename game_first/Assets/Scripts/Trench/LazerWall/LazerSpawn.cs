@@ -12,6 +12,7 @@ public class LazerSpawn : MonoBehaviour
     private bool spawned = false;
     private GameObject lazerPrefab;
     [SerializeField] private bool isShip;
+    private static float lifeTime = 10f;
 
     private void Awake()
     {
@@ -42,17 +43,19 @@ public class LazerSpawn : MonoBehaviour
         {
             lazerPrefab = Instantiate(lazersPrefab[0], transform.position + lazerWall.Position, lazerWall.Rotation);
             lazerPrefab.transform.localScale = lazerWall.Scale;
-            Destroy(lazerPrefab, 20);
         }
-
     }
-
-
+    
     private IEnumerable<LazerWallIndetifity> GetRandomPosition()
     {
         var count = isShip ? 10 : Random.Range(1, 4);
         for (var i = 0; i < count; i++)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             yield return new LazerWallIndetifity(isShip? 2 : Random.Range(0, 2));
         }
     }

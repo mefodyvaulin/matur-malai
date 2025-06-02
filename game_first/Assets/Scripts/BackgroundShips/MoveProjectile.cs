@@ -17,6 +17,11 @@ public class MoveProjectile: MonoBehaviour
 
         while (elapsedTime < lifetime)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             var dynamicBoost = Mathf.Clamp(Time.timeScale, 0f, 2f);
             transform.position +=  (moveSpeed * dynamicBoost * GameModel.UnscaledDeltaTime) * transform.forward;
             elapsedTime += GameModel.UnscaledDeltaTime;

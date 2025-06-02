@@ -58,6 +58,11 @@ public class EnemySpawn : MonoBehaviour
         
         for (var i = 0; i < countDrones; i++)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             if (!CanSpawn) yield break;
             
             var enemyIndex = rand.Next(enemiesPrefab.Length);

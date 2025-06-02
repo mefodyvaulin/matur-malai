@@ -76,6 +76,11 @@ public class ShopAnimation : MonoBehaviour
 
         while (elapsedTime < duration)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             targetObject.transform.localScale = Vector3.Lerp(startScale, endScale, (elapsedTime / duration));
             targetObject.transform.rotation = Quaternion.Slerp(startRotation, endRotation, (elapsedTime / duration));
             elapsedTime += delay;

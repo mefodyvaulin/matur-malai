@@ -7,7 +7,9 @@ public class EnemyHomingLaser : EnemyShooting
     private LaserBeam laserBeam;
     private float homingTime = 10f;
     private GameObject target;
-    private float rotationSpeed = 10f;
+    private float minRotationSpeed = 0.4f;
+    private float maxRotationSpeed = 10f;
+
     
     private Coroutine shootCoroutine;
 
@@ -38,12 +40,13 @@ public class EnemyHomingLaser : EnemyShooting
     private IEnumerator HomingCoroutine()
     {
         var elapsedTime = 0f;
-        
-        var minRotationSpeed = 1f;    
-        var maxRotationSpeed = rotationSpeed;
-
         while (elapsedTime < homingTime)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
             elapsedTime += GameModel.UnscaledDeltaTime;
 
             var toTarget = target.transform.position - transform.position;
@@ -53,14 +56,14 @@ public class EnemyHomingLaser : EnemyShooting
                 var targetRotation = Quaternion.LookRotation(direction);
                 var angle = Quaternion.Angle(transform.rotation, targetRotation);
                 
-                var t = Mathf.InverseLerp(0f, 20f, angle); 
+                var t = Mathf.InverseLerp(0f, 30f, angle); 
                 t = Mathf.SmoothStep(0f, 1f, t); 
                 var currentSpeed = Mathf.Lerp(minRotationSpeed, maxRotationSpeed, t);
 
                 transform.rotation = Quaternion.RotateTowards(
                     transform.rotation,
                     targetRotation,
-                    currentSpeed * GameModel.UnscaledDeltaTime
+                    currentSpeed * Time.deltaTime
                 );
             }
 

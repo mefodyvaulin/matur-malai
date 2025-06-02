@@ -24,7 +24,7 @@ public class WeaponSwitcher : MonoBehaviour, IFillBarProvider
     private void Start()
     {
         ShouldEnemiesDieCount = 10;
-        curEnemiesDieCount = ShouldEnemiesDieCount / 2;
+        curEnemiesDieCount = ShouldEnemiesDieCount;
         GameModel.SetWeaponSwitcher(this);
         for (var i = 0; i < guns.Length; i++)
         {
