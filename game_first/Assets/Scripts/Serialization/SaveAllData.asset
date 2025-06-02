@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8905b2c6c645384eba778c8105ef7e6, type: 3}
   m_Name: SaveAllData
   m_EditorClassIdentifier: 
-  playersMoney: 15000
-  bestScore: 0
-  lastScores: 0000000000000000000000000000000000000000
-  currentTexture: {fileID: 2800000, guid: 00324ce00070647d19b2b6f32743d7d3, type: 3}
+  playersMoney: 11100
+  bestScore: 46773
+  lastScores: 000000000000000000000000f0040000b5b60000
+  currentTexture: {fileID: 2800000, guid: 7add593d75f0efc4cb9695ca8d8dbe88, type: 3}
   playersTextures:
   - {fileID: 2800000, guid: 00324ce00070647d19b2b6f32743d7d3, type: 3}
-  isFirstGame: 1
+  - {fileID: 2800000, guid: 80a3bc346421a0e408e7a87bc7099c3c, type: 3}
+  - {fileID: 2800000, guid: 7add593d75f0efc4cb9695ca8d8dbe88, type: 3}
+  isFirstGame: 0
