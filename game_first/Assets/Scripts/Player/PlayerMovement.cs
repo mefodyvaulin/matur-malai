@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float rotationSpeed = 5f;    // Скорость поворота корабля (используется в Slerp)
     [SerializeField] private float maxPitchAngle = 30f;  // Максимальный угол наклона вверх/вниз (по оси X)
     [SerializeField] private float maxYawAngle = 30f;    // Максимальный угол поворота влево/вправо (по оси Y)
-    [SerializeField] private float sensitivity = 1f;     // Чувствительность мыши — насколько сильно движение мыши влияет на поворот
+    public static float sensivity;     // Чувствительность мыши — насколько сильно движение мыши влияет на поворот
     [SerializeField] private float centeringSpeed = 10f; // Скорость возврата корабля в нейтральное положение, когда мышь не двигается
     [SerializeField] public Vector2 trenchSizeUpRight = new(14.5f, 40f);     // Ограничение тоннеля верхний правый угол
     [SerializeField] public Vector2 trenchSizeDownLeft = new(-9.5f, 16f);    // Ограничение тоннеля нижний левый угол
@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake() // Вызывается при создании объекта
     {
         GameModel.SetPlayerMovement(this);
+        sensivity = PlayerPrefs.GetFloat("sensivity");
     }
     
     private void OnEnable() // Активируется, когда объект включается в сцене
@@ -54,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnMouseMove(InputAction.CallbackContext context)
     {
-        inputDelta = context.ReadValue<Vector2>() * sensitivity; // Получаем дельту движения мыши (Vector2: x — влево/вправо, y — вверх/вниз).
+        inputDelta = context.ReadValue<Vector2>() * sensivity; // Получаем дельту движения мыши (Vector2: x — влево/вправо, y — вверх/вниз).
         hasInput = true;
     }
     
@@ -100,5 +101,10 @@ public class PlayerMovement : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, trenchSizeDownLeft.y, trenchSizeUpRight.y);
 
         transform.position = pos;
+    }
+
+    public static void UpdateSensitivity(float value)
+    {
+        sensivity = value;
     }
 }
