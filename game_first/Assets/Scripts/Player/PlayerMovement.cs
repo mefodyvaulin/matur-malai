@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         GameModel.SetPlayerMovement(this);
         sensivity = PlayerPrefs.GetFloat("sensivity");
+        if (sensivity == 0) sensivity = 1f;
     }
     
     private void OnEnable() // Активируется, когда объект включается в сцене
