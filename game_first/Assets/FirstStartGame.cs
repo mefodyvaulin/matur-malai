@@ -9,6 +9,7 @@ public class FirstStartGame : MonoBehaviour
     [SerializeField] GameObject firstStartGamePanel;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] private SaveAllData gameData;
+    [SerializeField] private GameObject xWing;
 
     private IEnumerator Start()
     {
@@ -19,6 +20,7 @@ public class FirstStartGame : MonoBehaviour
 
         if (gameData.isFirstGame)
         {
+            xWing.SetActive(false);
             firstStartGamePanel.SetActive(true);
             while (!firstStartGamePanel.activeInHierarchy)
             {

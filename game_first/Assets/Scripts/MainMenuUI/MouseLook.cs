@@ -18,6 +18,7 @@ public class MouseLook : MonoBehaviour
     
     [SerializeField] private RectTransform mouseZone;
     [SerializeField] private Canvas canvas;
+    private bool isInActiveZone;
 
 
     private void Start()
@@ -29,7 +30,7 @@ public class MouseLook : MonoBehaviour
     {
         var mousePosition = Mouse.current.position.ReadValue();
 
-        var isInActiveZone = RectTransformUtility.RectangleContainsScreenPoint(
+        isInActiveZone = isInActiveZone || RectTransformUtility.RectangleContainsScreenPoint(
             mouseZone, mousePosition,
             canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera
         );
@@ -47,6 +48,7 @@ public class MouseLook : MonoBehaviour
         }
         else
         {
+            isInActiveZone = false;
             timeSinceLastInput += Time.deltaTime;
             if (timeSinceLastInput >= returnDelay) isReturning = true;
             if (isReturning)
