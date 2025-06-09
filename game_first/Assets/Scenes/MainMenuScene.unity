@@ -2344,6 +2344,8 @@ MonoBehaviour:
   - {fileID: 116681471}
   - {fileID: 409157201}
   - {fileID: 1803233988}
+  - {fileID: 1752600890}
+  - {fileID: 2040723115}
   objectsFromScoringUI:
   - {fileID: 786093405}
   - {fileID: 1313884941}
@@ -3370,11 +3372,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alpha: 0.765
-  size: 0.0235
+  size: 0.1
   direction: 0
   velocity: {x: 0.06, y: 0, z: 0.07}
   speed: 0.03
-  density: 3.83
+  density: 10
   spawnDistanceRange:
     m_MinValue: 0
     m_MaxValue: 0.95
@@ -3465,8 +3467,8 @@ MonoBehaviour:
   _TrackChangesDuringPlaytime: 0
   _SortingLayerID: 0
   _SortingOrder: 0
-  _FadeOutBegin: 150
-  _FadeOutEnd: 200
+  _FadeOutBegin: -150
+  _FadeOutEnd: -200
 --- !u!4 &1018877383
 Transform:
   m_ObjectHideFlags: 0
@@ -3932,11 +3934,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alpha: 0.765
-  size: 0.0235
+  size: 0.1
   direction: 0
   velocity: {x: 0, y: 0, z: 0.07}
   speed: 0.03
-  density: 3.83
+  density: 10
   spawnDistanceRange:
     m_MinValue: 0
     m_MaxValue: 0.95
@@ -4027,8 +4029,8 @@ MonoBehaviour:
   _TrackChangesDuringPlaytime: 0
   _SortingLayerID: 0
   _SortingOrder: 0
-  _FadeOutBegin: 150
-  _FadeOutEnd: 200
+  _FadeOutBegin: -150
+  _FadeOutEnd: -200
 --- !u!4 &1260264914
 Transform:
   m_ObjectHideFlags: 0
@@ -4614,11 +4616,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alpha: 0.765
-  size: 0.0235
+  size: 0.1
   direction: 0
   velocity: {x: 0.06, y: 0, z: 0.07}
   speed: 0.03
-  density: 3.83
+  density: 10
   spawnDistanceRange:
     m_MinValue: 0
     m_MaxValue: 0.95
@@ -4709,8 +4711,8 @@ MonoBehaviour:
   _TrackChangesDuringPlaytime: 0
   _SortingLayerID: 0
   _SortingOrder: 0
-  _FadeOutBegin: 150
-  _FadeOutEnd: 200
+  _FadeOutBegin: -150
+  _FadeOutEnd: -200
 --- !u!4 &1468777931
 Transform:
   m_ObjectHideFlags: 0
@@ -4965,7 +4967,7 @@ GameObject:
   - component: {fileID: 1567709798}
   - component: {fileID: 1567709800}
   - component: {fileID: 1567709801}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: BestScoreLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5054,8 +5056,8 @@ MonoBehaviour:
   _TrackChangesDuringPlaytime: 0
   _SortingLayerID: 0
   _SortingOrder: 0
-  _FadeOutBegin: 150
-  _FadeOutEnd: 200
+  _FadeOutBegin: -150
+  _FadeOutEnd: -200
 --- !u!4 &1567709799
 Transform:
   m_ObjectHideFlags: 0
@@ -5084,11 +5086,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alpha: 0.765
-  size: 0.0235
+  size: 0.1
   direction: 0
   velocity: {x: 0.06, y: 0, z: 0.07}
   speed: 0.03
-  density: 3.83
+  density: 10
   spawnDistanceRange:
     m_MinValue: 0
     m_MaxValue: 0.95
@@ -5382,6 +5384,8 @@ MonoBehaviour:
   - {fileID: 988157645}
   - {fileID: 577728194}
   - {fileID: 2017818659}
+  exit1: {fileID: 1752600890}
+  exit2: {fileID: 2040723115}
   targetObject: {fileID: 409157201}
   textMesh: {fileID: 775521197}
   costTextMesh: {fileID: 1312107141}
@@ -7006,11 +7010,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alpha: 0.765
-  size: 0.0235
+  size: 0.1
   direction: 0
   velocity: {x: 0, y: 0, z: 0.07}
   speed: 0.03
-  density: 3.83
+  density: 10
   spawnDistanceRange:
     m_MinValue: 0
     m_MaxValue: 0.95
@@ -7686,6 +7690,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 012407f13de5ae447980c1d79e7c58e7, type: 3}
+--- !u!1 &2040723115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4817560500613774784, guid: 640ef8c46c34dd643bfb4f05e7426fd7, type: 3}
+  m_PrefabInstance: {fileID: 1207190773}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2089703550
 GameObject:
   m_ObjectHideFlags: 0
