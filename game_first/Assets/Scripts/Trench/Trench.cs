@@ -138,13 +138,21 @@ public class Trench : MonoBehaviour
 
     private IEnumerator FireworkSpawn()
     {
-        for (var i = 0; i < 20; i++)
-        {
-            Instantiate(firework, GameModel.PlayerPosition + new Vector3(Random.Range(-2,2), Random.Range(-2, 2), 10), Quaternion.identity);
-            yield return new WaitForSeconds(0.5f);
-        }
+        yield return new WaitForSecondsRealtime(0.7f);
         Time.timeScale = 0;
         gameWinPanel.SetActive(true);
+        while (true)
+        {
+            Instantiate(firework,
+                new Vector3
+                (
+                    Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.x+5, GameModel.PlayerMovement.trenchSizeUpRight.x-5),
+                    Random.Range(GameModel.PlayerMovement.trenchSizeDownLeft.y+5, GameModel.PlayerMovement.trenchSizeUpRight.y+5),
+                    GameModel.PlayerPosition.z + Random.Range(0, 30)
+                    ),
+                Quaternion.identity);
+            yield return new WaitForSecondsRealtime(1f);
+        }
     }
 
     private void GenerateContinuationOfTrench()

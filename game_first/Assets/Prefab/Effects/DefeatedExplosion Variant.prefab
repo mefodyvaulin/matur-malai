@@ -9772,6 +9772,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4.5755887
       objectReference: {fileID: 0}
+    - target: {fileID: 4077479697179373230, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: useUnscaledTime
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4183128058645592704, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.828174
@@ -9783,6 +9787,14 @@ PrefabInstance:
     - target: {fileID: 4183128058645592704, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalScale.z
       value: 4.828174
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398931313336960186, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: useUnscaledTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5222485976921851707, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: useUnscaledTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5222485976921851707, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: TrailModule.lifetime.scalar
