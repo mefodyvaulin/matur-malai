@@ -117,7 +117,6 @@ public class Helper : MonoBehaviour
             if (Time.timeScale == 0)
             {
                 yield return null;
-                continue;
             }
             text0 += str[i];
             text.text = text0;
