@@ -24,6 +24,7 @@ namespace Buffs
         protected override IEnumerator DoBuff()
         {
             if (GameModel.PlayerHitPoint.isIndestructibleSpeedBuff) yield break;
+            GameModel.SetSpeedBuff(this);
             
             GameModel.PlayerHitPoint.isIndestructibleSpeedBuff = true;
             lastPlayerRotationSpeed = GameModel.PlayerMovement.rotationSpeed;
@@ -90,6 +91,13 @@ namespace Buffs
                 elapsedTime += GameModel.UnscaledDeltaTime;
                 yield return null;
             }
+            AllReturn();
+        }
+
+        private void AllReturn()
+        {
+            GameModel.SetSpeedBuff(null);
+            
             GameModel.PlayerMovement.rotationSpeed = lastPlayerRotationSpeed;
             GameModel.PlayerMovement.speed = lastPlayerSpeed;
             GameModel.CameraFollow.smoothTime = lastCameraSmoothTime;
@@ -97,6 +105,14 @@ namespace Buffs
             
             EnemySpawn.CanSpawn = true;
             GameModel.PlayerHitPoint.isIndestructibleSpeedBuff = false;
+
+            Destroy(gameObject);
+        }
+
+        public void Stop()
+        {
+            StopAllCoroutines();
+            AllReturn();
         }
     }
 }

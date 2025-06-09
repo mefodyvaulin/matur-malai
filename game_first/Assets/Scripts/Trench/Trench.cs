@@ -93,6 +93,7 @@ public class Trench : MonoBehaviour
         if (GameModel.GenerateTrench.startSegmentLocations.Count > 0
             && GameModel.PlayerPosition.z >= startSegmentLocations.Peek() * segmentLength)
         {
+            if (GameModel.SpeedBuff != null) GameModel.SpeedBuff.Stop();
             speedStop = true;
             startSegmentLocations.Dequeue();
         }

@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using Buffs;
 
 public static class GameModel
 {
@@ -28,6 +29,8 @@ public static class GameModel
 
     public static PlayerShield Shield => _shield ?? throw new System.Exception("Shied not set!");
     private static PlayerShield _shield;
+    
+    public static SpeedBuff SpeedBuff;
 
     public static readonly Dictionary<EnemyAbstract, int> Enemies = new();
     public static int CountEnemies => Enemies.Count;
@@ -86,6 +89,12 @@ public static class GameModel
         if ( _generateTrench is not null ) return;
         _generateTrench = generateTrench;
     }
+    
+    public static void SetSpeedBuff(SpeedBuff speedBuff)
+    {
+        if ( SpeedBuff is not null ) return;
+        SpeedBuff = speedBuff;
+    }
 
     public static void AddEnemy(EnemyAbstract enemy)
     {
@@ -108,6 +117,7 @@ public static class GameModel
         _playerCollider = null;
         _timeManager = null;
         _generateTrench = null;
+        SpeedBuff = null;
         isEducation = false;
         Helper.helperAlive = false;
         playerTransform = null;

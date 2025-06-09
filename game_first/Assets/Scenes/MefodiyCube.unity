@@ -544,6 +544,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
+      propertyPath: locationSegmentsCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329037702755258064, guid: a33fa94e2899841299b405df9b703650, type: 3}
       propertyPath: 'buffPrefabs.Array.data[0]'
       value: 
       objectReference: {fileID: 9095174153456128225, guid: 226200dc61430427faa58b1205521d81, type: 3}
@@ -1269,6 +1273,10 @@ PrefabInstance:
       propertyPath: postProcessVolume
       value: 
       objectReference: {fileID: 1994450454}
+    - target: {fileID: 7901524733702539389, guid: ed67f2c4a9531c441bf8bc74b0a40ac5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
