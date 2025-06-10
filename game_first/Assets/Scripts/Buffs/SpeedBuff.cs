@@ -7,7 +7,7 @@ namespace Buffs
 {
     public class SpeedBuff : AbstractBuff
     {
-        private const int boost = 50;
+        public int boost = 50;
         private const float timeBoost = 1f;
         private float lastPlayerSpeed;
         private float lastPlayerRotationSpeed;

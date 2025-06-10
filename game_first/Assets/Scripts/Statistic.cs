@@ -3,7 +3,7 @@ using System.Collections.Generic;
 public static class Statistic
 {
     public static SaveAllData saveAllData;
-    public static int sessionScore;
+    public static float sessionScore;
     public static List<int> LastGamesScore
     {
         get => saveAllData.lastScores;
@@ -31,11 +31,11 @@ public static class Statistic
 
     private static void SetScore()
     {
-        LastGamesScore.Add(sessionScore);
+        LastGamesScore.Add((int)sessionScore);
         if (LastGamesScore.Count == 6) LastGamesScore.RemoveAt(0);
         if (sessionScore > BestScore)
         {
-            BestScore = sessionScore;
+            BestScore = (int)sessionScore;
         }
         sessionScore = 0;
     }

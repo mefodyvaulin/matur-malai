@@ -104,6 +104,8 @@ public static class GameModel
     public static void RemoveEnemy(EnemyAbstract enemy)
     {
         Enemies.Remove(enemy);
+        // ReSharper disable once PossibleLossOfFraction
+        Statistic.sessionScore += 100 * (1 + Harder / 2);
         _weaponSwitcher?.PourInUlta(1);
     }
 

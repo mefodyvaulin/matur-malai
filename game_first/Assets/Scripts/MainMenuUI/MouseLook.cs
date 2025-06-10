@@ -41,7 +41,7 @@ public class MouseLook : MonoBehaviour
 
             rotationY -= mouseDelta.x * rotationSpeed;
             rotationX -= mouseDelta.y * rotationSpeed;
-            rotationX = Mathf.Clamp(rotationX, -46f, 4f);
+            //rotationX = Mathf.Clamp(rotationX, -46f, 4f);
 
             timeSinceLastInput = 0f;
             isReturning = false;

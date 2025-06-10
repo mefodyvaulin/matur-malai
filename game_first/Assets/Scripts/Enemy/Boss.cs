@@ -16,6 +16,8 @@ public class Boss : EnemyAbstract, IFillBarProvider
     protected override void OnDestroy()
     {
         base.OnDestroy();
+        // ReSharper disable once PossibleLossOfFraction
+        Statistic.sessionScore += 900 * (1 + GameModel.Harder / 2);
         GameModel.BossIsAlive = false;
         EnemySpawn.CanSpawn = true;
         GameModel.GenerateTrench.bossBar.gameObject.SetActive(false);
