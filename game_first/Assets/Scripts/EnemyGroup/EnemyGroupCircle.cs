@@ -19,7 +19,7 @@ public class EnemyGroupCircle : EnemyGroupAbstract
 
     public EnemyGroupCircle(int countDrones, Vector3 spawnPosition) : base(countDrones, spawnPosition)
     {
-        centerOfCircle = new Vector3((maxX + minX) / 2, (maxY + minY) / 2, spawnPosition.z);
+        centerOfCircle = new Vector3((maxX + minX) / 2, (maxY + minY) / 2, spawnPosition.z - 5);
 
         actualRadius = minRadius + (maxRadius - minRadius) * 0.5f;
         radius = actualRadius;

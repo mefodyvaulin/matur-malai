@@ -19,8 +19,8 @@ public class Trench : MonoBehaviour
     [SerializeField] private GameObject bossTrenchSegment;
     [SerializeField] private Location[] locations;
     [Min(5)] [SerializeField] private int locationSegmentsCount = 50;
-    private int locationIndex = 0;
-    private int locationSegmentIndex = 0;
+    public int locationIndex = 0;
+    public int locationSegmentIndex = 0;
     public bool IsBossLocation => locationIndex == locations.Length - 1;
     private WeightedRandomStack<GameObject> randomTrench;
     

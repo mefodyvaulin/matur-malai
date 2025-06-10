@@ -5,12 +5,12 @@ using UnityEngine;
 public class EnemyRotatingMachineGun : EnemyShooting
 {
     private float[] angles = { -14f, 14f };
-    private float[] anglesShoot = { -2.15f, 0, 2.15f };
+    private float[] anglesShoot = { -4f, 0, 4f };
     private float duration = 1.5f;
     private float preparationTime = 0.75f;
     private float rotateZTime = 1.5f;
     private float allTime;
-    const int shotsPerCycle = 10;
+    private int shotsPerCycle => 10 + 2 * GameModel.Harder;
     
     private Quaternion cycleOriginalRotation;
     private EnemyAbstract enemy;

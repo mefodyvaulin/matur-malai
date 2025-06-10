@@ -15,7 +15,7 @@ public class EnemyGroupLemniskata : EnemyGroupAbstract
         deltaAngle = 1.4f / 2;
         angle = 0;
         
-        LemniskataCenter = new Vector3((maxX + minX) / 2, (maxY + minY) / 2, spawnPosition.z);
+        LemniskataCenter = new Vector3((maxX + minX) / 2, (maxY + minY) / 2, spawnPosition.z - 5);
         
         enemyAngles = new List<float>();
     }

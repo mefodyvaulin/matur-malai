@@ -9,6 +9,7 @@ public class EnemyHomingLaser : EnemyShooting
     private GameObject target;
     private float minRotationSpeed = 0.4f;
     private float maxRotationSpeed = 10f;
+    private int damagePerSecond = 1;
 
     
     private Coroutine shootCoroutine;
@@ -21,7 +22,8 @@ public class EnemyHomingLaser : EnemyShooting
 
         laserBeam = bulletPrefab.GetComponent<LaserBeam>();
         if (laserBeam == null) throw new Exception("LaserBeam component doesn't exist");
-        laserBeam.width = 0.3f;
+        laserBeam.width = 0.3f + 0.1f * GameModel.Harder;
+        laserBeam.damagePerSecond = damagePerSecond + 1 * (GameModel.Harder/2);
         base.Awake();
         
         var buffLayer = LayerMask.NameToLayer("Buff");

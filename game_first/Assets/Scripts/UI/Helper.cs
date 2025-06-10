@@ -103,6 +103,8 @@ public class Helper : MonoBehaviour
         if (transform.position.y > trenchRightUp.y + 50)
         {
             helperAlive = false;
+            GameModel.GenerateTrench.locationSegmentIndex = 0;
+            GameModel.GenerateTrench.locationIndex = 0;
             GameModel.GenerateTrench.ReloadSegments();
             Destroy(gameObject);
         }

@@ -11,7 +11,7 @@ public static class GameModel
 
     private static Transform playerTransform;
 
-
+    public static int Harder = 0;
     
     public static WeaponSwitcher WeaponSwitcher => _weaponSwitcher ?? throw new System.Exception("WeaponSwitcher not set!");
     private static WeaponSwitcher _weaponSwitcher;
@@ -123,6 +123,7 @@ public static class GameModel
         playerTransform = null;
         BossIsAlive = false;
         EnemySpawn.CanSpawn = true;
+        Harder = 0;
         
         Enemies.Clear();
     }

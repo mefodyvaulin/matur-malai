@@ -20,6 +20,7 @@ public class Boss : EnemyAbstract, IFillBarProvider
         EnemySpawn.CanSpawn = true;
         GameModel.GenerateTrench.bossBar.gameObject.SetActive(false);
         GameModel.GenerateTrench.BossTrenchExists = false;
+        GameModel.Harder++;
     }
     
     private static void KillEnemies()

@@ -6,15 +6,16 @@ using UnityEngine;
 public class LaserShoot : LaserBeam
 {
     [SerializeField] public float maxWidth = 0.4f;
+    public int damagePerSecondShoot = 5;
     private float timeAdded = 0.2f;
-    private float timeMaxAdd = 0.15f;
+    public float timeMaxAdd = 0.15f;
     private float elapsedTime;
     private bool isAdded;
     
     protected override void Awake()
     {
         base.Awake();
-        damagePerSecond = 5;
+        damagePerSecond = damagePerSecondShoot;
         damageInterval = 0.2f;
         step = maxWidth;
     }
