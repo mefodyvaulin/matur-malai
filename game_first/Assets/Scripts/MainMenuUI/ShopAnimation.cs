@@ -18,6 +18,9 @@ public class ShopAnimation : MonoBehaviour
     
     [SerializeField] GameObject[] skinButtons;
     
+    [SerializeField] GameObject exit1;
+    [SerializeField] GameObject exit2;
+    
     public GameObject targetObject; 
     private const float targetScaleX = 7f; 
     private const float initialScaleX = -7f; 
@@ -49,6 +52,9 @@ public class ShopAnimation : MonoBehaviour
             soundSlider.SetActive(false);
             foreach (var button in skinButtons)
                 button.SetActive(true);
+            
+            exit1.SetActive(false);
+            exit2.SetActive(false);
         }
         else
         {
@@ -65,6 +71,9 @@ public class ShopAnimation : MonoBehaviour
             foreach (var button in skinButtons)
                 button.SetActive(false);
             material.SetTexture("_MainTex", TextureManager.CurrentTexture);
+            
+            exit1.SetActive(true);
+            exit2.SetActive(true);
         }
 
         isScaledUp = !isScaledUp;

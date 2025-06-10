@@ -23,7 +23,7 @@ public class BossSpawn : MonoBehaviour
     private void CountFragmentsToSpawn(float segmentLenght)
     {
         if (!spawned && transform.position.z - GameModel.PlayerPosition.z <= spawnedAfter * segmentLenght 
-            && transform.position.z - GameModel.PlayerPosition.z > spawnedAfter * segmentLenght - 0.96f)
+            && transform.position.z - GameModel.PlayerPosition.z > spawnedAfter * segmentLenght - 3f)
         {
             spawned = true;
             SpawnBoss();
