@@ -120,13 +120,11 @@ public static class GameModel
         _timeManager = null;
         _generateTrench = null;
         SpeedBuff = null;
-        isEducation = false;
         Helper.helperAlive = false;
         playerTransform = null;
         BossIsAlive = false;
         EnemySpawn.CanSpawn = true;
         Harder = 0;
-        
         Enemies.Clear();
     }
 
