@@ -7902,6 +7902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IsFitstStartGame
       objectReference: {fileID: 0}
+    - target: {fileID: 3339017003039052091, guid: 3b1502526c5c84097b9c3c6ef0622217, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3863244730851047196, guid: 3b1502526c5c84097b9c3c6ef0622217, type: 3}
       propertyPath: xWing
       value: 
