@@ -10,5 +10,6 @@ public class SaveAllData : ScriptableObject
     public Texture currentTexture;
     public List<Texture> playersTextures;
     public bool isFirstGame = true;
+    public bool isJsonCreated = false;
 }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class SaveLoadManager
 {
-    private static string filePath => Path.Combine(Application.persistentDataPath, "gameData.json");
+    private static string filePath => Path.Combine(Application.dataPath, "gameData.json");
 
     public static void SaveData(SaveAllData gameData)
     {

@@ -1000,7 +1000,6 @@ MonoBehaviour:
   shield: {fileID: 2406386950874328496, guid: 10816d956144e42a09725c0ef69828e5, type: 3}
   postProcessVolume: {fileID: 0}
   isIndestructibleSpeedBuff: 0
-  isTraining: 0
   playerRenderer: {fileID: 1305415077025105050}
 --- !u!114 &6487885852971174188
 MonoBehaviour:
@@ -1015,7 +1014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  rotationSpeed: 5
+  rotationSpeed: 2.5
   maxPitchAngle: 30
   maxYawAngle: 30
   sensitivity: 1

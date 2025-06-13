@@ -4,6 +4,7 @@ public class DataManager : MonoBehaviour
 {
     public SaveAllData gameData;
     private static bool isGameInitiallyStarted = true;
+    [SerializeField] Material XwingTexture;
 
     private void Start()
     {
@@ -14,6 +15,7 @@ public class DataManager : MonoBehaviour
         }
         TextureManager.saveAllData = gameData;
         Statistic.saveAllData = gameData;
+        XwingTexture.SetTexture("_MainTex", TextureManager.CurrentTexture);
     }
     
     private void OnApplicationQuit()
