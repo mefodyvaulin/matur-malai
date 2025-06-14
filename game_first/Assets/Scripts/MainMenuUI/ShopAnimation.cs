@@ -70,7 +70,7 @@ public class ShopAnimation : MonoBehaviour
             buyButton.SetActive(false);
             musicSlider.SetActive(true);
             soundSlider.SetActive(true);
-            sensivitySlider.SetActive(false);
+            sensivitySlider.SetActive(true);
             foreach (var button in skinButtons)
                 button.SetActive(false);
             material.SetTexture("_MainTex", TextureManager.CurrentTexture);
