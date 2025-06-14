@@ -9734,7 +9734,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 63275411451312604, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: lengthInSec
-      value: 1
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 63275411451312604, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: ShapeModule.randomPositionAmount
@@ -9745,8 +9745,16 @@ PrefabInstance:
       value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 63275411451312604, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 63275411451312604, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: ShapeModule.sphericalDirectionAmount
       value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 63275411451312604, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1731636525053436653, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalScale.x
@@ -9814,15 +9822,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5797290743876432329, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.907918
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5797290743876432329, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.907918
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5797290743876432329, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.907918
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5797290743876432329, guid: 73f02a6514e72d14d97313b0a87fa421, type: 3}
       propertyPath: m_LocalPosition.x

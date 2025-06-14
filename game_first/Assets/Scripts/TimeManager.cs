@@ -24,7 +24,7 @@ public class TimeManager : MonoBehaviour
         UnscaledTime += UnscaledDeltaTime;
     }
     
-    private static float maxTimeScale = 4f;
+    private static float maxTimeScale = 3.5f;
     private static float cooldownBoost = 1.5f; //2
     private static float boost = 0.01f;
     private static float updateCooldownBoost;

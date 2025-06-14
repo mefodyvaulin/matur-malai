@@ -8,6 +8,7 @@ public class ShopAnimation : MonoBehaviour
     
     [SerializeField] GameObject musicSlider;
     [SerializeField] GameObject soundSlider;
+    [SerializeField] GameObject sensivitySlider;
     
     [SerializeField] GameObject costText;
     
@@ -50,6 +51,7 @@ public class ShopAnimation : MonoBehaviour
             recordsButton.SetActive(false);
             musicSlider.SetActive(false);
             soundSlider.SetActive(false);
+            sensivitySlider.SetActive(false);
             foreach (var button in skinButtons)
                 button.SetActive(true);
             
@@ -68,6 +70,7 @@ public class ShopAnimation : MonoBehaviour
             buyButton.SetActive(false);
             musicSlider.SetActive(true);
             soundSlider.SetActive(true);
+            sensivitySlider.SetActive(false);
             foreach (var button in skinButtons)
                 button.SetActive(false);
             material.SetTexture("_MainTex", TextureManager.CurrentTexture);

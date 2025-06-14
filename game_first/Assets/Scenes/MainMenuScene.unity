@@ -2454,6 +2454,7 @@ MonoBehaviour:
   - {fileID: 1803233988}
   - {fileID: 1752600890}
   - {fileID: 2040723115}
+  - {fileID: 95711757}
   objectsFromScoringUI:
   - {fileID: 786093405}
   - {fileID: 1313884941}
@@ -5607,6 +5608,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 33925a828704a457d9a89cc1d8c99fa6, type: 2}
   musicSlider: {fileID: 1591397308}
   soundSlider: {fileID: 247403135}
+  sensivitySlider: {fileID: 95711757}
   costText: {fileID: 1312107139}
   playButton: {fileID: 1840600736}
   buyButton: {fileID: 1805393524}
