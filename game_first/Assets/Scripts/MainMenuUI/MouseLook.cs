@@ -23,6 +23,7 @@ public class MouseLook : MonoBehaviour
 
     private void Start()
     {
+        PlayerMovement.sensivity = PlayerPrefs.GetFloat("sensivity");
         initialRotation = transform.rotation;
     }
 
@@ -39,8 +40,8 @@ public class MouseLook : MonoBehaviour
         {
             mouseDelta = Mouse.current.delta.ReadValue();
 
-            rotationY -= mouseDelta.x * rotationSpeed;
-            rotationX -= mouseDelta.y * rotationSpeed;
+            rotationY -= mouseDelta.x * rotationSpeed * PlayerMovement.sensivity;
+            rotationX -= mouseDelta.y * rotationSpeed * PlayerMovement.sensivity;
             //rotationX = Mathf.Clamp(rotationX, -46f, 4f);
 
             timeSinceLastInput = 0f;
