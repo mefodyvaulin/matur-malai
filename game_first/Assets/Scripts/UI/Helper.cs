@@ -20,13 +20,14 @@ public class Helper : MonoBehaviour
     {
         tasks = new Dictionary<string, InputAction>
         {
+            { "Это обучение-показ. В этом режиме ты не сможешь умереть.", InputManager.MouseMove },
             { "Передвигай мышь, чтобы поворачивать.", InputManager.MouseMove },
             { "Стрельба на левую кнопку мыши.", InputManager.LeftClick },
             { "Хп и патроны отображаются справа сверху.", InputManager.MouseMove},
             { "Суперудар на пробел. Он отображается слева сверху.", InputManager.Ulta },
             { "Нажми ESC для приостановки игры.", InputManager.PauseOFF },
-            { "Во время игры встречаются баффы обязательно подбирай их.", InputManager.MouseMove},
-            { "За звездочки можно покупать крутые скины в магазине.", InputManager.MouseMove}
+            { "Во время игры встречаются баффы обязательно подбирай их.", InputManager.MouseMove}
+            //{ "За звездочки можно покупать крутые скины в магазине.", InputManager.MouseMove}
         };
         StartCoroutine(Education());
     }
