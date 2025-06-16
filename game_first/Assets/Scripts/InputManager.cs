@@ -26,5 +26,4 @@ public static class InputManager
         PauseON.Disable();
         PauseOFF.Disable();
     }
-
 }

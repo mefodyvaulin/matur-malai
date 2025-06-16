@@ -14,7 +14,7 @@ public class Trench : MonoBehaviour
     [Min(5)] [SerializeField] private int totalNumberOfFloodedTrenches = 50;
     [SerializeField] public GameObject bossBar;
     [SerializeField] public GameObject firework;
-    private int skipStartTrenches = 2;
+    private int skipStartTrenches = 1;
     
     [SerializeField] private GameObject bossTrenchSegment;
     [SerializeField] private Location[] locations;
@@ -26,7 +26,7 @@ public class Trench : MonoBehaviour
     
     
     [SerializeField] private GameObject[] buffPrefabs;
-    private readonly int[] weightsBuff = {6, 3, 1, 3, 2}; // {6, 3, 1, 3, 2};
+    private readonly int[] weightsBuff = {6, 3, 1000, 3, 2}; // {6, 3, 1, 3, 2};
     private WeightedRandomStack<GameObject> randomBuffs;
 
     [SerializeField] private Renderer referenceRenderer;
@@ -41,7 +41,7 @@ public class Trench : MonoBehaviour
     public float BossLocationSegmentPosition => bossLocationSegment * segmentLength;
     private int bossLocationSegment;
 
-    private const int maxSegmentsAhead = 4;
+    private const int maxSegmentsAhead = 3;
 
     private bool isInstantiateSegments;
     public bool speedStop;
@@ -119,7 +119,7 @@ public class Trench : MonoBehaviour
 
         if (IsBossLocation)
         {
-            bossLocationSegment = countSegments;
+            bossLocationSegment = countSegments - 1;
             starCanSpawn = false;
         }
         if (lastLocation)
@@ -129,7 +129,9 @@ public class Trench : MonoBehaviour
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 InputManager.DisablePauseON();
+                InputManager.LeftClick.Disable();
                 StartCoroutine(FireworkSpawn());
+                return;
             }
             starCanSpawn = true;
             ReloadSegments();
@@ -179,7 +181,7 @@ public class Trench : MonoBehaviour
             return emptyStartSegment;
         }
         if (IsBossLocation
-            && locationSegmentIndex >= 3 
+            && locationSegmentIndex >= 2 
             && !BossTrenchExists 
             )
         {

@@ -17,7 +17,7 @@ namespace Buffs
         private void Awake()
         {
             if (GameModel.GenerateTrench.IsBossLocation 
-                && transform.position.z >= GameModel.GenerateTrench.BossLocationSegmentPosition) 
+                && transform.position.z >= GameModel.GenerateTrench.BossLocationSegmentPosition - 80) 
                 Destroy(gameObject);
         }
 
